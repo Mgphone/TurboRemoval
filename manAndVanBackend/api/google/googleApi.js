@@ -18,7 +18,7 @@ const getLocationByCallingGoogleApi = (postcode) => {
   const param2 = "param2=test2";
   const googleUrl = getGoogleApi(apiKey, param1, param2);
 
-  console.log(`Getting postcode: ${postcode} data from google map api`);
+  // console.log(`Getting postcode: ${postcode} data from google map api`);
 
   return mockPostCodeData[postcode];
 };

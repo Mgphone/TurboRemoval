@@ -2,12 +2,11 @@
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
 
-const createQuote = (postcodes, typeOfVan, numberOfWorker) => {
+const createQuote = async (postcodes, typeOfVan, numberOfWorker) => {
   const cleanupPostcodes = postcodes.map((postcode) => {
     return postcode.trim().split(" ").join("");
   });
-  // console.log("thii is cleanup" + cleanupPostcodes);
-  const totalMiles = getTotalMilesOfAllPostcodes(cleanupPostcodes);
+  const totalMiles = await getTotalMilesOfAllPostcodes(cleanupPostcodes);
   let vanCharge = 50;
   if (typeOfVan === "SMALL") {
     vanCharge = 50;
@@ -25,7 +24,7 @@ const createQuote = (postcodes, typeOfVan, numberOfWorker) => {
   };
 };
 
-const getTotalMilesOfAllPostcodes = (postcode) => {
+const getTotalMilesOfAllPostcodes = async (postcode) => {
   let index = 0;
   let totalMiles = 0;
   while (index < postcode.length) {
@@ -36,10 +35,10 @@ const getTotalMilesOfAllPostcodes = (postcode) => {
       const destination = getLocationByCallingGoogleApi(destinationPostcode);
 
       if (pickupPoint && destination) {
-        console.log(`Pick up point data: ${JSON.stringify(pickupPoint)}`);
-        console.log(`Destination data: ${JSON.stringify(destination)}`);
+        // console.log(`Pick up point data: ${JSON.stringify(pickupPoint)}`);
+        // console.log(`Destination data: ${JSON.stringify(destination)}`);
         const mileDistanceFromTwoLocations =
-          calculateDistanceBetweenTwoLocations(pickupPoint, destination);
+          await calculateDistanceBetweenTwoLocations(pickupPoint, destination);
 
         totalMiles += mileDistanceFromTwoLocations;
         index++;
