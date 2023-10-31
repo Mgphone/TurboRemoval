@@ -46,8 +46,8 @@ app.get("/testing", async (req, res, next) => {
 });
 app.get("/test", async (req, res, next) => {
   const distance = await calculateDistanceBetweenTwoLocations(
-    { longitude: 51.5869609263975, latitude: -0.22871675924011195 },
-    { longitude: 51.61346536076805, latitude: -0.1756191034176333 }
+    { latitude: 51.5869609263975, longitude: -0.22871675924011195 },
+    { latitude: 51.61346536076805, longitude: -0.1756191034176333 }
   );
   const time = timeConverter(distance.distanceInTime);
   res.send(`<h1>${distance.distanceInMiles}</h1><h2>${time}</h2>`);

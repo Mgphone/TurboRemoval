@@ -16,7 +16,6 @@ const createQuote = async (postcodes, typeOfVan, numberOfWorker) => {
     vanCharge = 150;
   }
   const charge = totalResult.distance * vanCharge * numberOfWorker;
-  // const totalHour=await getTotalHour(cleanupPostcodes)
   return {
     quote: {
       totalMiles: totalResult.distance,
@@ -54,40 +53,5 @@ const getTotalResultOfAllPostcodes = async (postcodes) => {
 
   return { distance: distance, time: time };
 };
-
-// const getTotalMilesOfAllPostcodes = async (postcode) => {
-// // console.log(`postcode1 ${JSON.stringify(postcode[0])}`);
-// console.log(`postcode2 ${JSON.stringify(postcode[1])}`);
-// // console.log(`postcode3 ${JSON.stringify(postcode[2])}`);
-// const cororidnate = await Promise.all(
-//   postcode.map((postcode) => getLocationByCallingGoogleApi(postcode))
-// );
-// return cororidnate;
-// let index = 0;
-// let totalMiles = 0;
-// while (index < postcode.length) {
-//   if (postcode.length > index + 1) {
-//     const startPostcode = postcode[index];
-//     const destinationPostcode = postcode[index + 1];
-//     const pickupPoint = await getLocationByCallingGoogleApi(startPostcode);
-//     const destination = await getLocationByCallingGoogleApi(
-//       destinationPostcode
-//     );
-//     if (pickupPoint && destination) {
-//       console.log(`Pick up point data: ${JSON.stringify(pickupPoint)}`);
-//       console.log(`Destination data: ${JSON.stringify(destination)}`);
-//       const mileDistanceFromTwoLocations =
-//         await calculateDistanceBetweenTwoLocations(pickupPoint, destination);
-//       totalMiles += mileDistanceFromTwoLocations;
-//       index++;
-//     } else {
-//       throw new Error("One of the postcode is invalid.");
-//     }
-//   } else {
-//     break;
-//   }
-// }
-// return totalMiles;
-// };
 
 module.exports = createQuote;

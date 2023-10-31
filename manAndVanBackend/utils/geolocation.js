@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 const calculateDistanceBetweenTwoLocations = async (
   firstLocation,
   secondLocation
@@ -6,10 +6,10 @@ const calculateDistanceBetweenTwoLocations = async (
   if ((firstLocation, secondLocation)) {
     const { longitude: firstLong, latitude: firstLat } = firstLocation;
     const { longitude: secondLong, latitude: secondLat } = secondLocation;
-
+    console.log("distancebetweenlocationLongitude" + firstLong);
     if (firstLong && firstLat && secondLong && secondLat) {
       const apiKey = process.env.GOOGLE_API_KEY;
-      const apiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${firstLong},${firstLat}&destination=${secondLong},${secondLat}&key=${apiKey}`;
+      const apiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${firstLat},${firstLong}&destination=${secondLat},${secondLong}&key=${apiKey}`;
       try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -19,16 +19,12 @@ const calculateDistanceBetweenTwoLocations = async (
         if (data.status === "OK") {
           const distanceInMeters = data.routes[0].legs[0].distance.value;
           const distanceInTime = data.routes[0].legs[0].duration.value;
-          // const distanceInHour = Math.floor(distanceInTime / 3600);
-          // const distanceInMinute = Math.floor((distanceInTime % 3600) / 60);
+
           const distanceInMiles = distanceInMeters * 0.000621;
           return {
             distanceInMiles: distanceInMiles,
             distanceInTime: distanceInTime,
           };
-          // return distanceInMiles;
-          // return console.log("this is from geolocaiton " + distanceInMiles);
-          // return `${distance} hour:${distanceInMinute} minute`;
         } else {
           console.error(`Request Error : ${data.status}`);
         }
@@ -43,11 +39,3 @@ const calculateDistanceBetweenTwoLocations = async (
   }
 };
 module.exports = calculateDistanceBetweenTwoLocations;
-
-// testing
-// const calculateDistanceBetweenTwoLocations = async (first, second) => {
-//   // console.log("THis is first" + JSON.stringify(first));
-//   const { longitude: firstLong, latitude: firstLat } = second;
-//   console.log(firstLat);
-// };
-// module.exports = calculateDistanceBetweenTwoLocations;
