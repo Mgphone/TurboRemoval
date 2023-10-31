@@ -8,3 +8,9 @@ for fifth commit...
 i can see JSON.stringify for object
 if there is some errors can check with if statement
 i am stuck for long time in the invalid postcode..!becareful
+for sixt commit..
+add the time for json..
+one function two outputs using object
+when i use the best way is make a variable result and with using . dot
+add timeConverter.. module.export=timeConverter
+use a lot of template literal

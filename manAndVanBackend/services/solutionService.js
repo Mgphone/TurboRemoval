@@ -6,7 +6,7 @@ const createQuote = async (postcodes, typeOfVan, numberOfWorker) => {
   const cleanupPostcodes = postcodes.map((postcode) => {
     return postcode.trim().split(" ").join("");
   });
-  const totalMiles = await getTotalMilesOfAllPostcodes(cleanupPostcodes);
+  const totalResult = await getTotalResultOfAllPostcodes(cleanupPostcodes);
   let vanCharge = 50;
   if (typeOfVan === "SMALL") {
     vanCharge = 50;
@@ -15,29 +15,36 @@ const createQuote = async (postcodes, typeOfVan, numberOfWorker) => {
   } else if (typeOfVan === "EXTRA LARGE") {
     vanCharge = 150;
   }
-  const charge = totalMiles * vanCharge * numberOfWorker;
+  const charge = totalResult.distance * vanCharge * numberOfWorker;
+  // const totalHour=await getTotalHour(cleanupPostcodes)
   return {
     quote: {
-      totalMiles: totalMiles,
+      totalMiles: totalResult.distance,
       charge: `£${charge}`,
+      totalHour: totalResult.time,
     },
   };
 };
-const getTotalMilesOfAllPostcodes = async (postcodes) => {
+const getTotalResultOfAllPostcodes = async (postcodes) => {
   const coordinates = await Promise.all(
     postcodes.map((postcode) => getLocationByCallingGoogleApi(postcode))
   );
 
   let distance = 0;
+  let time = 0;
 
   for (let i = 0; i < coordinates.length - 1; i++) {
     const currentCoordinate = coordinates[i];
     const nextCorordinate = coordinates[i + 1];
     if (currentCoordinate && nextCorordinate) {
-      distance += await calculateDistanceBetweenTwoLocations(
+      const result = await calculateDistanceBetweenTwoLocations(
         coordinates[i],
         coordinates[i + 1]
       );
+      if (result) {
+        distance += result.distanceInMiles;
+        time += result.distanceInTime;
+      }
     } else {
       console.error(
         "Coordinate is missing for indexes " + i + " and " + (i + 1)
@@ -45,7 +52,7 @@ const getTotalMilesOfAllPostcodes = async (postcodes) => {
     }
   }
 
-  return distance;
+  return { distance: distance, time: time };
 };
 
 // const getTotalMilesOfAllPostcodes = async (postcode) => {

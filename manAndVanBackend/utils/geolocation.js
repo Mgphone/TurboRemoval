@@ -18,10 +18,17 @@ const calculateDistanceBetweenTwoLocations = async (
         const data = await response.json();
         if (data.status === "OK") {
           const distanceInMeters = data.routes[0].legs[0].distance.value;
+          const distanceInTime = data.routes[0].legs[0].duration.value;
+          // const distanceInHour = Math.floor(distanceInTime / 3600);
+          // const distanceInMinute = Math.floor((distanceInTime % 3600) / 60);
           const distanceInMiles = distanceInMeters * 0.000621;
-
+          return {
+            distanceInMiles: distanceInMiles,
+            distanceInTime: distanceInTime,
+          };
+          // return distanceInMiles;
           // return console.log("this is from geolocaiton " + distanceInMiles);
-          return distanceInMiles;
+          // return `${distance} hour:${distanceInMinute} minute`;
         } else {
           console.error(`Request Error : ${data.status}`);
         }
