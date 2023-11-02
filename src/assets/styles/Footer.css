@@ -1,0 +1,16 @@
+.footer{
+  background-color: #ccc;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap:10px;
+  text-align: center;
+}
+.contact{
+  text-align: left;
+  padding-left: 1vw;
+}
+.copyright{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

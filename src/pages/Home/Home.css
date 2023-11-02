@@ -1,46 +1,57 @@
 /*Home welcome section */
 .mapcontainer{
   width:100vw;
-  height: 100vh;
-  /* z-index: 1; */
-  /* border:5px solid gold; */
+  height: 80vh;
   padding:0;
   margin:0;
+  position: relative;
+}
+.mapcontainer img{
+  width: 99vw;
+  height: 80vh;
 }
 .quotesearch{
-  display: flex;
-  justify-content: center;
-  /* width: 100vw;
-  height: 100vh; */
-  margin:0 auto;
- 
+  position:absolute;
+  top:30%;
+  left: 20%;
  
 }
-.formsearch{
-  display: block;
- margin-top: 15vh;
+.textimage{
+  color:gold;
+}
+.mainimageheader{
+  position: absolute;
+  top:10%;
+  left:22%;
+  font-size: 3em;
  
 }
-.formsearch input{
+.secondimageheader{
+  position: absolute;
+ top:200%;
+  left:10%;
+}
+
+form input{
   width:15vw;
   padding: 13px;
-  /* margin-right: 5vw; */
   border: 3px solid #333;
   border-radius: 5%;
   font-size: 1em;
   font-weight: bold;
   background-color: #CCC;
 }
-.formsearch .inputbetween{
+form .inputbetween{
   margin: 0 3vw;
 }
-.formsearch button{
+form button,button{
   width: 10vw;
   padding:13px;
   font-size: 1em;
   margin:0 auto;
   background-color:#d5c0bf;
+  border-radius: 10%;
 }
-.formsearch button:hover{
+.formsearch button:hover, button:hover{
   background-color:burlywood;
 }
