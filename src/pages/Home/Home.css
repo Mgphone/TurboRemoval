@@ -55,3 +55,28 @@ form button,button{
 .formsearch button:hover, button:hover{
   background-color:burlywood;
 }
+/* review section */
+
+.review-cards{
+  padding-top: 5vh;
+  width:80vw;
+  margin:0 auto;
+}
+.review-card{
+  /* padding-top: 3vh;
+  width: 70vw;
+  margin:0 auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #888;
+  margin-bottom: 2vh;
+
+}
+.review-cards p{
+  width:70vw;
+}
+.review-cards h3{
+  padding-top: 1vh;
+}
