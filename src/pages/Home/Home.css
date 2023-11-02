@@ -63,15 +63,14 @@ form button,button{
   margin:0 auto;
 }
 .review-card{
-  /* padding-top: 3vh;
-  width: 70vw;
-  margin:0 auto; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #888;
   margin-bottom: 2vh;
+  border-radius: 3%;
 
 }
 .review-cards p{
@@ -79,4 +78,47 @@ form button,button{
 }
 .review-cards h3{
   padding-top: 1vh;
+}
+/* this is service provide section */
+.home-services{
+width: 100vw;
+padding-bottom: 15vh;
+
+}
+.home-services-top{
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+align-items: center;
+line-height: 10vh;
+}
+.services-cards{
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));   /* grid-gap: 10vw; */
+  grid-gap:5vw;
+  padding:0 5vw;
+}
+.service-card{
+  display: flex;
+  flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+width: 25vw;
+height: 25vh;
+transition: transform 0.3s; /* Add a transition for smooth animation */
+
+}
+.service-card:hover {
+  transform: rotate(3deg) scale(1.1); /* Apply a random rotation and scale on hover */
+}
+.service-card img{
+  width:100%;
+  height:100%;
+  padding-bottom: 2vh;
+}
+
+.service-card h4{
+ text-align: center;
 }
