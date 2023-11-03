@@ -5,6 +5,7 @@ import Footer from "../../component/Footer";
 import HomeWelcomeSection from "./HomeWelcomeSection";
 import Review from "./Review";
 import ProvideServices from "./ProvideServices";
+import Howitwork from "./Howitwork";
 function Home() {
   return (
     <>
@@ -12,6 +13,7 @@ function Home() {
       <HomeWelcomeSection />
       <Review />
       <ProvideServices />
+      <Howitwork />
       <Footer />
     </>
   );

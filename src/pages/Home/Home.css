@@ -122,3 +122,35 @@ transition: transform 0.3s; /* Add a transition for smooth animation */
 .service-card h4{
  text-align: center;
 }
+/* how it work */
+.howitwork{
+  width: 100vw;
+}
+.howitwork h1{
+ text-align: center;
+}
+.howitworkcards{
+display: flex;
+flex-direction: row;
+/* grid-template-columns:repeat(auto-fit, minmax(10vw, 1fr)); */
+justify-content: center;
+flex: 1;
+align-items: center;
+}
+.howitworkcard{
+ padding:2em;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.howitworkdescription{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding:1em;
+
+  }
+  .howitworkdescription p{
+    width: 15vw;
+  }
