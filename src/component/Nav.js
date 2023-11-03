@@ -1,6 +1,6 @@
 import React from "react";
 import "../assets/styles/Nav.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 function Nav() {
   return (
     <>
@@ -12,7 +12,9 @@ function Nav() {
         </div>
         <div className="navbar-right">
           <div className="top-section">
-            <div>Get FREE QUOTE</div>
+            <Link to="/booking">
+              <div>Get FREE QUOTE</div>
+            </Link>
           </div>
           <div className="bottom-section">
             {/* <a href="/">HOME</a> */}

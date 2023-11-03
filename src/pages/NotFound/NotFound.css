@@ -7,3 +7,13 @@
   text-align: center;
   padding: 5vh;
 }
+.notfound button{
+ margin-top: 3vw;
+ width: auto;
+ font-size: 1.5em;
+ 
+}
+
+.notfound button a{
+  text-decoration: none;
+}

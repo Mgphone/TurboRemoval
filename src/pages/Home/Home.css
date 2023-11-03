@@ -1,65 +1,118 @@
 /*Home welcome section */
-.mapcontainer{
-  width:100vw;
-  height: 80vh;
-  padding:0;
-  margin:0;
+
+.mapcontainer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  /* background: #f7f7f7;  */
   position: relative;
-}
-.mapcontainer img{
-  width: 99vw;
-  height: 80vh;
-}
-.quotesearch{
-  position:absolute;
-  top:30%;
-  left: 20%;
- 
-}
-.textimage{
-  color:gold;
-}
-.mainimageheader{
-  position: absolute;
-  top:10%;
-  left:22%;
-  font-size: 3em;
- 
-}
-.secondimageheader{
-  position: absolute;
- top:200%;
-  left:10%;
+  text-align: center;
+  /* overflow: hidden; */
 }
 
-form input{
-  width:15vw;
-  padding: 13px;
-  border: 3px solid #333;
-  border-radius: 5%;
+.mapcontainer img {
+width: 80vw;
+height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style the form */
+.quotesearch {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; 
+}
+
+.forminput {
+  padding: 10px;
+  width: 20vw;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputbetween {
   font-size: 1em;
-  font-weight: bold;
-  background-color: #CCC;
+  margin: 0 10px;
+  color: gold; 
 }
-form .inputbetween{
-  margin: 0 3vw;
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-form button,button{
-  width: 10vw;
-  padding:13px;
-  font-size: 1em;
-  margin:0 auto;
-  background-color:#d5c0bf;
-  border-radius: 10%;
+
+.mainimageheader.textimage {
+  position: absolute;
+  top:10%;
+  font-size: 2em;
+  animation: bounceAndColorChange 2s infinite alternate;
 }
-.formsearch button:hover, button:hover{
-  background-color:burlywood;
+
+@keyframes bounceAndColorChange {
+  0% {
+    transform: translateY(0);
+    color: gold;
+  }
+  50% {
+    transform: translateY(-10px);
+    color: red;
+  }
+  100% {
+    transform: translateY(0);
+    color: gold;
+  }
 }
-/* review section */
+
+.mainimageheader, .secondimageheader {
+  font-size: 24px;
+  color: gold; 
+  margin: 20px 0;
+}
+
+button .recallquote {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover{
+  transform: scale(1.2);
+}
+
 
 .review-cards{
   padding-top: 5vh;
-  width:80vw;
+  width:60vw;
   margin:0 auto;
 }
 .review-card{
@@ -72,9 +125,11 @@ form button,button{
   margin-bottom: 2vh;
   border-radius: 3%;
 
+
 }
 .review-cards p{
-  width:70vw;
+  width:50vw;
+  line-height: 4vh;
 }
 .review-cards h3{
   padding-top: 1vh;
