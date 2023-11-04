@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-// import { LoadScript } from "@react-google-maps/api";
 import "./assets/styles/App.css";
 import Home from "./pages/Home/Home.js";
 import About from "./pages/About/About";
@@ -9,7 +8,6 @@ import Locations from "./pages/Locations/Locations";
 import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
 import Booking from "./pages/Booking/Booking.js";
-
 function App() {
   return (
     <Routes>

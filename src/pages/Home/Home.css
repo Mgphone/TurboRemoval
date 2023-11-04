@@ -68,6 +68,9 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+button a{
+  text-decoration: none;
+}
 
 .mainimageheader.textimage {
   position: absolute;
@@ -106,7 +109,7 @@ button .recallquote {
   cursor: pointer;
 }
 button:hover{
-  transform: scale(1.2);
+  transform: scale(1.4);
 }
 
 

@@ -2,7 +2,7 @@
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
 
-const createQuote = async (postcodes, typeOfVan, numberOfWorker) => {
+const createQuote = async (postcodes, typeOfVan, numberOfWorker, Date) => {
   const cleanupPostcodes = postcodes.map((postcode) => {
     return postcode.trim().split(" ").join("");
   });
@@ -21,6 +21,7 @@ const createQuote = async (postcodes, typeOfVan, numberOfWorker) => {
       totalMiles: totalResult.distance,
       charge: `£${charge}`,
       totalHour: totalResult.time,
+      Date: Date,
     },
   };
 };

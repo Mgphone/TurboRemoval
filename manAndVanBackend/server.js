@@ -13,14 +13,31 @@ const port = process.env.PORT;
  */
 app.get("/", async (req, res, next) => {
   //assume u get postcode list from req
-
+  const formData = {
+    address: ["NW4 4BU", "NE4", "paris"],
+    typeOfVan: "Small",
+    numberOfWorker: 2,
+    Date: "22/01/2006",
+  };
   try {
     // const invalidPostcodes = ["NW4 4BU", "AB2 YW1", "HJ9 J73"]; //to test invalid one of the postcode
 
-    const validPostcodes = ["NW4 4BU", "NE4", "paris"];
-    const typeOfVan = "Small";
-    const numberOfWorker = 2;
-    const quote = await createQuote(validPostcodes, typeOfVan, numberOfWorker);
+    // const validPostcodes = ["NW4 4BU", "NE4", "paris"];
+    // const typeOfVan = "Small";
+    // const numberOfWorker = 2;
+
+    const {
+      address: validPostcodes,
+      typeOfVan,
+      numberOfWorker,
+      Date,
+    } = formData;
+    const quote = await createQuote(
+      validPostcodes,
+      typeOfVan,
+      numberOfWorker,
+      Date
+    );
     res.send(quote);
   } catch (error) {
     next(error);

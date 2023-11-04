@@ -1,0 +1,47 @@
+.choosevansize{
+  padding: 5vh;
+}
+.choosevansize h1{
+  text-align: center;
+}
+.booking-container{
+  width: 80vw;
+  margin:0 auto;
+}
+.booking-vansize, .booking-loading{
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  gap: 3vw;
+  /* background-color: bisque; */
+}
+.readio-container{
+display: flex;
+align-items: center;
+/* background-color: white; */
+ 
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.radio-label img {
+  width: 100px;
+  margin-right: 10px;
+}
+/* wheremoving */
+.wheremoving, .canitravel,.loading-header,.booking-header,.mileandhour,.movingdate,.aboutyou{
+  margin: 10vh 0;
+  background-color: rgb(232, 195, 195);
+  color:black
+}
+.wheremoving-form{
+  margin-top: 5vh;
+}
+.collection{
+  margin:5vh 0;
+}

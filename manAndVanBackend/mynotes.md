@@ -24,4 +24,10 @@ FrontEnd Commit
 for eight commit
 Final set up for react front end checked
 react-router becareful for component when error make sure see console first\*\* checked
-install react icons and react router dom
+install react icons and react router dom checked
+for 14 commit
+1.loadscript for map need to add at the top level coz can use the whole application checked
+2.front end when i am trying to pass the autocomple. api is not working for getPlaces()
+3.that mean i can not reply for libray checked
+4.use onload(setData) and check with if and result out for .formatted checked
+5.normal set up for booking.js
