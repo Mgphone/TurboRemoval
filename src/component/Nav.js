@@ -1,7 +1,15 @@
 import React from "react";
 import "../assets/styles/Nav.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 function Nav() {
+  // const location = useLocation();
+
+  // const isButtonVisible = location.pathname !== "/booking/*";
+  const location = useLocation();
+  const isBookingPage = location.pathname.startsWith("/booking");
+  const searchParams = new URLSearchParams(location.search);
+  const isLocationInQuery = searchParams.has("yourlocation");
+  const isButtonVisible = !(isBookingPage || isLocationInQuery);
   return (
     <>
       <header className="navbar">
@@ -11,11 +19,13 @@ function Nav() {
           </a>
         </div>
         <div className="navbar-right">
-          <div className="top-section">
-            <Link to="/booking">
-              <div>Get FREE QUOTE</div>
-            </Link>
-          </div>
+          {isButtonVisible && (
+            <div className="top-section">
+              <Link to="/booking">
+                <div>Get FREE QUOTE</div>
+              </Link>
+            </div>
+          )}
           <div className="bottom-section">
             {/* <a href="/">HOME</a> */}
             <NavLink to="/">HOME</NavLink>

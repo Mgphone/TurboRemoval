@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
 import "./Booking.css";
 import { useLocation } from "react-router-dom";
+import { Autocomplete } from "@react-google-maps/api";
 function Booking() {
+  // const [finalLocation, setfinalLocation] = useState("");
+  // const [finalDestination, setfinalDestination] = useState("");
   // const { location, destination } = useParams();
   const location = new URLSearchParams(useLocation().search).get(
     "yourlocation"
@@ -12,10 +15,10 @@ function Booking() {
     "destination"
   );
   const changeLocation = () => {
-    console.log("I will change later");
+    console.log("will update later");
   };
-  const changeDestination = () => {
-    console.log("I will do it later");
+  const changeDestination = (e) => {
+    console.log("will update later ");
   };
   // const location = new URLSearchParams(useParams().search).get("location");
   // console.log("location from booking" + location);
@@ -36,8 +39,8 @@ function Booking() {
           </p>
           <button>Van Size Calculator</button>
         </div>
-        {/* this is your location{location}
-        this is your destination{destination} */}
+        this is your location{location}
+        this is your destination{destination}
         {/* this is start for choose vansize */}
         <div className="choosevansize">
           <h1>Choose your vansize</h1>
@@ -193,18 +196,25 @@ function Booking() {
             <div className="collection">
               <h1>Collection</h1>
               <label htmlFor="Postcode">PostCode</label>
-              <input
-                type="text"
-                placeholder="PostCode"
-                value={location}
-                onChange={changeLocation}
-              />
+              <Autocomplete>
+                <input
+                  type="text"
+                  placeholder="PostCode"
+                  value={location}
+                  onChange={(e) => changeLocation(e.target.value)}
+                />
+              </Autocomplete>
 
               <label htmlFor="StreetAddress">StreetAddress</label>
-              <input type="text" placeholder="StreetAddress" />
+              <input
+                type="text"
+                placeholder="StreetAddress"
+                value={location}
+                readOnly
+              />
 
-              <label htmlFor="city">City</label>
-              <input type="text" placeholder="City" />
+              {/* <label htmlFor="city">City</label>
+              <input type="text" placeholder="City" /> */}
 
               <label htmlFor="StairFlight">Choose Stair of Flight</label>
               <select id="StairFlight">

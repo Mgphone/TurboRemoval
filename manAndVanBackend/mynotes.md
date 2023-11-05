@@ -31,3 +31,12 @@ for 14 commit
 3.that mean i can not reply for libray checked
 4.use onload(setData) and check with if and result out for .formatted checked
 5.normal set up for booking.js
+for commit 15
+1.URLSearchParams is search for ? and & value checked
+2.usecontext firstly create, then pass to context provider with {children} after that when i want to use with use the usecontext checked
+this is chatgpt
+Create a Context: You define a context using createContext in a separate file, and this context acts as a data container.
+
+Wrap Your Application with the Context Provider: You create a context provider component that wraps your application or specific parts of it. The context provider sets up the context and manages the shared data. It typically uses useState to provide a way to change the shared data. It also accepts the {children} prop to ensure that the components inside the provider can access the context.
+
+Use useContext in Specific Components: In the components where you want to access and use the shared data from the context, you use the useContext hook. This allows you to retrieve and use the context's data within those components without needing to pass it explicitly through props.

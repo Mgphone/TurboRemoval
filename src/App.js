@@ -8,17 +8,20 @@ import Locations from "./pages/Locations/Locations";
 import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
 import Booking from "./pages/Booking/Booking.js";
+import MyContextProvider from "./context/MyContextProvider.js";
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/locations" element={<Locations />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="*" element={<NotFound />} />
-      <Route path="/booking" element={<Booking />} />
-    </Routes>
+    <MyContextProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/locations" element={<Locations />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/booking" element={<Booking />} />
+      </Routes>
+    </MyContextProvider>
   );
 }
 
