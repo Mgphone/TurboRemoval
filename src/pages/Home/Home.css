@@ -42,7 +42,7 @@ form {
   flex-wrap: nowrap; 
 }
 
-.forminput {
+ input {
   padding: 10px;
   width: 20vw;
   margin: 10px;
@@ -59,7 +59,13 @@ form {
   margin: 0 10px;
   color: gold; 
 }
+.suggestion-item {
+  background-color: #ffcccb; /* Set your desired background color */
+}
 
+.suggestion-item--active {
+  background-color: #ffa500; /* Set the active suggestion's background color */
+}
 button {
   padding: 10px 20px;
   background-color: #007bff;
