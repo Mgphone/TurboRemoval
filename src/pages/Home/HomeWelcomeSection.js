@@ -85,7 +85,7 @@ function HomeWelcomeSection() {
         </h1>
         <div className="quotesearch">
           {/* <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}> */}
-          <form>
+          <form onSubmit={handleQuote}>
             <label htmlFor="search1" />
             <Autocomplete
               options={countryOptions}
@@ -112,6 +112,7 @@ function HomeWelcomeSection() {
                 className="forminput"
                 type="text"
                 placeholder="enter your destination"
+                required
                 // value={destination}
                 // onChange={(e) => setDestination(e.target.value)}
               />
@@ -120,9 +121,10 @@ function HomeWelcomeSection() {
             <span className="inputbetween">
               <FaArrowRight />
             </span>
-            <button onClick={handleQuote}>
+            {/* <button onClick={handleQuote}>
               <Link to="/booking">Quote</Link>
-            </button>
+            </button> */}
+            <button type="submit">Quote</button>
           </form>
           {/* </LoadScript> */}
 
