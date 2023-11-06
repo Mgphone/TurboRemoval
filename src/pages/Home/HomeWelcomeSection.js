@@ -28,16 +28,16 @@ function HomeWelcomeSection() {
     setLocation(autocomplete);
   };
   const onPlaceChanged = () => {
-    // const place = autocomplete.getPlace();
     if (location !== null) {
       try {
         const place = location.getPlace();
-        // console.log("auto complete is changed: ", place);
-        // console.log("formated" + place.formatted_address);
+
         if (place && place.formatted_address) {
           const selectedValue = place.formatted_address;
           setLocation(selectedValue);
-          // console.log("formated yourlocation " + place.formatted_address);
+        } else {
+          alert("Please select a valid postcode from dropdown list");
+          setLocation("");
         }
       } catch (error) {
         console.log(error);
@@ -56,16 +56,24 @@ function HomeWelcomeSection() {
           const selectedValue = place.formatted_address;
           setDestination(selectedValue);
           // console.log("formated destination " + place.formatted_address);
+        } else {
+          alert("Please select a valid postcode from dropdown list");
+          setDestination("");
         }
       } catch (error) {}
     }
   };
-  const handleQuote = () => {
+  const handleQuote = (e) => {
+    e.preventDefault();
+    // if (location === "" || destination === "") {
+    //   navigate(`/`);
+    // } else {
     navigate(
-      `/booking/?yourlocation=${location}&destination=${encodeURIComponent(
-        destination
-      )}`
+      `/booking/?yourlocation=${encodeURIComponent(
+        location
+      )}&destination=${encodeURIComponent(destination)}`
     );
+    // }
   };
 
   return (
@@ -88,6 +96,7 @@ function HomeWelcomeSection() {
                 className="forminput"
                 type="text"
                 placeholder="enter your location"
+                required
                 // value={location}
                 // onChange={(e) => setLocation(e.target.value)}
               />
@@ -103,7 +112,6 @@ function HomeWelcomeSection() {
                 className="forminput"
                 type="text"
                 placeholder="enter your destination"
-
                 // value={destination}
                 // onChange={(e) => setDestination(e.target.value)}
               />
