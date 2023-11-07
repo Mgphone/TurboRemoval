@@ -10,7 +10,7 @@ function Booking() {
   // const [finalDestination, setfinalDestination] = useState("");
   // const { location, destination } = useParams();
   const { data } = useContext(MyContext);
-  // console.log("this is for address" + JSON.stringify(data.addresses));
+  console.log("this is for address" + JSON.stringify(data.addresses));
   // console.log("this is the whole data" + JSON.stringify(data));
   // const allLocations = data.addresses.map((output) => output.location);
   // console.log("this is all location" + allLocations);

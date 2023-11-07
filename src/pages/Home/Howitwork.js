@@ -9,7 +9,7 @@ function Howitwork() {
 
       <div className="howitworkcards">
         <div className="howitworkcard">
-          <BsLaptop size={150} color="rgb(136, 136, 188)" />
+          <BsLaptop size={100} color="rgb(136, 136, 188)" />
           <div className="howitworkdescription">
             <h4>Step1 Search Quote</h4>
             <br />
@@ -18,7 +18,7 @@ function Howitwork() {
         </div>
 
         <div className="howitworkcard">
-          <AiFillCreditCard size={150} color="rgb(136, 136, 188)" />
+          <AiFillCreditCard size={100} color="rgb(136, 136, 188)" />
           <div className="howitworkdescription">
             <h4>Step2 Book</h4>
             <br />
@@ -27,7 +27,7 @@ function Howitwork() {
         </div>
 
         <div className="howitworkcard">
-          <PiVanFill size={150} color="rgb(136, 136, 188)" />
+          <PiVanFill size={100} color="rgb(136, 136, 188)" />
           <div className="howitworkdescription">
             <h4>Step3 Move</h4>
             <br />

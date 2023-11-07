@@ -3,7 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Autocomplete, LoadScript } from "@react-google-maps/api";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import MyContext from "../../context/MyContext";
-
+import uuid from "react-uuid";
 // const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 // function AutoCompleteInput({ onPlaceSelected }) {
@@ -30,10 +30,12 @@ function HomeWelcomeSection() {
   //this is to change address to empty
   // console.log("This is the data from home" + JSON.stringify(data));
   const resetInitialState = useLocation();
+
   useEffect(() => {
     if (resetInitialState.pathname === "/") {
       setData(initialData);
     }
+    // console.log("this is for reset" + resetInitialState.pathname);
   }, [resetInitialState]);
   // this is for location
   const onLoad = (autocomplete) => {
@@ -80,15 +82,15 @@ function HomeWelcomeSection() {
   };
   const handleQuote = (e) => {
     e.preventDefault();
-    const generateId = () => {
-      return Date.now();
-    };
+    // const generateId = () => {
+    //   return Date.now();
+    // };
     if (errLocation === "err" || errDestination === "err") {
       navigate(`/`);
     } else {
-      const locationId = generateId();
+      const locationId = uuid();
       addAddress({ id: locationId, location: location });
-      const destinationId = generateId();
+      const destinationId = uuid();
       addAddress({ id: destinationId, location: destination });
       // navigate(
       //   `/booking/?yourlocation=${encodeURIComponent(
@@ -110,38 +112,41 @@ function HomeWelcomeSection() {
           {/* <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}> */}
           <form onSubmit={handleQuote}>
             <label htmlFor="search1" />
-            <Autocomplete
-              options={countryOptions}
-              onLoad={onLoad}
-              onPlaceChanged={onPlaceChanged}
-            >
-              <input
-                className="forminput"
-                type="text"
-                placeholder="enter your location"
-                required
+            <div>
+              <Autocomplete
+                options={countryOptions}
+                onLoad={onLoad}
+                onPlaceChanged={onPlaceChanged}
+              >
+                <input
+                  className="forminput"
+                  type="text"
+                  placeholder="enter your location"
+                  required
 
-                // value={location}
-                // onChange={(e) => setLocation(e.target.value)}
-              />
-            </Autocomplete>
+                  // value={location}
+                  // onChange={(e) => setLocation(e.target.value)}
+                />
+              </Autocomplete>
+            </div>
             <span className="inputbetween">TO</span>
             <label htmlFor="search2" />
-            <Autocomplete
-              options={countryOptions}
-              onLoad={ondestiLoad}
-              onPlaceChanged={onPlaceDestiChanged}
-            >
-              <input
-                className="forminput"
-                type="text"
-                placeholder="enter your destination"
-                required
-                // value={destination}
-                // onChange={(e) => setDestination(e.target.value)}
-              />
-            </Autocomplete>
-
+            <div>
+              <Autocomplete
+                options={countryOptions}
+                onLoad={ondestiLoad}
+                onPlaceChanged={onPlaceDestiChanged}
+              >
+                <input
+                  className="forminput"
+                  type="text"
+                  placeholder="enter your destination"
+                  required
+                  // value={destination}
+                  // onChange={(e) => setDestination(e.target.value)}
+                />
+              </Autocomplete>
+            </div>
             <span className="inputbetween">
               <FaArrowRight />
             </span>
