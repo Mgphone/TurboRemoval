@@ -40,3 +40,9 @@ Create a Context: You define a context using createContext in a separate file, a
 Wrap Your Application with the Context Provider: You create a context provider component that wraps your application or specific parts of it. The context provider sets up the context and manages the shared data. It typically uses useState to provide a way to change the shared data. It also accepts the {children} prop to ensure that the components inside the provider can access the context.
 
 Use useContext in Specific Components: In the components where you want to access and use the shared data from the context, you use the useContext hook. This allows you to retrieve and use the context's data within those components without needing to pass it explicitly through props.
+
+commit 16,17,18
+need to think about form sumbmit..checked
+form action="handleform"that is traditional static checked
+form action="/handleform" method"post or get" that is node express checked
+form onsubmit={handleform} that is react checked

@@ -22,6 +22,8 @@ function HomeWelcomeSection() {
   const navigate = useNavigate();
   const [location, setLocation] = useState("");
   const [destination, setDestination] = useState("");
+  const [errLocation, setErrLocation] = useState("err");
+  const [errDestination, setErrDestination] = useState("err");
 
   // this is for location
   const onLoad = (autocomplete) => {
@@ -35,6 +37,7 @@ function HomeWelcomeSection() {
         if (place && place.formatted_address) {
           const selectedValue = place.formatted_address;
           setLocation(selectedValue);
+          setErrLocation("");
         } else {
           alert("Please select a valid postcode from dropdown list");
           setLocation("");
@@ -55,6 +58,7 @@ function HomeWelcomeSection() {
         if (place && place.formatted_address) {
           const selectedValue = place.formatted_address;
           setDestination(selectedValue);
+          setErrDestination("");
           // console.log("formated destination " + place.formatted_address);
         } else {
           alert("Please select a valid postcode from dropdown list");
@@ -65,15 +69,15 @@ function HomeWelcomeSection() {
   };
   const handleQuote = (e) => {
     e.preventDefault();
-    // if (location === "" || destination === "") {
-    //   navigate(`/`);
-    // } else {
-    navigate(
-      `/booking/?yourlocation=${encodeURIComponent(
-        location
-      )}&destination=${encodeURIComponent(destination)}`
-    );
-    // }
+    if (errLocation === "err" || errDestination === "err") {
+      navigate(`/`);
+    } else {
+      navigate(
+        `/booking/?yourlocation=${encodeURIComponent(
+          location
+        )}&destination=${encodeURIComponent(destination)}`
+      );
+    }
   };
 
   return (
