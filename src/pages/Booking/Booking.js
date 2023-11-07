@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
 import "./Booking.css";
 import { useLocation } from "react-router-dom";
 import { Autocomplete } from "@react-google-maps/api";
+import MyContext from "../../context/MyContext";
 function Booking() {
   // const [finalLocation, setfinalLocation] = useState("");
   // const [finalDestination, setfinalDestination] = useState("");
   // const { location, destination } = useParams();
+  const { data } = useContext(MyContext);
+  // console.log("this is for address" + JSON.stringify(data.addresses));
+  // console.log("this is the whole data" + JSON.stringify(data));
+  // const allLocations = data.addresses.map((output) => output.location);
+  // console.log("this is all location" + allLocations);
   const location = new URLSearchParams(useLocation().search).get(
     "yourlocation"
   );
@@ -39,8 +45,8 @@ function Booking() {
           </p>
           <button>Van Size Calculator</button>
         </div>
-        this is your location{location}
-        this is your destination{destination}
+        {/* this is your location{data.addresses} */}
+        {/* this is your destination{data.addresses[1]} */}
         {/* this is start for choose vansize */}
         <div className="choosevansize">
           <h1>Choose your vansize</h1>

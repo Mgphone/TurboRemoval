@@ -46,3 +46,9 @@ need to think about form sumbmit..checked
 form action="handleform"that is traditional static checked
 form action="/handleform" method"post or get" that is node express checked
 form onsubmit={handleform} that is react checked
+
+commit 19,
+i use usecontext to all my state checked
+in home page i pass location, destination by usecontext checked
+if user come back to home page all my data reset checked
+to data reset i use useLocation, and then find the path,set data to initial Data of context by using useffect checked

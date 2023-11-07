@@ -153,7 +153,8 @@ line-height: 10vh;
 .services-cards{
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));   /* grid-gap: 10vw; */
+  /* grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));    */
+  grid-template-columns: repeat(3,1fr);
   grid-gap:5vw;
   padding:0 5vw;
 }
@@ -188,12 +189,15 @@ transition: transform 0.3s; /* Add a transition for smooth animation */
  text-align: center;
 }
 .howitworkcards{
-display: flex;
-flex-direction: row;
+  width:90vw;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+/* display: flex;
+flex-direction: row; */
 /* grid-template-columns:repeat(auto-fit, minmax(10vw, 1fr)); */
-justify-content: center;
+/* justify-content: center;
 flex: 1;
-align-items: center;
+align-items: center; */
 }
 .howitworkcard{
  padding:2em;

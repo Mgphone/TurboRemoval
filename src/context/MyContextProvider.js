@@ -1,10 +1,27 @@
 import React, { createContext, useState, useContext } from "react";
 import MyContext from "./MyContext.js";
 function MyContextProvider({ children }) {
-  // const sharedData = "This is the data i will share";
-  const [sharedData, setShareData] = useState("");
+  const initialData = {
+    addresses: [],
+    stair: "",
+    typeOfVan: "",
+    numberOfWorker: "",
+    staff: "",
+    date: "",
+    description: "",
+    email: "",
+    phone: "",
+  };
+  const [data, setData] = useState(initialData);
+  const addAddress = (newAddress) => {
+    // const updateAddresses = [data.addresses, newAddress];
+    setData((prevState) => ({
+      ...prevState,
+      addresses: [...prevState.addresses, newAddress],
+    }));
+  };
   return (
-    <MyContext.Provider value={{ sharedData, setShareData }}>
+    <MyContext.Provider value={{ data, addAddress, setData, initialData }}>
       {children}
     </MyContext.Provider>
   );

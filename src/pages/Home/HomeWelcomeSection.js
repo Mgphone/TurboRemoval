@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Autocomplete, LoadScript } from "@react-google-maps/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import MyContext from "../../context/MyContext";
+
 // const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 // function AutoCompleteInput({ onPlaceSelected }) {
@@ -19,12 +21,20 @@ const countryOptions = {
   componentRestrictions: { country: "UK" }, // Restrict to the United Kingdom (GB)
 };
 function HomeWelcomeSection() {
+  const { data, addAddress, setData, initialData } = useContext(MyContext);
   const navigate = useNavigate();
   const [location, setLocation] = useState("");
   const [destination, setDestination] = useState("");
   const [errLocation, setErrLocation] = useState("err");
   const [errDestination, setErrDestination] = useState("err");
-
+  //this is to change address to empty
+  // console.log("This is the data from home" + JSON.stringify(data));
+  const resetInitialState = useLocation();
+  useEffect(() => {
+    if (resetInitialState.pathname === "/") {
+      setData(initialData);
+    }
+  }, [resetInitialState]);
   // this is for location
   const onLoad = (autocomplete) => {
     setLocation(autocomplete);
@@ -59,6 +69,7 @@ function HomeWelcomeSection() {
           const selectedValue = place.formatted_address;
           setDestination(selectedValue);
           setErrDestination("");
+
           // console.log("formated destination " + place.formatted_address);
         } else {
           alert("Please select a valid postcode from dropdown list");
@@ -69,14 +80,22 @@ function HomeWelcomeSection() {
   };
   const handleQuote = (e) => {
     e.preventDefault();
+    const generateId = () => {
+      return Date.now();
+    };
     if (errLocation === "err" || errDestination === "err") {
       navigate(`/`);
     } else {
-      navigate(
-        `/booking/?yourlocation=${encodeURIComponent(
-          location
-        )}&destination=${encodeURIComponent(destination)}`
-      );
+      const locationId = generateId();
+      addAddress({ id: locationId, location: location });
+      const destinationId = generateId();
+      addAddress({ id: destinationId, location: destination });
+      // navigate(
+      //   `/booking/?yourlocation=${encodeURIComponent(
+      //     location
+      //   )}&destination=${encodeURIComponent(destination)}`
+      // );
+      navigate(`/booking`);
     }
   };
 
@@ -101,6 +120,7 @@ function HomeWelcomeSection() {
                 type="text"
                 placeholder="enter your location"
                 required
+
                 // value={location}
                 // onChange={(e) => setLocation(e.target.value)}
               />
