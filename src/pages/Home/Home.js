@@ -6,18 +6,18 @@ import HomeWelcomeSection from "./HomeWelcomeSection";
 import Review from "./Review";
 import ProvideServices from "./ProvideServices";
 import Howitwork from "./Howitwork";
-import MyContext from "../../context/MyContext";
+// import MyContext from "../../context/MyContext";
 function Home() {
-  const { sharedData, setShareData } = useContext(MyContext);
-  const changeData = () => {
-    setShareData("This is new Change Data");
-  };
+  // const { sharedData, setShareData } = useContext(MyContext);
+  // const changeData = () => {
+  //   setShareData("This is new Change Data");
+  // };
   return (
     <>
-      <div>
+      {/* <div>
         <p>{sharedData} </p>
         <button onClick={changeData}>Change Data</button>
-      </div>
+      </div> */}
       <Nav />
       <HomeWelcomeSection />
       <Review />

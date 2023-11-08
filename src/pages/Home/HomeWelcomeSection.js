@@ -4,18 +4,7 @@ import { Autocomplete, LoadScript } from "@react-google-maps/api";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import MyContext from "../../context/MyContext";
 import uuid from "react-uuid";
-// const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
-// function AutoCompleteInput({ onPlaceSelected }) {
-//   const onLoad = (autocomplete) => {
-//     autocomplete.setTypes(["(cities)"]);
-//   };
-//   return (
-//     <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceSelected}>
-//       <input type="text" placeholder="Enter your location" />
-//     </Autocomplete>
-//   );
-// }
 const countryOptions = {
   types: ["(regions)"], // Restrict to regions (countries)
   componentRestrictions: { country: "UK" }, // Restrict to the United Kingdom (GB)
