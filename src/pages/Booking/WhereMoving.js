@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import MyContext from "../../context/MyContext";
 import { Autocomplete } from "@react-google-maps/api";
+import BetweenStops from "./BetweenStops";
 function WhereMoving() {
-  const [viaStops, setViaStops] = useState([]);
   const { data, addAddress, setData } = useContext(MyContext);
   console.log("this is for address" + JSON.stringify(data.addresses));
   // console.log("this is the whole data" + JSON.stringify(data));
-  console.log("this is the length of my address" + data.addresses.length);
+  // console.log("this is the length of my address" + data.addresses.length);
   const checkCollectandDesti = data.addresses;
 
   const changeLocation = () => {
@@ -15,25 +15,15 @@ function WhereMoving() {
   const changeDestination = (e) => {
     console.log("change destination will update later ");
   };
+  //main form
   const handleMovingForm = (e) => {
     e.preventDefault();
-    console.log(`Submit form `);
+
+    console.log("form submit" + JSON.stringify(data));
+    console.log("submit free quote");
   };
-  const addvia = () => {
-    const newViaStop = {
-      id: `viaStop_${viaStops.length}`,
-      addressInput: `addressInput_${viaStops.length}`,
-      addressReadOnly: `addressReadOnly_${viaStops.length}`,
-      selectName: `stairFlight_${viaStops.length}`,
-    };
-    setViaStops([...viaStops, newViaStop]);
-    console.log("add via");
-    console.log("This is viastop" + viaStops.length);
-  };
-  const removevia = () => {
-    const deleteLastItem = viaStops.slice(0, viaStops.length - 1);
-    setViaStops(deleteLastItem);
-  };
+  //add via button
+
   return (
     <>
       <div className="wheremoving">
@@ -64,64 +54,8 @@ function WhereMoving() {
                   />
                   <label htmlFor="Address_ReadOnly">Address</label>
                   <input value={checkCollectandDesti[0].location} readOnly />
-                  <label htmlFor="StairFlight">Choose Stair of Flight</label>
-                  <select id="StairFlight" name="collection" required>
-                    <option value="">Select Flight of Stair</option>
-                    <option value="0">No Flight of Stair</option>
-                    <option value="1">1 Flight of Stair</option>
-                    <option value="2">2 Flight of Stair</option>
-                    <option value="3">3 Flight of Stair</option>
-                    <option value="4">4 Flight of Stair</option>
-                    <option value="5">5 Flight of Stair</option>
-                    <option value="6">6 Flight of Stair</option>
-                    <option value="7">7 Flight of Stair</option>
-                    <option value="8">8 Flight of Stair</option>
-                  </select>
                 </div>
-                {viaStops.length > 0 ? (
-                  <div>
-                    {viaStops.map((viaStop) => (
-                      <div className="viastop" key={viaStop.id}>
-                        <label htmlFor="collection Address">Address</label>
-                        <input name={viaStop.addressInput} />
-                        <label htmlFor="Address_ReadOnly">Address</label>
-                        <input name={viaStop.addressReadOnly} readOnly />
-                        <label htmlFor="StairFlight">
-                          Choose Stair of Flight
-                        </label>
-                        <select
-                          id="StairFlight"
-                          name={viaStop.selectName}
-                          required
-                        >
-                          <option value="">Select Flight of Stair</option>
-                          <option value="0">No Flight of Stair</option>
-                          <option value="1">1 Flight of Stair</option>
-                          <option value="2">2 Flight of Stair</option>
-                          <option value="3">3 Flight of Stair</option>
-                          <option value="4">4 Flight of Stair</option>
-                          <option value="5">5 Flight of Stair</option>
-                          <option value="6">6 Flight of Stair</option>
-                          <option value="7">7 Flight of Stair</option>
-                          <option value="8">8 Flight of Stair</option>
-                        </select>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div></div>
-                )}
-                <button type="button" id="add-via" onClick={addvia}>
-                  Add Via
-                </button>
-                {viaStops.length > 0 ? (
-                  <button type="button" id="remove-via" onClick={removevia}>
-                    Remove Last Stop
-                  </button>
-                ) : (
-                  <div></div>
-                )}
-
+                <BetweenStops />
                 <div className="destination">
                   <label htmlFor="destinatin Address">Address</label>
                   <input
@@ -130,25 +64,13 @@ function WhereMoving() {
                   />
                   <label htmlFor="Address_ReadOnly">Address</label>
                   <input value={checkCollectandDesti[1].location} readOnly />
-                  <label htmlFor="StairFlight">Choose Stair of Flight</label>
-                  <select id="StairFlight" name="delivery" required>
-                    <option value="">Select Flight of Stair</option>
-                    <option value="0">No Flight of Stair</option>
-                    <option value="1">1 Flight of Stair</option>
-                    <option value="2">2 Flight of Stair</option>
-                    <option value="3">3 Flight of Stair</option>
-                    <option value="4">4 Flight of Stair</option>
-                    <option value="5">5 Flight of Stair</option>
-                    <option value="6">6 Flight of Stair</option>
-                    <option value="7">7 Flight of Stair</option>
-                    <option value="8">8 Flight of Stair</option>
-                  </select>
                 </div>
               </div>
               <button type="submit">Submit</button>
             </>
           ) : (
-            <div>
+            {
+              /* <div>
               <div className="collection">
                 <h1>Collection</h1>
                 <label htmlFor="Postcode">PostCode</label>
@@ -210,7 +132,8 @@ function WhereMoving() {
                 </select>
               </div>
               <button type="submit">Submit</button>
-            </div>
+            </div> */
+            }
           )}
         </form>
       </div>
