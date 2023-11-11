@@ -15,12 +15,30 @@ function WhereMoving() {
   const changeDestination = (e) => {
     console.log("change destination will update later ");
   };
+  //betweenstops form
+  const [between, setBetween] = useState("");
+  const handleBetweenStops = (updateForm) => {
+    setBetween(updateForm);
+  };
   //main form
   const handleMovingForm = (e) => {
     e.preventDefault();
+    const viaBetween = between.viaStopsData;
+    if (checkCollectandDesti.length === 2 && viaBetween.length > 0) {
+      // checkCollectandDesti.splice(1, 0, ...viaBetween);
+      const newArray = [
+        ...checkCollectandDesti.slice(0, 1),
+        ...viaBetween,
+        ...checkCollectandDesti.slice(1),
+      ];
+      console.log("After combine all value" + JSON.stringify(newArray));
+    }
 
-    console.log("form submit" + JSON.stringify(data));
-    console.log("submit free quote");
+    // console.log("form submit" + JSON.stringify(data));
+    // console.log("submit free quote");
+    // console.log(
+    //   "this is between from Submit" + JSON.stringify(between.viaStopsData)
+    // );
   };
   //add via button
 
@@ -55,7 +73,7 @@ function WhereMoving() {
                   <label htmlFor="Address_ReadOnly">Address</label>
                   <input value={checkCollectandDesti[0].location} readOnly />
                 </div>
-                <BetweenStops />
+                <BetweenStops onFormChange={handleBetweenStops} />
                 <div className="destination">
                   <label htmlFor="destinatin Address">Address</label>
                   <input
