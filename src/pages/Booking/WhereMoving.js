@@ -4,7 +4,7 @@ import { Autocomplete } from "@react-google-maps/api";
 import BetweenStops from "./BetweenStops";
 function WhereMoving() {
   const { data, addAddress, setData } = useContext(MyContext);
-  console.log("this is for address" + JSON.stringify(data.addresses));
+  // console.log("this is for address" + JSON.stringify(data.addresses));
   // console.log("this is the whole data" + JSON.stringify(data));
   // console.log("this is the length of my address" + data.addresses.length);
   const checkCollectandDesti = data.addresses;

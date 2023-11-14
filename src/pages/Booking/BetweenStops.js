@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 
 function BetweenStops({ onFormChange }) {
   const [viaStops, setViaStops] = useState([]);
@@ -6,9 +10,12 @@ function BetweenStops({ onFormChange }) {
     viaStopsData: [],
   });
 
-  const handleAddress = (e, name) => {
-    const { value } = e.target;
+  const countryOptions = {
+    types: ["(regions)"],
+    componentRestrictions: { country: "UK" },
+  };
 
+  const handleAddressChange = (value, name) => {
     // Update via stops
     setViaStops((prevViaStops) =>
       prevViaStops.map((viaStop) =>
@@ -30,12 +37,38 @@ function BetweenStops({ onFormChange }) {
     confirmVia();
   };
 
+  const handleAddressSelect = async (value, name) => {
+    // const results = await geocodeByAddress(value);
+    // const latLng = await getLatLng(results[0]);
+
+    // Update via stops
+    setViaStops((prevViaStops) =>
+      prevViaStops.map((viaStop) =>
+        viaStop.id === name ? { ...viaStop, location: value } : viaStop
+      )
+    );
+
+    // Update form data
+    setFormData((prevFormData) => {
+      const updatedViaStopsData = prevFormData.viaStopsData.map((viaStopData) =>
+        viaStopData.id === name
+          ? { ...viaStopData, location: value }
+          : viaStopData
+      );
+      return { ...prevFormData, viaStopsData: updatedViaStopsData };
+    });
+
+    // Automatically confirm
+    confirmVia();
+  };
+
   const confirmVia = () => {
     // Handle the confirmation logic here
     // console.log("Form Data:", formData.viaStopsData);
     onFormChange(formData);
     // You can trigger form submission here if needed
-    // For example, you can make an API call or perform further actions
+    // API to respoond
+    console.log("This is from confirm" + JSON.stringify(formData));
   };
 
   const addVia = () => {
@@ -48,7 +81,7 @@ function BetweenStops({ onFormChange }) {
     };
 
     // Update via stops
-    setViaStops([...viaStops, newViaStop]);
+    setViaStops((prevViaStops) => [...prevViaStops, newViaStop]);
 
     // Update form data
     setFormData((prevFormData) => ({
@@ -61,32 +94,56 @@ function BetweenStops({ onFormChange }) {
 
     // console.log("This is viastop " + (viaStops.length + 1));
   };
-  const removevia = () => {
-    const deleteLastItem = viaStops.slice(0, viaStops.length - 1);
-    setViaStops(deleteLastItem);
-    // Also update form data if needed
 
-    setFormData((prevFormData) => {
-      const updatedViaStopsData = prevFormData.viaStopsData.slice(
-        0,
-        prevFormData.viaStopsData.length - 1
-      );
-      return { ...prevFormData, viaStopsData: updatedViaStopsData };
-    });
+  const removeVia = () => {
+    setViaStops((prevViaStops) => prevViaStops.slice(0, -1));
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      viaStopsData: prevFormData.viaStopsData.slice(0, -1),
+    }));
   };
+
   return (
     <div>
-      {viaStops.length > 0 ? (
+      {viaStops.length > 0 && (
         <div>
           {viaStops.map((viaStop) => (
             <div className="viastop" key={viaStop.id}>
               <label htmlFor={viaStop.addressInput}>Address</label>
-              <input
-                required
-                name={viaStop.addressInput}
-                value={viaStop.value}
-                onChange={(e) => handleAddress(e, viaStop.id)}
-              />
+              <PlacesAutocomplete
+                value={viaStop.location}
+                onChange={(value) => handleAddressChange(value, viaStop.id)}
+                onSelect={(value) => handleAddressSelect(value, viaStop.id)}
+                searchOptions={countryOptions}
+              >
+                {({
+                  getInputProps,
+                  suggestions,
+                  getSuggestionItemProps,
+                  loading,
+                }) => (
+                  <div>
+                    <input
+                      {...getInputProps({
+                        name: viaStop.addressInput,
+                        placeholder: "Enter address",
+                      })}
+                    />
+                    <div>
+                      {loading && <div>Loading...</div>}
+                      {suggestions.map((suggestion) => (
+                        <div
+                          {...getSuggestionItemProps(suggestion)}
+                          key={suggestion.id}
+                        >
+                          {suggestion.description}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </PlacesAutocomplete>
               <label htmlFor={viaStop.addressReadOnly}>Address</label>
               <input
                 name={viaStop.addressReadOnly}
@@ -96,14 +153,13 @@ function BetweenStops({ onFormChange }) {
             </div>
           ))}
         </div>
-      ) : null}
-      {viaStops.length > 0 ? (
-        <>
-          <button type="button" onClick={removevia}>
-            Remove
-          </button>
-        </>
-      ) : null}
+      )}
+
+      {viaStops.length > 0 && (
+        <button type="button" onClick={removeVia}>
+          Remove
+        </button>
+      )}
       <button type="button" onClick={confirmVia}>
         Confirm
       </button>
