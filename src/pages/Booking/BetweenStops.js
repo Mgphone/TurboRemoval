@@ -103,14 +103,35 @@ function BetweenStops({ onFormChange }) {
       viaStopsData: prevFormData.viaStopsData.slice(0, -1),
     }));
   };
+  const handlestair = (e, name) => {
+    const { value } = e.target;
+    // console.log("this is stair value" + value);
+    setViaStops((prevViaStops) =>
+      prevViaStops.map((viaStop) =>
+        viaStop.id === name ? { ...viaStop, stair: value } : viaStop
+      )
+    );
 
+    //update form data
+    setFormData((prevFormData) => {
+      const updateStiarData = prevFormData.viaStopsData.map((viaStopData) =>
+        viaStopData.id === name ? { ...viaStopData, stair: value } : viaStopData
+      );
+      return { ...prevFormData, viaStopsData: updateStiarData };
+    });
+  };
   return (
-    <div>
+    <div className="viastop">
       {viaStops.length > 0 && (
         <div>
+          <div className="viaStops-header">
+            <h2>Via Stops</h2>
+            <p>Plsease choose locations from the list</p>
+          </div>
           {viaStops.map((viaStop) => (
-            <div className="viastop" key={viaStop.id}>
+            <div className="viastopinput" key={viaStop.id}>
               <label htmlFor={viaStop.addressInput}>Address</label>
+
               <PlacesAutocomplete
                 value={viaStop.location}
                 onChange={(value) => handleAddressChange(value, viaStop.id)}
@@ -130,6 +151,7 @@ function BetweenStops({ onFormChange }) {
                         placeholder: "Enter address",
                       })}
                     />
+
                     <div>
                       {loading && <div>Loading...</div>}
                       {suggestions.map((suggestion) => (
@@ -149,23 +171,45 @@ function BetweenStops({ onFormChange }) {
                 name={viaStop.addressReadOnly}
                 value={viaStop.location}
                 readOnly
+                required
               />
+              <label htmlFor="StairFlight">Choose Stair of Flight</label>
+              <select
+                id="StairFlight"
+                name={viaStop.selectName}
+                onChange={(e) => {
+                  handlestair(e, viaStop.id);
+                }}
+                required
+              >
+                <option value="">Select Flight of Stair</option>
+                <option value="0">No Flight of Stair</option>
+                <option value="1">1 Flight of Stair</option>
+                <option value="2">2 Flight of Stair</option>
+                <option value="3">3 Flight of Stair</option>
+                <option value="4">4 Flight of Stair</option>
+                <option value="5">5 Flight of Stair</option>
+                <option value="6">6 Flight of Stair</option>
+                <option value="7">7 Flight of Stair</option>
+                <option value="8">8 Flight of Stair</option>
+              </select>
             </div>
           ))}
         </div>
       )}
-
-      {viaStops.length > 0 && (
-        <button type="button" onClick={removeVia}>
-          Remove
+      <div className="button-group">
+        {viaStops.length > 0 && (
+          <button type="button" onClick={removeVia}>
+            Remove
+          </button>
+        )}
+        <button type="button" onClick={confirmVia}>
+          Confirm
         </button>
-      )}
-      <button type="button" onClick={confirmVia}>
-        Confirm
-      </button>
-      <button type="button" onClick={addVia}>
-        Add Via Stop
-      </button>
+        <button type="button" onClick={addVia}>
+          Add Via Stop
+        </button>
+      </div>
     </div>
   );
 }

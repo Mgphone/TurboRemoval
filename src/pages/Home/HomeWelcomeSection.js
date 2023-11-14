@@ -146,6 +146,7 @@ function HomeWelcomeSection() {
           </form>
           {/* </LoadScript> */}
 
+          <p>Please choose location from the list</p>
           <h2 className="secondimageheader textimage">
             We stand out as one of the top options in the city.
           </h2>

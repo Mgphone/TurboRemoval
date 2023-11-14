@@ -33,15 +33,37 @@ align-items: center;
   width: 100px;
   margin-right: 10px;
 }
-/* wheremoving */
+/* wheremoving form */
 .wheremoving, .canitravel,.loading-header,.booking-header,.mileandhour,.movingdate,.aboutyou{
   margin: 10vh 0;
   background-color: rgb(232, 195, 195);
   color:black
 }
+
 .wheremoving-form{
   margin-top: 5vh;
 }
-.collection{
+.collection,.destination{
   margin:5vh 0;
 }
+
+
+.viaStops-header{
+  text-align: center;
+}
+.viaStops-header p{
+  font-size: 0.8em;
+  color:red;
+  margin-bottom: 3vh;
+}
+.viastopinput{
+  display: flex;
+  margin-bottom: 2vh;
+}
+.button-group{
+display: flex;
+flex-direction: row;
+justify-content: center;
+gap:2vw;
+}
+/* end of wheremoving */

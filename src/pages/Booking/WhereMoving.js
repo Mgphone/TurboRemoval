@@ -31,7 +31,7 @@ function WhereMoving() {
         ...viaBetween,
         ...checkCollectandDesti.slice(1),
       ];
-      console.log("After combine all value" + JSON.stringify(newArray));
+      // console.log("After combine all value" + JSON.stringify(newArray));
     }
 
     // console.log("form submit" + JSON.stringify(data));
@@ -57,7 +57,8 @@ function WhereMoving() {
           <p>
             Please note:If the driver needs to make multiple trips, or go via
             another address, please add all journeys in below using the ‘add
-            stop’ feature.
+            stop’ feature. Aa soon as you add or remove please make sure to
+            confirm it
           </p>
         </div>
         <form className="wheremoving-form" onSubmit={handleMovingForm}>
@@ -72,6 +73,19 @@ function WhereMoving() {
                   />
                   <label htmlFor="Address_ReadOnly">Address</label>
                   <input value={checkCollectandDesti[0].location} readOnly />
+                  <label htmlFor="StairFlight">Choose Stair of Flight</label>
+                  <select id="StairFlight" name="collection" required>
+                    <option value="">Select Flight of Stair</option>
+                    <option value="0">No Flight of Stair</option>
+                    <option value="1">1 Flight of Stair</option>
+                    <option value="2">2 Flight of Stair</option>
+                    <option value="3">3 Flight of Stair</option>
+                    <option value="4">4 Flight of Stair</option>
+                    <option value="5">5 Flight of Stair</option>
+                    <option value="6">6 Flight of Stair</option>
+                    <option value="7">7 Flight of Stair</option>
+                    <option value="8">8 Flight of Stair</option>
+                  </select>
                 </div>
                 <BetweenStops onFormChange={handleBetweenStops} />
                 <div className="destination">
@@ -82,6 +96,19 @@ function WhereMoving() {
                   />
                   <label htmlFor="Address_ReadOnly">Address</label>
                   <input value={checkCollectandDesti[1].location} readOnly />
+                  <label htmlFor="StairFlight">Choose Stair of Flight</label>
+                  <select id="StairFlight" name="destination" required>
+                    <option value="">Select Flight of Stair</option>
+                    <option value="0">No Flight of Stair</option>
+                    <option value="1">1 Flight of Stair</option>
+                    <option value="2">2 Flight of Stair</option>
+                    <option value="3">3 Flight of Stair</option>
+                    <option value="4">4 Flight of Stair</option>
+                    <option value="5">5 Flight of Stair</option>
+                    <option value="6">6 Flight of Stair</option>
+                    <option value="7">7 Flight of Stair</option>
+                    <option value="8">8 Flight of Stair</option>
+                  </select>
                 </div>
               </div>
               <button type="submit">Submit</button>
