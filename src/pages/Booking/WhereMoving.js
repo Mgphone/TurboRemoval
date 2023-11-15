@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import MyContext from "../../context/MyContext";
 // import { Autocomplete } from "@react-google-maps/api";
 import BetweenStops from "./BetweenStops";
@@ -6,16 +6,37 @@ function WhereMoving() {
   const { data, setData } = useContext(MyContext);
   const checkCollectandDesti = data.addresses;
 
+  useEffect(() => {
+    console.log(
+      "Checking how is data look alike with useeffect",
+      JSON.stringify(data)
+    );
+  }, [data]);
+
   const changeLocation = (e) => {
+    // const updatedAddresses = [...checkCollectandDesti];
+    // updatedAddresses[0].stair = e.target.value;
+    // setData({ ...data, addresses: updatedAddresses });
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[0].stair = e.target.value;
-    setData({ ...data, addresses: updatedAddresses });
+
+    setData((prevState) => ({
+      ...prevState,
+      addresses: updatedAddresses,
+    }));
+
+    console.log("checking from changeLocation" + JSON.stringify(data));
   };
 
   const changeDestination = (e) => {
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[updatedAddresses.length - 1].stair = e.target.value;
-    setData({ ...data, addresses: updatedAddresses });
+    // setData({ ...data, addresses: updatedAddresses });
+    setData((prevState) => ({
+      ...prevState,
+      addresses: updatedAddresses,
+    }));
+    console.log("checking from changedestination" + JSON.stringify(data));
   };
 
   //betweenstops form
@@ -28,7 +49,7 @@ function WhereMoving() {
     e.preventDefault();
     const viaBetween = between.viaStopsData;
 
-    console.log(viaBetween);
+    // console.log("checking viaBetween" + typeof viaBetween);
     if (
       checkCollectandDesti.length === 2 &&
       typeof viaBetween !== "undefined"
@@ -40,13 +61,17 @@ function WhereMoving() {
         ...viaBetween,
         ...checkCollectandDesti.slice(1),
       ];
-      console.log("this is my new array" + newArray);
+      console.log("this is my new array" + JSON.stringify(newArray));
       // setData({ ...data, addresses: newArray });
+      // setData((prevState) => ({
+      //   ...prevState,
+      //   addresses: newArray,
+      // }));
     } else {
       // setData({ ...data, addresses: newArray });
       // console.log("This is new data " + JSON.stringify(data));
       // console.log("After combine all value" + JSON.stringify(newArray));
-      console.log("Current Data" + JSON.stringify(data.addresses));
+      // console.log("Current Data" + JSON.stringify(data.addresses));
     }
   };
   //add via button
