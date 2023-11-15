@@ -68,7 +68,7 @@ function BetweenStops({ onFormChange }) {
     onFormChange(formData);
     // You can trigger form submission here if needed
     // API to respoond
-    console.log("This is from confirm" + JSON.stringify(formData));
+    // console.log("This is from confirm" + JSON.stringify(formData));
   };
 
   const addVia = () => {
@@ -150,6 +150,7 @@ function BetweenStops({ onFormChange }) {
                         name: viaStop.addressInput,
                         placeholder: "Enter address",
                       })}
+                      required
                     />
 
                     <div>

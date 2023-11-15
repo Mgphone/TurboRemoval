@@ -3,7 +3,7 @@ import MyContext from "./MyContext.js";
 function MyContextProvider({ children }) {
   const initialData = {
     addresses: [],
-    stair: "",
+    completeAddress: [],
     typeOfVan: "",
     numberOfWorker: "",
     staff: "",
@@ -20,8 +20,16 @@ function MyContextProvider({ children }) {
       addresses: [...prevState.addresses, newAddress],
     }));
   };
+
   return (
-    <MyContext.Provider value={{ data, addAddress, setData, initialData }}>
+    <MyContext.Provider
+      value={{
+        data,
+        addAddress,
+        setData,
+        initialData,
+      }}
+    >
       {children}
     </MyContext.Provider>
   );

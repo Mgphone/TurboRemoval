@@ -1,20 +1,23 @@
 import React, { useContext, useState } from "react";
 import MyContext from "../../context/MyContext";
-import { Autocomplete } from "@react-google-maps/api";
+// import { Autocomplete } from "@react-google-maps/api";
 import BetweenStops from "./BetweenStops";
 function WhereMoving() {
-  const { data, addAddress, setData } = useContext(MyContext);
-  // console.log("this is for address" + JSON.stringify(data.addresses));
-  // console.log("this is the whole data" + JSON.stringify(data));
-  // console.log("this is the length of my address" + data.addresses.length);
+  const { data, setData } = useContext(MyContext);
   const checkCollectandDesti = data.addresses;
 
-  const changeLocation = () => {
-    console.log("change location will update later");
+  const changeLocation = (e) => {
+    const updatedAddresses = [...checkCollectandDesti];
+    updatedAddresses[0].stair = e.target.value;
+    setData({ ...data, addresses: updatedAddresses });
   };
+
   const changeDestination = (e) => {
-    console.log("change destination will update later ");
+    const updatedAddresses = [...checkCollectandDesti];
+    updatedAddresses[updatedAddresses.length - 1].stair = e.target.value;
+    setData({ ...data, addresses: updatedAddresses });
   };
+
   //betweenstops form
   const [between, setBetween] = useState("");
   const handleBetweenStops = (updateForm) => {
@@ -24,21 +27,27 @@ function WhereMoving() {
   const handleMovingForm = (e) => {
     e.preventDefault();
     const viaBetween = between.viaStopsData;
-    if (checkCollectandDesti.length === 2 && viaBetween.length > 0) {
+
+    console.log(viaBetween);
+    if (
+      checkCollectandDesti.length === 2 &&
+      typeof viaBetween !== "undefined"
+    ) {
       // checkCollectandDesti.splice(1, 0, ...viaBetween);
+      // console.log("connection via between" + viaBetween);
       const newArray = [
         ...checkCollectandDesti.slice(0, 1),
         ...viaBetween,
         ...checkCollectandDesti.slice(1),
       ];
+      console.log("this is my new array" + newArray);
+      // setData({ ...data, addresses: newArray });
+    } else {
+      // setData({ ...data, addresses: newArray });
+      // console.log("This is new data " + JSON.stringify(data));
       // console.log("After combine all value" + JSON.stringify(newArray));
+      console.log("Current Data" + JSON.stringify(data.addresses));
     }
-
-    // console.log("form submit" + JSON.stringify(data));
-    // console.log("submit free quote");
-    // console.log(
-    //   "this is between from Submit" + JSON.stringify(between.viaStopsData)
-    // );
   };
   //add via button
 
@@ -70,11 +79,17 @@ function WhereMoving() {
                   <input
                     name="collectioninput"
                     value={checkCollectandDesti[0].location}
+                    required
                   />
                   <label htmlFor="Address_ReadOnly">Address</label>
                   <input value={checkCollectandDesti[0].location} readOnly />
                   <label htmlFor="StairFlight">Choose Stair of Flight</label>
-                  <select id="StairFlight" name="collection" required>
+                  <select
+                    id="StairFlight"
+                    name="collection"
+                    required
+                    onChange={changeLocation}
+                  >
                     <option value="">Select Flight of Stair</option>
                     <option value="0">No Flight of Stair</option>
                     <option value="1">1 Flight of Stair</option>
@@ -97,7 +112,12 @@ function WhereMoving() {
                   <label htmlFor="Address_ReadOnly">Address</label>
                   <input value={checkCollectandDesti[1].location} readOnly />
                   <label htmlFor="StairFlight">Choose Stair of Flight</label>
-                  <select id="StairFlight" name="destination" required>
+                  <select
+                    id="StairFlight"
+                    name="destination"
+                    required
+                    onChange={changeDestination}
+                  >
                     <option value="">Select Flight of Stair</option>
                     <option value="0">No Flight of Stair</option>
                     <option value="1">1 Flight of Stair</option>

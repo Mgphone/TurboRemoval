@@ -10,7 +10,7 @@ const countryOptions = {
   componentRestrictions: { country: "UK" }, // Restrict to the United Kingdom (GB)
 };
 function HomeWelcomeSection() {
-  const { data, addAddress, setData, initialData } = useContext(MyContext);
+  const { addAddress, setData, initialData } = useContext(MyContext);
   const navigate = useNavigate();
   const [location, setLocation] = useState("");
   const [destination, setDestination] = useState("");
