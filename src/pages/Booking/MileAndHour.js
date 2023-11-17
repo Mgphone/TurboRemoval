@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import MyContext from "../../context/MyContext";
 
 function MileAndHour() {
+  const { data } = useContext(MyContext);
+  console.log("This is data from MileAndHour" + JSON.stringify(data));
   return (
     <>
       <div className="mileandhour">

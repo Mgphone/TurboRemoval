@@ -64,13 +64,13 @@ function BetweenStops({ onFormChange }) {
 
   const confirmVia = () => {
     // Handle the confirmation logic here
-    // console.log("Form Data:", formData.viaStopsData);
     onFormChange(formData);
+    // console.log("Form Data:", formData.viaStopsData);
     // You can trigger form submission here if needed
     // API to respoond
     // console.log("This is from confirm" + JSON.stringify(formData));
   };
-
+  // console.log("Form Data:", formData.viaStopsData);
   const addVia = () => {
     const newViaStop = {
       id: `viaStop_${viaStops.length}`,
@@ -137,6 +137,7 @@ function BetweenStops({ onFormChange }) {
                 onChange={(value) => handleAddressChange(value, viaStop.id)}
                 onSelect={(value) => handleAddressSelect(value, viaStop.id)}
                 searchOptions={countryOptions}
+                key={`placesAutocomplete_${viaStop.id}`}
               >
                 {({
                   getInputProps,
@@ -158,7 +159,7 @@ function BetweenStops({ onFormChange }) {
                       {suggestions.map((suggestion) => (
                         <div
                           {...getSuggestionItemProps(suggestion)}
-                          key={suggestion.id}
+                          key={suggestion.placeId}
                         >
                           {suggestion.description}
                         </div>
