@@ -5,6 +5,7 @@ import BetweenStops from "./BetweenStops";
 function WhereMoving() {
   const { data, setData } = useContext(MyContext);
   const checkCollectandDesti = data.addresses;
+  const arrayLength = checkCollectandDesti.length;
 
   useEffect(() => {
     console.log(
@@ -48,18 +49,14 @@ function WhereMoving() {
   const handleMovingForm = (e) => {
     e.preventDefault();
     const viaBetween = between.viaStopsData;
+    console.log("Thisis viabetween" + viaBetween);
 
-    if (
-      checkCollectandDesti.length === 2 &&
-      typeof viaBetween !== "undefined"
-    ) {
+    if (checkCollectandDesti.length >= 2 && typeof viaBetween !== "undefined") {
       const newArray = [
         ...checkCollectandDesti.slice(0, 1),
         ...viaBetween,
         ...checkCollectandDesti.slice(1),
       ];
-
-      // Update the state and log the data after the state has been updated
       setData(
         (prevState) => ({
           ...prevState,
@@ -69,6 +66,28 @@ function WhereMoving() {
           console.log("This is new array to add", JSON.stringify(data));
         }
       );
+      // const isDuplicate = newArray.some((item, index) => {
+      //   const firstIndex = newArray.findIndex(
+      //     (otherItem, otherIndex) => otherItem.id === item.id
+      //   );
+      //   return firstIndex !== index && firstIndex !== -1;
+      // });
+      // // console.log("This is new array value" + JSON.stringify(newArray));
+
+      // // Update the state and log the data after the state has been updated
+      // if (isDuplicate) {
+      //   setData(
+      //     (prevState) => ({
+      //       ...prevState,
+      //       addresses: newArray,
+      //     }),
+      //     () => {
+      //       console.log("This is new array to add", JSON.stringify(data));
+      //     }
+      //   );
+      // } else {
+      //   console.error("Duplicate");
+      // }
     } else {
       console.log(
         "else only two location and destination",
@@ -136,10 +155,13 @@ function WhereMoving() {
                     <label htmlFor="destinatin Address">Address</label>
                     <input
                       name="deliveryinput"
-                      value={checkCollectandDesti[1].location}
+                      value={checkCollectandDesti[arrayLength - 1].location}
                     />
                     <label htmlFor="Address_ReadOnly">Address</label>
-                    <input value={checkCollectandDesti[1].location} readOnly />
+                    <input
+                      value={checkCollectandDesti[arrayLength - 1].location}
+                      readOnly
+                    />
                     <label htmlFor="StairFlight">Choose Stair of Flight</label>
                     <select
                       id="StairFlight"

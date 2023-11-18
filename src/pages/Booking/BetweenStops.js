@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
+import MyContext from "../../context/MyContext";
 
 function BetweenStops({ onFormChange }) {
+  const { setData, data } = useContext(MyContext);
   const [viaStops, setViaStops] = useState([]);
   const [formData, setFormData] = useState({
     viaStopsData: [],
   });
+  useEffect(() => {
+    console.log("useEffect triggered. formData:", formData);
 
+    if (formData && formData.viaStopsData.length === 0) {
+      console.log("viaStopsData is empty. Updating addresses...");
+
+      setData((prevState) => ({
+        ...prevState,
+        addresses: prevState.addresses
+          .slice(0, 1)
+          .concat(prevState.addresses.slice(-1)),
+      }));
+    }
+  }, [formData]);
   const countryOptions = {
     types: ["(regions)"],
     componentRestrictions: { country: "UK" },
@@ -64,8 +79,10 @@ function BetweenStops({ onFormChange }) {
 
   const confirmVia = () => {
     // Handle the confirmation logic here
+
     onFormChange(formData);
     // console.log("Form Data:", formData.viaStopsData);
+    // console.log("Length of form data" + FormData.length);
     // You can trigger form submission here if needed
     // API to respoond
     // console.log("This is from confirm" + JSON.stringify(formData));
@@ -84,6 +101,7 @@ function BetweenStops({ onFormChange }) {
     setViaStops((prevViaStops) => [...prevViaStops, newViaStop]);
 
     // Update form data
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       viaStopsData: [
@@ -102,6 +120,14 @@ function BetweenStops({ onFormChange }) {
       ...prevFormData,
       viaStopsData: prevFormData.viaStopsData.slice(0, -1),
     }));
+    if (data.addresses.length > 2) {
+      setData((prevState) => ({
+        ...prevState,
+        addresses: prevState.addresses
+          .slice(0, -2)
+          .concat(prevState.addresses.slice(-1)),
+      }));
+    }
   };
   const handlestair = (e, name) => {
     const { value } = e.target;
