@@ -12,6 +12,7 @@ function BetweenStops({ onFormChange }) {
     viaStopsData: [],
   });
   useEffect(() => {
+    // when there is no value in formdata i reset zero to viastops
     console.log("useEffect triggered. formData:", formData);
 
     if (formData && formData.viaStopsData.length === 0) {
@@ -128,6 +129,8 @@ function BetweenStops({ onFormChange }) {
           .concat(prevState.addresses.slice(-1)),
       }));
     }
+    //test when remove auto confirmform or not
+    // confirmVia();
   };
   const handlestair = (e, name) => {
     const { value } = e.target;

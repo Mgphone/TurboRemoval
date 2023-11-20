@@ -46,48 +46,39 @@ function WhereMoving() {
     setBetween(updateForm);
   };
   //main form
+
   const handleMovingForm = (e) => {
     e.preventDefault();
     const viaBetween = between.viaStopsData;
     console.log("Thisis viabetween" + viaBetween);
 
     if (checkCollectandDesti.length >= 2 && typeof viaBetween !== "undefined") {
-      const newArray = [
+      let newArray = [
         ...checkCollectandDesti.slice(0, 1),
         ...viaBetween,
         ...checkCollectandDesti.slice(1),
       ];
-      setData(
-        (prevState) => ({
+      // newArray = newArray.map((item) =>
+      //   item.id === viaBetween.id ? viaBetween : item
+      // );
+
+      const isDuplicate = newArray.some((item) => item.id === viaBetween.id);
+      if (isDuplicate) {
+        newArray = newArray.map((item) =>
+          item.id === newArray.id ? newArray : item
+        );
+        setData((prevState) => ({
           ...prevState,
           addresses: newArray,
-        }),
-        () => {
-          console.log("This is new array to add", JSON.stringify(data));
-        }
-      );
-      // const isDuplicate = newArray.some((item, index) => {
-      //   const firstIndex = newArray.findIndex(
-      //     (otherItem, otherIndex) => otherItem.id === item.id
-      //   );
-      //   return firstIndex !== index && firstIndex !== -1;
-      // });
-      // // console.log("This is new array value" + JSON.stringify(newArray));
+        }));
+      } else {
+        setData((prevState) => ({
+          ...prevState,
+          addresses: newArray,
+        }));
+      }
 
-      // // Update the state and log the data after the state has been updated
-      // if (isDuplicate) {
-      //   setData(
-      //     (prevState) => ({
-      //       ...prevState,
-      //       addresses: newArray,
-      //     }),
-      //     () => {
-      //       console.log("This is new array to add", JSON.stringify(data));
-      //     }
-      //   );
-      // } else {
-      //   console.error("Duplicate");
-      // }
+      console.log("This is new array to add", JSON.stringify(data));
     } else {
       console.log(
         "else only two location and destination",
