@@ -10,7 +10,7 @@ const countryOptions = {
   componentRestrictions: { country: "UK" }, // Restrict to the United Kingdom (GB)
 };
 function HomeWelcomeSection() {
-  const { data, addAddress, setData, initialData } = useContext(MyContext);
+  const { addAddress, setData, initialData } = useContext(MyContext);
   const navigate = useNavigate();
   const [location, setLocation] = useState("");
   const [destination, setDestination] = useState("");
@@ -146,6 +146,7 @@ function HomeWelcomeSection() {
           </form>
           {/* </LoadScript> */}
 
+          <p>Please choose location from the list</p>
           <h2 className="secondimageheader textimage">
             We stand out as one of the top options in the city.
           </h2>
