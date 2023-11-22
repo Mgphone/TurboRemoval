@@ -15,9 +15,6 @@ function WhereMoving() {
   }, [data]);
 
   const changeLocation = (e) => {
-    // const updatedAddresses = [...checkCollectandDesti];
-    // updatedAddresses[0].stair = e.target.value;
-    // setData({ ...data, addresses: updatedAddresses });
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[0].stair = e.target.value;
 
@@ -37,7 +34,6 @@ function WhereMoving() {
       ...prevState,
       addresses: updatedAddresses,
     }));
-    // console.log("checking from changedestination" + JSON.stringify(data));
   };
 
   //betweenstops form
@@ -45,48 +41,47 @@ function WhereMoving() {
   const handleBetweenStops = (updateForm) => {
     setBetween(updateForm);
   };
-  //main form
 
   const handleMovingForm = (e) => {
     e.preventDefault();
-    const viaBetween = between.viaStopsData;
-    console.log("Thisis viabetween" + viaBetween);
+    let viaBetween = between.viaStopsData;
+    console.log(
+      "This is viaBetween from handleMovingForm" + JSON.stringify(viaBetween)
+    );
 
-    if (checkCollectandDesti.length >= 2 && typeof viaBetween !== "undefined") {
-      let newArray = [
-        ...checkCollectandDesti.slice(0, 1),
-        ...viaBetween,
-        ...checkCollectandDesti.slice(1),
-      ];
-      // newArray = newArray.map((item) =>
-      //   item.id === viaBetween.id ? viaBetween : item
-      // );
+    if (
+      checkCollectandDesti.length >= 2 &&
+      typeof between.viaStopsData !== "undefined"
+    ) {
+      setData((prevState) => {
+        console.log("This is my prevState" + JSON.stringify(prevState));
+        //filter out all the viastop with
+        const updatedAddresses = prevState.addresses.filter((address) => {
+          return !(address && address.id && address.id.startsWith("viaStop"));
+        });
 
-      const isDuplicate = newArray.some((item) => item.id === viaBetween.id);
-      if (isDuplicate) {
-        newArray = newArray.map((item) =>
-          item.id === newArray.id ? newArray : item
-        );
-        setData((prevState) => ({
+        const updateArray = [
+          ...updatedAddresses.slice(0, 1),
+          ...viaBetween,
+          ...updatedAddresses.slice(1),
+        ];
+
+        // console.log(
+        //   "This is checking addresses" + JSON.stringify(updateArray)
+        // );
+        //update usecontext
+        return {
           ...prevState,
-          addresses: newArray,
-        }));
-      } else {
-        setData((prevState) => ({
-          ...prevState,
-          addresses: newArray,
-        }));
-      }
-
-      console.log("This is new array to add", JSON.stringify(data));
+          addresses: updateArray,
+        };
+      });
     } else {
       console.log(
-        "else only two location and destination",
+        "There is  only two locations and destination",
         JSON.stringify(data)
       );
     }
   };
-
   //add via button
 
   return (
