@@ -3,7 +3,7 @@ import MyContext from "./MyContext.js";
 function MyContextProvider({ children }) {
   const initialData = {
     addresses: [],
-    typeOfVan: "",
+    vanSize: "Large",
     numberOfWorker: "",
     staff: "",
     date: "",
