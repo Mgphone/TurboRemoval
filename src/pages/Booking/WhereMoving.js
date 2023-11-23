@@ -45,16 +45,16 @@ function WhereMoving() {
   const handleMovingForm = (e) => {
     e.preventDefault();
     let viaBetween = between.viaStopsData;
-    console.log(
-      "This is viaBetween from handleMovingForm" + JSON.stringify(viaBetween)
-    );
+    // console.log(
+    //   "This is viaBetween from handleMovingForm" + JSON.stringify(viaBetween)
+    // );
 
     if (
       checkCollectandDesti.length >= 2 &&
       typeof between.viaStopsData !== "undefined"
     ) {
       setData((prevState) => {
-        console.log("This is my prevState" + JSON.stringify(prevState));
+        // console.log("This is my prevState" + JSON.stringify(prevState));
         //filter out all the viastop with
         const updatedAddresses = prevState.addresses.filter((address) => {
           return !(address && address.id && address.id.startsWith("viaStop"));

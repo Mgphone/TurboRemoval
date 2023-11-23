@@ -4,8 +4,7 @@ function MyContextProvider({ children }) {
   const initialData = {
     addresses: [],
     vanSize: "Large",
-    numberOfWorker: "",
-    staff: "",
+    driverHelp: "No-Help",
     date: "",
     description: "",
     email: "",

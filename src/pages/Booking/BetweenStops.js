@@ -13,10 +13,10 @@ function BetweenStops({ onFormChange }) {
   });
   useEffect(() => {
     // when there is no value in formdata i reset zero to viastops
-    console.log("useEffect triggered. formData:", formData);
+    // console.log("useEffect triggered. formData:", formData);
 
     if (formData && formData.viaStopsData.length === 0) {
-      console.log("viaStopsData is empty. Updating addresses...");
+      // console.log("viaStopsData is empty. Updating addresses...");
 
       setData((prevState) => ({
         ...prevState,

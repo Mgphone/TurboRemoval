@@ -52,3 +52,10 @@ i use usecontext to all my state checked
 in home page i pass location, destination by usecontext checked
 if user come back to home page all my data reset checked
 to data reset i use useLocation, and then find the path,set data to initial Data of context by using useffect checked
+
+commit 35,
+we use the props ..noted
+when we use don't forget checked={checked===value} noted
+because we want to use change e.target.value noted
+on the radioonChange function firstly check e.target.value and usecontex same or not noted
+then setData by usecontext noted
