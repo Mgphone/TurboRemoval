@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import BookingDescription from "./BookingDescription";
 
 function MovingDate() {
   const { data, setData } = useContext(MyContext);
-  console.log("This is the date from Moving Date" + JSON.stringify(data.date));
+  // console.log("This is the date from Moving Date" + JSON.stringify(data.date));
   //set Min time for over one hour
   const minTime = new Date();
   minTime.setHours(new Date().getHours() + 1, 0, 0, 0);
@@ -53,6 +54,7 @@ function MovingDate() {
               showIcon
               isClearable
               closeOnScroll={true}
+              timeIntervals={15}
               selected={data.date}
               onChange={handleChange}
               showTimeSelect
@@ -63,6 +65,7 @@ function MovingDate() {
               customInput={<CustomInput />}
             />
           </h3>
+          <BookingDescription />
         </div>
       </div>
     </>

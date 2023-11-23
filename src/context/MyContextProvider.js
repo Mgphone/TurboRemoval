@@ -6,7 +6,7 @@ function MyContextProvider({ children }) {
     vanSize: "Large",
     driverHelp: "No-Help",
     date: null,
-    description: "",
+    description: null,
     email: "",
     phone: "",
   };
