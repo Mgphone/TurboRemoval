@@ -59,3 +59,16 @@ when we use don't forget checked={checked===value} noted
 because we want to use change e.target.value noted
 on the radioonChange function firstly check e.target.value and usecontex same or not noted
 then setData by usecontext noted
+
+commit 36,
+That is only good for full choose list
+If i don't want user not to enter  
+can try with customInput readonly props
+type, value, onClick, readonly
+example
+const customInput=({value,onClick})=>(
+<input type=text readOnly value={value} onClick={onClick}
+/>)
+
+custom Input fields as customInput={<CustomInput />}
+using react-datePicker
