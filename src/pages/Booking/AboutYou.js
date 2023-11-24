@@ -1,6 +1,14 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import MyContext from "../../context/MyContext";
 function AboutYou() {
+  const { data, setData } = useContext(MyContext);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevVal) => ({
+      ...prevVal,
+      [name]: value,
+    }));
+  };
   return (
     <>
       <div className="aboutyou">
@@ -15,11 +23,33 @@ function AboutYou() {
         </div>
         <div className="aboutyou-info">
           <label htmlFor="name">Name</label>
-          <input type="text" placeholder="name" />
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={data.name}
+            onChange={handleInputChange}
+            required
+          />
           <label htmlFor="email">Email</label>
-          <input type="text" placeholder="email" />
+          <input
+            type="email"
+            placeholder="email"
+            name="email"
+            value={data.email}
+            onChange={handleInputChange}
+            required
+          />
           <label htmlFor="phonenumber">Phone</label>
-          <input type="text" placeholder="phone" />
+          <input
+            type="tel"
+            pattern="[0-9]*"
+            placeholder="phone"
+            name="phone"
+            value={data.value}
+            onChange={handleInputChange}
+            required
+          />
         </div>
       </div>
     </>

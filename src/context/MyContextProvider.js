@@ -9,6 +9,7 @@ function MyContextProvider({ children }) {
     description: null,
     email: "",
     phone: "",
+    name: "",
   };
   const [data, setData] = useState(initialData);
   const addAddress = (newAddress) => {

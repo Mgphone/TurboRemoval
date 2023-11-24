@@ -22,6 +22,7 @@ function BookingDescription() {
           onChange={handleChange}
           rows={5}
           cols={90}
+          required
         />
       </label>
     </>

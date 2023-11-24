@@ -9,17 +9,24 @@ function MovingDate() {
   // console.log("This is the date from Moving Date" + JSON.stringify(data.date));
   //set Min time for over one hour
   const minTime = new Date();
-  minTime.setHours(new Date().getHours() + 1, 0, 0, 0);
+
+  if (minTime.getHours() >= 6 && minTime.getHours() <= 21) {
+    minTime.setHours(new Date().getHours() + 1, 0, 0, 0);
+  } else {
+    minTime.setHours(6, 0, 0, 0);
+    minTime.setDate(minTime.getDate() + 1);
+  }
   //that is maximum can choose time over one hour
   const maxTime = new Date();
   maxTime.setHours(21, 0, 0, 0);
   //choose current day
   if (data.date && data.date.getDate() !== new Date().getDate()) {
-    minTime.setHours(8, 0, 0, 0);
+    minTime.setHours(6, 0, 0, 0);
   }
 
-  const CustomInput = ({ value, onClick }) => (
+  const CustomInput = ({ required, value, onClick }) => (
     <input
+      required={required}
       type="text"
       value={value}
       onClick={onClick}
@@ -62,7 +69,7 @@ function MovingDate() {
               minDate={new Date()}
               minTime={minTime}
               maxTime={maxTime}
-              customInput={<CustomInput />}
+              customInput={<CustomInput required />}
             />
           </h3>
           <BookingDescription />
