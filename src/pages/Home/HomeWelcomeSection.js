@@ -89,6 +89,18 @@ function HomeWelcomeSection() {
       navigate(`/booking`);
     }
   };
+  const handleretrieve = async () => {
+    // console.log("You Click Retrieve Button");
+    fetch("/retrieve")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Fetch error:", error));
+  };
 
   return (
     <>
@@ -150,7 +162,9 @@ function HomeWelcomeSection() {
           <h2 className="secondimageheader textimage">
             We stand out as one of the top options in the city.
           </h2>
-          <button className="recallquote">Retrieve Quote</button>
+          <button className="recallquote" onClick={handleretrieve}>
+            Retrieve Quote
+          </button>
         </div>
       </div>
     </>

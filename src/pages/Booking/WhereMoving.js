@@ -7,12 +7,12 @@ function WhereMoving() {
   const checkCollectandDesti = data.addresses;
   const arrayLength = checkCollectandDesti.length;
 
-  useEffect(() => {
-    console.log(
-      "Checking how is data look alike with useeffect",
-      JSON.stringify(data)
-    );
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(
+  //     "Checking how is data look alike with useeffect",
+  //     JSON.stringify(data)
+  //   );
+  // }, [data]);
 
   const changeLocation = (e) => {
     const updatedAddresses = [...checkCollectandDesti];
@@ -103,7 +103,8 @@ function WhereMoving() {
             confirm it
           </p>
         </div>
-        <form className="wheremoving-form" onSubmit={handleMovingForm}>
+        {/* <form className="wheremoving-form" onSubmit={handleMovingForm}> */}
+        <div className="wheremoving-form">
           {
             checkCollectandDesti.length >= 2 ? (
               <>
@@ -168,7 +169,8 @@ function WhereMoving() {
                     </select>
                   </div>
                 </div>
-                <button type="submit">Submit</button>
+                {/* <button type="submit">Submit</button> */}
+                <button onClick={handleMovingForm}>Submit</button>
               </>
             ) : null
 
@@ -236,7 +238,8 @@ function WhereMoving() {
               <button type="submit">Submit</button>
             </div> */
           }
-        </form>
+          {/* </form> */}
+        </div>
       </div>
     </>
   );

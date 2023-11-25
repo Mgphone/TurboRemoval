@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+// this is the page
 import Nav from "../../component/Nav";
 import Booking_Header from "./Booking_Header";
 import ChooseVanSize from "./ChooseVanSize";
@@ -10,23 +11,21 @@ import MovingDate from "./MovingDate";
 import AboutYou from "./AboutYou";
 import Footer from "../../component/Footer";
 import "./Booking.css";
-// import { useLocation } from "react-router-dom";
-// import { Autocomplete } from "@react-google-maps/api";
-// import MyContext from "../../context/MyContext";
-function Booking() {
-  // const [finalLocation, setfinalLocation] = useState("");
-  // const [finalDestination, setfinalDestination] = useState("");
-  // const { location, destination } = useParams();
-  // const { data } = useContext(MyContext);
-  // console.log("this is for address" + JSON.stringify(data.addresses));
-  // console.log("this is the whole data" + JSON.stringify(data));
-  // const allLocations = data.addresses.map((output) => output.location);
-  // console.log("this is all location" + allLocations);
+// this is the context callling
+import MyContext from "../../context/MyContext";
 
+function Booking() {
+  const { data } = useContext(MyContext);
+
+  useEffect(() => {
+    console.log(
+      "This is from Booking main to send to the back" + JSON.stringify(data)
+    );
+  }, [data]);
   return (
     <>
       <Nav />
-      <div className="booking-container">
+      <form className="booking-container">
         <Booking_Header />
         <ChooseVanSize />
         <Booking_Loading />
@@ -36,7 +35,7 @@ function Booking() {
         <MovingDate />
         <AboutYou />
         <button>Get Free Quote</button>
-      </div>
+      </form>
       <Footer />
     </>
   );

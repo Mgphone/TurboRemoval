@@ -72,3 +72,7 @@ const customInput=({value,onClick})=>(
 
 custom Input fields as customInput={<CustomInput />}
 using react-datePicker
+
+commit 39,
+for react and node proxy connecting fetch
+you don't need full URL address just /retrieve ?? /your end point noted
