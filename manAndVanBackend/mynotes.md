@@ -76,3 +76,7 @@ using react-datePicker
 commit 39,
 for react and node proxy connecting fetch
 you don't need full URL address just /retrieve ?? /your end point noted
+
+commit 40,
+When you fetch with server react to node
+method(return promise), header(authorization), body(data passing) noted

@@ -12,6 +12,16 @@ app.use(bodyParser.json());
 app.get("/retrieve", (req, res) => {
   res.json({ message: "Data Received" });
 });
+app.post("/retrieve", (req, res) => {
+  const bodyParam = req.body.param;
+  const bodyCount = req.body.count + 1;
+
+  console.log("Received data from client", bodyParam);
+  console.log("Received data from Count", bodyCount);
+  res.json({
+    message: "Data received and processed successfully on the server",
+  });
+});
 
 /**
  *

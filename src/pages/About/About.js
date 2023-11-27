@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./About.css";
 import Nav from "../../component/Nav";
 function About() {
+  const [count, setCount] = useState(0);
   const handleretrieve = async () => {
     // console.log("You Click Retrieve Button");
     fetch("/retrieve")
@@ -11,15 +12,34 @@ function About() {
         }
         return response.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => console.log(JSON.stringify(data)))
       .catch((error) => console.error("Fetch error:", error));
   };
-  // const handleClick = () => {
-  //   fetch("/retrieve", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //   }).then((response) => response.json);
-  // };
+  const handleClick = (param) => {
+    // console.log(`You Clicked ${param}`);
+
+    fetch("/retrieve", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ param: param }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Server response", data);
+      })
+      .catch((error) => console.log("Error sendting to server", error));
+  };
+  const handleCount = () => {
+    setCount(count + 1);
+    fetch("/retrieve", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ count: count }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("Server Response", data))
+      .catch((error) => console.log("Error sendting to server", error));
+  };
   return (
     <>
       <Nav />
@@ -28,8 +48,12 @@ function About() {
         <button className="recallquote" onClick={handleretrieve}>
           Retrieve Quote
         </button>
-        {/* <button onClick={handleClick}>Button 1</button>
-        <button onClick={handleClick}>Button2</button> */}
+        <button onClick={() => handleClick("Button1")}>Button2</button>
+        <button onClick={() => handleClick("Button2")}>Button2</button>
+        <div>
+          <p>{count}</p>
+          <button onClick={handleCount}>Plus</button>
+        </div>
       </div>
     </>
   );
