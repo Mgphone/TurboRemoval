@@ -23,42 +23,78 @@ app.post("/retrieve", (req, res) => {
   });
 });
 
+// app.post("/booking", async (req, res) => {
+//   const receivedData = req.body;
+//   // console.log(JSON.stringify(receivedData));
+//   const userAddresses = receivedData.addresses.map(
+//     (address) => address.location
+//   );
+//   // console.log("This is only address location" + userAddresses);
+//   try {
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
+app.post("/booking", async (req, res) => {
+  // const receivedData = req.body;
+  // // console.log(JSON.stringify(receivedData));
+  // const userAddresses = receivedData.addresses.map(
+  //   (address) => address.location
+  // );
+  // console.log("That is only address" + userAddresses);
+  // console.log("Backup Booking" + JSON.stringify(userAddresses));
+  try {
+    const receivedData = req.body;
+    // console.log(
+    //   "This is the checking data arrive or not to backeend" +
+    //     JSON.stringify(receivedData)
+    // );
+    const quote = await createQuote(receivedData);
+    // res.json(receivedData);
+    // console.log("This is after the reateQuote" + JSON.stringify(quote));
+    res.json(quote);
+  } catch (error) {
+    console.log(error);
+  }
+  // res.json({ message: "Receive from server" });
+});
 /**
  *
  * Change this endpoint to post and get all validPostcodes, typeOfVan and numberOfWorker from request body
  */
-app.get("/", async (req, res, next) => {
-  //assume u get postcode list from req
-  const formData = {
-    address: ["NW4 4BU", "NE4", "paris"],
-    typeOfVan: "Small",
-    numberOfWorker: 2,
-    Date: "22/01/2006",
-  };
-  try {
-    // const invalidPostcodes = ["NW4 4BU", "AB2 YW1", "HJ9 J73"]; //to test invalid one of the postcode
+// app.get("/", async (req, res, next) => {
+//   //assume u get postcode list from req
+//   const formData = {
+//     address: ["NW4 4BU", "NE4", "paris"],
+//     typeOfVan: "Small",
+//     numberOfWorker: 2,
+//     Date: "22/01/2006",
+//   };
+//   try {
+//     // const invalidPostcodes = ["NW4 4BU", "AB2 YW1", "HJ9 J73"]; //to test invalid one of the postcode
 
-    // const validPostcodes = ["NW4 4BU", "NE4", "paris"];
-    // const typeOfVan = "Small";
-    // const numberOfWorker = 2;
+//     // const validPostcodes = ["NW4 4BU", "NE4", "paris"];
+//     // const typeOfVan = "Small";
+//     // const numberOfWorker = 2;
 
-    const {
-      address: validPostcodes,
-      typeOfVan,
-      numberOfWorker,
-      Date,
-    } = formData;
-    const quote = await createQuote(
-      validPostcodes,
-      typeOfVan,
-      numberOfWorker,
-      Date
-    );
-    res.send(quote);
-  } catch (error) {
-    next(error);
-  }
-});
+//     const {
+//       address: validPostcodes,
+//       typeOfVan,
+//       numberOfWorker,
+//       Date,
+//     } = formData;
+//     const quote = await createQuote(
+//       validPostcodes,
+//       typeOfVan,
+//       numberOfWorker,
+//       Date
+//     );
+//     res.send(quote);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 app.get("/testing", async (req, res, next) => {
   try {
     const result = await getLocationByCallingGoogleApi("nw2 2ll");

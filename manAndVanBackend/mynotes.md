@@ -80,3 +80,8 @@ you don't need full URL address just /retrieve ?? /your end point noted
 commit 40,
 When you fetch with server react to node
 method(return promise), header(authorization), body(data passing) noted
+
+commit 41,
+connect node and react there is so many ways but i use proxy for this example noted
+app.get is just want to get data from server note
+app.post is write and can read noted

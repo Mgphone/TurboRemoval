@@ -37,8 +37,11 @@ function About() {
       body: JSON.stringify({ count: count }),
     })
       .then((response) => response.json())
-      .then((data) => console.log("Server Response", data))
+      .then((data) => console.log("Server Response in ${count}", data))
       .catch((error) => console.log("Error sendting to server", error));
+  };
+  const handleReset = () => {
+    setCount(0);
   };
   return (
     <>
@@ -53,6 +56,7 @@ function About() {
         <div>
           <p>{count}</p>
           <button onClick={handleCount}>Plus</button>
+          <button onClick={handleReset}>Reset</button>
         </div>
       </div>
     </>

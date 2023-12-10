@@ -81,6 +81,7 @@ function WhereMoving() {
         JSON.stringify(data)
       );
     }
+    // console.log("This is data after submit" + JSON.stringify(data));
   };
   //add via button
 
