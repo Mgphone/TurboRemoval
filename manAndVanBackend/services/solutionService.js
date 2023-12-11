@@ -6,9 +6,14 @@ const createQuote = async (receivedData) => {
     receivedData.addresses.map((address) => address.location)
   );
   const totalResult = await getTotalResultOfAllPostcodes(cleanupPostcodes);
+
   return {
     yourinfo: { receivedData },
-    quote: { totalMiles: totalResult.distance, totalHour: totalResult.time },
+    quote: {
+      totalMiles: totalResult.distance,
+      totalHour: totalResult.time,
+      places: cleanupPostcodes,
+    },
   };
 };
 // const createQuote = async (postcodes, typeOfVan, numberOfWorker, Date) => {

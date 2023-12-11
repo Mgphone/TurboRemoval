@@ -97,3 +97,10 @@ commit 43,
 (react)
 add hour to the context data(noted)
 just add onchange to select and setData(noted)
+
+commit 44,
+(react node)
+for calulating the result there are two ways do in server or client noted
+i will choose semi calcuate one for react like not too much to change noted
+for time i just use second and calculate in react noted
+just show the hour need and update to the server noted

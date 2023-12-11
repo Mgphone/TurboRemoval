@@ -37,27 +37,15 @@ app.post("/retrieve", (req, res) => {
 // });
 
 app.post("/booking", async (req, res) => {
-  // const receivedData = req.body;
-  // // console.log(JSON.stringify(receivedData));
-  // const userAddresses = receivedData.addresses.map(
-  //   (address) => address.location
-  // );
-  // console.log("That is only address" + userAddresses);
-  // console.log("Backup Booking" + JSON.stringify(userAddresses));
   try {
     const receivedData = req.body;
-    // console.log(
-    //   "This is the checking data arrive or not to backeend" +
-    //     JSON.stringify(receivedData)
-    // );
+    // console.log("receivedDatafrom front" + JSON.stringify(receivedData));
     const quote = await createQuote(receivedData);
-    // res.json(receivedData);
-    // console.log("This is after the reateQuote" + JSON.stringify(quote));
+
     res.json(quote);
   } catch (error) {
     console.log(error);
   }
-  // res.json({ message: "Receive from server" });
 });
 /**
  *

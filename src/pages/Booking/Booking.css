@@ -73,3 +73,27 @@ justify-content: center;
 gap:2vw;
 }
 /* end of wheremoving */
+/* mileandhour */
+.estimatediv{
+  margin:10px auto;
+  background-color: azure;
+
+}
+.estimatediv ul{
+  display: flex;
+  flex-direction: row;
+  gap:2em;
+  
+}
+.estimatediv li{
+  list-style: none;
+}
+.choosetime{
+  background-color:rgb(230, 169, 215);
+  padding:1em;
+  margin:1em;
+}
+.choosetime label{
+  padding-right: 1em;
+ 
+}

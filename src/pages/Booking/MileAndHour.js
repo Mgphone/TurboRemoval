@@ -9,12 +9,6 @@ function MileAndHour({ userData }) {
     const distanceInMinute = Math.floor((time % 3600) / 60).toFixed(2);
     return `${distanceInHour}hr : ${distanceInMinute}Min`;
   };
-  const yourtime = userData
-    ? timeConverter(userData.quote.totalHour)
-    : "unknown";
-  const yourDistance = userData
-    ? userData.quote.totalMiles.toFixed(2)
-    : "unknown";
 
   const generateTimeOptions = () => {
     const options = [];
@@ -32,6 +26,31 @@ function MileAndHour({ userData }) {
     }
     return options;
   };
+  const checkLoadingHour = (loading) => {
+    if (loading === "Small") {
+      return 1800;
+    }
+    if (loading === "Medium") {
+      return 3600;
+    }
+    if (loading === "Large") {
+      return 5400;
+    }
+    if (loading === "Extra") {
+      return 7200;
+    }
+  };
+  // const loadingTime = userData
+  //   ? checkLoadingHour(userData.yourinfo.receivedData.vanSize)
+  //   : "unknown";
+  const yourtime = userData ? userData.quote.totalHour : "unknown";
+  const yourDistance = userData
+    ? userData.quote.totalMiles.toFixed(2)
+    : "unknown";
+  const loadingTime = userData
+    ? checkLoadingHour(userData.yourinfo.receivedData.vanSize)
+    : 0;
+  const totalTime = yourtime + loadingTime;
 
   const handleHourChange = (e) => {
     const selectHour = e.target.value;
@@ -46,16 +65,32 @@ function MileAndHour({ userData }) {
       <div className="mileandhour">
         <h1>How many hours do you want the vehicle for?</h1>
         <p>
-          We estimate that your just travel time will take around{" "}
-          <b>{yourtime}</b>, and your distance is <b>{yourDistance} miles</b> if
-          you think it will take less time you can reduce the number of hours.
-          If you do need more time on the day all of our drivers have a pay as
-          you go rate.
+          <div className="estimatediv">
+            <ul>
+              Estimate Time
+              <li>
+                TravelTime:<b>{timeConverter(yourtime)}</b>
+              </li>
+              <li>
+                Loading and Unloading:<b>{timeConverter(loadingTime)}</b>
+              </li>
+              <li>
+                Total Time:<b>{timeConverter(totalTime)}</b>
+              </li>
+            </ul>
+          </div>
+          We estimate that your just travel time will take around , and your
+          distance is <b>{yourDistance} miles</b> and this is the hourif you
+          think it will take less time you can reduce the number of hours. If
+          you do need more time on the day all of our drivers have a pay as you
+          go rate.
         </p>
-        <label htmlFor="choosehour">I need this Vehicle For</label>
-        <select id="choosehour" onChange={handleHourChange}>
-          {generateTimeOptions()}
-        </select>
+        <div className="choosetime">
+          <label htmlFor="choosehour">I need this Vehicle For</label>
+          <select id="choosehour" onChange={handleHourChange}>
+            {generateTimeOptions()}
+          </select>
+        </div>
       </div>
     </>
   );
