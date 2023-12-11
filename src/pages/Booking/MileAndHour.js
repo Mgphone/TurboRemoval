@@ -2,11 +2,8 @@ import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
 
 function MileAndHour({ userData }) {
-  const { data } = useContext(MyContext);
-  // console.log("This is data from MileAndHour" + JSON.stringify(data));
-  // console.log(
-  //   "This is data from MileandHour" + JSON.stringify(userData.quote.totalHour)
-  // );
+  const { data, setData } = useContext(MyContext);
+
   const timeConverter = (time) => {
     const distanceInHour = Math.floor(time / 3600).toFixed(2);
     const distanceInMinute = Math.floor((time % 3600) / 60).toFixed(2);
@@ -35,6 +32,15 @@ function MileAndHour({ userData }) {
     }
     return options;
   };
+
+  const handleHourChange = (e) => {
+    const selectHour = e.target.value;
+    // console.log("This is selectHour from Mile and Hour" + selectHour);
+    setData((prevState) => ({
+      ...prevState,
+      hour: selectHour,
+    }));
+  };
   return (
     <>
       <div className="mileandhour">
@@ -47,7 +53,9 @@ function MileAndHour({ userData }) {
           you go rate.
         </p>
         <label htmlFor="choosehour">I need this Vehicle For</label>
-        <select id="choosehour">{generateTimeOptions()}</select>
+        <select id="choosehour" onChange={handleHourChange}>
+          {generateTimeOptions()}
+        </select>
       </div>
     </>
   );

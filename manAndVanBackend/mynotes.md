@@ -92,3 +92,8 @@ pass pros as useState data to component noted
 when declare variable checked with ternary value is in or not noted
 add time and distance noted
 option time value with nested loop noted
+
+commit 43,
+(react)
+add hour to the context data(noted)
+just add onchange to select and setData(noted)

@@ -5,6 +5,7 @@ function MyContextProvider({ children }) {
     addresses: [],
     vanSize: "Large",
     driverHelp: "No-Help",
+    hour: null,
     date: null,
     description: null,
     email: "",
