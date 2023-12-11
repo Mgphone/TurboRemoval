@@ -1,25 +1,53 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
 
-function MileAndHour() {
+function MileAndHour({ userData }) {
   const { data } = useContext(MyContext);
   // console.log("This is data from MileAndHour" + JSON.stringify(data));
+  // console.log(
+  //   "This is data from MileandHour" + JSON.stringify(userData.quote.totalHour)
+  // );
+  const timeConverter = (time) => {
+    const distanceInHour = Math.floor(time / 3600).toFixed(2);
+    const distanceInMinute = Math.floor((time % 3600) / 60).toFixed(2);
+    return `${distanceInHour}hr : ${distanceInMinute}Min`;
+  };
+  const yourtime = userData
+    ? timeConverter(userData.quote.totalHour)
+    : "unknown";
+  const yourDistance = userData
+    ? userData.quote.totalMiles.toFixed(2)
+    : "unknown";
+
+  const generateTimeOptions = () => {
+    const options = [];
+    for (let hours = 0; hours <= 15; hours++) {
+      for (let minutes = 0; minutes < 60; minutes += 30) {
+        const formattedHours = hours.toString().padStart(2, "0");
+        const formattedMinutes = minutes.toString().padStart(2, "0");
+        const timeString = `${formattedHours}hr:${formattedMinutes}Min`;
+        options.push(
+          <option key={timeString} value={timeString}>
+            {timeString}
+          </option>
+        );
+      }
+    }
+    return options;
+  };
   return (
     <>
       <div className="mileandhour">
         <h1>How many hours do you want the vehicle for?</h1>
         <p>
-          We estimate that your move will take around 4 hours, 47 minutes, if
+          We estimate that your just travel time will take around{" "}
+          <b>{yourtime}</b>, and your distance is <b>{yourDistance} miles</b> if
           you think it will take less time you can reduce the number of hours.
           If you do need more time on the day all of our drivers have a pay as
           you go rate.
         </p>
         <label htmlFor="choosehour">I need this Vehicle For</label>
-        <select id="choosehour">
-          <option value="1">I need this for half an Hour</option>
-          <option value="2">I need this for an Hour</option>
-          <option value="3">I need this for an Hour and half</option>
-        </select>
+        <select id="choosehour">{generateTimeOptions()}</select>
       </div>
     </>
   );

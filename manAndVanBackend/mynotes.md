@@ -85,3 +85,10 @@ commit 41,
 connect node and react there is so many ways but i use proxy for this example noted
 app.get is just want to get data from server note
 app.post is write and can read noted
+
+commit 42,
+(react)
+pass pros as useState data to component noted
+when declare variable checked with ternary value is in or not noted
+add time and distance noted
+option time value with nested loop noted

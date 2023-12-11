@@ -59,7 +59,7 @@ function Booking() {
         <Booking_Loading />
         <CaniTravel />
         <WhereMoving />
-        <MileAndHour />
+        <MileAndHour userData={userData} />
         <MovingDate />
         <AboutYou />
         <button>Get Free Quote</button>
