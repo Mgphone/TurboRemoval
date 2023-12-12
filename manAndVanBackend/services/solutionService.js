@@ -6,13 +6,49 @@ const createQuote = async (receivedData) => {
     receivedData.addresses.map((address) => address.location)
   );
   const totalResult = await getTotalResultOfAllPostcodes(cleanupPostcodes);
-
+  const totalStairCount = await receivedData.addresses.reduce((sum, item) => {
+    if (item.stair !== "undefined" && item.stair !== undefined) {
+      return sum + Number(item.stair);
+    }
+    return sum;
+  }, 0);
+  let typeofVan = await receivedData.vanSize;
+  let vanCharge = 50;
+  if (typeofVan === "Small") {
+    vanCharge = 50;
+  } else if (typeofVan === "Medium") {
+    vanCharge = 75;
+  } else if (typeofVan === "Large") {
+    vanCharge = 100;
+  } else if (typeofVan === "Extra") {
+    vanCharge = 125;
+  }
+  let typeOfWorker = await receivedData.driverHelp;
+  let workerCharge = 30;
+  if (typeOfWorker === "No-Help") {
+    workerCharge = 30;
+  } else if (typeOfWorker === "Driver-Help") {
+    workerCharge = 45;
+  } else if (typeOfWorker === "Driver-Plus-One") {
+    workerCharge = 60;
+  } else if (typeOfWorker === "Driver-Plus-Two") {
+    workerCharge = 75;
+  }
+  const totalPrice =
+    (totalResult.distance < 5 ? 15 : totalResult.distance * 1.5) +
+    totalStairCount * 10 +
+    vanCharge +
+    workerCharge;
   return {
     yourinfo: { receivedData },
     quote: {
       totalMiles: totalResult.distance,
       totalHour: totalResult.time,
       places: cleanupPostcodes,
+      stairTotal: totalStairCount,
+      vanCharge: vanCharge,
+      workerCharge: workerCharge,
+      totalPrice: totalPrice,
     },
   };
 };

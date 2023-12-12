@@ -17,7 +17,7 @@ function WhereMoving() {
   const changeLocation = (e) => {
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[0].stair = e.target.value;
-
+    // console.log("Change location from pickup" + e.target.value);
     setData((prevState) => ({
       ...prevState,
       addresses: updatedAddresses,
@@ -127,9 +127,9 @@ function WhereMoving() {
                       onChange={changeLocation}
                     >
                       <option value="">Select Flight of Stair</option>
-                      <option value="0">No Flight of Stair</option>
-                      <option value="1">1 Flight of Stair</option>
-                      <option value="2">2 Flight of Stair</option>
+                      <option value={0}>No Flight of Stair</option>
+                      <option value={1}>1 Flight of Stair</option>
+                      <option value={2}>2 Flight of Stair</option>
                       <option value="3">3 Flight of Stair</option>
                       <option value="4">4 Flight of Stair</option>
                       <option value="5">5 Flight of Stair</option>
