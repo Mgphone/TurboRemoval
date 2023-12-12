@@ -104,3 +104,8 @@ for calulating the result there are two ways do in server or client noted
 i will choose semi calcuate one for react like not too much to change noted
 for time i just use second and calculate in react noted
 just show the hour need and update to the server noted
+
+coomit 45,
+(react)
+i believe mainly when i when to use popup css is maily important noted
+display none && some features at css noted

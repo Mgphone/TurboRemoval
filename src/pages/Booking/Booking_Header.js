@@ -1,6 +1,13 @@
-import React from "react";
-
+import React, { useState } from "react";
+import VanSizeGuidePopup from "./VanSizeGuidePopup";
 function Booking_Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const openPopup = () => {
+    setIsOpen(true);
+  };
+  const closePopup = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       <div className="booking-header">
@@ -13,7 +20,19 @@ function Booking_Header() {
           advice on the size of vehicle that would be suitable for you. Need
           help choosing which vehicle? Use our Van Size Calculator!
         </p>
-        <button>Van Size Calculator</button>
+        <button
+          type="button"
+          onClick={() => {
+            openPopup();
+          }}
+        >
+          Van Size Guide
+        </button>
+        <VanSizeGuidePopup
+          isOpen={isOpen}
+          closePopup={closePopup}
+          clickOutside={true}
+        />
       </div>
     </>
   );
