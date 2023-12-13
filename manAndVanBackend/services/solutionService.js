@@ -6,15 +6,19 @@ const createQuote = async (receivedData) => {
   const cleanupPostcodes = await Promise.all(
     receivedData.addresses.map((address) => address.location)
   );
-  const pickupStair =
-    receivedData.addresses && receivedData.addresses[0].stair
+  const checkPickupStair =
+    receivedData.addresses[0].stair && receivedData.addresses[0].stair
       ? receivedData.addresses[0].stair
       : 0;
-  const deliveryStair =
-    receivedData.addresses &&
+  // const pickupStair = checkPickupStair === 0 ? "" : checkPickupStair;
+  const pickupStair = checkPickupStair ? Number(checkPickupStair) : 0;
+
+  const checkDeliverStair =
+    receivedData.addresses[0].stair &&
     receivedData.addresses[receivedData.addresses.length - 1].stair
       ? receivedData.addresses[receivedData.addresses.length - 1].stair
       : 0;
+  const deliveryStair = checkDeliverStair ? Number(checkDeliverStair) : 0;
 
   const hourtosecond = (time) => {
     // totalHour: "06hr:30Min";
@@ -37,7 +41,10 @@ const createQuote = async (receivedData) => {
     }
     return sum;
   }, 0);
-  const viaStopStair = totalStairCount - (pickupStair + deliveryStair);
+  const checkViaStopStair =
+    Number(totalStairCount) -
+    (Number(checkDeliverStair) + Number(checkPickupStair));
+  // const viaStopStair = checkViaStopStair > 0 ? "" : checkViaStopStair;
   let typeofVan = await receivedData.vanSize;
   let vanCharge = 50;
   if (typeofVan === "Small") {
@@ -87,8 +94,9 @@ const createQuote = async (receivedData) => {
       phone: phone,
       name: name,
       pickupStair: pickupStair,
+      // checkPickup: checkPickup,
       deliveryStair: deliveryStair,
-      viaStopStair: viaStopStair,
+      viaStopStair: checkViaStopStair,
     },
   };
 };

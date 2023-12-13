@@ -110,8 +110,14 @@ coomit 45,
 i believe mainly when i when to use popup css is maily important noted
 display none && some features at css noted
 
-commit 48,
+commit 47,
 (node)
 trying to add only in the quote and will update(noted)..
 parseInt is just only will take the number.. and have to use two parmeter.. parseInt(part,10(it can be base number) noted
 for the stair i just change on the server noted
+
+commit 48
+(node,react)
+add nodemon for development at node noted
+bug fixed for stair firstly checked if there is value or not first then use ternary opertor noted
+in react check all with && to display noted
