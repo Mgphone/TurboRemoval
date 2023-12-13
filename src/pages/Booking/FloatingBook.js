@@ -3,7 +3,7 @@ import React from "react";
 function FloatingBook({ userData }) {
   // Ensure userData and userData.quote are available
   const serverQuote = userData && userData.quote;
-  const receivedData = userData && userData.yourinfo.receivedData.addresses;
+  // const receivedData = userData && userData.yourinfo.receivedData.addresses;
   console.log(serverQuote);
 
   // Extract information with null or "Choose" defaults
@@ -14,7 +14,9 @@ function FloatingBook({ userData }) {
   //   receivedData[0].stair && receivedData[0].stair
   //     ? receivedData[0].stair
   //     : "No Stair";
-
+  const pickupAddressStair = serverQuote && serverQuote.pickupStair;
+  const dropOfAddressStair = serverQuote && serverQuote.deliveryStair;
+  const viaStopStair = serverQuote && serverQuote.viaStopStair;
   const dropOfAddress =
     serverQuote && serverQuote.places
       ? serverQuote.places[serverQuote.places.length - 1]
@@ -40,15 +42,17 @@ function FloatingBook({ userData }) {
     <>
       <div className="floatingbook">
         <h1>Booking Summary</h1>
-        <div>Pickup address: {pickupAddress}</div>
-        {/* <div>PickUp stair: {pickupAddressStair}</div> */}
-        <div>Delivery address: {dropOfAddress}</div>
-        {/* <div>Delivery Stair:{dropOfAddressStair}</div> */}
-        <div>Via Stop: {viaStop}</div>
-        {/* <div>Via Stop Stair:{viaStopStair}</div> */}
-        <div>typeOfWorker:{worker}</div>
-        <div>vanSize:{vanSize}</div>
-        <div>{totalPrice}</div>
+        <p>Pickup address: {pickupAddress}</p>
+        <p>PickUp stair: {pickupAddressStair}</p>
+        <p>Delivery address: {dropOfAddress}</p>
+        <p>Delivery Stair: {dropOfAddressStair}</p>
+        <p>Via Stop: {viaStop}</p>
+        <p>Via Stop Stair: {viaStopStair}</p>
+        <p>Type of Worker: {worker}</p>
+        <p>Van Size: {vanSize}</p>
+        <p>Total Price: {totalPrice}</p>
+        <button>Book Now</button>
+        <button>Save For Later</button>
       </div>
     </>
   );

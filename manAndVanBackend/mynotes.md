@@ -109,3 +109,9 @@ coomit 45,
 (react)
 i believe mainly when i when to use popup css is maily important noted
 display none && some features at css noted
+
+commit 48,
+(node)
+trying to add only in the quote and will update(noted)..
+parseInt is just only will take the number.. and have to use two parmeter.. parseInt(part,10(it can be base number) noted
+for the stair i just change on the server noted

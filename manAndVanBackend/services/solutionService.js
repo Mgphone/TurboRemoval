@@ -2,16 +2,42 @@
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
 const createQuote = async (receivedData) => {
+  console.log(receivedData);
   const cleanupPostcodes = await Promise.all(
     receivedData.addresses.map((address) => address.location)
   );
-  const totalResult = await getTotalResultOfAllPostcodes(cleanupPostcodes);
+  const pickupStair =
+    receivedData.addresses && receivedData.addresses[0].stair
+      ? receivedData.addresses[0].stair
+      : 0;
+  const deliveryStair =
+    receivedData.addresses &&
+    receivedData.addresses[receivedData.addresses.length - 1].stair
+      ? receivedData.addresses[receivedData.addresses.length - 1].stair
+      : 0;
+
+  const hourtosecond = (time) => {
+    // totalHour: "06hr:30Min";
+    const splitTime = time.split(":");
+    const [hours, minutes] = splitTime.map((part) => parseInt(part, 10));
+    return hours * 3600 + minutes * 60;
+  };
+  const totalHour = receivedData.hour;
+  const totalSecond = totalHour && hourtosecond(totalHour);
+  const date = receivedData.date;
+  const description = receivedData.description;
+  const email = receivedData.email;
+  const phone = receivedData.phone;
+  const name = receivedData.name;
+  const totalAddress = receivedData.addresses;
+  const travelResult = await getTotalResultOfAllPostcodes(cleanupPostcodes);
   const totalStairCount = await receivedData.addresses.reduce((sum, item) => {
     if (item.stair !== "undefined" && item.stair !== undefined) {
       return sum + Number(item.stair);
     }
     return sum;
   }, 0);
+  const viaStopStair = totalStairCount - (pickupStair + deliveryStair);
   let typeofVan = await receivedData.vanSize;
   let vanCharge = 50;
   if (typeofVan === "Small") {
@@ -35,7 +61,7 @@ const createQuote = async (receivedData) => {
     workerCharge = 75;
   }
   const totalPrice =
-    (totalResult.distance < 5 ? 15 : totalResult.distance * 1.5) +
+    (travelResult.distance < 5 ? 15 : travelResult.distance * 1.5) +
     totalStairCount * 10 +
     vanCharge +
     workerCharge;
@@ -43,8 +69,10 @@ const createQuote = async (receivedData) => {
   return {
     yourinfo: { receivedData },
     quote: {
-      totalMiles: totalResult.distance,
-      totalHour: totalResult.time,
+      totalAddress: totalAddress,
+      travelMiles: travelResult.distance,
+      travelHour: travelResult.time,
+      totalSecond: totalSecond,
       places: cleanupPostcodes,
       stairTotal: totalStairCount,
       vanCharge: vanCharge,
@@ -52,32 +80,19 @@ const createQuote = async (receivedData) => {
       totalPrice: totalPrice,
       typeofVan: typeofVan,
       typeOfWorker: typeOfWorker,
+      totalHour: totalHour,
+      date: date,
+      description: description,
+      email: email,
+      phone: phone,
+      name: name,
+      pickupStair: pickupStair,
+      deliveryStair: deliveryStair,
+      viaStopStair: viaStopStair,
     },
   };
 };
-// const createQuote = async (postcodes, typeOfVan, numberOfWorker, Date) => {
-//   const cleanupPostcodes = postcodes.map((postcode) => {
-//     return postcode.trim().split(" ").join("");
-//   });
-//   const totalResult = await getTotalResultOfAllPostcodes(cleanupPostcodes);
-//   let vanCharge = 50;
-//   if (typeOfVan === "SMALL") {
-//     vanCharge = 50;
-//   } else if (typeOfVan === "LARGE") {
-//     vanCharge = 100;
-//   } else if (typeOfVan === "EXTRA LARGE") {
-//     vanCharge = 150;
-//   }
-//   const charge = totalResult.distance * vanCharge * numberOfWorker;
-//   return {
-//     quote: {
-//       totalMiles: totalResult.distance,
-//       charge: `£${charge}`,
-//       totalHour: totalResult.time,
-//       Date: Date,
-//     },
-//   };
-// };
+
 const getTotalResultOfAllPostcodes = async (postcodes) => {
   const coordinates = await Promise.all(
     postcodes.map((postcode) => getLocationByCallingGoogleApi(postcode))

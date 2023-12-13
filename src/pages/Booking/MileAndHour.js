@@ -43,9 +43,10 @@ function MileAndHour({ userData }) {
   // const loadingTime = userData
   //   ? checkLoadingHour(userData.yourinfo.receivedData.vanSize)
   //   : "unknown";
-  const yourtime = userData ? userData.quote.totalHour : "unknown";
+  const yourtime = userData ? userData.quote.travelHour : "unknown";
+  console.log("Yourtime" + JSON.stringify(yourtime));
   const yourDistance = userData
-    ? userData.quote.totalMiles.toFixed(2)
+    ? userData.quote.travelMiles.toFixed(2)
     : "unknown";
   const loadingTime = userData
     ? checkLoadingHour(userData.yourinfo.receivedData.vanSize)
