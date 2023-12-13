@@ -20,7 +20,7 @@ const createQuote = async (receivedData) => {
     vanCharge = 75;
   } else if (typeofVan === "Large") {
     vanCharge = 100;
-  } else if (typeofVan === "Extra") {
+  } else if (typeofVan === "Luton") {
     vanCharge = 125;
   }
   let typeOfWorker = await receivedData.driverHelp;
@@ -39,6 +39,7 @@ const createQuote = async (receivedData) => {
     totalStairCount * 10 +
     vanCharge +
     workerCharge;
+
   return {
     yourinfo: { receivedData },
     quote: {
@@ -49,6 +50,8 @@ const createQuote = async (receivedData) => {
       vanCharge: vanCharge,
       workerCharge: workerCharge,
       totalPrice: totalPrice,
+      typeofVan: typeofVan,
+      typeOfWorker: typeOfWorker,
     },
   };
 };

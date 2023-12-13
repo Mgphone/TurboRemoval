@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 // this is the page
 import Nav from "../../component/Nav";
+import FloatingBook from "./FloatingBook";
 import Booking_Header from "./Booking_Header";
 import ChooseVanSize from "./ChooseVanSize";
 import Booking_Loading from "./Booking_Loading";
@@ -47,13 +48,14 @@ function Booking() {
     };
     sendDataToBack();
   }, [data]);
-  useEffect(() => {
-    console.log("This is userData" + JSON.stringify(userData));
-  }, [userData]);
+  // useEffect(() => {
+  //   console.log("This is userData" + JSON.stringify(userData));
+  // }, [userData]);
   return (
     <>
       <Nav />
       <form className="booking-container">
+        <FloatingBook userData={userData} />
         <Booking_Header />
         <ChooseVanSize />
         <Booking_Loading />

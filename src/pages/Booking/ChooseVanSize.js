@@ -44,7 +44,7 @@ function ChooseVanSize() {
           />
           <VanSizeRadio
             id="Extra Large"
-            value="Extra"
+            value="Luton"
             label="Luton Van"
             imageSrc="https://picsum.photos/200"
             checked={data.vanSize}

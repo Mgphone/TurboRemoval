@@ -36,7 +36,7 @@ function MileAndHour({ userData }) {
     if (loading === "Large") {
       return 5400;
     }
-    if (loading === "Extra") {
+    if (loading === "Luton") {
       return 7200;
     }
   };
