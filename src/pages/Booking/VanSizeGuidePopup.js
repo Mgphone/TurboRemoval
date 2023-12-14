@@ -58,7 +58,7 @@ function VanSizeGuidePopup({ isOpen, closePopup, clickOutside }) {
               </div>
               <div className="popup-image">
                 <img
-                  src="https://nvr.co.uk/wp-content/uploads/CarRentalGallery/EX-LWB-Luton-Box-Van-Tail-lift.jpg"
+                  src="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/luton.jpg"
                   alt="LUTONVAN"
                 />
               </div>
@@ -98,7 +98,10 @@ function VanSizeGuidePopup({ isOpen, closePopup, clickOutside }) {
                 </ol>
               </div>
               <div className="popup-image">
-                <img src="https://picsum.photos/200" alt="LUTONVAN" />
+                <img
+                  src="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519468/removal/large.jpg"
+                  alt="Large Van"
+                />
               </div>
             </div>
             {/* medium */}
@@ -130,7 +133,10 @@ function VanSizeGuidePopup({ isOpen, closePopup, clickOutside }) {
                 </ol>
               </div>
               <div className="popup-image">
-                <img src="https://picsum.photos/200" alt="LUTONVAN" />
+                <img
+                  src="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519468/removal/medium.jpg"
+                  alt="Medium Van"
+                />
               </div>
             </div>
             {/* small */}
@@ -162,7 +168,10 @@ function VanSizeGuidePopup({ isOpen, closePopup, clickOutside }) {
                 </ol>
               </div>
               <div className="popup-image">
-                <img src="https://picsum.photos/200" alt="LUTONVAN" />
+                <img
+                  src="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519468/removal/small.jpg"
+                  alt="Small Van"
+                />
               </div>
             </div>
           </div>

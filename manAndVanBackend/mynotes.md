@@ -127,3 +127,8 @@ commit 49,
 e.stopPropagation is prevent bubble phrase(parets(root of DOM tree)) noted
 Prevent the click event from propagating further noted
 in my close button on floating.. i nested parent .. and example of need to use stopPropagation noted
+
+commit 50,
+(react,node)
+change image for vansize, change image of help required noted
+update the floating div noted

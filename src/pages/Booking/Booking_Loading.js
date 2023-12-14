@@ -24,13 +24,14 @@ function Booking_Loading() {
             quicker.
           </p>
         </div>
+        <h1 className="booking-helper">Choose your Helper</h1>
         <div className="booking-loading">
           <BookLoadingRadio
             id="No-Help"
             value="No-Help"
             label="No-Help"
             checked={data.driverHelp}
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/nohelp.png"
             onChange={handleRadioChange}
           />
           <BookLoadingRadio
@@ -38,7 +39,7 @@ function Booking_Loading() {
             value="Driver-Help"
             label="Driver-Help"
             checked={data.driverHelp}
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/one.png"
             onChange={handleRadioChange}
           />
           <BookLoadingRadio
@@ -46,7 +47,7 @@ function Booking_Loading() {
             value="Driver-Plus-One"
             label="Driver-Plus-One"
             checked={data.driverHelp}
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/two.png"
             onChange={handleRadioChange}
           />
           <BookLoadingRadio
@@ -54,7 +55,7 @@ function Booking_Loading() {
             value="Driver-Plus-Two"
             label="Driver-Plus-Two"
             checked={data.driverHelp}
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/three.png"
             onChange={handleRadioChange}
           />
           {/* <div className="readio-container">

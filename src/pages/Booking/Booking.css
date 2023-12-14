@@ -1,8 +1,59 @@
 .floatingbook{
-  background-color: blue;
-  max-width: 90%;
-  margin:0 auto;
+  background-color: rgb(163, 163, 223);
+  width: 80vw;
+  position: fixed;
+  height:auto;
+  top:5em;
+  /* margin:0 auto; */
+
 }
+.floatingbook header{
+display: flex;
+justify-content: space-between;
+margin-bottom: 1vh;
+}
+.floatingcontent{
+  display: flex;
+  flex-direction: row;
+ gap:20px;
+ justify-content: center;
+  
+}
+.floatingpickup, .floatingviastop .floatingdelivery{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* text-align: center; */
+  
+}
+
+.floatingpickup p,.floatingviastop p {
+  margin-bottom: 0.5em; 
+}
+
+.info-label,
+.info-value {
+  display: block;
+}
+
+.info-label {
+  font-weight: bold;
+}
+.floatingtotal{
+  font-size: 1.6em;
+  text-align: center;
+}
+.floatingtotal .total-price{
+  font-weight: bold;
+}
+.floatbutton{
+  text-align: center;
+ 
+}
+.floatbutton button{
+  margin-left: 1vw;
+}
+/* floating finish */
 .choosevansize{
   padding: 5vh;
 }
@@ -29,6 +80,10 @@
   gap: 3vw;
   /* background-color: bisque; */
 }
+.booking-helper{
+  text-align: center;
+}
+/* end of vansize and booking loading */
 .readio-container{
 display: flex;
 align-items: center;
@@ -42,6 +97,7 @@ align-items: center;
 }
 .radio-label img {
   width: 100px;
+  height: 90px;
   margin-right: 10px;
 }
 /* wheremoving form */

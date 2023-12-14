@@ -6,10 +6,12 @@ const createQuote = async (receivedData) => {
   const cleanupPostcodes = await Promise.all(
     receivedData.addresses.map((address) => address.location)
   );
-  const checkPickupStair =
-    receivedData.addresses[0].stair && receivedData.addresses[0].stair
-      ? receivedData.addresses[0].stair
-      : 0;
+
+  // const checkPickupStair = receivedData.addresses[0]?.stair || 0;
+  const checkPickupStair = receivedData.addresses[0].stair
+    ? receivedData.addresses[0].stair
+    : 0;
+
   // const pickupStair = checkPickupStair === 0 ? "" : checkPickupStair;
   const pickupStair = checkPickupStair ? Number(checkPickupStair) : 0;
 

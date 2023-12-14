@@ -22,7 +22,7 @@ function ChooseVanSize() {
             id="small"
             value="Small"
             label="Small Van"
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/small.jpg"
             checked={data.vanSize}
             onChange={handleRadioChange}
           />
@@ -30,7 +30,7 @@ function ChooseVanSize() {
             id="medium"
             value="Medium"
             label="Medium Van"
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/medium.jpg"
             checked={data.vanSize}
             onChange={handleRadioChange}
           />
@@ -38,7 +38,7 @@ function ChooseVanSize() {
             id="large"
             value="Large"
             label="Large Van"
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/large.jpg"
             checked={data.vanSize}
             onChange={handleRadioChange}
           />
@@ -46,7 +46,7 @@ function ChooseVanSize() {
             id="Extra Large"
             value="Luton"
             label="Luton Van"
-            imageSrc="https://picsum.photos/200"
+            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/luton.jpg"
             checked={data.vanSize}
             onChange={handleRadioChange}
           />

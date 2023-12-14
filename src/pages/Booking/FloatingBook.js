@@ -51,23 +51,97 @@ function FloatingBook({ userData, closeButton }) {
     closeButton();
     // setCheckForm(false);
   };
+  const handleBookNow = (e) => {
+    e.preventDefault();
+    console.log("Good Job you click Book Now");
+  };
+  const handleSaveLater = (e) => {
+    e.preventDefault();
+    console.log("Hmmmm save for later Button");
+  };
   return (
     <>
       <div className="floatingbook">
-        <h1>
-          Booking Summary<button onClick={handleCloseButton}>Close</button>
-        </h1>
-        {pickupAddress && <p>Pickup address:{pickupAddress} </p>}
-        {pickupAddressStair && <p>PickUp stair: {pickupAddressStair}</p>}
-        {viaStop && <p>Via Stop: {viaStop} </p>}
-        {viaStopStair && <p>Via Stop Stair:{viaStopStair} </p>}
-        {dropOfAddress && <p>Delivery address: {dropOfAddress}</p>}
-        {dropOfAddressStair && <p>Delivery Stair:{dropOfAddressStair} </p>}
-        {worker && <p>Type of Worker: {worker}</p>}
-        {vanSize && <p>Van Size: {vanSize}</p>}
-        {totalPrice && <p>Total Price: {totalPrice}</p>}
-        <button>Book Now</button>
-        <button>Save For Later</button>
+        <header>
+          <h1>Booking Summary</h1>
+
+          <button onClick={handleCloseButton}>X</button>
+        </header>
+        <div className="floatingcontent">
+          <div className="floatingpickup">
+            {pickupAddress && (
+              <p>
+                <span className="info-label">Pickup address:</span>
+                <span className="info-value">{pickupAddress}</span>
+              </p>
+            )}
+            {pickupAddressStair && (
+              <p>
+                <span className="info-label">PickUp stair: </span>
+                <span className="info-value">{pickupAddressStair}</span>
+              </p>
+            )}
+          </div>
+          <div className="floatingviastop">
+            {viaStop && (
+              <p>
+                <span className="info-label">Via Stop:</span>
+                <span className="info-value">{viaStop}</span>
+              </p>
+            )}
+
+            {viaStopStair && (
+              <p>
+                <span className="info-label">Via Stop Stair:</span>
+                <span className="info-value">{viaStopStair}</span>
+              </p>
+            )}
+          </div>
+
+          <div className="floatingpickup">
+            {dropOfAddress && (
+              <p>
+                <span className="info-label">Deliver address:</span>
+                <span className="info-value">{dropOfAddress}</span>
+              </p>
+            )}
+            {dropOfAddressStair && (
+              <p>
+                <span className="info-label">Delivery stair: </span>
+                <span className="info-value">{dropOfAddressStair}</span>
+              </p>
+            )}
+          </div>
+          <div className="floatingworker">
+            {worker && (
+              <p>
+                <span className="info-label">Type of Worker:</span>
+                <span className="info-value">{worker}</span>{" "}
+              </p>
+            )}
+          </div>
+          <div className="floatingvansize">
+            {vanSize && (
+              <p>
+                <span className="info-label">Van Size:</span>
+                <span className="info-value">{vanSize} Van</span>{" "}
+              </p>
+            )}
+          </div>
+          {/* {vanSize && <p>Van Size: {vanSize}</p>} */}
+        </div>
+
+        <div className="floatingtotal">
+          {totalPrice && (
+            <p>
+              TOTAL PRICE: <span className="total-price">£{totalPrice}</span>
+            </p>
+          )}
+        </div>
+        <div className="floatbutton">
+          <button onClick={handleBookNow}>Book Now</button>
+          <button onClick={handleSaveLater}>Save For Later</button>
+        </div>
       </div>
     </>
   );
