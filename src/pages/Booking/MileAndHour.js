@@ -44,7 +44,7 @@ function MileAndHour({ userData }) {
   //   ? checkLoadingHour(userData.yourinfo.receivedData.vanSize)
   //   : "unknown";
   const yourtime = userData ? userData.quote.travelHour : "unknown";
-  console.log("Yourtime" + JSON.stringify(yourtime));
+  // console.log("Yourtime" + JSON.stringify(yourtime));
   const yourDistance = userData
     ? userData.quote.travelMiles.toFixed(2)
     : "unknown";
@@ -89,6 +89,7 @@ function MileAndHour({ userData }) {
         <div className="choosetime">
           <label htmlFor="choosehour">I need this Vehicle For</label>
           <select id="choosehour" onChange={handleHourChange}>
+            required
             {generateTimeOptions()}
           </select>
         </div>

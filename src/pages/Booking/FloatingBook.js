@@ -1,6 +1,7 @@
 import React from "react";
 
-function FloatingBook({ userData }) {
+function FloatingBook({ userData, closeButton }) {
+  // console.log("This is for closeButton" + setCheckForm);
   // Ensure userData and userData.quote are available
   const serverQuote = userData && userData.quote;
   // const receivedData = userData && userData.yourinfo.receivedData.addresses;
@@ -44,10 +45,18 @@ function FloatingBook({ userData }) {
   const vanSize = serverQuote && serverQuote.typeofVan;
   const worker = serverQuote && serverQuote.typeOfWorker;
   const totalPrice = serverQuote && serverQuote.totalPrice.toFixed(2);
+  const totalHour = serverQuote && serverQuote.totalHour;
+  const handleCloseButton = (e) => {
+    e.stopPropagation();
+    closeButton();
+    // setCheckForm(false);
+  };
   return (
     <>
       <div className="floatingbook">
-        <h1>Booking Summary</h1>
+        <h1>
+          Booking Summary<button onClick={handleCloseButton}>Close</button>
+        </h1>
         {pickupAddress && <p>Pickup address:{pickupAddress} </p>}
         {pickupAddressStair && <p>PickUp stair: {pickupAddressStair}</p>}
         {viaStop && <p>Via Stop: {viaStop} </p>}

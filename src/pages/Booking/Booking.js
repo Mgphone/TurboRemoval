@@ -18,7 +18,8 @@ import MyContext from "../../context/MyContext";
 function Booking() {
   const { data } = useContext(MyContext);
   const [userData, setuserData] = useState(null);
-
+  const [checkForm, setCheckForm] = useState(false);
+  // console.log("This is checkForm" + checkForm);
   // useEffect(() => {
   //   console.log(
   //     "This is from Booking main to send to the back" +
@@ -51,11 +52,27 @@ function Booking() {
   // useEffect(() => {
   //   console.log("This is userData" + JSON.stringify(userData));
   // }, [userData]);
+
+  const handleFormCLick = (e) => {
+    e.preventDefault();
+    setCheckForm(true);
+  };
+  const closeButton = () => {
+    // setCheckForm(false);
+    setCheckForm(false);
+  };
   return (
     <>
       <Nav />
-      <form className="booking-container">
-        <FloatingBook userData={userData} />
+      <form className="booking-container" onSubmit={handleFormCLick}>
+        {checkForm && (
+          <FloatingBook
+            userData={userData}
+            closeButton={closeButton}
+            setCheckForm={setCheckForm}
+          />
+        )}
+
         <Booking_Header />
         <ChooseVanSize />
         <Booking_Loading />
@@ -64,7 +81,7 @@ function Booking() {
         <MileAndHour userData={userData} />
         <MovingDate />
         <AboutYou />
-        <button>Get Free Quote</button>
+        <button type="submit">Get Free Quote</button>
       </form>
       <Footer />
     </>

@@ -121,3 +121,9 @@ commit 48
 add nodemon for development at node noted
 bug fixed for stair firstly checked if there is value or not first then use ternary opertor noted
 in react check all with && to display noted
+
+commit 49,
+(react)
+e.stopPropagation is prevent bubble phrase(parets(root of DOM tree)) noted
+Prevent the click event from propagating further noted
+in my close button on floating.. i nested parent .. and example of need to use stopPropagation noted
