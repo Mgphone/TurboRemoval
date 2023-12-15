@@ -7,10 +7,15 @@
   /* margin:0 auto; */
 
 }
+
 .floatingbook header{
 display: flex;
 justify-content: space-between;
 margin-bottom: 1vh;
+}
+.floattime{
+  text-decoration: underline;
+  font-size: 1.2em;
 }
 .floatingcontent{
   display: flex;

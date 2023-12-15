@@ -46,6 +46,20 @@ function FloatingBook({ userData, closeButton }) {
   const worker = serverQuote && serverQuote.typeOfWorker;
   const totalPrice = serverQuote && serverQuote.totalPrice.toFixed(2);
   const totalHour = serverQuote && serverQuote.totalHour;
+  const moveDate = serverQuote && serverQuote.date;
+  const changeToGBTime = (time) => {
+    const dateObj = new Date(time);
+    const formattedDateandTime = dateObj.toLocaleString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+      weekday: "long",
+    });
+    return formattedDateandTime;
+  };
   const handleCloseButton = (e) => {
     e.stopPropagation();
     closeButton();
@@ -64,7 +78,10 @@ function FloatingBook({ userData, closeButton }) {
       <div className="floatingbook">
         <header>
           <h1>Booking Summary</h1>
-
+          <h2>
+            Moving Date:{" "}
+            <span className="floattime">{changeToGBTime(moveDate)}</span>
+          </h2>
           <button onClick={handleCloseButton}>X</button>
         </header>
         <div className="floatingcontent">
