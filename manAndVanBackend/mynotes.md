@@ -132,3 +132,7 @@ commit 50,
 (react,node)
 change image for vansize, change image of help required noted
 update the floating div noted
+
+commit 53,
+(react)
+i use array.slice 1,array.length-1 it mean cancel first and less array noted

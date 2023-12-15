@@ -2,10 +2,10 @@
   background-color: rgb(163, 163, 223);
   width: 80vw;
   position: fixed;
-  height:auto;
-  top:5em;
-  /* margin:0 auto; */
-
+  height:40vh;
+  top:14vh;
+  overflow:auto;
+box-sizing: border-box;
 }
 
 .floatingbook header{
@@ -44,10 +44,26 @@ margin-bottom: 1vh;
 .info-label {
   font-weight: bold;
 }
+.floatingshowmore{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5vh;
+  cursor: pointer;  
+}
+.floatingshowmore:hover{
+  font-weight: bold;
+}
+.floatingviastop, .floatingdescription{
+ text-align: center;
+}
+.floatingdescription{
+  margin-bottom: 2vh;
+}
 .floatingtotal{
   font-size: 1.6em;
   text-align: center;
 }
+
 .floatingtotal .total-price{
   font-weight: bold;
 }

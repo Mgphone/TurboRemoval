@@ -1,10 +1,8 @@
-import React from "react";
-
+import React, { useState } from "react";
+import FloatingShowMore from "./FloatingShowMore";
 function FloatingBook({ userData, closeButton }) {
-  // console.log("This is for closeButton" + setCheckForm);
-  // Ensure userData and userData.quote are available
+  const [isHidden, setIsHidden] = useState(true);
   const serverQuote = userData && userData.quote;
-  // const receivedData = userData && userData.yourinfo.receivedData.addresses;
   console.log(serverQuote);
 
   // Extract information with null or "Choose" defaults
@@ -72,6 +70,10 @@ function FloatingBook({ userData, closeButton }) {
   const handleSaveLater = (e) => {
     e.preventDefault();
     console.log("Hmmmm save for later Button");
+  };
+  const handleShowMore = () => {
+    setIsHidden(!isHidden);
+    console.log("You click");
   };
   return (
     <>
@@ -147,7 +149,10 @@ function FloatingBook({ userData, closeButton }) {
           </div>
           {/* {vanSize && <p>Van Size: {vanSize}</p>} */}
         </div>
-
+        <div className="floatingshowmore" onClick={handleShowMore}>
+          {isHidden ? "Show Less⬆️" : "Show More⬇️"}
+        </div>
+        {isHidden && <FloatingShowMore serverQuote={serverQuote} />}
         <div className="floatingtotal">
           {totalPrice && (
             <p>
