@@ -49,27 +49,29 @@ const createQuote = async (receivedData) => {
     Number(totalStairCount) -
     (Number(checkDeliverStair) + Number(checkPickupStair));
   let typeofVan = await receivedData.vanSize;
-  let vanCharge = 50;
+  let vanCharge = 25;
   if (typeofVan === "Small") {
-    vanCharge = 50;
+    vanCharge = 25;
   } else if (typeofVan === "Medium") {
-    vanCharge = 75;
+    vanCharge = 50;
   } else if (typeofVan === "Large") {
-    vanCharge = 100;
+    vanCharge = 75;
   } else if (typeofVan === "Luton") {
-    vanCharge = 125;
+    vanCharge = 100;
   }
   let typeOfWorker = await receivedData.driverHelp;
-  let workerCharge = 30;
+  let workerCharge = 10;
   if (typeOfWorker === "No-Help") {
-    workerCharge = 30;
+    workerCharge = 10;
   } else if (typeOfWorker === "Driver-Help") {
-    workerCharge = 45;
+    workerCharge = 20;
   } else if (typeOfWorker === "Driver-Plus-One") {
-    workerCharge = 60;
+    workerCharge = 30;
   } else if (typeOfWorker === "Driver-Plus-Two") {
-    workerCharge = 75;
+    workerCharge = 40;
   }
+  const numberOfSecond = totalSecond / 3600;
+  console.log("Number of Second" + numberOfSecond);
   const totalPrice =
     (travelResult.distance < 5
       ? 15
@@ -78,7 +80,7 @@ const createQuote = async (receivedData) => {
       : 15 + travelResult.distance * 1) +
     totalStairCount * 10 +
     vanCharge +
-    workerCharge +
+    workerCharge * numberOfSecond +
     viaStop * 10;
 
   return {

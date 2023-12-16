@@ -6,7 +6,7 @@ function FloatingShowMore({ serverQuote }) {
     ? serverQuote.description
     : "No Description";
   const isViaStop = locations && locations.length > 2;
-  console.log(isViaStop);
+  // console.log(isViaStop);
   return (
     <div className="floatingmorecontainer">
       {isViaStop &&

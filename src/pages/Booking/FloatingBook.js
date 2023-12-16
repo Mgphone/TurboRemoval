@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import FloatingShowMore from "./FloatingShowMore";
 function FloatingBook({ userData, closeButton }) {
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(false);
+
   const serverQuote = userData && userData.quote;
-  console.log(serverQuote);
+  console.log("This is from serverQuote" + JSON.stringify(serverQuote));
 
   // Extract information with null or "Choose" defaults
   const pickupAddress =
@@ -43,7 +44,7 @@ function FloatingBook({ userData, closeButton }) {
   const vanSize = serverQuote && serverQuote.typeofVan;
   const worker = serverQuote && serverQuote.typeOfWorker;
   const totalPrice = serverQuote && serverQuote.totalPrice.toFixed(2);
-  const totalHour = serverQuote && serverQuote.totalHour;
+  // const totalHour = serverQuote && serverQuote.totalHour;
   const moveDate = serverQuote && serverQuote.date;
   const changeToGBTime = (time) => {
     const dateObj = new Date(time);
