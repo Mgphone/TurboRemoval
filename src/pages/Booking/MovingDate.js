@@ -25,13 +25,13 @@ function MovingDate() {
     minTime.setHours(6, 0, 0, 0);
   }
 
-  const CustomInput = ({ required, value, onClick }) => (
+  const CustomInput = ({ value, onClick }) => (
     <input
-      required={required}
+      required
       type="text"
       value={value}
       onClick={onClick}
-      readOnly // Disable keyboard input
+      // readOnly
     />
   );
   const handleChange = (date) => {
@@ -70,8 +70,7 @@ function MovingDate() {
               minDate={new Date()}
               minTime={minTime}
               maxTime={maxTime}
-              customInput={<CustomInput required />}
-              // filterTime={(time) => time < minTime || time > maxTime}
+              customInput={<CustomInput />}
             />
           </h3>
           <BookingDescription />

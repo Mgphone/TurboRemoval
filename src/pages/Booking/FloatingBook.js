@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import FloatingShowMore from "./FloatingShowMore";
+import changeToGBTime from "./changeToGBTime";
 function FloatingBook({ userData, closeButton }) {
   const [isHidden, setIsHidden] = useState(false);
+  const [isButtonBookNow, setIsButtonBookNow] = useState(false);
+  const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
 
   const serverQuote = userData && userData.quote;
   console.log("This is from serverQuote" + JSON.stringify(serverQuote));
@@ -28,63 +31,51 @@ function FloatingBook({ userData, closeButton }) {
       ? serverQuote.places[serverQuote.places.length - 1]
       : "Choose Drop Off";
 
-  // const dropOfAddressStair =
-  //   receivedData[receivedData.length - 1].stair &&
-  //   receivedData[receivedData.length - 1].stair
-  //     ? receivedData[receivedData.length - 1].stair
-  //     : "No Stair";
-
   const viaStop =
     serverQuote && serverQuote.places && serverQuote.places.length > 2
       ? serverQuote.places.length - 2
       : "No Via Stop";
 
-  // const totalStair = serverQuote && serverQuote.stairTotal;
-  // const viaStopStair = totalStair - (pickupAddressStair + dropOfAddressStair);
   const vanSize = serverQuote && serverQuote.typeofVan;
   const worker = serverQuote && serverQuote.typeOfWorker;
   const totalPrice = serverQuote && serverQuote.totalPrice.toFixed(2);
-  // const totalHour = serverQuote && serverQuote.totalHour;
   const moveDate = serverQuote && serverQuote.date;
-  const changeToGBTime = (time) => {
-    const dateObj = new Date(time);
-    const formattedDateandTime = dateObj.toLocaleString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-      weekday: "long",
-    });
-    return formattedDateandTime;
-  };
+  const vehicleHour = serverQuote && serverQuote.totalHour;
+
   const handleCloseButton = (e) => {
     e.stopPropagation();
     closeButton();
-    // setCheckForm(false);
   };
   const handleBookNow = (e) => {
     e.preventDefault();
+    setIsButtonBookNow(true);
     console.log("Good Job you click Book Now" + JSON.stringify(serverQuote));
   };
   const handleSaveLater = (e) => {
     e.preventDefault();
+    setIsButtonSaveLater(true);
     console.log("Hmmmm save for later Button");
   };
   const handleShowMore = () => {
     setIsHidden(!isHidden);
-    console.log("You click");
+    // console.log("You click");
   };
   return (
     <>
       <div className="floatingbook">
-        <h1>Booking Summary</h1>
+        <div className="floatingabout">
+          "Dear <b>{serverQuote.name}</b>, thank you for choosing our moving
+          service. We appreciate your trust. Your contact number is{" "}
+          <b> {serverQuote.phone}</b>, and your email address is{" "}
+          <b>{serverQuote.email}</b>. We are pleased to provide you with a
+          quotation for your upcoming move."
+        </div>
         <header>
-          <h2>
+          <h2>Booking Summary</h2>
+          <h3>
             Moving Date:{" "}
             <span className="floattime">{changeToGBTime(moveDate)}</span>
-          </h2>
+          </h3>
           <button onClick={handleCloseButton}>X</button>
         </header>
         <div className="floatingcontent">
@@ -148,6 +139,14 @@ function FloatingBook({ userData, closeButton }) {
               </p>
             )}
           </div>
+          <div className="floatinghourNeed">
+            {vehicleHour && (
+              <p>
+                <span className="info-label">Vehicle Need:</span>
+                <span className="info-value">{vehicleHour}</span>{" "}
+              </p>
+            )}
+          </div>
           {/* {vanSize && <p>Van Size: {vanSize}</p>} */}
         </div>
         <div className="floatingshowmore" onClick={handleShowMore}>
@@ -161,6 +160,24 @@ function FloatingBook({ userData, closeButton }) {
             </p>
           )}
         </div>
+        {isButtonBookNow && (
+          <div className="divbooknow">
+            <div>
+              <p>Dear {serverQuote.name} </p>, Your email address is{" "}
+              {serverQuote.email} and your Phone Number is {serverQuote.phone}.
+              Enter your bank Details:
+            </div>
+          </div>
+        )}
+        {isButtonSaveLater && (
+          <div className="divsavelater">
+            <div>
+              <p>Dear {serverQuote.name} </p>, Your email address is{" "}
+              {serverQuote.email} and your Phone Number is {serverQuote.phone}.
+              Enter your bank Details:
+            </div>
+          </div>
+        )}
         <div className="floatbutton">
           <button onClick={handleBookNow}>Book Now</button>
           <button onClick={handleSaveLater}>Save For Later</button>

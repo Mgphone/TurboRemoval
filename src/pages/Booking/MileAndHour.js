@@ -12,6 +12,11 @@ function MileAndHour({ userData }) {
 
   const generateTimeOptions = () => {
     const options = [];
+    options.push(
+      <option key="" value="" disabled selected>
+        Select an hour
+      </option>
+    );
     for (let hours = 1; hours <= 20; hours++) {
       for (let minutes = 0; minutes < 60; minutes += 30) {
         const formattedHours = hours.toString().padStart(2, "0");
@@ -88,8 +93,7 @@ function MileAndHour({ userData }) {
         </p>
         <div className="choosetime">
           <label htmlFor="choosehour">I need this Vehicle For</label>
-          <select id="choosehour" onChange={handleHourChange}>
-            required
+          <select id="choosehour" onChange={handleHourChange} required>
             {generateTimeOptions()}
           </select>
         </div>

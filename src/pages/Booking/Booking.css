@@ -30,6 +30,11 @@ body {
   justify-content: space-between;
   margin-bottom: 1vh;
 }
+.floatingbook>header>button{
+  display: relative;
+  background-color:red;
+  top:0;
+}
 
 .floattime {
   text-decoration: underline;

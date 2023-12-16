@@ -6,10 +6,10 @@ function Nav() {
 
   // const isButtonVisible = location.pathname !== "/booking/*";
   const location = useLocation();
-  const isBookingPage = location.pathname.startsWith("/booking");
-  const searchParams = new URLSearchParams(location.search);
-  const isLocationInQuery = searchParams.has("yourlocation");
-  const isButtonVisible = !(isBookingPage || isLocationInQuery);
+  // const isBookingPage = location.pathname.startsWith("/booking");
+  // const searchParams = new URLSearchParams(location.search);
+  // const isLocationInQuery = searchParams.has("yourlocation");
+  // const isButtonVisible = !(isBookingPage || isLocationInQuery);
   return (
     <>
       <header className="navbar">
@@ -19,13 +19,13 @@ function Nav() {
           </a>
         </div>
         <div className="navbar-right">
-          {isButtonVisible && (
+          {/* {isButtonVisible && (
             <div className="top-section">
               <Link to="/booking">
                 <div>Get FREE QUOTE</div>
               </Link>
             </div>
-          )}
+          )} */}
           <div className="bottom-section">
             {/* <a href="/">HOME</a> */}
             <NavLink to="/">HOME</NavLink>

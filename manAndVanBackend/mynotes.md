@@ -136,3 +136,7 @@ update the floating div noted
 commit 53,
 (react)
 i use array.slice 1,array.length-1 it mean cancel first and less array noted
+
+commit 58,
+(react,node)
+for node i use mongoose and atlas server noted
