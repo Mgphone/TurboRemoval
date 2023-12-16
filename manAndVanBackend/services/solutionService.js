@@ -43,10 +43,11 @@ const createQuote = async (receivedData) => {
     }
     return sum;
   }, 0);
+  let isViaStop = receivedData.addresses.length > 2;
+  let viaStop = isViaStop ? receivedData.addresses.length - 2 : 0;
   const checkViaStopStair =
     Number(totalStairCount) -
     (Number(checkDeliverStair) + Number(checkPickupStair));
-  // const viaStopStair = checkViaStopStair > 0 ? "" : checkViaStopStair;
   let typeofVan = await receivedData.vanSize;
   let vanCharge = 50;
   if (typeofVan === "Small") {
@@ -70,10 +71,15 @@ const createQuote = async (receivedData) => {
     workerCharge = 75;
   }
   const totalPrice =
-    (travelResult.distance < 5 ? 15 : travelResult.distance * 1.5) +
+    (travelResult.distance < 5
+      ? 15
+      : travelResult.distance < 20
+      ? 15 + travelResult.distance * 2
+      : 15 + travelResult.distance * 1) +
     totalStairCount * 10 +
     vanCharge +
-    workerCharge;
+    workerCharge +
+    viaStop * 10;
 
   return {
     yourinfo: { receivedData },
@@ -96,7 +102,6 @@ const createQuote = async (receivedData) => {
       phone: phone,
       name: name,
       pickupStair: pickupStair,
-      // checkPickup: checkPickup,
       deliveryStair: deliveryStair,
       viaStopStair: checkViaStopStair,
     },
