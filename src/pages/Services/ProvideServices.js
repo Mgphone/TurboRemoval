@@ -10,7 +10,7 @@ function ProvideServices() {
         </div>
         <div className="services-cards">
           {servicesprovided.map((item) => (
-            <div key={item.No} className="service-card">
+            <div key={item.No} className="service-card ">
               <img
                 src={require(`../../assets${item.Image}`)}
                 alt={item.Title}

@@ -4,7 +4,7 @@ import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
 import HomeWelcomeSection from "./HomeWelcomeSection";
 import Review from "./Review";
-import ProvideServices from "./ProvideServices";
+// import ProvideServices from "./ProvideServices";
 import Howitwork from "./Howitwork";
 // import MyContext from "../../context/MyContext";
 function Home() {
@@ -21,7 +21,7 @@ function Home() {
       <Nav />
       <HomeWelcomeSection />
       <Review />
-      <ProvideServices />
+      {/* <ProvideServices /> */}
       <Howitwork />
       <Footer />
     </>
