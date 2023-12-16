@@ -1,39 +1,59 @@
-.floatingbook{
+/* Global Styles */
+body {
+  /* font-family: 'Arial', sans-serif; */
+  margin: 0;
+  padding: 0;
+}
+
+/* Floating Book */
+.floatingbook {
   background-color: rgb(163, 163, 223);
   width: 80vw;
   position: fixed;
-  height:40vh;
-  top:14vh;
-  overflow:auto;
-box-sizing: border-box;
+  height: 40vh;
+  top: 14vh;
+  overflow: auto;
+  box-sizing: border-box;
+  border: 2px solid #4a4a4a;
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s;
+  z-index: 2;
 }
 
-.floatingbook header{
-display: flex;
-justify-content: space-between;
-margin-bottom: 1vh;
+.floatingbook:hover {
+  background-color: rgb(133, 133, 193);
 }
-.floattime{
+
+.floatingbook header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1vh;
+}
+
+.floattime {
   text-decoration: underline;
   font-size: 1.2em;
 }
-.floatingcontent{
+
+.floatingcontent {
   display: flex;
   flex-direction: row;
- gap:20px;
- justify-content: center;
-  
-}
-.floatingpickup, .floatingviastop .floatingdelivery{
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* text-align: center; */
-  
+  gap: 20px;
+  margin-left: 10vw;
 }
 
-.floatingpickup p,.floatingviastop p {
-  margin-bottom: 0.5em; 
+.floatingpickup,
+.floatingviastop,
+.floatingdelivery {
+  display: flex;
+  flex-direction: column;
+}
+
+.floatingpickup p,
+.floatingviastop p,
+.floatingdelivery p {
+  margin-bottom: 0.5em;
 }
 
 .info-label,
@@ -44,54 +64,68 @@ margin-bottom: 1vh;
 .info-label {
   font-weight: bold;
 }
-.floatingshowmore{
+
+.floatingshowmore {
   display: flex;
   justify-content: flex-end;
   margin-right: 5vh;
-  cursor: pointer;  
+  cursor: pointer;
 }
-.floatingshowmore:hover{
+
+.floatingshowmore:hover {
   font-weight: bold;
 }
-.floatingviastop, .floatingdescription{
- text-align: center;
+
+.floatingmorecontainer {
+  margin-left: 10vw;
 }
-.floatingdescription{
+
+.floatingviastopmore,
+.floatingdescription {
   margin-bottom: 2vh;
 }
-.floatingtotal{
+
+.floatingdescription {
+  font-style: italic;
+}
+
+.floatingtotal {
   font-size: 1.6em;
   text-align: center;
 }
 
-.floatingtotal .total-price{
+.floatingtotal .total-price {
   font-weight: bold;
 }
-.floatbutton{
+
+.floatbutton {
   text-align: center;
- 
 }
-.floatbutton button{
+
+.floatbutton button {
   margin-left: 1vw;
 }
-/* floating finish */
-.choosevansize{
+
+/* Choose Van Size */
+.choosevansize {
   padding: 5vh;
 }
-.choosevansize h1{
+
+.choosevansize h1 {
   text-align: center;
+  color: #6d6d6d;
 }
-.booking-container{
+
+.booking-container {
   width: 80vw;
-  margin:0 auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-/* form{
-  display: flex;
-  flex-direction: column;
-} */
-.booking-vansize, .booking-loading{
+
+.booking-vansize,
+.booking-loading {
   padding-top: 5vh;
   display: flex;
   flex-direction: row;
@@ -99,90 +133,103 @@ margin-bottom: 1vh;
   justify-content: center;
   text-align: center;
   gap: 3vw;
-  /* background-color: bisque; */
 }
-.booking-helper{
+
+.booking-helper {
   text-align: center;
 }
-/* end of vansize and booking loading */
-.readio-container{
-display: flex;
-align-items: center;
-/* background-color: white; */
- 
+
+/* Radio Container */
+.readio-container {
+  display: flex;
+  align-items: center;
 }
+
 .radio-label {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
+
 .radio-label img {
   width: 100px;
   height: 90px;
   margin-right: 10px;
 }
-/* wheremoving form */
-.wheremoving, .canitravel,.loading-header,.booking-header,.mileandhour,.movingdate,.aboutyou{
+
+/* Where Moving Form */
+.wheremoving,
+.canitravel,
+.loading-header,
+.booking-header,
+.mileandhour,
+.movingdate,
+.aboutyou {
   margin: 10vh 0;
   background-color: rgb(232, 195, 195);
-  color:black
+  color: black;
 }
 
-.wheremoving-form{
+.wheremoving-form {
   margin-top: 5vh;
 }
-.collection,.destination{
-  margin:5vh 0;
+
+.collection,
+.destination {
+  margin: 5vh 0;
 }
 
-
-.viaStops-header{
+.viaStops-header {
   text-align: center;
 }
-.viaStops-header p{
+
+.viaStops-header p {
   font-size: 0.8em;
-  color:red;
+  color: red;
   margin-bottom: 3vh;
 }
-.viastopinput{
+
+.viastopinput {
   display: flex;
   margin-bottom: 2vh;
 }
-.button-group{
-display: flex;
-flex-direction: row;
-justify-content: center;
-gap:2vw;
-}
-/* end of wheremoving */
-/* mileandhour */
-.estimatediv{
-  margin:10px auto;
-  background-color: azure;
 
-}
-.estimatediv ul{
+.button-group {
   display: flex;
   flex-direction: row;
-  gap:2em;
-  
+  justify-content: center;
+  gap: 2vw;
 }
-.estimatediv li{
+
+/* Mile and Hour */
+.estimatediv {
+  margin: 10px auto;
+  background-color: azure;
+}
+
+.estimatediv ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.estimatediv li {
   list-style: none;
 }
-.choosetime{
-  background-color:rgb(230, 169, 215);
-  padding:1em;
-  margin:1em;
+
+.choosetime {
+  background-color: rgb(230, 169, 215);
+  padding: 1em;
+  margin: 1em;
 }
-.choosetime label{
+
+.choosetime label {
   padding-right: 1em;
- 
 }
-/* popup booking vansize */
+
+/* Popup Booking Van Size */
 .popup {
-  /* display: none; */
-  padding-top: 20px; /* Corrected property value */
+  padding-top: 20px;
   margin: 0 auto;
   align-items: center;
   position: fixed;
@@ -190,7 +237,6 @@ gap:2vw;
   top: 0;
   width: 100%;
   height: 100%;
-  /* overflow-y: auto;   */
   background-color: rgb(236, 150, 150);
   opacity: 0.9;
   z-index: 1;
@@ -219,15 +265,15 @@ gap:2vw;
   color: #111;
 }
 
-.popuptext p
- {
+.popuptext p {
   padding: 2em 0;
-  
 }
-.popuptext h2{
+
+.popuptext h2 {
   text-align: center;
   width: auto;
 }
+
 .popup-image {
   display: flex;
   justify-content: center;
@@ -235,15 +281,28 @@ gap:2vw;
 }
 
 .popup-image img {
-  /* max-width: 100%;
-  max-height: 100%; */
   max-width: 12em;
   max-height: 12em;
 }
-.closepopup{
+
+.closepopup {
   position: absolute;
-  top:2em;
+  top: 2em;
   right: 5em;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
+.closepopup:hover {
+  transform: rotate(180deg);
+}
 
+/* Surprise Element */
+.floatingbook::before {
+  content: '🎉 Surprise!';
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #fff;
+}

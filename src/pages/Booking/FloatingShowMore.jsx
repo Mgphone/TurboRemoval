@@ -8,17 +8,18 @@ function FloatingShowMore({ serverQuote }) {
   const isViaStop = locations && locations.length > 2;
   console.log(isViaStop);
   return (
-    <>
+    <div className="floatingmorecontainer">
       {isViaStop &&
         locations.slice(1, locations.length - 1).map((location, index) => (
-          <div className="floatingviastop">
-            <p key={location.id}>
-              <span className="info-label">
-                ViaStop{index + 1}:{location.location}
+          <div className="floatingviastopmore">
+            <div key={location.id}>
+              <h3>ViaStop{index + 1}</h3>
+              <span className="showmore-address">
+                Address:{location.location}
               </span>
               <span> Stair:</span>
               {location.stair ? `Stair: ${location.stair}` : "No Stair"}
-            </p>
+            </div>
           </div>
         ))}{" "}
       <div className="floatingdescription">
@@ -30,7 +31,7 @@ function FloatingShowMore({ serverQuote }) {
         )}
       </div>
       {/* <p>Description:{description}</p> */}
-    </>
+    </div>
   );
 }
 

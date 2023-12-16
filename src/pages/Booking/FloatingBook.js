@@ -65,7 +65,7 @@ function FloatingBook({ userData, closeButton }) {
   };
   const handleBookNow = (e) => {
     e.preventDefault();
-    console.log("Good Job you click Book Now");
+    console.log("Good Job you click Book Now" + JSON.stringify(serverQuote));
   };
   const handleSaveLater = (e) => {
     e.preventDefault();
@@ -78,8 +78,8 @@ function FloatingBook({ userData, closeButton }) {
   return (
     <>
       <div className="floatingbook">
+        <h1>Booking Summary</h1>
         <header>
-          <h1>Booking Summary</h1>
           <h2>
             Moving Date:{" "}
             <span className="floattime">{changeToGBTime(moveDate)}</span>
