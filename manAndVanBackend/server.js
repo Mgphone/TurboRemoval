@@ -5,12 +5,14 @@ const calculateDistanceBetweenTwoLocations = require("./utils/geolocation");
 const getLocationByCallingGoogleApi = require("./api/google/googleApi");
 const timeConverter = require("./utils/timeConverter");
 const dbConnect = require("./config/dbConn");
-
+const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
 const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT;
 //test ing for node sending retreive
 dbConnect;
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.get("/retrieve", (req, res) => {
   res.json({ message: "Data Received" });
