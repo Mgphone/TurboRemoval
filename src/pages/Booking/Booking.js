@@ -31,7 +31,7 @@ function Booking() {
   useEffect(() => {
     const sendDataToBack = async () => {
       try {
-        const response = await fetch("/booking", {
+        const response = await fetch("http://localhost:4000/booking", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

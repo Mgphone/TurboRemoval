@@ -1,6 +1,9 @@
+// corsOptions.js
 const whiteList = require("./whiteList");
+
 const corsOptions = {
   origin: (origin, callback) => {
+    console.log("Received origin", origin);
     if (whiteList.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
@@ -8,6 +11,7 @@ const corsOptions = {
     }
   },
   credentials: true,
-  optionsSuccessStatus: 200,
+  // optionsSuccessStatus: 200,
 };
+
 module.exports = corsOptions;

@@ -4,15 +4,35 @@ const createQuote = require("./services/solutionService");
 const calculateDistanceBetweenTwoLocations = require("./utils/geolocation");
 const getLocationByCallingGoogleApi = require("./api/google/googleApi");
 const timeConverter = require("./utils/timeConverter");
+const app = express();
 const dbConnect = require("./config/dbConn");
+const morgan = require("morgan");
+const fs = require("fs");
+const path = require("path");
+const bodyParser = require("body-parser");
+const port = process.env.PORT;
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
-const bodyParser = require("body-parser");
-const app = express();
-const port = process.env.PORT;
 //test ing for node sending retreive
 dbConnect;
 app.use(cors(corsOptions));
+// app.use(cors());
+// app.use(cors({ origin: "*" }));
+//create log directory
+const logDirectory = path.join(__dirname, "logs");
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+// create write stream
+const accessLogStream = fs.createWriteStream(
+  path.join(logDirectory, "access.log"),
+  { flags: "a" }
+);
+app.use(
+  morgan(
+    ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"',
+    { stream: accessLogStream }
+  )
+);
+
 app.use(bodyParser.json());
 app.get("/retrieve", (req, res) => {
   res.json({ message: "Data Received" });
@@ -50,6 +70,7 @@ app.post("/booking", async (req, res) => {
     res.json(quote);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: "Internal Server error" });
   }
 });
 /**

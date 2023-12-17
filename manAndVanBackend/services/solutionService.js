@@ -71,7 +71,7 @@ const createQuote = async (receivedData) => {
     workerCharge = 40;
   }
   const numberOfSecond = totalSecond / 3600;
-  console.log("Number of Second" + numberOfSecond);
+  // console.log("Number of Second" + numberOfSecond);
   const totalPrice =
     (travelResult.distance < 5
       ? 15

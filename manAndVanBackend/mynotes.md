@@ -140,3 +140,7 @@ i use array.slice 1,array.length-1 it mean cancel first and less array noted
 commit 58,
 (react,node)
 for node i use mongoose and atlas server noted
+commit 59,
+(node)
+using cors whitelist to access
+logs whois in by creating log file(fs,path,morgan) library noted
