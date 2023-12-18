@@ -147,6 +147,15 @@ logs whois in by creating log file(fs,path,morgan) library noted
 
 commit 59,
 (node, react)
-to access LAN
+to access from LAN
 1.make a white list of node server ip (noted)
-2.when u fetch from the client make sure node ip address(NOT 127.0.0.1)(noted)
+2.when u fetch from the client make sure node server ip address(NOT 127.0.0.1)(noted)
+
+commit 62,
+(node)
+i change my server.js to easy to read, by changing logger.js middleware file (noted)
+for morgan you can log http request on nodejs application (noted)
+when u use need fs, path and morgan..
+1.check file exit or not and create or update for folder
+2.inside the folder add .log
+3.use morgan and write the logs

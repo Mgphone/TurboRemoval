@@ -6,9 +6,8 @@ const getLocationByCallingGoogleApi = require("./api/google/googleApi");
 const timeConverter = require("./utils/timeConverter");
 const app = express();
 const dbConnect = require("./config/dbConn");
-const morgan = require("morgan");
-const fs = require("fs");
-const path = require("path");
+const { accessLogger } = require("./middleware/logger");
+
 const bodyParser = require("body-parser");
 const port = process.env.PORT;
 const cors = require("cors");
@@ -18,20 +17,7 @@ dbConnect;
 app.use(cors(corsOptions));
 // app.use(cors());
 // app.use(cors({ origin: "*" }));
-//create log directory
-const logDirectory = path.join(__dirname, "logs");
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-// create write stream
-const accessLogStream = fs.createWriteStream(
-  path.join(logDirectory, "access.log"),
-  { flags: "a" }
-);
-app.use(
-  morgan(
-    ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"',
-    { stream: accessLogStream }
-  )
-);
+app.use(accessLogger);
 
 app.use(bodyParser.json());
 app.get("/retrieve", (req, res) => {
