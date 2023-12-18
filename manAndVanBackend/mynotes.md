@@ -144,3 +144,9 @@ commit 59,
 (node)
 using cors whitelist to access
 logs whois in by creating log file(fs,path,morgan) library noted
+
+commit 59,
+(node, react)
+to access LAN
+1.make a white list of node server ip (noted)
+2.when u fetch from the client make sure node ip address(NOT 127.0.0.1)(noted)
