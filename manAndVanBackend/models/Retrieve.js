@@ -4,7 +4,7 @@ const RetrieveSchema = Schema(
   {
     date: String,
     quote: Object,
-    number: Number,
+    randomNumber: Number,
   },
   { timestamps: true }
 );

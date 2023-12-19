@@ -50,8 +50,10 @@ app.post("/booking", async (req, res) => {
 app.post("/saveretrieve", async (req, res) => {
   try {
     const newData = req.body;
+    // newData.number = parseInt(newData.number, 10);
+
     // console.log(
-    //   "that is coming to the server to save to database" +
+    //   "that is going to the server to save to database" +
     //     JSON.stringify(newData)
     // );
     const Retrieve = require("./models/Retrieve");

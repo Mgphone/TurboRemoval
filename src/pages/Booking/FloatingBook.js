@@ -65,7 +65,7 @@ function FloatingBook({ userData, closeButton }) {
       quote: quote,
       randomNumber: randomNumber,
     };
-
+    // console.log("Before sending to server" + JSON.stringify(retrieveToSave));
     const setRetrieve = async () => {
       try {
         const response = await fetch("http://192.168.1.216:4000/saveretrieve", {
@@ -84,6 +84,7 @@ function FloatingBook({ userData, closeButton }) {
         //   alert(`Thanks for choosing our service!`);
         //   window.location.href = "http://192.168.1.216:3000";
         // }
+        // console.log("after sending back to server" + JSON.stringify(savedData));
         if (savedData.data) {
           alert(
             `Thanks you Chit Sone To using our service ${savedData.data.quote.name}`

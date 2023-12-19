@@ -2,7 +2,7 @@
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
 const createQuote = async (receivedData) => {
-  console.log(receivedData);
+  // console.log(receivedData);
   const cleanupPostcodes = await Promise.all(
     receivedData.addresses.map((address) => address.location)
   );

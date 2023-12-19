@@ -188,3 +188,10 @@ then check server sending code json.. (noted)
 if received alert and goback to home(noted)
 to go back i use useNavigate..react router dom(noted)
 import useNavigate, navigate=usenavigate and navigate("/")
+
+commit 64,
+when you create model for schema be aware the same value to save data for mongodb..(noted)
+{ date: String,
+quote: Object,
+randomNumber: Number,
+},date,quote,randomNumber have to be same name in both!!
