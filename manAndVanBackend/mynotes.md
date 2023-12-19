@@ -204,3 +204,12 @@ Change server.js and use express.router()
 3.file exports.module=router
 in the server.js
 4.app.use("/your route",required(file location))
+
+commit 66,
+(node)sending email when data save to server
+using nodemailer (noted)
+1.they can use so many mail services including GMail.
+2.to use gmail make 2 step vertification 3. enable app password
+4.import nodmailer with require
+5.variable and createTransport with object of service and auth:
+6.mail options object.. {from,to,subject,text(html)} 7. const info = await transport.sendMail(mailOptions);
