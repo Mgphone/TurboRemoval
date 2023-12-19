@@ -14,9 +14,9 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 //test ing for node sending retreive
 dbConnect;
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 // app.use(cors());
-// app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "*" }));
 app.use(accessLogger);
 
 app.use(bodyParser.json());
@@ -34,19 +34,6 @@ app.post("/retrieve", (req, res) => {
   });
 });
 
-// app.post("/booking", async (req, res) => {
-//   const receivedData = req.body;
-//   // console.log(JSON.stringify(receivedData));
-//   const userAddresses = receivedData.addresses.map(
-//     (address) => address.location
-//   );
-//   // console.log("This is only address location" + userAddresses);
-//   try {
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
 app.post("/booking", async (req, res) => {
   try {
     const receivedData = req.body;
@@ -59,6 +46,27 @@ app.post("/booking", async (req, res) => {
     res.status(500).json({ error: "Internal Server error" });
   }
 });
+
+app.post("/saveretrieve", async (req, res) => {
+  try {
+    const newData = req.body;
+    // console.log(
+    //   "that is coming to the server to save to database" +
+    //     JSON.stringify(newData)
+    // );
+    const Retrieve = require("./models/Retrieve");
+    //save to database
+    const newRetrieve = new Retrieve(newData);
+    const savedData = await newRetrieve.save();
+    // console.log("Data saved successfully from Node Server", savedData);
+    //respond to the client with success
+    res.status(200).json({ message: "Data received", data: savedData });
+  } catch (error) {
+    console.error("Error saving data", error);
+    res.status(500).json({ errror: "Internal server error" });
+  }
+});
+
 /**
  *
  * Change this endpoint to post and get all validPostcodes, typeOfVan and numberOfWorker from request body

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import FloatingShowMore from "./FloatingShowMore";
 import changeToGBTime from "./changeToGBTime";
+import { useNavigate } from "react-router-dom";
+
 function FloatingBook({ userData, closeButton }) {
+  const navigate = useNavigate();
   const [isHidden, setIsHidden] = useState(false);
   const [isButtonBookNow, setIsButtonBookNow] = useState(false);
   const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
 
   const serverQuote = userData && userData.quote;
-  console.log("This is from serverQuote" + JSON.stringify(serverQuote));
+  // console.log("This is from serverQuote" + JSON.stringify(serverQuote));
 
   // Extract information with null or "Choose" defaults
   const pickupAddress =
@@ -54,8 +57,46 @@ function FloatingBook({ userData, closeButton }) {
   const handleSaveLater = (e) => {
     e.preventDefault();
     setIsButtonSaveLater(true);
-    console.log("Hmmmm save for later Button");
+    const currentDate = new Date().toISOString();
+    const randomNumber = Math.floor(Math.random() * 1000000 + 1);
+    const quote = serverQuote;
+    const retrieveToSave = {
+      date: currentDate,
+      quote: quote,
+      randomNumber: randomNumber,
+    };
+
+    const setRetrieve = async () => {
+      try {
+        const response = await fetch("http://192.168.1.216:4000/saveretrieve", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(retrieveToSave),
+        });
+        if (!response.ok) {
+          throw new Error(`Response error:${response.status}`);
+        }
+        const savedData = await response.json();
+        // if (savedData.success) {
+        //   console.log("Data saved successuflly" + savedData.data);
+        //   alert(`Thanks for choosing our service!`);
+        //   window.location.href = "http://192.168.1.216:3000";
+        // }
+        if (savedData.data) {
+          alert(
+            `Thanks you Chit Sone To using our service ${savedData.data.quote.name}`
+          );
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Error saving data" + error);
+      }
+    };
+    setRetrieve();
   };
+
   const handleShowMore = () => {
     setIsHidden(!isHidden);
     // console.log("You click");

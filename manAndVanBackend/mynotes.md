@@ -159,3 +159,32 @@ when u use need fs, path and morgan..
 1.check file exit or not and create or update for folder
 2.inside the folder add .log
 3.use morgan and write the logs
+
+commit 63
+(node,mongodb,react)
+firstly i need to setup mongo atlas (noted)
+then create the mongo schema (noted)
+
+Node server side
+Creating Schema with Model
+1.I use mongoose
+2.mongooseSchema
+3.think for the data type.
+4.module.exports=mongoose.model("Retrieve",retrieveSchema)
+call this model
+
+save database
+5.newRetrieve=new Retrieve(req.body)
+6.const someName=await newRetieve.save()
+
+7.send it to client if save is complete
+res.status(200).json({ message: "Data received", data: savedData });
+anything with 200 codes
+
+client react side
+in react i have to fetch becareful of cors(noted)
+then i use endpoint for server /saveretrieve and method,headers,body(noted)
+then check server sending code json.. (noted)
+if received alert and goback to home(noted)
+to go back i use useNavigate..react router dom(noted)
+import useNavigate, navigate=usenavigate and navigate("/")
