@@ -68,7 +68,7 @@ function FloatingBook({ userData, closeButton }) {
     // console.log("Before sending to server" + JSON.stringify(retrieveToSave));
     const setRetrieve = async () => {
       try {
-        const response = await fetch("http://192.168.1.216:4000/saveretrieve", {
+        const response = await fetch("http://192.168.1.216:4000/saveRetrieve", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

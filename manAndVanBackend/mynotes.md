@@ -184,7 +184,7 @@ anything with 200 codes
 client react side
 in react i have to fetch becareful of cors(noted)
 then i use endpoint for server /saveretrieve and method,headers,body(noted)
-then check server sending code json.. (noted)
+then check server sending code json.. (noted)(
 if received alert and goback to home(noted)
 to go back i use useNavigate..react router dom(noted)
 import useNavigate, navigate=usenavigate and navigate("/")
@@ -195,3 +195,12 @@ when you create model for schema be aware the same value to save data for mongod
 quote: Object,
 randomNumber: Number,
 },date,quote,randomNumber have to be same name in both!!
+
+commit 65,
+(node)
+Change server.js and use express.router()
+1.call express.router
+2.router.post get patch delete but extension has to be ("/",req,res)=>{})
+3.file exports.module=router
+in the server.js
+4.app.use("/your route",required(file location))

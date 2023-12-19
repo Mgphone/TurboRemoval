@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const createQuote = require("./services/solutionService");
+// const createQuote = require("./services/solutionService");
 const calculateDistanceBetweenTwoLocations = require("./utils/geolocation");
 const getLocationByCallingGoogleApi = require("./api/google/googleApi");
 const timeConverter = require("./utils/timeConverter");
@@ -12,14 +12,15 @@ const bodyParser = require("body-parser");
 const port = process.env.PORT;
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
-//test ing for node sending retreive
+//testing for node sending retreive
 dbConnect;
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 // app.use(cors());
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
 app.use(accessLogger);
 
 app.use(bodyParser.json());
+
 app.get("/retrieve", (req, res) => {
   res.json({ message: "Data Received" });
 });
@@ -33,42 +34,9 @@ app.post("/retrieve", (req, res) => {
     message: "Data received and processed successfully on the server",
   });
 });
-
-app.post("/booking", async (req, res) => {
-  try {
-    const receivedData = req.body;
-    // console.log("receivedDatafrom front" + JSON.stringify(receivedData));
-    const quote = await createQuote(receivedData);
-
-    res.json(quote);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Internal Server error" });
-  }
-});
-
-app.post("/saveretrieve", async (req, res) => {
-  try {
-    const newData = req.body;
-    // newData.number = parseInt(newData.number, 10);
-
-    // console.log(
-    //   "that is going to the server to save to database" +
-    //     JSON.stringify(newData)
-    // );
-    const Retrieve = require("./models/Retrieve");
-    //save to database
-    const newRetrieve = new Retrieve(newData);
-    const savedData = await newRetrieve.save();
-    // console.log("Data saved successfully from Node Server", savedData);
-    //respond to the client with success
-    res.status(200).json({ message: "Data received", data: savedData });
-  } catch (error) {
-    console.error("Error saving data", error);
-    res.status(500).json({ errror: "Internal server error" });
-  }
-});
-
+//Router
+app.use("/booking", require("./Routes/booking"));
+app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
 /**
  *
  * Change this endpoint to post and get all validPostcodes, typeOfVan and numberOfWorker from request body
