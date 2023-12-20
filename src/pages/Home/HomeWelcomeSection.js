@@ -89,17 +89,19 @@ function HomeWelcomeSection() {
       navigate(`/booking`);
     }
   };
-  const handleretrieve = async () => {
+  const handleretrieve = async (e) => {
     // console.log("You Click Retrieve Button");
-    fetch("/retrieve")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Fetch error:", error));
+    navigate("/retrieve");
+    // e.preventDefault();
+    // fetch("/retrieve")
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error("Network response was not ok");
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((data) => console.log(data))
+    //   .catch((error) => console.error("Fetch error:", error));
   };
 
   return (

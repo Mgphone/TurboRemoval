@@ -8,7 +8,9 @@ import Locations from "./pages/Locations/Locations";
 import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
 import Booking from "./pages/Booking/Booking.js";
+import Retrieve from "./pages/Home/Retrieve/Retrieve.js";
 import MyContextProvider from "./context/MyContextProvider.js";
+
 function App() {
   return (
     <MyContextProvider>
@@ -20,6 +22,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/retrieve" element={<Retrieve />}></Route>
       </Routes>
     </MyContextProvider>
   );

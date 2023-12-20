@@ -213,3 +213,7 @@ using nodemailer (noted)
 4.import nodmailer with require
 5.variable and createTransport with object of service and auth:
 6.mail options object.. {from,to,subject,text(html)} 7. const info = await transport.sendMail(mailOptions);
+
+commit 67,
+react
+add another page for retrieve (noted)
