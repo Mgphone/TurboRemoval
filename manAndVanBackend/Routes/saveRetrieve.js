@@ -57,4 +57,21 @@ router.post("/", async (req, res) => {
     res.status(500).json({ errror: "Internal server error" });
   }
 });
+connectToDatabase();
+router.get("/", async (req, res) => {
+  try {
+    //connect to database
+    const query = req.query;
+    const retrieveData = await Retrieve.find(query);
+    if (retrieveData.length === 0) {
+      return res.status(404).json({ error: "No Retrieve Data found" });
+    }
+    res.json({ quote: retrieveData });
+    // closeDatabase();
+  } catch (error) {
+    console.error("Error gettting data from server", error);
+    res.status(500).json({ error: "Internal server error" });
+    // closeDatabase();
+  }
+});
 module.exports = router;

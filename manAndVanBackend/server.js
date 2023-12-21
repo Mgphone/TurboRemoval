@@ -37,7 +37,7 @@ app.post("/retrieve", (req, res) => {
 //Router
 app.use("/booking", require("./Routes/booking"));
 app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
-app.get("/retrieve", async (req, res, next) => {});
+// app.get("/retrieve", async (req, res, next) => {});
 /**
  *
  * Change this endpoint to post and get all validPostcodes, typeOfVan and numberOfWorker from request body

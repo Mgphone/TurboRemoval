@@ -215,5 +215,15 @@ using nodemailer (noted)
 6.mail options object.. {from,to,subject,text(html)} 7. const info = await transport.sendMail(mailOptions);
 
 commit 67,
-react
+(react)
 add another page for retrieve (noted)
+
+commit 69,
+(node,react)
+in backend
+database connection fetch url?randomNumber=${number} at the end of ? is query (noted)
+in http don't use a lot of close database and open database head to error(noted)
+if error send res.status(404).json good res.json() (noted)
+in frontend
+fetch url with ?query (noted)
+use try catch if response.ok use useState (noted)
