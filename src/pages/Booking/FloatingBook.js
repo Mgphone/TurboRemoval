@@ -58,7 +58,7 @@ function FloatingBook({ userData, closeButton }) {
     e.preventDefault();
     setIsButtonSaveLater(true);
     const currentDate = new Date().toISOString();
-    const randomNumber = Math.floor(Math.random() * 1000000 + 1);
+    const randomNumber = Math.floor(Math.random() * 10000000 + 1);
     const quote = serverQuote;
     const retrieveToSave = {
       date: currentDate,

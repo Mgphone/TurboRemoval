@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 function RetrieveBody() {
-  const [retrieveData, setRetrieve] = useState(true);
+  const [retrieveData, setRetrieve] = useState(false);
+
   return (
     <>
       <div className="retrieve">

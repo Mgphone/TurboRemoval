@@ -5,7 +5,6 @@ const calculateDistanceBetweenTwoLocations = require("./utils/geolocation");
 const getLocationByCallingGoogleApi = require("./api/google/googleApi");
 const timeConverter = require("./utils/timeConverter");
 const app = express();
-const dbConnect = require("./config/dbConn");
 const { accessLogger } = require("./middleware/logger");
 
 const bodyParser = require("body-parser");
@@ -13,7 +12,7 @@ const port = process.env.PORT;
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 //testing for node sending retreive
-dbConnect;
+
 app.use(cors(corsOptions));
 // app.use(cors());
 // app.use(cors({ origin: "*" }));
@@ -34,9 +33,11 @@ app.post("/retrieve", (req, res) => {
     message: "Data received and processed successfully on the server",
   });
 });
+
 //Router
 app.use("/booking", require("./Routes/booking"));
 app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
+app.get("/retrieve", async (req, res, next) => {});
 /**
  *
  * Change this endpoint to post and get all validPostcodes, typeOfVan and numberOfWorker from request body
