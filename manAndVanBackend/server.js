@@ -19,6 +19,7 @@ app.use(cors(corsOptions));
 app.use(accessLogger);
 
 app.use(bodyParser.json());
+//add the stripe payament method
 
 app.get("/retrieve", (req, res) => {
   res.json({ message: "Data Received" });

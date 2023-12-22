@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import changeToGBTime from "../../../component/changeToGBTime";
 function RetrieveUserData({ retrieveData }) {
   const date = retrieveData.retrieveData[0].date;
@@ -6,10 +6,13 @@ function RetrieveUserData({ retrieveData }) {
   const totalAddress = quote.totalAddress;
   const isViaStop = totalAddress && totalAddress.length > 2;
 
+  const handlebook = () => {
+    console.log("Good Job :D");
+  };
   return (
     <>
       <div className="retrieve-user-data">
-        <header>Hello {quote.name.toUpperCase()}, your Quotation:</header>
+        <header>Hello {quote.name.toUpperCase()}, Your Quotation:</header>
 
         <div className="retrieve-user-data-body">
           <h1>Date: {changeToGBTime(date)}</h1>
@@ -80,7 +83,11 @@ function RetrieveUserData({ retrieveData }) {
           <span className="user-paragraph">Your Email Address:</span>
           {quote.email}
         </p>
-        <button>Book Now</button>
+        <p className="user-totalPrice">
+          <span className="user-paragraph">TotalPrice:</span>£
+          {quote.totalPrice.toFixed(2)}
+        </p>
+        <button onClick={handlebook}>Book Now</button>
       </div>
     </>
   );
