@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RetrieveUserData from "./RetrieveUserData";
 function RetrieveBody() {
   const [retrieveCode, setRetrieveCode] = useState("");
   const [retrieveData, setRetrieveData] = useState("");
@@ -23,6 +24,7 @@ function RetrieveBody() {
       setRetrieveData("");
     }
   };
+
   return (
     <>
       <div className="retrieve">
@@ -37,7 +39,8 @@ function RetrieveBody() {
           <button onClick={handleRetrieveCLick}>Retrieve</button>
         </div>
         {error && <div>{JSON.stringify(error)}</div>}
-        {retrieveData && <div>{JSON.stringify(retrieveData)}</div>}
+        {retrieveData && <RetrieveUserData retrieveData={retrieveData} />}
+        {/* {retrieveData && <div>{JSON.stringify(retrieveData)}</div>} */}
       </div>
     </>
   );

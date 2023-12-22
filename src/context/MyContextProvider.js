@@ -22,16 +22,18 @@ function MyContextProvider({ children }) {
   };
 
   return (
-    <MyContext.Provider
-      value={{
-        data,
-        addAddress,
-        setData,
-        initialData,
-      }}
-    >
-      {children}
-    </MyContext.Provider>
+    <>
+      <MyContext.Provider
+        value={{
+          data,
+          addAddress,
+          setData,
+          initialData,
+        }}
+      >
+        {children}
+      </MyContext.Provider>
+    </>
   );
 }
 export default MyContextProvider;

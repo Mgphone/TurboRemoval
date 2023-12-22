@@ -1,24 +1,77 @@
-.retrieve{
+/* General styles for container */
+.retrieve {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
   justify-content: space-between;
 }
-.retrievebody{
+
+/* Styles for the main content body */
+.retrievebody {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* height: 100%; */
   justify-content: center;
-  gap:3vh;
-  /* padding-bottom: 50vh; */
-  background-color:#ccc;
-  width:50vw;
+  gap: 3vh;
+  background-color: #ccc;
+  width: 50vw;
   margin: 0 auto;
- 
 }
-.retrievebody input{
+
+/* Styles for input inside .retrievebody */
+.retrievebody input {
   max-width: 20em;
   height: 3em;
+}
+
+/* Styles for user data section */
+.retrieve-user-data {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.retrieve-user-data header {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.retrieve-user-data h1, .retrieve-user-data h2, .retrieve-user-data h3 {
+  color: #333;
+}
+
+.retrieve-user-data-body {
+  margin-bottom: 20px;
+}
+
+.retrieve-user-data-body p,.retrieve-user-data p {
+  margin: 0.3em 0;
+}
+
+.address {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address > div {
+  flex: 1;
+}
+
+.via-stop {
+  margin-top: 15px;
+}
+
+.user-paragraph {
+  font-weight: bold;
+  color: #555;
+  
+}
+
+.retrieve-user-data button{
+  padding: 2vh;
+  display: block;
+margin:2vh auto;
 }

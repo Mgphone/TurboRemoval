@@ -1,4 +1,6 @@
 .footer{
+  /* position: relative; */
+margin-top: auto;
   background-color: #ccc;
   display: grid;
   grid-template-columns: 30% 30% 30%;

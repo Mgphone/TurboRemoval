@@ -227,3 +227,12 @@ if error send res.status(404).json good res.json() (noted)
 in frontend
 fetch url with ?query (noted)
 use try catch if response.ok use useState (noted)
+
+commit 70,
+display retieve data
+(react)
+front end
+I add nested container to the app (noted)
+nested container to 100vh and flex column
+because i can do .footer to margin-top auto to not overlap word and will stay bottom (noted)
+if i fetch and get the json.. make a varibale first to be easy(noted)

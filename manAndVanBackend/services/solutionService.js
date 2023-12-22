@@ -64,11 +64,11 @@ const createQuote = async (receivedData) => {
   if (typeOfWorker === "No-Help") {
     workerCharge = 10;
   } else if (typeOfWorker === "Driver-Help") {
-    workerCharge = 20;
+    workerCharge = 25;
   } else if (typeOfWorker === "Driver-Plus-One") {
-    workerCharge = 30;
+    workerCharge = 50;
   } else if (typeOfWorker === "Driver-Plus-Two") {
-    workerCharge = 40;
+    workerCharge = 75;
   }
   const numberOfSecond = totalSecond / 3600;
   // console.log("Number of Second" + numberOfSecond);

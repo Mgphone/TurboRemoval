@@ -8,10 +8,9 @@ const transport = nodemailer.createTransport({
   service: "gmail",
   auth: { user: process.env.GMAIL_USERNAME, pass: process.env.GMAIL_PASSWORD },
 });
-
+connectToDatabase();
 router.post("/", async (req, res) => {
   try {
-    connectToDatabase();
     const newData = req.body;
     // newData.number = parseInt(newData.number, 10);
 
@@ -51,13 +50,13 @@ router.post("/", async (req, res) => {
     // console.log("Data saved successfully from Node Server", savedData);
     //respond to the client with success
     res.status(200).json({ message: "Data received", data: savedData });
-    closeDatabase();
+    // closeDatabase();
   } catch (error) {
     console.error("Error saving data", error);
     res.status(500).json({ errror: "Internal server error" });
   }
 });
-connectToDatabase();
+
 router.get("/", async (req, res) => {
   try {
     //connect to database
@@ -66,7 +65,7 @@ router.get("/", async (req, res) => {
     if (retrieveData.length === 0) {
       return res.status(404).json({ error: "No Retrieve Data found" });
     }
-    res.json({ quote: retrieveData });
+    res.json({ retrieveData });
     // closeDatabase();
   } catch (error) {
     console.error("Error gettting data from server", error);

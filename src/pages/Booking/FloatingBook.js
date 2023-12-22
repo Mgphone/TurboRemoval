@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FloatingShowMore from "./FloatingShowMore";
-import changeToGBTime from "./changeToGBTime";
+import changeToGBTime from "../../component/changeToGBTime";
 import { useNavigate } from "react-router-dom";
 
 function FloatingBook({ userData, closeButton }) {

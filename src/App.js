@@ -14,16 +14,18 @@ import MyContextProvider from "./context/MyContextProvider.js";
 function App() {
   return (
     <MyContextProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/locations" element={<Locations />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/booking" element={<Booking />} />
-        <Route path="/retrieve" element={<Retrieve />}></Route>
-      </Routes>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/locations" element={<Locations />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/retrieve" element={<Retrieve />}></Route>
+        </Routes>
+      </div>
     </MyContextProvider>
   );
 }
