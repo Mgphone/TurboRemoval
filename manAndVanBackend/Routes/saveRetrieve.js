@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const Retrieve = require("../models/Retrieve");
 const nodemailer = require("nodemailer");
-const connectToDatabase = require("../config/dbConn");
-const closeDatabase = require("../config/closeDatabase");
+// const connectToDatabase = require("../config/dbConn");
+// const closeDatabase = require("../config/closeDatabase");
 const transport = nodemailer.createTransport({
   service: "gmail",
   auth: { user: process.env.GMAIL_USERNAME, pass: process.env.GMAIL_PASSWORD },
 });
-connectToDatabase();
+// connectToDatabase();
 router.post("/", async (req, res) => {
   try {
     const newData = req.body;
@@ -65,7 +65,7 @@ router.get("/", async (req, res) => {
     if (retrieveData.length === 0) {
       return res.status(404).json({ error: "No Retrieve Data found" });
     }
-    res.json({ retrieveData });
+    res.json(retrieveData);
     // closeDatabase();
   } catch (error) {
     console.error("Error gettting data from server", error);

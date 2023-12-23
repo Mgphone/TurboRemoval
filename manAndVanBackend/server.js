@@ -11,6 +11,8 @@ const bodyParser = require("body-parser");
 const port = process.env.PORT;
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
+const connectToDatabase = require("./config/dbConn");
+connectToDatabase();
 //testing for node sending retreive
 
 app.use(cors(corsOptions));
@@ -38,6 +40,7 @@ app.post("/retrieve", (req, res) => {
 //Router
 app.use("/booking", require("./Routes/booking"));
 app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
+app.use("/savebooking", require("./Routes/saveBooking"));
 // app.get("/retrieve", async (req, res, next) => {});
 /**
  *

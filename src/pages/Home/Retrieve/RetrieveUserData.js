@@ -1,13 +1,26 @@
 import React, { useEffect } from "react";
 import changeToGBTime from "../../../component/changeToGBTime";
 function RetrieveUserData({ retrieveData }) {
-  const date = retrieveData.retrieveData[0].date;
-  const quote = retrieveData.retrieveData[0].quote;
+  const date = retrieveData[0].date;
+  const quote = retrieveData[0].quote;
   const totalAddress = quote.totalAddress;
   const isViaStop = totalAddress && totalAddress.length > 2;
-
-  const handlebook = () => {
-    console.log("Good Job :D");
+  // console.log("this is retrieveCode from react" + retrieveCode);
+  const handlebook = async () => {
+    // console.log("Good Job :D");
+    const handleResponse = await fetch(
+      "http://192.168.1.216:4000/savebooking",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(retrieveData),
+      }
+    );
+    const { clientSecret } = await handleResponse.json();
+    console.log("This is the result from react" + clientSecret);
+    // const {paymentIntent,error}=await Stripe.
   };
   return (
     <>

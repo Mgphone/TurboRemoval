@@ -5,6 +5,12 @@ const RetrieveSchema = Schema(
     date: String,
     quote: Object,
     randomNumber: Number,
+    paymentStatus: {
+      type: String,
+      enum: ["paid", "unpaid"],
+      default: "unpaid",
+    },
+    paymentIntentId: String,
   },
   { timestamps: true }
 );

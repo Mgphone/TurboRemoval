@@ -236,3 +236,16 @@ I add nested container to the app (noted)
 nested container to 100vh and flex column
 because i can do .footer to margin-top auto to not overlap word and will stay bottom (noted)
 if i fetch and get the json.. make a varibale first to be easy(noted)
+
+commit 72,
+(react,node)
+node
+stripe sending back client_secret to frontend and save
+change database connection to server.js(noted)
+in my model i add paymentStatus and paymentIntedId(noted)
+from the data of front i took only \_id(noted)
+for secruity safety i will research again the whole data of server(noted)
+to check the data type i can use model(Retrieve) Retrieve.findbyId()
+react
+in react i just only show all the data (noted)
+i post request to the alldata to the server (noted)
