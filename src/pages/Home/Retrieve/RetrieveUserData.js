@@ -1,26 +1,87 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import changeToGBTime from "../../../component/changeToGBTime";
 function RetrieveUserData({ retrieveData }) {
   const date = retrieveData[0].date;
   const quote = retrieveData[0].quote;
   const totalAddress = quote.totalAddress;
+  const isPaid =
+    retrieveData[0].paymentStatus === "paid" &&
+    retrieveData[0].paymentStatus !== undefined;
+
   const isViaStop = totalAddress && totalAddress.length > 2;
+  const stripe = useStripe();
+  const elements = useElements();
+  const [paymentError, setPaymentError] = useState(null);
   // console.log("this is retrieveCode from react" + retrieveCode);
-  const handlebook = async () => {
-    // console.log("Good Job :D");
-    const handleResponse = await fetch(
-      "http://192.168.1.216:4000/savebooking",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(retrieveData),
+  const handlePaymentSuccess = async () => {
+    try {
+      const updateResponse = await fetch(
+        "http://192.168.1.216:4000/savebooking/updatepaymentstatus",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(retrieveData),
+        }
+      );
+      const updateResult = await updateResponse.json();
+      if (updateResult.success === true) {
+        console.log("Payment Successed");
+      } else {
+        console.error("Failed to update payment");
       }
-    );
-    const { clientSecret } = await handleResponse.json();
-    console.log("This is the result from react" + clientSecret);
-    // const {paymentIntent,error}=await Stripe.
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handlebook = async () => {
+    // console.log("You click");
+    if (!elements || !stripe) {
+      console.log("There is nothing");
+      return;
+    }
+    try {
+      const handleResponse = await fetch(
+        "http://192.168.1.216:4000/savebooking",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(retrieveData),
+        }
+      );
+      const { clientSecret } = await handleResponse.json();
+      console.log("This is the result from react" + clientSecret);
+      // const {paymentIntent,error}=await Stripe.
+      //using stripe and card element
+      const { error, paymentIntent } = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+          billing_details: {
+            address: {
+              postal_code: elements.getElement(PostalCodeElement).value,
+            },
+          },
+        }
+      );
+      if (error) {
+        setPaymentError(error.message);
+      } else {
+        console.log("Paymnet succeeded", paymentIntent);
+        await handlePaymentSuccess();
+      }
+    } catch (error) {
+      console.error(error);
+      setPaymentError(
+        "An Error happen when during payment Process, Please Try again"
+      );
+    }
   };
   return (
     <>
@@ -100,7 +161,35 @@ function RetrieveUserData({ retrieveData }) {
           <span className="user-paragraph">TotalPrice:</span>£
           {quote.totalPrice.toFixed(2)}
         </p>
-        <button onClick={handlebook}>Book Now</button>
+        {!isPaid && (
+          <div className="checkispaid">
+            <div style={{ marginBottom: "20px" }}>
+              <label>
+                Card details
+                <CardElement
+                  options={{
+                    style: {
+                      base: {
+                        fontSize: "16px",
+                        color: "#424770",
+                        "::placeholder": {
+                          color: "#aab7c4",
+                        },
+                      },
+                      invalid: {
+                        color: "#9e2146",
+                      },
+                    },
+                  }}
+                />
+              </label>
+            </div>
+
+            {paymentError && <div style={{ color: "red" }}>{paymentError}</div>}
+            <button onClick={handlebook}>Book Now</button>
+          </div>
+        )}
+        {isPaid && <h5>You have Already paid</h5>}
       </div>
     </>
   );

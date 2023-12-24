@@ -49,4 +49,30 @@ router.post("/", async (req, res) => {
   //   });
 });
 
+router.post("/updatepaymentstatus", async (req, res) => {
+  try {
+    const query = req.body;
+    const objectId = query[0]._id;
+
+    console.log("This is an objectId" + JSON.stringify(objectId));
+    const result = await Retrieve.findById(objectId);
+
+    console.log("This is the result before" + JSON.stringify(result));
+    if (result) {
+      result.paymentStatus = "paid";
+      await result.save();
+      res.json({ success: true });
+    } else {
+      res.status(404).json({ error: "DOcument not found" });
+    }
+    console.log("This is result after" + JSON.stringify(result));
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server Error" });
+  }
+});
+router.get("/updatepaymentstatus", (req, res) => {
+  console.log("Just say hi from server");
+});
+
 module.exports = router;
