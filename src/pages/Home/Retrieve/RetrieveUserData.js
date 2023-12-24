@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import {
+  useStripe,
+  useElements,
+  CardElement,
+  PostalCodeElement,
+} from "@stripe/react-stripe-js";
 import changeToGBTime from "../../../component/changeToGBTime";
 function RetrieveUserData({ retrieveData }) {
   const date = retrieveData[0].date;
@@ -39,7 +44,7 @@ function RetrieveUserData({ retrieveData }) {
   const handlebook = async () => {
     // console.log("You click");
     if (!elements || !stripe) {
-      console.log("There is nothing");
+      // console.log("There is nothing");
       return;
     }
     try {

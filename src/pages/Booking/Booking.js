@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 // this is the page
 import Nav from "../../component/Nav";
-import FloatingBook from "./FloatingBook";
+import FloatingBook from "./Floating/FloatingBook";
 import Booking_Header from "./Booking_Header";
 import ChooseVanSize from "./ChooseVanSize";
 import Booking_Loading from "./Booking_Loading";
