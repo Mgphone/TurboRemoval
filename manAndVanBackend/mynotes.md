@@ -249,3 +249,14 @@ to check the data type i can use model(Retrieve) Retrieve.findbyId()
 react
 in react i just only show all the data (noted)
 i post request to the alldata to the server (noted)
+
+commit 75,
+(react,node)
+there are thrree ways to use stripe
+1.Payment Intents(allow more complex)
+2.Direct Link just the link
+3.Checkout Sessions(create session and ) sending failer and success page
+Node
+I make react router for payment bookingpayment router in node(noted)
+react
+I send backend and send my req.body with all quotes data (noted)

@@ -40,7 +40,8 @@ app.post("/retrieve", (req, res) => {
 //Router
 app.use("/booking", require("./Routes/booking"));
 app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
-app.use("/savebooking", require("./Routes/saveBooking"));
+app.use("/savebooking", require("./Routes/saveBooking")); //savebooking and later payment
+app.use("/paymentbooking", require("./Routes/bookingpayment")); //button payment
 // app.get("/retrieve", async (req, res, next) => {});
 /**
  *
