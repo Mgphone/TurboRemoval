@@ -5,6 +5,7 @@ const calculateDistanceBetweenTwoLocations = require("./utils/geolocation");
 const getLocationByCallingGoogleApi = require("./api/google/googleApi");
 const timeConverter = require("./utils/timeConverter");
 const app = express();
+app.use(express.json());
 const { accessLogger } = require("./middleware/logger");
 
 const bodyParser = require("body-parser");

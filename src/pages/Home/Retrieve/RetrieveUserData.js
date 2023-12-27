@@ -6,7 +6,9 @@ import {
   PostalCodeElement,
 } from "@stripe/react-stripe-js";
 import changeToGBTime from "../../../component/changeToGBTime";
+import { useNavigate } from "react-router-dom";
 function RetrieveUserData({ retrieveData }) {
+  const navigate = useNavigate();
   const date = retrieveData[0].date;
   const quote = retrieveData[0].quote;
   const totalAddress = quote.totalAddress;
@@ -33,7 +35,9 @@ function RetrieveUserData({ retrieveData }) {
       );
       const updateResult = await updateResponse.json();
       if (updateResult.success === true) {
-        console.log("Payment Successed");
+        // console.log("Payment Successed");
+        alert("Payment Success");
+        navigate("/");
       } else {
         console.error("Failed to update payment");
       }
@@ -68,11 +72,11 @@ function RetrieveUserData({ retrieveData }) {
           payment_method: {
             card: elements.getElement(CardElement),
           },
-          billing_details: {
-            address: {
-              postal_code: elements.getElement(PostalCodeElement).value,
-            },
-          },
+          // billing_details: {
+          //   address: {
+          //     postal_code: elements.getElement(PostalCodeElement).value,
+          //   },
+          // },
         }
       );
       if (error) {

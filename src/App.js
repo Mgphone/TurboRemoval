@@ -10,13 +10,16 @@ import NotFound from "./pages/NotFound/NotFound";
 import Booking from "./pages/Booking/Booking.js";
 import Retrieve from "./pages/Home/Retrieve/Retrieve.js";
 import MyContextProvider from "./context/MyContextProvider.js";
-
+import Success from "./pages/Handler/Success.js";
+import Fail from "./pages/Handler/Fail.js";
 function App() {
   return (
     <MyContextProvider>
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/fail" element={<Fail />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/locations" element={<Locations />} />

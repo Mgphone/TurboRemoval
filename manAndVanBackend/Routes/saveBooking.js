@@ -63,7 +63,7 @@ router.post("/updatepaymentstatus", async (req, res) => {
       await result.save();
       res.json({ success: true });
     } else {
-      res.status(404).json({ error: "DOcument not found" });
+      res.status(404).json({ error: "Document not found" });
     }
     console.log("This is result after" + JSON.stringify(result));
   } catch (error) {
