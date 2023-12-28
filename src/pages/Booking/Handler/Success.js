@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import Nav from "../../../component/Nav";
+import Footer from "../../../component/Footer";
 
 function Success() {
   const [searchParams] = useSearchParams();
@@ -38,8 +40,10 @@ function Success() {
 
   return (
     <>
+      <Nav />
       <h1>Successs 🎉🫰🎉🫰</h1>
       {session_id && <h1>{session_id}</h1>}
+      <Footer />
     </>
   );
 }

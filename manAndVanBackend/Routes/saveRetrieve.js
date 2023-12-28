@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const Retrieve = require("../models/Retrieve");
-const nodemailer = require("nodemailer");
-// const connectToDatabase = require("../config/dbConn");
-// const closeDatabase = require("../config/closeDatabase");
-const transport = nodemailer.createTransport({
-  service: "gmail",
-  auth: { user: process.env.GMAIL_USERNAME, pass: process.env.GMAIL_PASSWORD },
-});
+const { transport } = require("../services/emailService");
+// const nodemailer = require("nodemailer");
+// // const connectToDatabase = require("../config/dbConn");
+// // const closeDatabase = require("../config/closeDatabase");
+// const transport = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: { user: process.env.GMAIL_USERNAME, pass: process.env.GMAIL_PASSWORD },
+// });
+
 // connectToDatabase();
 router.post("/", async (req, res) => {
   try {
@@ -26,7 +28,7 @@ router.post("/", async (req, res) => {
     const mailOptions = {
       from: process.env.GMAIL_USERNAME,
       to: savedData.quote.email,
-      subject: "Thankss for using our service",
+      subject: "Thanks for using our service",
       html: `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
     <h1>Thank you very much for saving my quote. from www.lifitinglondon.com</h1>  

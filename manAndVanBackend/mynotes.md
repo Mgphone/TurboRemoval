@@ -277,3 +277,7 @@ a.{useSearchParams} from react-router-dom
 b.[searchParams]=useSearchParams
 c.session_id=searchParms.get("session_id) this is the weblink end with ? as bottom
 http://192.168.1.216:3000/paymentbooking/success?session_id=adfaldkjfeo
+
+commit 78
+(node)
+module.export emailservice (noted)
