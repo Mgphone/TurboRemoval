@@ -260,3 +260,20 @@ Node
 I make react router for payment bookingpayment router in node(noted)
 react
 I send backend and send my req.body with all quotes data (noted)
+
+commit 77
+(react,node)
+node
+using stripe.checkout.sessions.create (noted)
+use like stripe documentation (noted)
+
+when stripe go to success i use params of reactrouter (noted)
+everytime i pass i save to my mongodatabase (noted)
+there is two endpoint for server side
+a.send success to stripe and save to the database(noted)
+b.send success and change the database datatype(noted)
+In the success i use the params of reactrouter as follows
+a.{useSearchParams} from react-router-dom
+b.[searchParams]=useSearchParams
+c.session_id=searchParms.get("session_id) this is the weblink end with ? as bottom
+http://192.168.1.216:3000/paymentbooking/success?session_id=adfaldkjfeo
