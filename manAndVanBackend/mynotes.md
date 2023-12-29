@@ -285,3 +285,7 @@ module.export emailservice (noted)
 commit 79
 (node)
 when u module exports u have to be same order...if u swap there is an error(noted)
+
+commit 80
+(node)
+for mail options i call name,email with || and add above variable(noted)

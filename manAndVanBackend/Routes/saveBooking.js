@@ -4,6 +4,8 @@ const Retrieve = require("../models/Retrieve");
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 const { transport } = require("../services/emailService");
 const mailOptions = require("../utils/mailOptions");
+const { emailLogStream } = require("../middleware/emaillogger");
+
 router.post("/", async (req, res) => {
   try {
     const query = req.body;
@@ -67,6 +69,7 @@ router.post("/updatepaymentstatus", async (req, res) => {
     const pickUpaddress = result.quote.places[0];
     const deliverAddress = result.quote.places[result.quote.places.length - 1];
     const isViaStop = result.quote.places.length > 2;
+    const totalAmount = result.quote.totalPrice.toFixed(2);
     const emailOptions = mailOptions(
       name,
       phone,
@@ -81,7 +84,14 @@ router.post("/updatepaymentstatus", async (req, res) => {
     if (result) {
       result.paymentStatus = "paid";
       await result.save();
+      const logEmailInfo = (info) => {
+        const timeStamp = new Date().toISOString();
+        emailLogStream.write(
+          `[${timeStamp}]${info.response}email:${email}amount:£${totalAmount}`
+        );
+      };
       const info = await transport.sendMail(emailOptions);
+      logEmailInfo(info);
       console.log("Email Sent" + info.response);
 
       res.json({ success: true, emailSent: true });
