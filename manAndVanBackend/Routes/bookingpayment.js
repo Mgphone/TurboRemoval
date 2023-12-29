@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Retrieve = require("../models/Retrieve");
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
+const mailOptions = require("../utils/mailOptions");
+const { transport } = require("../services/emailService");
 router.post("/", async (req, res) => {
   try {
     // const receivedData = req.body;
@@ -56,22 +58,96 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Error Processing Payment" });
   }
 });
+// router.post("/success", async (req, res) => {
+//   try {
+//     const sessionId = req.body.session_id;
+//     const transition = await Retrieve.findOne({ paymentIntentId: sessionId });
+//     console.log("this is transition" + JSON.stringify(transition));
+//     const name = transition.quote.name;
+//     const email = transition.quote.email;
+//     const phone = transition.quote.phone;
+//     const quoteNumber = transition.randomNumber;
+//     const pickUpaddress = transition.quote.places[0];
+//     const deliverAddress =
+//       transition.quote.places[transition.quote.places.length - 1];
+//     const isViaStop = transition.quote.places.length > 2;
+
+//     const emailOptions = mailOptions(
+//       name,
+//       email,
+//       phone,
+//       quoteNumber,
+//       pickUpaddress,
+//       deliverAddress,
+//       isViaStop
+//     );
+//     if (!transition) {
+//       console.error("Transition not found");
+//       return res.status(404).json({ error: "Transition not Found" });
+//     }
+//     //if transition found....
+//     transition.paymentStatus = "paid";
+//     await transition.save();
+//     console.log("Payment status updated successfully.");
+
+//     //send email
+
+//     const info = await transport.sendMail(emailOptions);
+
+//     console.log("Email sent for directBook Payment" + info.response);
+//     res
+//       .status(200)
+//       .json({ message: "Payment updated successfully and email sent." });
+//   } catch (error) {
+//     console.error("Error Updating the payment");
+//     res.status(500).json({ error: "Error updating the payment" });
+//   }
+// });
 router.post("/success", async (req, res) => {
   try {
     const sessionId = req.body.session_id;
     const transition = await Retrieve.findOne({ paymentIntentId: sessionId });
-    if (transition) {
-      transition.paymentStatus = "paid";
-      await transition.save();
-    } else {
-      console.error("Transition not found");
+    // console.log("This is my trranstion" + JSON.stringify(transition));
+    if (!transition) {
+      // console.error("Transition not found");
       return res.status(404).json({ error: "Transition not Found" });
     }
-    // console.log("This is my session id" + JSON.stringify(sessionId));
-    // console.log("This is my id after thinking" + sessionId.session_id);
+
+    // If transition is found, update payment status and send email
+    transition.paymentStatus = "paid";
+    const name = transition.quote.name;
+    const email = transition.quote.email;
+    const phone = transition.quote.phone;
+    const quoteNumber = transition.randomNumber;
+    const pickUpaddress = transition.quote.places[0];
+    const deliverAddress =
+      transition.quote.places[transition.quote.places.length - 1];
+    const isViaStop = transition.quote.places.length > 2;
+
+    const emailOptions = mailOptions(
+      name,
+      phone,
+      email,
+      quoteNumber,
+      pickUpaddress,
+      deliverAddress,
+      isViaStop
+    );
+    // console.log("This is email options" + JSON.stringify(emailOptions));
+    await transition.save();
+    // console.log("Payment status updated successfully.");
+
+    const info = await transport.sendMail(emailOptions);
+    console.log("Email sent for directBook Payment", info.response);
+
+    res
+      .status(200)
+      .json({ message: "Payment updated successfully and email sent." });
   } catch (error) {
-    console.error("Error Updating the payment");
-    res.status(500).json({ error: "Error updating the payment" });
+    console.error("Error updating the payment or sending email", error);
+    res
+      .status(500)
+      .json({ error: "Error updating the payment or sending email" });
   }
 });
 
