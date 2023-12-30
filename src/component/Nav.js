@@ -1,11 +1,11 @@
 import React from "react";
 import "../assets/styles/Nav.css";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 function Nav() {
   // const location = useLocation();
 
   // const isButtonVisible = location.pathname !== "/booking/*";
-  const location = useLocation();
+  // const location = useLocation();
   // const isBookingPage = location.pathname.startsWith("/booking");
   // const searchParams = new URLSearchParams(location.search);
   // const isLocationInQuery = searchParams.has("yourlocation");

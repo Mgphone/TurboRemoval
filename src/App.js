@@ -12,7 +12,7 @@ import Retrieve from "./pages/Home/Retrieve/Retrieve.js";
 import MyContextProvider from "./context/MyContextProvider.js";
 import Success from "./pages/Booking/Handler/Success.js";
 import Fail from "./pages/Booking/Handler/Fail.js";
-
+import LocationComponent from "./pages/Locations/LocationComponent/LocationComponent.js";
 function App() {
   return (
     <MyContextProvider>
@@ -28,6 +28,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/retrieve" element={<Retrieve />}></Route>
+          <Route path="/location/:id" element={<LocationComponent />}></Route>
         </Routes>
       </div>
     </MyContextProvider>
