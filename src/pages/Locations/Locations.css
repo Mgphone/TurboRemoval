@@ -4,9 +4,41 @@ height: auto;
 margin:0 auto;
 display: grid;
 grid-template-columns:repeat(3,1fr);
-
-
 }
+/* location component */
+
+/* Locations.module.css */
+
+.locationlocalpage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #d5c0bf; /* Use your background color */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.locationlocalpage h1 {
+  color: #007BFF;
+  /* Add other h1 styles as needed */
+}
+
+.locationlocalpage h2 {
+  color: #28A745;
+  margin-top: 20px;
+  /* Add other h2 styles as needed */
+}
+
+.locationlocalpage p {
+  color: #777;
+  /* Add other paragraph styles as needed */
+}
+
+.locationlocalpage strong {
+  color: #DC3545;
+  /* Add other strong styles as needed */
+}
+/* end of location component */
 @media(max-width:900px){
   .manandvanlocation{
     grid-template-columns: repeat(2,1fr);

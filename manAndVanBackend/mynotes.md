@@ -289,3 +289,7 @@ when u module exports u have to be same order...if u swap there is an error(note
 commit 80
 (node)
 for mail options i call name,email with || and add above variable(noted)
+commit 82
+(react)
+done for location page(noted)
+i just use only react google api (noted)

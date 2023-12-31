@@ -3,6 +3,7 @@ import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
 import { NavLink } from "react-router-dom";
 import manandvanlocation from "../../data/manvandatatest";
+import houseremoval from "../../data/houseremovaldata";
 import { FaLocationPin } from "react-icons/fa6";
 import "./Locations.css";
 
@@ -26,6 +27,18 @@ function Locations() {
             <NavLink to={`/location/${location}`}>
               <FaLocationPin />
               Man and Van {location}
+            </NavLink>
+          </div>
+        ))}
+        {houseremoval.map((location, i) => (
+          <div
+            className="location_click"
+            key={i}
+            onClick={() => handleClick(location)}
+          >
+            <NavLink to={`/location/${location}`}>
+              <FaLocationPin />
+              House Removals{location}
             </NavLink>
           </div>
         ))}
