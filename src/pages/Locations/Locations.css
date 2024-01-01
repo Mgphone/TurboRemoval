@@ -16,6 +16,8 @@ grid-template-columns:repeat(3,1fr);
   background-color: #d5c0bf; /* Use your background color */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  
 }
 
 .locationlocalpage h1 {
@@ -37,6 +39,9 @@ grid-template-columns:repeat(3,1fr);
 .locationlocalpage strong {
   color: #DC3545;
   /* Add other strong styles as needed */
+}
+.locationlocalpage button{
+ margin-top: 3vh ;
 }
 /* end of location component */
 @media(max-width:900px){

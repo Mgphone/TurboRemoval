@@ -1,14 +1,46 @@
-*{
-  padding:0;
-  margin:0;
+body {
+  background-color: #d5c0bf;
+  color: #333; /* Text color on the background */
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
-body{
-  background-color: #d5c0bf;;
-  box-sizing:0 ;
+
+h1 {
+  font-size: 2.5rem; /* Adjust the font size for h1 using relative units */
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1em; /* Adjust the font size for paragraphs using relative units */
+  line-height: 1.6; /* Improve readability with appropriate line height */
+  margin-bottom: 15px;
+}
+
+button {
+  font-size: 1rem; /* Adjust the font size for buttons using relative units */
+  padding: 10px 20px; /* Adjust padding for buttons */
+  background-color: #333; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  cursor: pointer;
 }
 .app-container{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2rem; /* Adjust h1 font size for smaller screens */
+  }
+
+  p {
+    font-size: 0.8rem; /* Adjust paragraph font size for smaller screens */
+  }
+
+  button {
+    font-size: 0.9rem; /* Adjust button font size for smaller screens */
+  }
 }

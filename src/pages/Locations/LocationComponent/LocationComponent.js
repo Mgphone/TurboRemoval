@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import Nav from "../../../component/Nav";
 import Footer from "../../../component/Footer";
 import "../Locations.css";
@@ -20,6 +20,9 @@ function LocationComponent() {
   const [center, setCenter] = useState(null);
   const onLoad = (map) => {
     setMap(map);
+  };
+  const onUnmount = () => {
+    setMap(null);
   };
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -43,6 +46,7 @@ function LocationComponent() {
   return (
     <>
       <Nav />
+
       <div className="locationlocalpage">
         <h1>Welcome to [Lifting London]{id}</h1>
 
@@ -139,16 +143,18 @@ function LocationComponent() {
             zoom={13}
             onLoad={onLoad}
             options={{
-              // clickableIcons: false,
-              // disableDefaultUI: true,
               gestureHandling: "none",
               streetViewControl: false,
               mapTypeControl: false,
             }}
+            onUnmount={onUnmount}
           ></GoogleMap>
         ) : (
           <p>Loading...</p>
         )}
+        <NavLink to="/">
+          <button>Book Now</button>
+        </NavLink>
       </div>
       <Footer />
     </>
