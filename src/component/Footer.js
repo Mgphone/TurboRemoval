@@ -16,7 +16,9 @@ function Footer() {
         </div>
         <div className="quotetop">
           <p>Get a Quick Quote</p>
-          <p>Up to Top</p>
+          <p>
+            <a href="#navbar">Up to Top</a>
+          </p>
         </div>
       </div>
     </>

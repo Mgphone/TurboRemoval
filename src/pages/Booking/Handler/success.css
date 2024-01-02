@@ -1,0 +1,23 @@
+.success-container {
+ 
+  text-align: center;
+  margin: 50px;
+}
+
+.success-heading {
+  color: green;
+}
+
+.icon-container {
+  margin-top: 20px;
+}
+
+.success-icon {
+  width: 100px;
+  height: 100px;
+  color: green;
+}
+
+.thank-you {
+  font-size: 18px;
+}

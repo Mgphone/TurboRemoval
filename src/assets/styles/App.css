@@ -1,3 +1,11 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background-color: #d5c0bf;
   color: #333; /* Text color on the background */
@@ -29,6 +37,7 @@ button {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 /* Media query for smaller screens */
 @media only screen and (max-width: 600px) {

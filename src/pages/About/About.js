@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./About.css";
 import Nav from "../../component/Nav";
+import Footer from "../../component/Footer";
+
 function About() {
   const [count, setCount] = useState(0);
   const handleretrieve = async () => {
@@ -59,6 +61,7 @@ function About() {
           <button onClick={handleReset}>Reset</button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

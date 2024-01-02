@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Nav from "../../../component/Nav";
 import Footer from "../../../component/Footer";
+import { FaCheckCircle } from "react-icons/fa";
+import "./success.css";
 
 function Success() {
   const [searchParams] = useSearchParams();
@@ -41,8 +43,17 @@ function Success() {
   return (
     <>
       <Nav />
-      <h1>Successs 🎉🫰🎉🫰</h1>
-      {session_id && <h1>{session_id}</h1>}
+
+      <div className="success-container">
+        <h1 className="success-heading">Payment Successful!</h1>
+        <p>Your payment has been successfully processed.</p>
+        {/* {session_id && <h1>{session_id}</h1>} */}
+        <div className="icon-container">
+          <FaCheckCircle className="success-icon" />
+        </div>
+
+        <p className="thank-you">Thank you for your purchase.</p>
+      </div>
       <Footer />
     </>
   );

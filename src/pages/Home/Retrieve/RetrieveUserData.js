@@ -24,7 +24,8 @@ function RetrieveUserData({ retrieveData }) {
   const handlePaymentSuccess = async () => {
     try {
       const updateResponse = await fetch(
-        "http://192.168.1.216:4000/savebooking/updatepaymentstatus",
+        // "http://192.168.1.216:4000/savebooking/updatepaymentstatus",
+        `${process.env.REACT_APP_SERVER_URL}savebooking/updatepaymentstatus`,
         {
           method: "POST",
           headers: {
@@ -53,7 +54,8 @@ function RetrieveUserData({ retrieveData }) {
     }
     try {
       const handleResponse = await fetch(
-        "http://192.168.1.216:4000/savebooking",
+        // "http://192.168.1.216:4000/savebooking",
+        `${process.env.REACT_APP_SERVER_URL}savebooking`,
         {
           method: "POST",
           headers: {

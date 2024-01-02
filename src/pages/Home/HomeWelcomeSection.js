@@ -107,7 +107,7 @@ function HomeWelcomeSection() {
   return (
     <>
       <div className="mapcontainer">
-        <img src="./images/main.jpg" alt="mainimage" />
+        {/* <img src="./images/main.jpg" alt="mainimage" loading="lazy" /> */}
         <h1 className="mainimageheader textimage">
           Easy-Going Moving Solutions
         </h1>
@@ -160,7 +160,7 @@ function HomeWelcomeSection() {
           </form>
           {/* </LoadScript> */}
 
-          <p>Please choose location from the list</p>
+          <p className="home-warning">Please choose location from the list</p>
           <h2 className="secondimageheader textimage">
             We stand out as one of the top options in the city.
           </h2>

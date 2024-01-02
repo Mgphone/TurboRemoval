@@ -13,6 +13,7 @@ function ProvideServices() {
             <div key={item.No} className="service-card ">
               <img
                 src={require(`../../assets${item.Image}`)}
+                loading="lazy"
                 alt={item.Title}
               />
               <h4>{item.Title}</h4>

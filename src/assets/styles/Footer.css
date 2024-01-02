@@ -1,17 +1,17 @@
 .footer{
   /* position: relative; */
-  width: 100%;
+  width: 100vw;
   /* height: 20vh; */
-margin-top: auto;
+  margin-top: auto;
   background-color: #ccc;
   display: grid;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-columns: 33% 33% 33%;
   grid-gap:10px;
   text-align: center;
 }
 .contact{
   text-align: left;
-  padding-left: 1vw;
+  /* padding-left: 1vw; */
 }
 .copyright{
   display: flex;

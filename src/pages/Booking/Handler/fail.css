@@ -1,0 +1,23 @@
+.failure-container {
+  text-align: center;
+  margin: 50px;
+}
+
+.failure-heading {
+  color: red;
+}
+
+.icon-container {
+  margin-top: 20px;
+}
+
+.failure-icon {
+  width: 100px;
+  height: 100px;
+  color: red;
+}
+
+.try-again {
+  font-size: 18px;
+  color: red;
+}

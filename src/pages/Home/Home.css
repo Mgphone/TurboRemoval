@@ -10,19 +10,21 @@
   width: 100vw;
   height: 100vh;
   /* background: #f7f7f7;  */
+background-image: url("../../assets/Photos/main.jpg");
+background-size: cover;
   position: relative;
   text-align: center;
   /* overflow: hidden; */
 }
 
-.mapcontainer img {
+/* .mapcontainer img {
 width: 80vw;
 height: 100vh;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
 /* Style the form */
 .quotesearch {
@@ -34,7 +36,11 @@ height: 100vh;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+.home-warning {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
 form {
   display: flex;
   align-items: center;
@@ -60,7 +66,7 @@ form {
   color: gold; 
 }
 
-button {
+.quotesearch button {
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -68,7 +74,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-button a{
+.quotesearch button a{
   text-decoration: none;
 }
 
@@ -95,7 +101,7 @@ button a{
 }
 
 .mainimageheader, .secondimageheader {
-  font-size: 24px;
+  font-size: 1.2rem;
   color: gold; 
   margin: 20px 0;
 }
@@ -139,44 +145,70 @@ button:hover{
 }
 
 /* how it work */
-.howitwork{
-  width: 100vw;
-}
-.howitwork h1{
- text-align: center;
-}
-.howitworkcards{
-  width:90vw;
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  margin:0 auto;
-/* display: flex;
-flex-direction: row; */
-/* grid-template-columns:repeat(auto-fit, minmax(10vw, 1fr)); */
-/* justify-content: center;
-flex: 1;
-align-items: center; */
-}
-.howitworkcard{
- /* padding:2em; */
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.howitworkdescription{
-  /* flex: 1; */
-  display: flex;
-  flex-direction: column;
-  padding-left:10px;
-  /* padding:1em; */
 
+  .howitwork {
+    text-align: center;
+    padding: 20px;
   }
-  .howitworkdescription p{
-    width:10vw;
-   align-items: left;
+  
+  /* Style the title */
+  .howitwork h1 {
+    color: #333;
   }
-  @media screen {
-    
+  
+  /* Style the cards container */
+  .howitworkcards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  /* Style each individual card */
+  .howitworkcard {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the icons */
+  .howitwork-icon {
+    color: rgb(136, 136, 188);
+    font-size: 4em;
+  }
+  
+  /* Style the description */
+  .howitworkdescription {
+    margin-top: 15px;
+  }
+  @media (max-width: 900px) {
+/* quotesearch */
+.quotesearch{
+  width: 90vw;
+  /* position: relative; */
+}
+form{
+ flex-direction: column;
+align-items: center;
+}
+.forminput{
+ 
+  width: 80vw;
+}
+/* .mainimageheader, .secondimageheader {
+display: block;
+} */
+.mainimageheader{
+  display: none;
+}
+
+    .howitworkcards {
+      flex-direction: column;
+    }
+  
+    .howitworkcard {
+      width: 100%;
+      margin-bottom: 20px;
+    }
   }
