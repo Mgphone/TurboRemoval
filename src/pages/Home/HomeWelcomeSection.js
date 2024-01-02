@@ -111,7 +111,7 @@ function HomeWelcomeSection() {
         <h1 className="mainimageheader textimage">
           Easy-Going Moving Solutions
         </h1>
-        <div className="quotesearch">
+        <div className="quotesearch" id="quotesearch">
           {/* <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}> */}
           <form onSubmit={handleQuote}>
             <label htmlFor="search1" />

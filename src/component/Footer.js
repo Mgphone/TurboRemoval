@@ -15,7 +15,9 @@ function Footer() {
           <p> Copyright © {year} Lifting London</p>
         </div>
         <div className="quotetop">
-          <p>Get a Quick Quote</p>
+          <p>
+            <a href="#quotesearch">Get a Quick Quote</a>
+          </p>
           <p>
             <a href="#navbar">Up to Top</a>
           </p>
