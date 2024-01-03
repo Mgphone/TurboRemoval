@@ -190,22 +190,30 @@ margin:5vh;
 } */
 
 /* Radio Container */
-.readio-container {
+.radio-container {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Display items in a column */
+  justify-content: center;
+  text-align: center;
+  gap:1vw;
+  border: 1px solid #3498db;
+  width: 15vw;
+  background-size: cover;
+  background-position: center; 
+}
+.radio-container p{
+  text-align: center;
 }
 
-.radio-label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+.radio-image-container img{
+width: 100%;
+}
+ .active-radio{
+  padding:2vw;
+  background-color:#d5c0bf;
 }
 
-.radio-label img {
-  max-width: 100px;
-  height: 90px;
-  margin-right: 10px;
-}
+
 
 /* Where Moving Form */
 
@@ -390,5 +398,8 @@ textarea {
   max-width: 50%;
   justify-content: center;
 }
-
+.radio-container {
+  flex: 0 0 35%; /*This is to get 2 vs 2 */
+  max-width: 35%;
+}
 }

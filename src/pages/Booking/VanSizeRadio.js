@@ -1,21 +1,21 @@
 import React from "react";
 
-function VanSizeRadio({ value, label, imageSrc, checked, onChange }) {
+function VanSizeRadio({ id, value, label, imageSrc, checked, onChange }) {
   return (
     <>
-      <div
-        className="radio-container"
-        onClick={() => onChange({ target: { value } })}
-      >
-        <label className="radio-label" htmlFor={value}>
-          <img src={imageSrc} alt={label} />
+      <div className={`radio-container ${checked ? "active-radio" : ""}`}>
+        <label className="radio-label" htmlFor={id}>
+          <div className="radio-image-container">
+            <img src={imageSrc} alt={label} />
+          </div>
           <input
             type="radio"
             className="radio-input"
-            name="vansize"
+            name={label}
+            id={id}
             value={value}
-            checked={checked === value}
-            // onChange={onChange}
+            checked={checked}
+            onChange={() => onChange(value)}
           />
           <p>{label}</p>
         </label>

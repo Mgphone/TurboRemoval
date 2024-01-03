@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
-import BookLoadingRadio from "./BookLoadingRadio";
+// import BookLoadingRadio from "./BookLoadingRadio";
+import VanSizeRadio from "./VanSizeRadio";
+import helperImages from "../../data/helperImages";
 import "./Booking.css";
 function Booking_Loading() {
   const { data, setData } = useContext(MyContext);
-  const handleRadioChange = (e) => {
-    const newDriverHelp = e.target.value;
 
-    if (newDriverHelp !== data.driverHelp) {
-      setData((prevState) => ({
-        ...prevState,
-        driverHelp: newDriverHelp,
+  const handleRadioChange = (item) => {
+    if (item !== data.driverHelp) {
+      setData((prevValue) => ({
+        ...prevValue,
+        driverHelp: item,
       }));
     }
   };
@@ -27,91 +28,17 @@ function Booking_Loading() {
         </div>
         {/* <h1 className="booking-helper">Choose your Helper</h1> */}
         <div className="loading-image">
-          <BookLoadingRadio
-            id="No-Help"
-            value="No-Help"
-            label="No-Help"
-            checked={data.driverHelp}
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/nohelp.png"
-            onChange={handleRadioChange}
-          />
-          <BookLoadingRadio
-            id="Driver-Help"
-            value="Driver-Help"
-            label="Driver-Help"
-            checked={data.driverHelp}
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/one.png"
-            onChange={handleRadioChange}
-          />
-          <BookLoadingRadio
-            id="Driver-Plus-One"
-            value="Driver-Plus-One"
-            label="Driver-Plus-One"
-            checked={data.driverHelp}
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/two.png"
-            onChange={handleRadioChange}
-          />
-          <BookLoadingRadio
-            id="Driver-Plus-Two"
-            value="Driver-Plus-Two"
-            label="Driver-Plus-Two"
-            checked={data.driverHelp}
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702588914/removal/three.png"
-            onChange={handleRadioChange}
-          />
-          {/* <div className="readio-container">
-            <label className="radio-label" htmlFor="nohelp">
-              <img src="https://picsum.photos/200" alt="lorem" />
-              <input
-                type="radio"
-                className="radio-input"
-                name="loading"
-                value="nohelp"
-                id="nohelp"
-              />
-              <p>No Help</p>
-            </label>
-          </div>
-          <div className="readio-container">
-            <label className="radio-label" htmlFor="driverhelp">
-              <img src="https://picsum.photos/200" alt="lorem" />
-              <input
-                type="radio"
-                className="radio-input"
-                name="loading"
-                value="driverhelp"
-                id="driverhelp"
-                defaultChecked
-              />
-              <p>Driver Help</p>
-            </label>
-          </div>
-          <div className="readio-container">
-            <label className="radio-label" htmlFor="driverplusone">
-              <img src="https://picsum.photos/200" alt="lorem" />
-              <input
-                type="radio"
-                className="radio-input"
-                name="loading"
-                value="driverplusone"
-                id="driverplusone"
-              />
-              <p>Driver Plus One</p>
-            </label>
-          </div>
-          <div className="readio-container">
-            <label className="radio-label" htmlFor="driverplustwo">
-              <img src="https://picsum.photos/200" alt="lorem" />
-              <input
-                type="radio"
-                className="radio-input"
-                name="loading"
-                value="driverplustwo"
-                id="driverplustwo"
-              />
-              <p>Driver Plus Two</p>
-            </label>
-          </div> */}
+          {helperImages.map((item) => (
+            <VanSizeRadio
+              key={item.id}
+              id={item.id}
+              value={item.id}
+              label={item.value}
+              imageSrc={item.imageSrc}
+              checked={data.driverHelp === item.value}
+              onChange={handleRadioChange}
+            />
+          ))}
         </div>
       </div>
     </>

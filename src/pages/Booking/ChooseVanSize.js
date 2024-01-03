@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
 import VanSizeRadio from "./VanSizeRadio";
+import vanSizeImages from "../../data/vanSizeImages";
 function ChooseVanSize() {
   const { data, setData } = useContext(MyContext);
-  // console.log("This is my data vansize " + data.vanSize);
-  const handleRadioChange = (e) => {
-    const newVanSize = e.target.value;
+
+  const handleRadioChange = (newVanSize) => {
     if (newVanSize !== data.vanSize) {
       setData((prevState) => ({
         ...prevState,
@@ -13,44 +13,21 @@ function ChooseVanSize() {
       }));
     }
   };
+
   return (
     <>
-      <div className="choosevansize">
-        {/* <h1>Choose your vansize</h1> */}
-        <div className="booking-vansize">
+      <div className="booking-vansize">
+        {vanSizeImages.map((item) => (
           <VanSizeRadio
-            id="small"
-            value="Small"
-            label="Small Van"
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/small.jpg"
-            checked={data.vanSize}
+            key={item.id}
+            id={item.id}
+            value={item.value}
+            label={`${item.value} Van`}
+            imageSrc={item.imageSrc}
+            checked={data.vanSize === item.value}
             onChange={handleRadioChange}
           />
-          <VanSizeRadio
-            id="medium"
-            value="Medium"
-            label="Medium Van"
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/medium.jpg"
-            checked={data.vanSize}
-            onChange={handleRadioChange}
-          />
-          <VanSizeRadio
-            id="large"
-            value="Large"
-            label="Large Van"
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/large.jpg"
-            checked={data.vanSize}
-            onChange={handleRadioChange}
-          />
-          <VanSizeRadio
-            id="Extra Large"
-            value="Luton"
-            label="Luton Van"
-            imageSrc="https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/luton.jpg"
-            checked={data.vanSize}
-            onChange={handleRadioChange}
-          />
-        </div>
+        ))}
       </div>
     </>
   );
