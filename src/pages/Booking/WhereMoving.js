@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import MyContext from "../../context/MyContext";
 // import { Autocomplete } from "@react-google-maps/api";
 import BetweenStops from "./BetweenStops";
+import "./Booking.css";
 function WhereMoving() {
   const { data, setData } = useContext(MyContext);
   const checkCollectandDesti = data.addresses;
@@ -89,7 +90,7 @@ function WhereMoving() {
     <>
       <div className="wheremoving">
         <div className="wheremoving-header">
-          <h1>Where you're moving</h1>
+          <h2>Where you're moving</h2>
           <p>
             Your Man and Van quotes depend on the total mileage of the move and
             how much work needs to be carried out at each end of the move.
@@ -169,9 +170,14 @@ function WhereMoving() {
                       <option value="8">8 Flight of Stair</option>
                     </select>
                   </div>
+                  <button
+                    className="collection-submitbutton"
+                    onClick={handleMovingForm}
+                  >
+                    Submit
+                  </button>
                 </div>
                 {/* <button type="submit">Submit</button> */}
-                <button onClick={handleMovingForm}>Submit</button>
               </>
             ) : null
 

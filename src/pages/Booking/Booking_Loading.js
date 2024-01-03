@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
 import BookLoadingRadio from "./BookLoadingRadio";
+import "./Booking.css";
 function Booking_Loading() {
   const { data, setData } = useContext(MyContext);
   const handleRadioChange = (e) => {
@@ -15,17 +16,17 @@ function Booking_Loading() {
   };
   return (
     <>
-      <div className="bookingloading">
+      <div className="booking-loading">
         <div className="loading-header">
-          <h1>Will you need help with loading and unloading?</h1>
+          <h2>Will you need help with loading and unloading?</h2>
           <p>
             Our drivers will be happy to help you with your move, and we can
             also provide extra people if you'd like to make your move a bit
             quicker.
           </p>
         </div>
-        <h1 className="booking-helper">Choose your Helper</h1>
-        <div className="booking-loading">
+        {/* <h1 className="booking-helper">Choose your Helper</h1> */}
+        <div className="loading-image">
           <BookLoadingRadio
             id="No-Help"
             value="No-Help"

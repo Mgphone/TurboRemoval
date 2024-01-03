@@ -1,5 +1,6 @@
 .navbar {
   background-color:#d5c0bf;
+  /* background-color: red; */
   color: white;
   display: flex;
   justify-content: space-between;
@@ -32,6 +33,7 @@
   color: white;
   text-decoration: none;
   margin-right: 5vw;
+  font-size: 1.3em;
 }
 .navbar-right a.active{
   text-decoration: underline;
@@ -40,4 +42,58 @@
 
 .navbar-right a:hover {
   background-color: #777;
+}
+.toggle-btn{
+  display: none;
+}
+#navbar-toggle {
+  position: absolute;
+  top: -9999em;
+  left: -9999em;
+}
+@media (max-width:900px) {
+  .navbar-right a{
+    font-size: 1em;
+  }
+}
+@media (max-width:600px) {
+  /* .navbar-right a{
+    font-size: .8em;
+  } */
+.navbar-right{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position:absolute;
+  top:2vh;
+
+  /* right:10px; */
+  width: 100%;
+  z-index: 1001;
+  gap:2vw;
+  font-size: 2em;
+  transform: translateY(0); /* Initial position */
+
+
+}
+.toggle-btn{
+  display: flex;
+  font-size: 3em;
+  cursor: pointer;
+  z-index: 1002;
+  /* flex-direction: ; */
+}
+/* .navbar-right .open{
+  display: flex;
+  
+} */
+.navbar-right a{
+  font-size: 0.5em;
+}
+#navbar-toggle:checked + .toggle-btn + .navbar-right  {
+  display: flex;
+  /* flex-direction: column; */
+  transform: translateY(0); /* Move to visible position */
+
+}
 }

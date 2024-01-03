@@ -1,14 +1,29 @@
-/* Global Styles */
-body {
-  /* font-family: 'Arial', sans-serif; */
-  margin: 0;
-  padding: 0;
+/* Global for booking  */
+.booking-container{
+  /* background-color: white; */
+  background-color:#d5c0bf;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-
+.booking-container h2{
+  font-size: 1.5em;
+  margin-bottom: 1vh;
+}
+/* .booking-container h2{
+  font-size: 1.2em;
+color:red;
+  
+} */
+.booking-container p{
+  font-size: 1em;
+  margin-bottom: 0.8vh;
+  text-align: left;
+}
 /* Floating Book */
 .floatingbook {
   background-color: rgb(163, 163, 223);
-  width: 80vw;
+  max-width: 80vw;
   position: fixed;
   height: 40vh;
   top: 14vh;
@@ -32,7 +47,6 @@ body {
 }
 .floatingbook>header>button{
   display: relative;
-  background-color:red;
   top:0;
 }
 
@@ -112,37 +126,68 @@ body {
 }
 
 /* Choose Van Size */
-.choosevansize {
-  padding: 5vh;
-}
-
-.choosevansize h1 {
-  text-align: center;
-  /* color: #6d6d6d; */
-}
-
-.booking-container {
-  width: 80vw;
-  margin: 0 auto;
+/* .booking-vansize {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  flex-direction: row;
+} */
 
+/* .choosevansize h1 {
+  text-align: center;
+  color: #6d6d6d;
+} */
+
+
+.booking-header,
+/* .choosevansize, */
 .booking-vansize,
-.booking-loading {
-  padding-top: 5vh;
+.booking-helper,
+.loading-header,
+.loading-image,
+.wheremoving-header,
+.wheremoving-form,
+.canitravel,
+.mileandhour,
+.choosetime,
+.movingdate,
+.aboutyou ,
+.aboutyou-info
+ {
+margin:5vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  text-align: center;
+  text-align: left; 
   gap: 3vw;
+   background-color:#d5c0bf;
+  background-color: white;
+  
+  width: 80vw;
+  
+  
 }
 
-.booking-helper {
-  text-align: center;
+.estimatediv ul{
+  display: grid;
+  grid-template-columns:repeat(3,auto);
+ 
+  gap: 1em;
+  background-color:azure;
+  padding: 10px;
+  max-width: 90%;
+  
 }
+.estimatediv li{
+  list-style: none;
+}
+
+/* .booking-header h2{
+  text-align: left;
+} */
+
+/* .booking-helper {
+  text-align: center;
+} */
 
 /* Radio Container */
 .readio-container {
@@ -157,28 +202,25 @@ body {
 }
 
 .radio-label img {
-  width: 100px;
+  max-width: 100px;
   height: 90px;
   margin-right: 10px;
 }
 
 /* Where Moving Form */
-.wheremoving,
-.canitravel,
-.loading-header,
-.booking-header,
-.mileandhour,
-.movingdate,
-.aboutyou {
-  margin: 10vh 0;
-  background-color: rgb(232, 195, 195);
-  color: black;
-}
+
 
 .wheremoving-form {
   margin-top: 5vh;
+  background-color:pink;
+  padding:3em;
+  
 }
-
+.wheremoving-form .collection-submitbutton{
+  margin-left: 50%;
+  
+ 
+}
 .collection,
 .destination {
   margin: 5vh 0;
@@ -205,22 +247,8 @@ body {
   justify-content: center;
   gap: 2vw;
 }
-
-/* Mile and Hour */
-.estimatediv {
-  margin: 10px auto;
-  background-color: azure;
-}
-
-.estimatediv ul {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
-}
-
-.estimatediv li {
-  list-style: none;
-}
+/* where moving form end */
+/* choose time start */
 
 .choosetime {
   background-color: rgb(230, 169, 215);
@@ -228,10 +256,37 @@ body {
   margin: 1em;
 }
 
-.choosetime label {
-  padding-right: 1em;
+.choosetime label  {
+  margin-right: 3vw;
+}
+.choosetime select{
+  max-width: 50%;
+}
+/* choose time end */
+/* start moving date */
+
+.movingdate-description {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  position: relative;
 }
 
+
+textarea {
+  width: 90%;
+  box-sizing: border-box;
+}
+
+/* end moving date */
+/* aboutyou start*/
+.aboutyousubdiv{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/* about you end */
 /* Popup Booking Van Size */
 .popup {
   padding-top: 20px;
@@ -317,4 +372,23 @@ body {
   display: flex;
   flex-direction: column;
 }
+.estimatediv ul{
+  /* display: grid;
+  grid-template-columns:repeat(3,auto); */
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color:azure;
+  padding: 10px;
+  max-width: 90%;
+  /* justify-content: center; */
+  
+}
+.aboutyou-info{
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 50%;
+  justify-content: center;
+}
+
 }

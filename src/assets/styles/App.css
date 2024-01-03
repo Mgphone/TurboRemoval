@@ -15,14 +15,14 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem; /* Adjust the font size for h1 using relative units */
+  font-size: 2.5rem; 
   margin-bottom: 20px;
 }
 
 p {
   font-size: 1em; /* Adjust the font size for paragraphs using relative units */
-  line-height: 1.6; /* Improve readability with appropriate line height */
-  margin-bottom: 15px;
+  /* line-height: 1.6;  */
+  /* margin-bottom: 15px; */
 }
 
 button {
@@ -40,7 +40,7 @@ button {
   justify-content: center;
 }
 /* Media query for smaller screens */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   h1 {
     font-size: 2rem; /* Adjust h1 font size for smaller screens */
   }

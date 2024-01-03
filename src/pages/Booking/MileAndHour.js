@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
-
+import { FaRoad } from "react-icons/fa";
 function MileAndHour({ userData }) {
   const { data, setData } = useContext(MyContext);
 
@@ -66,14 +66,16 @@ function MileAndHour({ userData }) {
       hour: selectHour,
     }));
   };
+
   return (
     <>
       <div className="mileandhour">
-        <h1>How many hours do you want the vehicle for?</h1>
+        <h2>How many hours do you want the vehicle for?</h2>
         <p>
           <div className="estimatediv">
+            Estimate Time
+            <FaRoad style={{ paddingLeft: "8px" }} size="2em" />
             <ul>
-              Estimate Time
               <li>
                 TravelTime:<b>{timeConverter(yourtime)}</b>
               </li>

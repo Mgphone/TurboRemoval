@@ -13,7 +13,7 @@ function AboutYou() {
     <>
       <div className="aboutyou">
         <div className="aboutyou-header">
-          <h1>About you</h1>
+          <h2>About you</h2>
           <p>
             We ask for your details so that we can send you a text with a link
             to your quotes. When you book we'll send a confirmation email and
@@ -22,34 +22,40 @@ function AboutYou() {
           </p>
         </div>
         <div className="aboutyou-info">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            placeholder="name"
-            name="name"
-            value={data.name}
-            onChange={handleInputChange}
-            required
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            placeholder="email"
-            name="email"
-            value={data.email}
-            onChange={handleInputChange}
-            required
-          />
-          <label htmlFor="phonenumber">Phone</label>
-          <input
-            type="tel"
-            pattern="[0-9]*"
-            placeholder="phone"
-            name="phone"
-            value={data.value}
-            onChange={handleInputChange}
-            required
-          />
+          <div className="aboutyousubdiv">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              placeholder="name"
+              name="name"
+              value={data.name}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="aboutyousubdiv">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              placeholder="email"
+              name="email"
+              value={data.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="aboutyousubdiv">
+            <label htmlFor="phonenumber">Phone</label>
+            <input
+              type="tel"
+              pattern="[0-9]*"
+              placeholder="phone"
+              name="phone"
+              value={data.value}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
         </div>
       </div>
     </>

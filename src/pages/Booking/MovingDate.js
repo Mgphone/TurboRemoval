@@ -44,7 +44,7 @@ function MovingDate() {
     <>
       <div className="movingdate">
         <div className="movidedate-header">
-          <h1>When you're moving</h1>
+          <h2>When you're moving</h2>
           <p>
             Tell us when you're moving so we can check and guarantee the drivers
             availability.

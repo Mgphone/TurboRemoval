@@ -113,7 +113,7 @@ function HomeWelcomeSection() {
         </h1>
         <div className="quotesearch" id="quotesearch">
           {/* <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}> */}
-          <form onSubmit={handleQuote}>
+          <form className="home-form" onSubmit={handleQuote}>
             <label htmlFor="search1" />
             <div>
               <Autocomplete

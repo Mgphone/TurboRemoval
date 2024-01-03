@@ -16,7 +16,7 @@ function ChooseVanSize() {
   return (
     <>
       <div className="choosevansize">
-        <h1>Choose your vansize</h1>
+        {/* <h1>Choose your vansize</h1> */}
         <div className="booking-vansize">
           <VanSizeRadio
             id="small"

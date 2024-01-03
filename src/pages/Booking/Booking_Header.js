@@ -10,9 +10,8 @@ function Booking_Header() {
   };
   return (
     <>
+      {/* <h1>"Unlock Your Moving Magic: Spellbinding Quotes Await!"</h1> */}
       <div className="booking-header">
-        <h1>Your Man And Van quote could be as little as:</h1>
-        <br />
         <h2>Which vehicle do you need?</h2>
         <p>
           It is important that you select the correct vehicle for the amount
