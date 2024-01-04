@@ -6,10 +6,17 @@
   display: flex;
   flex-direction: column;
 }
-.booking-container h2{
+
+.booking-container h1{
   font-size: 1.5em;
-  margin-bottom: 1vh;
+  
 }
+.booking-container h2{
+  font-size: 1.3em;
+  /* margin-bottom: 1vh; */
+  
+}
+
 /* .booking-container h2{
   font-size: 1.2em;
 color:red;
@@ -17,7 +24,7 @@ color:red;
 } */
 .booking-container p{
   font-size: 1em;
-  margin-bottom: 0.8vh;
+  /* margin-bottom: 0.8vh; */
   text-align: left;
 }
 /* Floating Book */
@@ -156,15 +163,16 @@ margin:5vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  text-align: left; 
-  gap: 3vw;
-   background-color:#d5c0bf;
+  /* justify-content: center; */
+  align-content: left;
+  gap: 1vw;
+  background-color:#d5c0bf;
   background-color: white;
-  
   width: 80vw;
-  
-  
+}
+.booking-vansize,
+.loading-image{
+  justify-content: center;
 }
 
 .estimatediv ul{
@@ -212,7 +220,11 @@ width: 100%;
   padding:2vw;
   background-color:#d5c0bf;
 }
-
+.readiodisplay{
+  font-size: 0.2em;
+  font-weight: bold;
+  
+}
 
 
 /* Where Moving Form */

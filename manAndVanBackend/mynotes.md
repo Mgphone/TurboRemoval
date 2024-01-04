@@ -293,3 +293,12 @@ commit 82
 (react)
 done for location page(noted)
 i just use only react google api (noted)
+commit 88
+(react)
+declare two usestates one for isHover(tocheckMouse) data(toReceiveData)(noted)
+use useEffect fetchData (noted)
+['s''m''l''xl'] .includes(value) if true I find what i want on my modules(noted)
+for true there is two ways i know one is Array.isArray(mydatareceive)
+or typeof (mydatareceive)==="object"(noted)
+to get Object data can use JSON.Stringify.. hasOwnProperty Object.entries(noted)
+Object.entries.map([key,value])=>{key}:{value}

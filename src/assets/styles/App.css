@@ -42,7 +42,10 @@ button {
 /* Media query for smaller screens */
 @media only screen and (max-width: 900px) {
   h1 {
-    font-size: 2rem; /* Adjust h1 font size for smaller screens */
+    font-size: 1.5rem; /* Adjust h1 font size for smaller screens */
+  }
+  h2{
+    font-size: 1.3em;
   }
 
   p {

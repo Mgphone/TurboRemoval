@@ -10,7 +10,7 @@ function Booking_Header() {
   };
   return (
     <>
-      {/* <h1>"Unlock Your Moving Magic: Spellbinding Quotes Await!"</h1> */}
+      <h1>"Unlock Your Moving Magic: Spellbinding Quotes Await!"</h1>
       <div className="booking-header">
         <h2>Which vehicle do you need?</h2>
         <p>
