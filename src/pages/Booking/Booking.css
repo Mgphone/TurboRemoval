@@ -8,26 +8,105 @@
 }
 
 .booking-container h1{
-  font-size: 1.5em;
-  
+  font-size: 1.4em;
+  text-align: center;
 }
 .booking-container h2{
-  font-size: 1.3em;
+  font-size: 1.2em;
   /* margin-bottom: 1vh; */
   
 }
 
-/* .booking-container h2{
-  font-size: 1.2em;
-color:red;
-  
-} */
+
 .booking-container p{
   font-size: 1em;
   /* margin-bottom: 0.8vh; */
   text-align: left;
 }
+
+
+/* this is end of Global */
+/* start Popup Booking Van Size guide*/
+.popup {
+  padding-top: 20px;
+  margin: 0 auto;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(236, 150, 150);
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.popupactive {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  gap: 2em;
+  overflow-y: auto;
+  background-color: #ccc;
+  top: 2em;
+}
+
+.popupactive h1 {
+  text-align: center;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: row;
+  gap: 3em;
+  color: #111;
+  background-color: aliceblue;
+}
+
+.popuptext p {
+  padding: 2em 0;
+}
+
+.popuptext h2 {
+  text-align: center;
+  width: auto;
+}
+
+.popup-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-image img {
+  max-width: 12em;
+  max-height: 12em;
+}
+
+.closepopup {
+  position: absolute;
+  top: 2em;
+  right: 5em;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.closepopup:hover {
+  transform: rotate(180deg);
+}
+/* end of popup vansizeguide */
 /* Floating Book */
+
+.floatingbook::before {
+  content: '🎉 Surprise!';
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #fff;
+}
 .floatingbook {
   background-color: rgb(163, 163, 223);
   max-width: 80vw;
@@ -131,19 +210,9 @@ color:red;
 .floatbutton button {
   margin-left: 1vw;
 }
+/* this is end of floating */
 
-/* Choose Van Size */
-/* .booking-vansize {
-  display: flex;
-  flex-direction: row;
-} */
-
-/* .choosevansize h1 {
-  text-align: center;
-  color: #6d6d6d;
-} */
-
-
+/* start General mix all  */
 .booking-header,
 /* .choosevansize, */
 .booking-vansize,
@@ -170,41 +239,21 @@ margin:5vh;
   background-color: white;
   width: 80vw;
 }
+/* end of general mix all */
+/* startboth radio vansize and helper */
 .booking-vansize,
 .loading-image{
   justify-content: center;
 }
+/* end radio vansize and helper */
 
-.estimatediv ul{
-  display: grid;
-  grid-template-columns:repeat(3,auto);
- 
-  gap: 1em;
-  background-color:azure;
-  padding: 10px;
-  max-width: 90%;
-  
-}
-.estimatediv li{
-  list-style: none;
-}
-
-/* .booking-header h2{
-  text-align: left;
-} */
-
-/* .booking-helper {
-  text-align: center;
-} */
-
-/* Radio Container */
 .radio-container {
   display: flex;
   flex-direction: column; /* Display items in a column */
   justify-content: center;
   text-align: center;
-  gap:1vw;
-  border: 1px solid #3498db;
+  gap:3vw;
+  border: 5px solid goldenrod;
   width: 15vw;
   background-size: cover;
   background-position: center; 
@@ -227,47 +276,102 @@ width: 100%;
 }
 
 
+
+
+
 /* Where Moving Form */
 
 
 .wheremoving-form {
-  margin-top: 5vh;
-  background-color:pink;
-  padding:3em;
-  
-}
-.wheremoving-form .collection-submitbutton{
-  margin-left: 50%;
-  
- 
-}
-.collection,
-.destination {
-  margin: 5vh 0;
-}
-
-.viaStops-header {
-  text-align: center;
-}
-
-.viaStops-header p {
-  font-size: 0.8em;
-  color: red;
-  margin-bottom: 3vh;
-}
-
-.viastopinput {
+  font-size: 1.2em;
   display: flex;
-  margin-bottom: 2vh;
+  flex-direction: column;
+  justify-content: center; 
+  /* margin: 5vh;  */
+  justify-content: center;
+  background-color:pink;
+   /* padding:3em; */
+  /* min-width: 90vw; */
+  }
+  /* .wheremoving-form-title */
+ .wheremoving-form-title{
+  display: flex;
+  justify-content: center;
+ }
+ .wheremoving-form-warning{
+  display: flex;
+  justify-content: center;
+  color:red;
+  font-weight: bold;
+ }
+.collection,
+.destination,
+.viastopinput
+{
+  display: flex;
+  flex-direction: row;
+  gap:2vw;
+  justify-content: center;
+  min-width: 80%;
+  background-color: #ccc;
+  border:4px solid #111;
+  /* margin:5vw; */
+  
 }
+.collection div,
+.destination div,
+.viastopinput div
+{
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  gap:1vh;
+}
+.collection h2{
+  padding:0;
+  margin:0;
+}
+.collection div select, 
+.collection div label,
+.collection div input,
+.destination div select, 
+.destination div label,
+.destination div input,
+.viastopinput div select, 
+.viastopinput div label,
+.viastopinput div input
+{
+width:15em;
+height: auto;
+text-align: center;
+margin:0 auto;
+padding:1em;
+
+}
+
 
 .button-group {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 2vw;
+  gap: 5vw;
+  margin-top: 4vh;
 }
 /* where moving form end */
+/* start estimate how many hour */
+.estimatediv ul{
+  display: grid;
+  grid-template-columns:repeat(3,auto);
+  gap: 1em;
+  background-color:azure;
+  padding: 10px;
+  max-width: 90%;
+  
+}
+.estimatediv li{
+  list-style: none;
+}
+/* end estimate how many hour */
+
 /* choose time start */
 
 .choosetime {
@@ -283,6 +387,7 @@ width: 100%;
   max-width: 50%;
 }
 /* choose time end */
+
 /* start moving date */
 
 .movingdate-description {
@@ -307,87 +412,9 @@ textarea {
   align-items: center;
 }
 /* about you end */
-/* Popup Booking Van Size */
-.popup {
-  padding-top: 20px;
-  margin: 0 auto;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(236, 150, 150);
-  opacity: 0.9;
-  z-index: 1;
-}
 
-.popupactive {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  height: 90%;
-  margin: 0 auto;
-  gap: 2em;
-  overflow-y: auto;
-  background-color: #ccc;
-  top: 2em;
-}
 
-.popupactive h1 {
-  text-align: center;
-}
-
-.popup-content {
-  display: flex;
-  flex-direction: row;
-  gap: 3em;
-  color: #111;
-  background-color: aliceblue;
-}
-
-.popuptext p {
-  padding: 2em 0;
-}
-
-.popuptext h2 {
-  text-align: center;
-  width: auto;
-}
-
-.popup-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-image img {
-  max-width: 12em;
-  max-height: 12em;
-}
-
-.closepopup {
-  position: absolute;
-  top: 2em;
-  right: 5em;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.closepopup:hover {
-  transform: rotate(180deg);
-}
-
-/* Surprise Element */
-.floatingbook::before {
-  content: '🎉 Surprise!';
-  display: block;
-  text-align: center;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  color: #fff;
-}
-@media (max-width:900px){
+@media (max-width:1000px){
 .popup-content {
   display: flex;
   flex-direction: column;
@@ -413,5 +440,11 @@ textarea {
 .radio-container {
   flex: 0 0 35%; /*This is to get 2 vs 2 */
   max-width: 35%;
+}
+
+/* formdata */
+.collection,.destination,.viastopinput{
+  flex-direction: column;
+ 
 }
 }

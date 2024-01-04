@@ -4,7 +4,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 import MyContext from "../../context/MyContext";
-
+import "./Booking.css";
 function BetweenStops({ onFormChange }) {
   const { setData, data } = useContext(MyContext);
   const [viaStops, setViaStops] = useState([]);
@@ -152,94 +152,116 @@ function BetweenStops({ onFormChange }) {
   return (
     <div className="viastop">
       {viaStops.length > 0 && (
-        <div>
-          <div className="viaStops-header">
+        <>
+          <div className="wheremoving-form-title">
             <h2>Via Stops</h2>
+          </div>
+          <div className="wheremoving-form-warning">
             <p>Plsease choose locations from the list</p>
           </div>
-          {viaStops.map((viaStop) => (
+          {viaStops.map((viaStop, index) => (
             <div className="viastopinput" key={viaStop.id}>
-              <label htmlFor={viaStop.addressInput}>Address</label>
+              <div>
+                <label htmlFor={viaStop.addressInput}>
+                  Via Stop Address {index + 1}
+                </label>
 
-              <PlacesAutocomplete
-                value={viaStop.location}
-                onChange={(value) => handleAddressChange(value, viaStop.id)}
-                onSelect={(value) => handleAddressSelect(value, viaStop.id)}
-                searchOptions={countryOptions}
-                key={`placesAutocomplete_${viaStop.id}`}
-              >
-                {({
-                  getInputProps,
-                  suggestions,
-                  getSuggestionItemProps,
-                  loading,
-                }) => (
-                  <div>
-                    <input
-                      {...getInputProps({
-                        name: viaStop.addressInput,
-                        placeholder: "Enter address",
-                      })}
-                      required
-                    />
-
+                <PlacesAutocomplete
+                  value={viaStop.location}
+                  onChange={(value) => handleAddressChange(value, viaStop.id)}
+                  onSelect={(value) => handleAddressSelect(value, viaStop.id)}
+                  searchOptions={countryOptions}
+                  key={`placesAutocomplete_${viaStop.id}`}
+                >
+                  {({
+                    getInputProps,
+                    suggestions,
+                    getSuggestionItemProps,
+                    loading,
+                  }) => (
                     <div>
-                      {loading && <div>Loading...</div>}
-                      {suggestions.map((suggestion) => (
-                        <div
-                          {...getSuggestionItemProps(suggestion)}
-                          key={suggestion.placeId}
-                        >
-                          {suggestion.description}
-                        </div>
-                      ))}
+                      <input
+                        {...getInputProps({
+                          name: viaStop.addressInput,
+                          placeholder: "Enter address",
+                        })}
+                        required
+                      />
+
+                      <div>
+                        {loading && <div>Loading...</div>}
+                        {suggestions.map((suggestion) => (
+                          <div
+                            {...getSuggestionItemProps(suggestion)}
+                            key={suggestion.placeId}
+                          >
+                            {suggestion.description}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </PlacesAutocomplete>
-              <label htmlFor={viaStop.addressReadOnly}>Address</label>
-              <input
-                name={viaStop.addressReadOnly}
-                value={viaStop.location}
-                readOnly
-                required
-              />
-              <label htmlFor="StairFlight">Choose Stair of Flight</label>
-              <select
-                id="StairFlight"
-                name={viaStop.selectName}
-                onChange={(e) => {
-                  handlestair(e, viaStop.id);
-                }}
-                required
-              >
-                <option value="">Select Flight of Stair</option>
-                <option value="0">No Flight of Stair</option>
-                <option value="1">1 Flight of Stair</option>
-                <option value="2">2 Flight of Stair</option>
-                <option value="3">3 Flight of Stair</option>
-                <option value="4">4 Flight of Stair</option>
-                <option value="5">5 Flight of Stair</option>
-                <option value="6">6 Flight of Stair</option>
-                <option value="7">7 Flight of Stair</option>
-                <option value="8">8 Flight of Stair</option>
-              </select>
+                  )}
+                </PlacesAutocomplete>
+              </div>
+              <div>
+                <label htmlFor={viaStop.addressReadOnly}>
+                  Via Stop Address {index + 1}
+                </label>
+                <input
+                  name={viaStop.addressReadOnly}
+                  value={viaStop.location}
+                  readOnly
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="StairFlight">Select Flight</label>
+                <select
+                  id="StairFlight"
+                  name={viaStop.selectName}
+                  onChange={(e) => {
+                    handlestair(e, viaStop.id);
+                  }}
+                  required
+                >
+                  <option value="">Select Flight of Stair</option>
+                  <option value="0">No Flight of Stair</option>
+                  <option value="1">1 Flight of Stair</option>
+                  <option value="2">2 Flight of Stair</option>
+                  <option value="3">3 Flight of Stair</option>
+                  <option value="4">4 Flight of Stair</option>
+                  <option value="5">5 Flight of Stair</option>
+                  <option value="6">6 Flight of Stair</option>
+                  <option value="7">7 Flight of Stair</option>
+                  <option value="8">8 Flight of Stair</option>
+                </select>
+              </div>
             </div>
           ))}
-        </div>
+        </>
       )}
+
       <div className="button-group">
-        {viaStops.length > 0 && (
-          <button type="button" onClick={removeVia}>
-            Remove
-          </button>
+        {viaStops.length === 0 ? (
+          <>
+            {" "}
+            <button type="button" onClick={addVia}>
+              Add Via Stop
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" onClick={removeVia}>
+              Remove
+            </button>
+            <button type="button" onClick={confirmVia}>
+              Confirm
+            </button>
+            <button type="button" onClick={addVia}>
+              Add Via Stop
+            </button>
+          </>
         )}
-        <button type="button" onClick={confirmVia}>
-          Confirm
-        </button>
-        <button type="button" onClick={addVia}>
-          Add Via Stop
-        </button>
       </div>
     </div>
   );

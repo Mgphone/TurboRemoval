@@ -110,17 +110,24 @@ function WhereMoving() {
           {
             checkCollectandDesti.length >= 2 ? (
               <>
-                <div>
-                  <div className="collection">
+                <div className="wheremoving-form-title">
+                  <h2>Collection address</h2>
+                </div>
+                <div className="collection">
+                  <div>
                     <label htmlFor="collection Address">Address</label>
                     <input
                       name="collectioninput"
                       value={checkCollectandDesti[0].location}
                       required
                     />
+                  </div>
+                  <div>
                     <label htmlFor="Address_ReadOnly">Address</label>
                     <input value={checkCollectandDesti[0].location} readOnly />
-                    <label htmlFor="StairFlight">Choose Stair of Flight</label>
+                  </div>
+                  <div>
+                    <label htmlFor="StairFlight">Select Flight</label>
                     <select
                       id="StairFlight"
                       name="collection"
@@ -139,19 +146,28 @@ function WhereMoving() {
                       <option value="8">8 Flight of Stair</option>
                     </select>
                   </div>
-                  <BetweenStops onFormChange={handleBetweenStops} />
-                  <div className="destination">
+                </div>
+                <BetweenStops onFormChange={handleBetweenStops} />
+                <div className="wheremoving-form-title">
+                  <h2>Delivery address</h2>
+                </div>
+                <div className="destination">
+                  <div>
                     <label htmlFor="destinatin Address">Address</label>
                     <input
                       name="deliveryinput"
                       value={checkCollectandDesti[arrayLength - 1].location}
                     />
+                  </div>
+                  <div>
                     <label htmlFor="Address_ReadOnly">Address</label>
                     <input
                       value={checkCollectandDesti[arrayLength - 1].location}
                       readOnly
                     />
-                    <label htmlFor="StairFlight">Choose Stair of Flight</label>
+                  </div>
+                  <div>
+                    <label htmlFor="StairFlight">Select Flight</label>
                     <select
                       id="StairFlight"
                       name="destination"
@@ -170,13 +186,13 @@ function WhereMoving() {
                       <option value="8">8 Flight of Stair</option>
                     </select>
                   </div>
-                  <button
-                    className="collection-submitbutton"
-                    onClick={handleMovingForm}
-                  >
-                    Submit
-                  </button>
                 </div>
+                <button
+                  className="collection-submitbutton"
+                  onClick={handleMovingForm}
+                >
+                  Submit
+                </button>
                 {/* <button type="submit">Submit</button> */}
               </>
             ) : null
