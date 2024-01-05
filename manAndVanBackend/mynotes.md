@@ -302,3 +302,9 @@ for true there is two ways i know one is Array.isArray(mydatareceive)
 or typeof (mydatareceive)==="object"(noted)
 to get Object data can use JSON.Stringify.. hasOwnProperty Object.entries(noted)
 Object.entries.map([key,value])=>{key}:{value}
+commit 91
+(react)
+booking page don't want to run without addresses(noted)
+a.make a new page /booking for <Private /> Component
+b.In the Component I call Home and Booking
+c.Call my use Context and check addreess if greate or equal with two(noted)

@@ -464,7 +464,10 @@ textarea {
 @media (max-width:600px) {
   .readiodisplay{
    display: none;
-    
+  }
+  .floatingbook{
+    height: 90%;
+    top:5vh;
   }
   
 }
