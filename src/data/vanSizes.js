@@ -10,6 +10,7 @@ const vanSizes = [
       Height: "2.2 m / 7.2 ft",
       Payload: "1200-1600 kg",
       Seats: "3",
+      VanSize: "Luton",
     },
     image: {
       url: "https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519469/removal/luton.jpg",
@@ -27,6 +28,7 @@ const vanSizes = [
       Height: "1.7 m / 5 ft",
       Payload: "1200-1500 kg",
       Seats: "3",
+      VanSize: "Large",
     },
     image: {
       url: "https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519468/removal/large.jpg",
@@ -44,6 +46,7 @@ const vanSizes = [
       Height: "1.4 m / 4 ft",
       Payload: "1200 kg",
       Seats: "3",
+      VanSize: "Medium",
     },
     image: {
       url: "https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519468/removal/medium.jpg",
@@ -61,6 +64,7 @@ const vanSizes = [
       Height: "1.2 m / 3.9 ft",
       Payload: "600-900 kg",
       Seats: "2",
+      VanSize: "Small",
     },
     image: {
       url: "https://res.cloudinary.com/dsigqr3ht/image/upload/v1702519468/removal/small.jpg",

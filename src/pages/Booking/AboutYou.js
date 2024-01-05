@@ -25,6 +25,7 @@ function AboutYou() {
           <div className="aboutyousubdiv">
             <label htmlFor="name">Name</label>
             <input
+              id="name"
               type="text"
               placeholder="name"
               name="name"
@@ -36,6 +37,7 @@ function AboutYou() {
           <div className="aboutyousubdiv">
             <label htmlFor="email">Email</label>
             <input
+              id="email"
               type="email"
               placeholder="email"
               name="email"
@@ -47,6 +49,7 @@ function AboutYou() {
           <div className="aboutyousubdiv">
             <label htmlFor="phonenumber">Phone</label>
             <input
+              id="tel"
               type="tel"
               pattern="[0-9]*"
               placeholder="phone"

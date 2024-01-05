@@ -26,7 +26,14 @@ function MovingDate() {
   }
 
   const CustomInput = ({ value, onClick }) => (
-    <input required type="text" value={value} onClick={onClick} readOnly />
+    <input
+      required
+      id="moving date"
+      type="text"
+      value={value}
+      onClick={onClick}
+      readOnly
+    />
   );
   const handleChange = (date) => {
     setData((prevState) => ({

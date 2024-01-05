@@ -19,6 +19,7 @@ function Booking() {
   const { data } = useContext(MyContext);
   const [userData, setuserData] = useState(null);
   const [checkForm, setCheckForm] = useState(false);
+
   // console.log("This is checkForm" + checkForm);
   // useEffect(() => {
   //   console.log(
@@ -27,7 +28,6 @@ function Booking() {
   //       JSON.stringify(userData)
   //   );
   // }, [data]);
-
   useEffect(() => {
     const sendDataToBack = async () => {
       try {
@@ -49,12 +49,10 @@ function Booking() {
     };
     sendDataToBack();
   }, [data]);
-  // useEffect(() => {
-  //   console.log("This is userData" + JSON.stringify(userData));
-  // }, [userData]);
 
   const handleFormCLick = (e) => {
     e.preventDefault();
+
     setCheckForm(true);
   };
   const closeButton = () => {

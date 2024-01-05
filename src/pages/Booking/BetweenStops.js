@@ -130,7 +130,7 @@ function BetweenStops({ onFormChange }) {
       }));
     }
     //test when remove auto confirmform or not
-    // confirmVia();
+    confirmVia();
   };
   const handlestair = (e, name) => {
     const { value } = e.target;
@@ -182,6 +182,7 @@ function BetweenStops({ onFormChange }) {
                     <div>
                       <input
                         {...getInputProps({
+                          id: "Via Address",
                           name: viaStop.addressInput,
                           placeholder: "Enter address",
                         })}
@@ -247,6 +248,9 @@ function BetweenStops({ onFormChange }) {
             {" "}
             <button type="button" onClick={addVia}>
               Add Via Stop
+            </button>
+            <button type="button" onClick={confirmVia}>
+              Confirm
             </button>
           </>
         ) : (

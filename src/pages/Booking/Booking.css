@@ -55,14 +55,17 @@
 
 .popupactive h1 {
   text-align: center;
+  max-width: 90%;
 }
 
 .popup-content {
   display: flex;
   flex-direction: row;
+  
   gap: 3em;
   color: #111;
   background-color: aliceblue;
+margin:5vw;
 }
 
 .popuptext p {
@@ -111,8 +114,8 @@
   background-color: rgb(163, 163, 223);
   max-width: 80vw;
   position: fixed;
-  height: 40vh;
-  top: 14vh;
+  height: 70vh;
+  top: 10vh;
   overflow: auto;
   box-sizing: border-box;
   border: 2px solid #4a4a4a;
@@ -249,6 +252,7 @@ margin:5vh;
 
 .radio-container {
   display: flex;
+  position: relative;
   flex-direction: column; /* Display items in a column */
   justify-content: center;
   text-align: center;
@@ -315,6 +319,7 @@ width: 100%;
   min-width: 80%;
   background-color: #ccc;
   border:4px solid #111;
+  padding-bottom: 2vh;
   /* margin:5vw; */
   
 }
@@ -355,6 +360,7 @@ padding:1em;
   justify-content: center;
   gap: 5vw;
   margin-top: 4vh;
+  padding:0;
 }
 /* where moving form end */
 /* start estimate how many hour */
@@ -415,9 +421,16 @@ textarea {
 
 
 @media (max-width:1000px){
+  .floatingbook{
+    font-size: 0.7em;
+  }
+  .floatingcontent{
+    margin-left: 0;
+  }
 .popup-content {
   display: flex;
   flex-direction: column;
+
 }
 .estimatediv ul{
   /* display: grid;
@@ -447,4 +460,11 @@ textarea {
   flex-direction: column;
  
 }
+}
+@media (max-width:600px) {
+  .readiodisplay{
+   display: none;
+    
+  }
+  
 }

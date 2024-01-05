@@ -117,6 +117,7 @@ function WhereMoving() {
                   <div>
                     <label htmlFor="collection Address">Address</label>
                     <input
+                      id="collectioninput"
                       name="collectioninput"
                       value={checkCollectandDesti[0].location}
                       required

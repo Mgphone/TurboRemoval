@@ -5,9 +5,9 @@
   margin-top: auto;
   background-color: #ccc;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-gap:10px;
+  grid-template-columns: 30% 30% 30%;
   text-align: center;
+  justify-content: space-between;
 }
 .contact{
   text-align: left;

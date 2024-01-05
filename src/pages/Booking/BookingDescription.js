@@ -18,6 +18,7 @@ function BookingDescription() {
         additional contact numbers.
         <textarea
           name="descriContent"
+          id="description"
           value={data.description}
           onChange={handleChange}
           rows={5}
