@@ -114,7 +114,7 @@ margin:5vw;
   background-color: rgb(163, 163, 223);
   max-width: 80vw;
   position: fixed;
-  height: 70vh;
+  height: 50%;
   top: 10vh;
   overflow: auto;
   box-sizing: border-box;
@@ -184,18 +184,17 @@ margin:5vw;
   font-weight: bold;
 }
 
-.floatingmorecontainer {
+/* .floatingmorecontainer {
   margin-left: 10vw;
-}
+} */
 
 .floatingviastopmore,
 .floatingdescription {
   margin-bottom: 2vh;
+  
 }
 
-.floatingdescription {
-  font-style: italic;
-}
+
 
 .floatingtotal {
   font-size: 1.6em;
@@ -465,9 +464,28 @@ textarea {
   .readiodisplay{
    display: none;
   }
+  /* floating booking */
   .floatingbook{
-    height: 90%;
+    height: 60%;
     top:5vh;
   }
+  .floatingcontent{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border:1px solid black;
+    gap:0;
+    /* margin:2vw; */
   
+  }
+  .floatingpickup,
+  .floatingviastop,
+  .floatingdropof,
+  .floatingworker,
+  .floatingvansize,
+  .floatinghourNeed
+  {
+    border: 1px solid rgb(58, 38, 211);
+
+  }
+
 }

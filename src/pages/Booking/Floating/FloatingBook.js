@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FloatingShowMore from "./FloatingShowMore";
 import changeToGBTime from "../../../component/changeToGBTime";
 import { useNavigate } from "react-router-dom";
@@ -55,16 +55,20 @@ function FloatingBook({ userData, closeButton }) {
     setIsHidden(!isHidden);
     // console.log("You click");
   };
+  useEffect(() => {
+    const keyPress = (e) => {
+      if (e.key === "Escape") {
+        closeButton();
+      }
+    };
+    window.addEventListener("keydown", keyPress);
+    return () => {
+      window.removeEventListener("keydown", keyPress);
+    };
+  }, [closeButton]);
   return (
     <>
       <div className="floatingbook">
-        <div className="floatingabout">
-          "Dear <b>{serverQuote.name}</b>, thank you for choosing our moving
-          service. We appreciate your trust. Your contact number is{" "}
-          <b> {serverQuote.phone}</b>, and your email address is{" "}
-          <b>{serverQuote.email}</b>. We are pleased to provide you with a
-          quotation for your upcoming move."
-        </div>
         <header>
           <h2>Booking Summary</h2>
           <h3>
@@ -73,6 +77,13 @@ function FloatingBook({ userData, closeButton }) {
           </h3>
           <button onClick={handleCloseButton}>X</button>
         </header>
+        <div className="sub-floatingabout">
+          "Dear <b>{serverQuote.name}</b>, thank you for choosing our moving
+          service. We appreciate your trust. Your contact number is{" "}
+          <b> {serverQuote.phone}</b>, and your email address is{" "}
+          <b>{serverQuote.email}</b>. We are pleased to provide you with a
+          quotation for your upcoming move."
+        </div>
         <div className="floatingcontent">
           <div className="floatingpickup">
             {pickupAddress && (
@@ -104,7 +115,7 @@ function FloatingBook({ userData, closeButton }) {
             )}
           </div>
 
-          <div className="floatingpickup">
+          <div className="floatingdropof">
             {dropOfAddress && (
               <p>
                 <span className="info-label">Deliver address:</span>
