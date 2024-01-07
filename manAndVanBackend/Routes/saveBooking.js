@@ -87,7 +87,7 @@ router.post("/updatepaymentstatus", async (req, res) => {
       const logEmailInfo = (info) => {
         const timeStamp = new Date().toISOString();
         emailLogStream.write(
-          `[${timeStamp}]${info.response}email:${email}amount:£${totalAmount}`
+          `[${timeStamp}]Reason:customerPaid email:${email} amount:£${totalAmount} ${info.response}`
         );
       };
       const info = await transport.sendMail(emailOptions);

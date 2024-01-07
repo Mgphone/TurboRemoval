@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Retrieve = require("../models/Retrieve");
 const { transport } = require("../services/emailService");
+const { emailLogStream } = require("../middleware/emaillogger");
+
 // const nodemailer = require("nodemailer");
 // // const connectToDatabase = require("../config/dbConn");
 // // const closeDatabase = require("../config/closeDatabase");
@@ -47,11 +49,20 @@ router.post("/", async (req, res) => {
     </div>
   `,
     };
+    const logEmailInfo = (info) => {
+      const timeStamp = new Date().toISOString();
+      emailLogStream.write(
+        `[${timeStamp}]Reason:customerSaveQuote email:${
+          savedData.quote.email
+        } amount:£${savedData.quote.totalPrice.toFixed(2)} ${info.response}\n`
+      );
+    };
     const info = await transport.sendMail(mailOptions);
     console.log("Email Sent" + info.response);
     // console.log("Data saved successfully from Node Server", savedData);
     //respond to the client with success
     res.status(200).json({ message: "Data received", data: savedData });
+    logEmailInfo(info);
     // closeDatabase();
   } catch (error) {
     console.error("Error saving data", error);

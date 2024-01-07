@@ -466,7 +466,7 @@ textarea {
   }
   /* floating booking */
   .floatingbook{
-    height: 60%;
+    height: auto;
     top:5vh;
   }
   .floatingcontent{

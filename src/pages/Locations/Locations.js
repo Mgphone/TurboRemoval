@@ -24,7 +24,7 @@ function Locations() {
             key={i}
             onClick={() => handleClick(location)}
           >
-            <NavLink to={`/location/${location}`}>
+            <NavLink to={`/location/Man-And-Van-${location}`}>
               <FaLocationPin />
               Man and Van {location}
             </NavLink>
@@ -36,7 +36,7 @@ function Locations() {
             key={i}
             onClick={() => handleClick(location)}
           >
-            <NavLink to={`/location/${location}`}>
+            <NavLink to={`/location/House-Removal-${location}`}>
               <FaLocationPin />
               House Removals{location}
             </NavLink>
