@@ -31,13 +31,15 @@ function Booking() {
   useEffect(() => {
     const sendDataToBack = async () => {
       try {
-        const response = await fetch("http://192.168.1.216:4000/booking", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        const response =
+          // await fetch("http://192.168.1.216:4000/booking",
+          await fetch(`${process.env.REACT_APP_SERVER_URL}booking`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
         const result = await response.json();
         // console.log(
         //   "THis is result on the after fetch" + JSON.stringify(result)

@@ -21,13 +21,15 @@ function SaveForLater({ serverQuote, setIsButtonBookNow, isButtonBookNow }) {
     // console.log("Before sending to server" + JSON.stringify(retrieveToSave));
     const setRetrieve = async () => {
       try {
-        const response = await fetch("http://192.168.1.216:4000/saveRetrieve", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(retrieveToSave),
-        });
+        const response =
+          // await fetch("http://192.168.1.216:4000/saveRetrieve",
+          await fetch(`${process.env.REACT_APP_SERVER_URL}saveRetrieve`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(retrieveToSave),
+          });
         if (!response.ok) {
           throw new Error(`Response error:${response.status}`);
         }
