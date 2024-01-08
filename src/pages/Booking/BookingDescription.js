@@ -16,6 +16,7 @@ function BookingDescription() {
       <label className="Description_Header">
         Please enter a brief description of the items you will be moving and any
         additional contact numbers.
+        <br />
         <textarea
           name="descriContent"
           id="description"

@@ -201,7 +201,7 @@ align-items: center;
 display: block;
 } */
 .mainimageheader{
-  display: none;
+  /* display: none; */
 }
 
     .howitworkcards {

@@ -27,6 +27,7 @@ function MovingDate() {
 
   const CustomInput = ({ value, onClick }) => (
     <input
+      className="datepicker"
       required
       id="moving date"
       type="text"
@@ -58,6 +59,7 @@ function MovingDate() {
         <div className="movingdate-description">
           <h3>
             I am planning to move on
+            <br />
             {/* <input type="text" /> */}
             <DatePicker
               showIcon
