@@ -4,4 +4,4 @@ DATABASEURI=
 GMAIL_USERNAME=for sender
 GMAIL_PASSWORD=got it from application code
 STRIPE_API_KEY=
-
+MY_URL_FRONT=

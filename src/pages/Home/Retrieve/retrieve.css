@@ -16,8 +16,11 @@
   background-color: #ccc;
   width: 50vw;
   margin: 0 auto;
-}
 
+}
+.retrievebody h1{
+  text-align: center;
+}
 /* Styles for input inside .retrievebody */
 .retrievebody input {
   max-width: 20em;

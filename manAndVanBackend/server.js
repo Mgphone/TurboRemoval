@@ -28,6 +28,7 @@ app.use("/booking", require("./Routes/booking")); // booking for find and displa
 app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
 app.use("/savebooking", require("./Routes/saveBooking")); //savebooking and later payment
 app.use("/paymentbooking", require("./Routes/bookingpayment")); //button payment
+app.use("/dashboard", require("./Routes/dashBoard")); //checking one
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

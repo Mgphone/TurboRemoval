@@ -26,6 +26,8 @@ router.post("/", async (req, res) => {
     //save to database
     const newRetrieve = new Retrieve(newData);
     const savedData = await newRetrieve.save();
+    const linkAddress = `${process.env.MY_URL_FRONT}retrieve/${savedData.randomNumber}`;
+    const myAddress = process.env.MY_URL_FRONT;
     //send email...
     const mailOptions = {
       from: process.env.GMAIL_USERNAME,
@@ -33,7 +35,8 @@ router.post("/", async (req, res) => {
       subject: "Thanks for using our service",
       html: `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-    <h1>Thank you very much for saving my quote. from www.lifitinglondon.com</h1>  
+    <h1>Thank you very much for saving <a href="${linkAddress}">Your Quote</a> from ${myAddress}</h1>  
+  <h2 style="color: #333333;">Dear ${savedData.quote.name},</h2>
     <h2 style="color: #333333;">Dear ${savedData.quote.name},</h2>
       <p>Your pick-up address: ${savedData.quote.places[0]}</p>
       <p>Your drop-off address: ${

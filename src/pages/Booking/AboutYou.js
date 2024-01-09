@@ -32,6 +32,7 @@ function AboutYou() {
               value={data.name}
               onChange={handleInputChange}
               required
+              autoComplete="off"
             />
           </div>
           <div className="aboutyousubdiv">
@@ -44,6 +45,7 @@ function AboutYou() {
               value={data.email}
               onChange={handleInputChange}
               required
+              autoComplete="off"
             />
           </div>
           <div className="aboutyousubdiv">
@@ -57,6 +59,7 @@ function AboutYou() {
               value={data.value}
               onChange={handleInputChange}
               required
+              autoComplete="off"
             />
           </div>
         </div>

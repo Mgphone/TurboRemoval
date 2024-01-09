@@ -14,6 +14,7 @@ import Success from "./pages/Booking/Handler/Success.js";
 import Fail from "./pages/Booking/Handler/Fail.js";
 import LocationComponent from "./pages/Locations/LocationComponent/LocationComponent.js";
 import PrivateRoute from "./pages/Private/PrivateRoute.js";
+import Dashboard from "./pages/Dashboard/Dashboard.js";
 function App() {
   return (
     <MyContextProvider>
@@ -28,9 +29,12 @@ function App() {
           <Route path="/locations" element={<Locations />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           {/* <Route path="/booking" element={<Booking />} /> */}
 
+          <Route path="/retrieve/:id" element={<Retrieve />}></Route>
           <Route path="/retrieve" element={<Retrieve />}></Route>
+
           <Route path="/location/:id" element={<LocationComponent />}></Route>
         </Routes>
       </div>
