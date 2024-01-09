@@ -8,7 +8,7 @@ function RetrieveBody() {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
 
-  console.log("This is idValue " + id);
+  // console.log("This is idValue " + id);
   useEffect(() => {
     setRetrieveCode(id);
   }, [id]);

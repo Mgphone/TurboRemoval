@@ -9,7 +9,7 @@ function PrivateRoute() {
 
   useEffect(() => {
     const mydata = data?.addresses?.length >= 2;
-    console.log(data);
+    // console.log(data);
     setAllowedAccess(mydata);
   }, [data]);
   return <>{allowedAccess ? <Booking /> : <Home />}</>;

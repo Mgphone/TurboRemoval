@@ -49,7 +49,6 @@ function MileAndHour({ userData }) {
   //   ? checkLoadingHour(userData.yourinfo.receivedData.vanSize)
   //   : "unknown";
   const yourtime = userData ? userData.quote.travelHour : "unknown";
-  // console.log("Yourtime" + JSON.stringify(yourtime));
   const yourDistance = userData
     ? userData.quote.travelMiles.toFixed(2)
     : "unknown";
@@ -60,7 +59,6 @@ function MileAndHour({ userData }) {
 
   const handleHourChange = (e) => {
     const selectHour = e.target.value;
-    // console.log("This is selectHour from Mile and Hour" + selectHour);
     setData((prevState) => ({
       ...prevState,
       hour: selectHour,

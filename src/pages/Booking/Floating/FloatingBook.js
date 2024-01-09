@@ -11,7 +11,6 @@ function FloatingBook({ userData, closeButton }) {
   const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
 
   const serverQuote = userData && userData.quote;
-  // console.log("This is from serverQuote" + JSON.stringify(serverQuote));
 
   // Extract information with null or "Choose" defaults
   const pickupAddress =
@@ -53,7 +52,6 @@ function FloatingBook({ userData, closeButton }) {
 
   const handleShowMore = () => {
     setIsHidden(!isHidden);
-    // console.log("You click");
   };
   useEffect(() => {
     const keyPress = (e) => {

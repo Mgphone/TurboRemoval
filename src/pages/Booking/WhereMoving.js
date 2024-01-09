@@ -8,23 +8,13 @@ function WhereMoving() {
   const checkCollectandDesti = data.addresses;
   const arrayLength = checkCollectandDesti.length;
 
-  // useEffect(() => {
-  //   console.log(
-  //     "Checking how is data look alike with useeffect",
-  //     JSON.stringify(data)
-  //   );
-  // }, [data]);
-
   const changeLocation = (e) => {
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[0].stair = e.target.value;
-    // console.log("Change location from pickup" + e.target.value);
     setData((prevState) => ({
       ...prevState,
       addresses: updatedAddresses,
     }));
-
-    // console.log("checking from changeLocation" + JSON.stringify(data));
   };
 
   const changeDestination = (e) => {
@@ -46,16 +36,12 @@ function WhereMoving() {
   const handleMovingForm = (e) => {
     e.preventDefault();
     let viaBetween = between.viaStopsData;
-    // console.log(
-    //   "This is viaBetween from handleMovingForm" + JSON.stringify(viaBetween)
-    // );
 
     if (
       checkCollectandDesti.length >= 2 &&
       typeof between.viaStopsData !== "undefined"
     ) {
       setData((prevState) => {
-        // console.log("This is my prevState" + JSON.stringify(prevState));
         //filter out all the viastop with
         const updatedAddresses = prevState.addresses.filter((address) => {
           return !(address && address.id && address.id.startsWith("viaStop"));
@@ -67,9 +53,6 @@ function WhereMoving() {
           ...updatedAddresses.slice(1),
         ];
 
-        // console.log(
-        //   "This is checking addresses" + JSON.stringify(updateArray)
-        // );
         //update usecontext
         return {
           ...prevState,
@@ -82,7 +65,6 @@ function WhereMoving() {
         JSON.stringify(data)
       );
     }
-    // console.log("This is data after submit" + JSON.stringify(data));
   };
   //add via button
 
