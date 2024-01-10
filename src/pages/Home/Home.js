@@ -4,9 +4,9 @@ import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
 import HomeWelcomeSection from "./HomeWelcomeSection";
 import Review from "./Review";
-// import ProvideServices from "./ProvideServices";
 import Howitwork from "./Howitwork";
-// import MyContext from "../../context/MyContext";
+import AccepedPayment from "./AccepedPayment";
+import About from "./About";
 function Home() {
   // const { sharedData, setShareData } = useContext(MyContext);
   // const changeData = () => {
@@ -20,9 +20,11 @@ function Home() {
       </div> */}
       <Nav />
       <HomeWelcomeSection />
-      <Review />
+      <AccepedPayment />
       {/* <ProvideServices /> */}
       <Howitwork />
+      <About />
+      <Review />
       <Footer />
     </>
   );

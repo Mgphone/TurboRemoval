@@ -308,3 +308,9 @@ booking page don't want to run without addresses(noted)
 a.make a new page /booking for <Private /> Component
 b.In the Component I call Home and Booking
 c.Call my use Context and check addreess if greate or equal with two(noted)
+
+commit 102
+change main to turboremoval(noted)
+stuck problem in cors(noted)
+need difference api for cors(noted)
+fetch revie from the back and send to the react(noted)

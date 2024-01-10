@@ -15,8 +15,8 @@ const connectToDatabase = require("./config/dbConn");
 connectToDatabase();
 //testing for node sending retreive
 
-app.use(cors(corsOptions));
-// app.use(cors());
+// app.use(cors(corsOptions));
+app.use(cors());
 // app.use(cors({ origin: "*" }));
 app.use(accessLogger);
 
@@ -29,6 +29,7 @@ app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
 app.use("/savebooking", require("./Routes/saveBooking")); //savebooking and later payment
 app.use("/paymentbooking", require("./Routes/bookingpayment")); //button payment
 app.use("/dashboard", require("./Routes/dashBoard")); //checking one
+app.use("/google", require("./Routes/google"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

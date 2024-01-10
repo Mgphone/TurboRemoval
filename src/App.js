@@ -2,12 +2,11 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./assets/styles/App.css";
 import Home from "./pages/Home/Home.js";
-import About from "./pages/About/About";
 import Services from "./pages/Services/Services";
 import Locations from "./pages/Locations/Locations";
 import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
-import Booking from "./pages/Booking/Booking.js";
+// import Booking from "./pages/Booking/Booking.js";
 import Retrieve from "./pages/Home/Retrieve/Retrieve.js";
 import MyContextProvider from "./context/MyContextProvider.js";
 import Success from "./pages/Booking/Handler/Success.js";
@@ -24,7 +23,6 @@ function App() {
           <Route path="/booking" element={<PrivateRoute />} />
           <Route path="/paymentbooking/success" element={<Success />} />
           <Route path="/fail" element={<Fail />} />
-          <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/locations" element={<Locations />} />
           <Route path="/contact" element={<Contact />} />

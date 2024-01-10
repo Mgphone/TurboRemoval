@@ -1,5 +1,5 @@
 /*Home welcome section */
-
+/* Start of mapcontainer */
 .mapcontainer {
   margin: 0;
   padding: 0;
@@ -9,32 +9,21 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  /* background: #f7f7f7;  */
+ 
 background-image: url("../../assets/Photos/main.jpg");
-background-size: cover;
-  position: relative;
+background-size: 100% 100%;
   text-align: center;
-  /* overflow: hidden; */
+  overflow: auto;
 }
 
-/* .mapcontainer img {
-width: 80vw;
-height: 100vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
 
 /* Style the form */
 .quotesearch {
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  padding: 2em;
   border-radius: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 80%;
+  
 }
 .home-warning {
   color: red;
@@ -49,8 +38,8 @@ form {
 }
 
 .forminput {
-  padding: 10px;
-  width: 20vw;
+  padding: 0.5em;
+  width: 30vw;
   margin: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -58,15 +47,16 @@ form {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+/* background-color: red; */
+font-size: 1.2em;
 }
 
 .inputbetween {
   font-size: 1em;
-  margin: 0 10px;
+  margin: 2vh 10px;
   color: gold; 
 }
-
-.quotesearch button {
+.mapcontainer button{
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -74,54 +64,82 @@ form {
   border-radius: 5px;
   cursor: pointer;
 }
-.quotesearch button a{
-  text-decoration: none;
+.mapcontainer button:hover{
+  transform: scale(1.1);
 }
 
-.mainimageheader.textimage {
-  position: absolute;
-  top:10%;
-  font-size: 2em;
-  animation: bounceAndColorChange 2s infinite alternate;
+.mainimageheader {
+max-width: 90vw;
+  /* font-size:1em; */
+  width: 80%;
+color:blue;
+font-weight: bold;
+padding:2vh 0;
+
+}
+.secondimageheader {
+  color: blue;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+/* end of mapcontainer */
+/* start card payment accept icon */
+/* PaymentIcons.css */
+.home-payment{
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  min-width: 50vw;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+}
+.payment-header p{
+  text-align: center;
+}
+.payment-icons {
+  display: flex;
+  gap: 1em;
+  /* width: 80vw; */
+  justify-content: center;
 }
 
-@keyframes bounceAndColorChange {
-  0% {
-    transform: translateY(0);
-    color: gold;
-  }
-  50% {
-    transform: translateY(-10px);
-    color: red;
-  }
-  100% {
-    transform: translateY(0);
-    color: gold;
-  }
+.paypal-icon {
+  color: #003087;
 }
 
-.mainimageheader, .secondimageheader {
-  font-size: 1.2rem;
-  color: gold; 
-  margin: 20px 0;
+.amex-icon {
+  color: #0076A8;
 }
 
-button .recallquote {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-button:hover{
-  transform: scale(1.4);
+.apple-pay-icon {
+  color: #000000;
 }
 
+.google-pay-icon {
+  color: #4285F4;
+}
 
+.mastercard-icon {
+  color: #FF5F00;
+}
+.paypal-icon,
+.amex-icon,
+.apple-pay-icon,
+.google-pay-icon,
+.mastercard-icon {
+  font-size: 2em; 
+}
+
+/* end card payment acceptt icon */
+.review-container{
+  text-align: center;
+  background-color:white;
+  height: auto;
+}
 .review-cards{
-  padding-top: 5vh;
-  width:60vw;
+  width:90vw;
+  height: auto;
   margin:0 auto;
 }
 .review-card{
@@ -130,18 +148,22 @@ button:hover{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #888;
-  margin-bottom: 2vh;
+  background-color: #ccc;
   border-radius: 3%;
+  width: 100%;
 
 
 }
-.review-cards p{
+.review-card p{
   width:50vw;
-  line-height: 4vh;
+  /* line-height: 4vh; */
+  font-size: 0.5em;
 }
-.review-cards h3{
+.review-card h3{
   padding-top: 1vh;
+}
+.review-card img{
+  max-width: 20px;
 }
 
 /* how it work */
@@ -158,14 +180,16 @@ button:hover{
   
   /* Style the cards container */
   .howitworkcards {
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 20px; */
+    width: 50vw;
+    margin:0 auto;
   }
   
   /* Style each individual card */
   .howitworkcard {
-    width: 30%;
+    width: 90%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -182,27 +206,38 @@ button:hover{
   .howitworkdescription {
     margin-top: 15px;
   }
+  /* start about us at homepage */
+  .home-about{
+    width: 90vw;
+    margin: 0 auto;
+  }
+  .home-about h1{
+    text-align: center;
+  }
+   .about-content{
+    width: 80vw;
+    margin :0 auto;
+  }
+  /* end about us at homepage */
   @media (max-width: 900px) {
-/* quotesearch */
-.quotesearch{
-  width: 90vw;
-  /* height: auto; */
-  /* position: relative; */
-}
-.home-form{
- flex-direction: column;
-align-items: center;
-}
- .forminput{
  
-  width: 80vw;
-}
-/* .mainimageheader, .secondimageheader {
-display: block;
-} */
-.mainimageheader{
-  /* display: none; */
-}
+    .quotesearch{
+      width: 90vw;
+      /* height: 100vh; */
+      /* height: auto; */
+      /* position: relative; */
+    }
+    .home-form{
+     flex-direction: column;
+    align-items: center;
+    }
+     .forminput{
+     
+      width: 80vw;
+    }
+ 
+  
+
 
     .howitworkcards {
       flex-direction: column;
@@ -212,4 +247,10 @@ display: block;
       width: 100%;
       margin-bottom: 20px;
     }
+  }
+  @media (max-width:600px) {
+
+  }
+  @media (max-width:375px) {
+    
   }

@@ -108,9 +108,7 @@ function HomeWelcomeSection() {
     <>
       <div className="mapcontainer">
         {/* <img src="./images/main.jpg" alt="mainimage" loading="lazy" /> */}
-        <h1 className="mainimageheader textimage">
-          Easy-Going Moving Solutions
-        </h1>
+        <h1 className="mainimageheader">PROFESSIONAL MAN AND VAN SERVICES</h1>
         <div className="quotesearch" id="quotesearch">
           {/* <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}> */}
           <form className="home-form" onSubmit={handleQuote}>
@@ -124,7 +122,7 @@ function HomeWelcomeSection() {
                 <input
                   className="forminput"
                   type="text"
-                  placeholder="enter your location"
+                  placeholder="Pickup PostCode"
                   required
 
                   // value={location}
@@ -143,7 +141,7 @@ function HomeWelcomeSection() {
                 <input
                   className="forminput"
                   type="text"
-                  placeholder="enter your destination"
+                  placeholder="Dropoff PostCode"
                   required
                   // value={destination}
                   // onChange={(e) => setDestination(e.target.value)}
@@ -160,10 +158,12 @@ function HomeWelcomeSection() {
           </form>
           {/* </LoadScript> */}
 
-          <p className="home-warning">Please choose location from the list</p>
-          <h2 className="secondimageheader textimage">
-            We stand out as one of the top options in the city.
-          </h2>
+          {/* <p className="home-warning">Please choose location from the list</p> */}
+          {/* <p className="secondimageheader"> */}
+          <p className="home-warning">
+            Exclusive to online reservations, no bookings accepted via phone or
+            any other means{" "}
+          </p>
           <button className="recallquote" onClick={handleretrieve}>
             Retrieve Quote
           </button>
