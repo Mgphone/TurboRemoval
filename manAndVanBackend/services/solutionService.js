@@ -49,15 +49,15 @@ const createQuote = async (receivedData) => {
     Number(totalStairCount) -
     (Number(checkDeliverStair) + Number(checkPickupStair));
   let typeofVan = await receivedData.vanSize;
-  let vanCharge = 25;
+  let vanCharge = 35;
   if (typeofVan === "Small") {
     vanCharge = 25;
   } else if (typeofVan === "Medium") {
-    vanCharge = 50;
+    vanCharge = 40;
   } else if (typeofVan === "Large") {
-    vanCharge = 75;
+    vanCharge = 45;
   } else if (typeofVan === "Luton") {
-    vanCharge = 100;
+    vanCharge = 50;
   }
   let typeOfWorker = await receivedData.driverHelp;
   let workerCharge = 10;

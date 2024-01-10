@@ -1,7 +1,8 @@
 /* Global for booking  */
 .booking-container{
   /* background-color: white; */
-  background-color:#d5c0bf;
+  /* background-color:#d5c0bf; */
+  background-color: white;
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -242,7 +243,8 @@ margin:5vh;
   /* align-content: left; */
   gap: 1vw;
   /* background-color:#d5c0bf; */
-  background-color: gray;
+  /* background-color: gray; */
+  background-color: #eee;
   width: 80vw;
   padding:1em;
   border-radius: 10%;
@@ -271,7 +273,7 @@ margin:5vh;
   flex-direction: column; /* Display items in a column */
   justify-content: center;
   text-align: center;
-  gap:3vw;
+  gap:10vw;
   border: 5px solid goldenrod;
   width: 15vw;
   background-size: cover;

@@ -1,5 +1,6 @@
 .navbar {
-  background-color:#d5c0bf;
+  background-color:lightgray;
+  /* background-color: blue; */
   /* background-color: red; */
   color: white;
   display: flex;
@@ -8,6 +9,7 @@
   max-width: 100vw;
   padding:0;
   margin:0;
+  height: 15vh;
 }
 
 /* Style the left part of the navbar */
@@ -17,9 +19,11 @@
 
 /* Style the logo inside the left part of the navbar */
 .logo img {
-  width: 20vw;
-  height:auto;
-  max-width: 100%;
+  /* width: 20vw; */
+  /* height:auto; */
+  /* max-width: 100%; */
+  height: 15vh;
+  width: auto;
 }
 
 
@@ -57,11 +61,15 @@
   .navbar-right a{
     font-size: 1em;
   }
+  .logo img{
+    height: 10vh;
+  }
 }
 @media (max-width:600px) {
-  /* .navbar-right a{
-    font-size: .8em;
-  } */
+ 
+  .logo img{
+    height: 7vh;
+  }
 .navbar-right{
   display: none;
   flex-direction: row;
@@ -98,4 +106,13 @@
   transform: translateY(0); /* Move to visible position */
 
 }
+}
+@media (max-width:444px) {
+  .logo img{
+    height: 5vh;
+  }
+  .navbar-right a{
+    font-size: 0.4em;
+  };
+  
 }
