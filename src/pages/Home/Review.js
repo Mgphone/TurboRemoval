@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa";
 // import reviews from "../../data/review";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { Link } from "react-router-dom";
 function Review() {
   const [reviews, setReviews] = useState(false);
   const fetchReview = async () => {
@@ -65,6 +66,9 @@ function Review() {
     <>
       <div className="review-container">
         <h1>Our Review</h1>
+        <Link to="https://g.page/r/CV70bXMiecpBEBM/review" target="_blank">
+          <button>Write Review</button>
+        </Link>
         <div className="review-cards">
           {reviews.length > 0 && (
             <Carousel showThumbs={false} infiniteLoop={true} interval={3000}>

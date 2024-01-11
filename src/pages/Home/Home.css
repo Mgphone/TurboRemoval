@@ -137,6 +137,13 @@ padding:2vh 0;
   background-color:white;
   height: auto;
 }
+.review-container button{
+  margin-bottom: 2vh;
+  background-color: #007bff;
+}
+.review-container button:hover{
+  transform: scale(1.1);
+}
 .review-cards{
   width:90vw;
   height: auto;

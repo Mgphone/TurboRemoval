@@ -314,3 +314,8 @@ change main to turboremoval(noted)
 stuck problem in cors(noted)
 need difference api for cors(noted)
 fetch revie from the back and send to the react(noted)
+
+commit 103
+i want to use google review but server is not accept with cors (problem)
+i use two type one for wildcards to accept (noted)
+one for normal route(noted)

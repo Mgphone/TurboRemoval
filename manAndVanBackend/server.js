@@ -14,7 +14,8 @@ const corsOptions = require("./config/corsOptions");
 const connectToDatabase = require("./config/dbConn");
 connectToDatabase();
 //testing for node sending retreive
-
+const corsWithWhiteList = cors(corsOptions);
+const corsWildCard = require("./config/corsWildCard");
 // app.use(cors(corsOptions));
 app.use(cors());
 // app.use(cors({ origin: "*" }));
@@ -24,12 +25,16 @@ app.use(bodyParser.json());
 //add the stripe payament method
 
 //Router
-app.use("/booking", require("./Routes/booking")); // booking for find and display userinput
-app.use("/saveRetrieve", require("./Routes/saveRetrieve"));
-app.use("/savebooking", require("./Routes/saveBooking")); //savebooking and later payment
-app.use("/paymentbooking", require("./Routes/bookingpayment")); //button payment
-app.use("/dashboard", require("./Routes/dashBoard")); //checking one
-app.use("/google", require("./Routes/google"));
+app.use("/booking", corsWithWhiteList, require("./Routes/booking")); // booking for find and display userinput
+app.use("/saveRetrieve", corsWithWhiteList, require("./Routes/saveRetrieve"));
+app.use("/savebooking", corsWithWhiteList, require("./Routes/saveBooking")); //savebooking and later payment
+app.use(
+  "/paymentbooking",
+  corsWithWhiteList,
+  require("./Routes/bookingpayment")
+); //button payment
+app.use("/dashboard", corsWithWhiteList, require("./Routes/dashBoard")); //checking one
+app.use("/google", corsWildCard, require("./Routes/google"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
