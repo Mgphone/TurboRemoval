@@ -3,7 +3,7 @@
   width: 80%;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ddd; /* Add any desired border styles */
+  border: 1px solid #ddd; 
 }
 
 /* Styles for FAQ header */
@@ -11,6 +11,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Styles for individual FAQ items */
@@ -23,10 +24,21 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 /* Styles for FAQ answer */
 .answer {
   font-size: 16px;
   margin-bottom: 10px;
+  display: none;
+}
+.answer.true{
+  display: block;
+}
+.question-icon{
+color:#3498db
+}
+.answer-icon{
+color:#27ae60
 }

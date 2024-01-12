@@ -17,7 +17,7 @@ connectToDatabase();
 const corsWithWhiteList = cors(corsOptions);
 const corsWildCard = require("./config/corsWildCard");
 // app.use(cors(corsOptions));
-app.use(cors());
+// app.use(cors());
 // app.use(cors({ origin: "*" }));
 app.use(accessLogger);
 
