@@ -1,6 +1,12 @@
 import React from "react";
 import servicesprovided from "../../data/servicesprovided";
+import { Link } from "react-router-dom";
+
 function ProvideServices() {
+  const replaceCharacters = (str) => {
+    return str.replace(/ /g, "-");
+  };
+
   return (
     <>
       <div className="home-services">
@@ -10,14 +16,18 @@ function ProvideServices() {
         </div>
         <div className="services-cards">
           {servicesprovided.map((item) => (
-            <div key={item.No} className="service-card ">
+            <Link
+              key={item.No}
+              className="service-card "
+              to={`/services/${replaceCharacters(item.Title)}`}
+            >
               <img
                 src={require(`../../assets${item.Image}`)}
                 loading="lazy"
                 alt={item.Title}
               />
               <h4>{item.Title}</h4>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

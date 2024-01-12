@@ -73,7 +73,12 @@ function Review() {
           {reviews.length > 0 && (
             <Carousel showThumbs={false} infiniteLoop={true} interval={3000}>
               {reviews.map((item, index) => (
-                <div className="review-card" key={index}>
+                <Link
+                  to="https://www.google.com/search?sca_esv=597832100&sxsrf=ACQVn08w9Np9BmRBm8zrK1gJ6ZMjWxonnA%3A1705076455057&q=TURBO%20REMOVALS%20LTD&stick=H4sIAAAAAAAAAONgU1I1qDCxMDczNDSwtEgySrNMMjG1AgoZJieaWxoZmRubpaSZmKYuYhUKCQ1y8lcIcvX1D3P0CVbwCXEBAGvSu2Y-AAAA&mat=CY1ugz2Pz4Bn&ved=2ahUKEwiNmazjoNiDAxUUgf0HHbv2COwQrMcEegQICRAH#lrd=0x487611098b2f9b45:0x41ca7922736df45e,1,,,,1"
+                  target="_blank"
+                  className="review-card"
+                  key={index}
+                >
                   <StarRating rating={item.rating} />
                   <p>{item.author_name}</p>
                   <p>{changeTime(item.time)}</p>
@@ -82,7 +87,7 @@ function Review() {
                     alt={`pict of${item.author_name}`}
                   />
                   <h3>{item.text}</h3>
-                </div>
+                </Link>
               ))}
             </Carousel>
           )}

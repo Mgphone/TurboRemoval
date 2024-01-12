@@ -32,7 +32,6 @@ function Nav() {
           </NavLink>
           {/* <NavLink to="/about">ABOUT</NavLink> */}
           <NavLink to="/services">SERVICES</NavLink>
-          <NavLink to="/locations">LOCATIONS</NavLink>
           <NavLink to="/contact">CONTACT</NavLink>
           <NavLink to="/faq">FAQ</NavLink>
         </div>

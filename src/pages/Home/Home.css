@@ -136,6 +136,13 @@ padding:2vh 0;
   text-align: center;
   background-color:white;
   height: auto;
+  cursor: pointer;
+  margin-bottom: 2vh;
+
+}
+.review-container a{
+  text-decoration: none;
+  color:#444;
 }
 .review-container button{
   margin-bottom: 2vh;

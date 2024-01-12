@@ -1,33 +1,32 @@
-.manandvanlocation{
-width: 80vw;
-height: auto;
-margin:0 auto;
-display: grid;
-grid-template-columns:repeat(3,1fr);
-}
+
 /* location component */
 
 /* Locations.module.css */
 
 .locationlocalpage {
-  max-width: 800px;
+  max-width: 80vw;
   margin: 0 auto;
   padding: 20px;
   background-color: #d5c0bf; /* Use your background color */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .locationlocalpage h1 {
   color: #007BFF;
+  font-size: 1.6em;
   /* Add other h1 styles as needed */
 }
 
 .locationlocalpage h2 {
   color: #28A745;
   margin-top: 20px;
+  font-size: 1.4em;
   /* Add other h2 styles as needed */
 }
 
@@ -43,21 +42,29 @@ grid-template-columns:repeat(3,1fr);
 .locationlocalpage button{
  margin-top: 3vh ;
 }
+
+.locationlocalpage button{
+margin-top: 1vh;
+width: 20vw;
+}
+
+
 /* end of location component */
-@media(max-width:900px){
-  .manandvanlocation{
-    grid-template-columns: repeat(2,1fr);
+@media (max-width:900px) {
+  .locationlocalpage button{
+  width: 40vw;
   }
 }
 
-@media (max-width:400px) {
-  .manandvanlocation{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-   
+@media (max-width:600px) {
+  .locationlocalpage button{
+    width: 50vw;
+    }
+}
 
-
+@media (max-width:300px) {
+  .locationlocalpage button{
+    width: 70vw;
   }
+}
   
-}

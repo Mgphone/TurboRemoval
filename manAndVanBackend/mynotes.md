@@ -319,3 +319,9 @@ commit 103
 i want to use google review but server is not accept with cors (problem)
 i use two type one for wildcards to accept (noted)
 one for normal route(noted)
+
+commit 105
+services link to location
+1.for the link in react router i use array type to check if there is the value accept otherwise not found(noted) 2. for the link "-" and "space" i use template literal(noted) str.replace
+3.i can use /:id that is the most important thing for this commit(noted)
+/:id and add the component and {id}=useParams() from reactRouter(noted)

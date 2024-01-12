@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, Navigate, useParams } from "react-router-dom";
 import Nav from "../../../component/Nav";
 import Footer from "../../../component/Footer";
-import "../Locations.css";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import "./locationcomponet.css";
 const containerStyle = {
   width: "100%",
   height: "400px",
@@ -48,7 +48,10 @@ function LocationComponent() {
       <Nav />
 
       <div className="locationlocalpage">
-        <h1>Welcome to [Lifting London]{id}</h1>
+        <NavLink to="/">
+          <button>Book Now</button>
+        </NavLink>
+        <h1>Welcome to [Turbo Removals]{id}</h1>
 
         <p>
           Are you planning a move within or around the vibrant [{id}]? Look no
@@ -132,7 +135,7 @@ function LocationComponent() {
         </p>
 
         <p>
-          <strong>[Lifting London]</strong> - Moving You with Precision and
+          <strong>[Turbo Removals]</strong> - Moving You with Precision and
           Care.
         </p>
 
