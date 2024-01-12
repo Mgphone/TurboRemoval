@@ -4,6 +4,7 @@ import Footer from "../../../component/Footer";
 import manandvanlocation from "../../../data/manvandatatest";
 import { NavLink, useParams } from "react-router-dom";
 import { FaLocationPin } from "react-icons/fa6";
+import StickyBookNow from "../../../component/StickyBookNow";
 const replacedash = (str) => {
   return str.replace(/-/g, " ");
 };
@@ -29,6 +30,7 @@ function ServiceNameComponent() {
           ))}
         </div>
       </div>
+      <StickyBookNow />
       <Footer />
     </>
   );

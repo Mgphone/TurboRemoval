@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
+import StickyBookNow from "../../component/StickyBookNow";
 
 function ContactPage() {
   // State variables to store form data
@@ -34,6 +35,7 @@ function ContactPage() {
           will get back to you as soon as possible.
         </p>
       </div>
+      <StickyBookNow />
       <Footer />
     </>
   );

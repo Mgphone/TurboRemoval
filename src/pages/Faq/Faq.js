@@ -4,7 +4,7 @@ import Footer from "../../component/Footer";
 import faq from "../../data/faq";
 import "./faq.css";
 import { FaQuestionCircle, FaCheckCircle } from "react-icons/fa";
-
+import StickyBookNow from "../../component/StickyBookNow";
 function Faq() {
   const [showAnswer, setShowAnswer] = useState(null);
   const handleClick = (id) => {
@@ -32,6 +32,7 @@ function Faq() {
           </div>
         ))}
       </div>
+      <StickyBookNow />
       <Footer />
     </>
   );

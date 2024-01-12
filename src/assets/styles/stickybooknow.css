@@ -1,0 +1,22 @@
+.sticky-booknow{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  display: none;
+  cursor: pointer;
+}
+@media (max-width:600px) {
+
+  .sticky-booknow{
+    display: block;
+    /* position:fixed; */
+  
+   
+  }
+
+}

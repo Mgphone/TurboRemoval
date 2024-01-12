@@ -1,18 +1,30 @@
 import React from "react";
 import "../assets/styles/Footer.css";
-function Footer() {
-  const year = new Date().getFullYear();
+import { FaPhone, FaEnvelope } from "react-icons/fa";
 
+function Footer({ isHomePage }) {
+  const year = new Date().getFullYear();
+  const footerStyle = {
+    paddingBottom: isHomePage ? "0" : "7vh",
+  };
   return (
     <>
-      <div className="footer">
+      <div className="footer" style={footerStyle}>
         <div className="contact">
-          <p>Phone: 123-456-7890 </p>
-          <p> Email: info@yourcompany.com </p>
-          <p> Address: 123 Main St, London, Postcode</p>
+          <p>
+            <a href="tel:07578722677">
+              {" "}
+              Tel: <FaPhone />
+            </a>
+          </p>
+          <p>
+            <a href="mailto:info@turboremovals.com">
+              Email: <FaEnvelope />
+            </a>
+          </p>
         </div>
         <div className="copyright">
-          <p> Copyright © {year} Lifting London</p>
+          <p> Copyright © {year} Turbo Removals</p>
         </div>
         <div className="quotetop">
           <p>

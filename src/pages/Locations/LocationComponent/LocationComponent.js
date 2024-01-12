@@ -3,6 +3,7 @@ import { NavLink, Navigate, useParams } from "react-router-dom";
 import Nav from "../../../component/Nav";
 import Footer from "../../../component/Footer";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import StickyBookNow from "../../../component/StickyBookNow";
 import "./locationcomponet.css";
 const containerStyle = {
   width: "100%",
@@ -159,6 +160,7 @@ function LocationComponent() {
           <button>Book Now</button>
         </NavLink>
       </div>
+      <StickyBookNow />
       <Footer />
     </>
   );

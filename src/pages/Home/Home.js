@@ -25,7 +25,7 @@ function Home() {
       <Howitwork />
       <About />
       <Review />
-      <Footer />
+      <Footer isHomePage={true} />
     </>
   );
 }

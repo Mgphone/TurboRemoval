@@ -325,3 +325,9 @@ services link to location
 1.for the link in react router i use array type to check if there is the value accept otherwise not found(noted) 2. for the link "-" and "space" i use template literal(noted) str.replace
 3.i can use /:id that is the most important thing for this commit(noted)
 /:id and add the component and {id}=useParams() from reactRouter(noted)
+
+commit 106
+add button on the small screen BOOk NOW
+1.the button is only on the page i want to so it can use by props(noted)
+2.and then i make a inline jsx(noted)
+3.for the display i make media query and visable and non visable display:none (noted)
