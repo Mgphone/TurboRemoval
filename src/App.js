@@ -14,6 +14,7 @@ import Fail from "./pages/Booking/Handler/Fail.js";
 import LocationComponent from "./pages/Locations/LocationComponent/LocationComponent.js";
 import PrivateRoute from "./pages/Private/PrivateRoute.js";
 import Dashboard from "./pages/Dashboard/Dashboard.js";
+import Faq from "./pages/Faq/Faq.js";
 function App() {
   return (
     <MyContextProvider>
@@ -29,7 +30,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/dashboard" element={<Dashboard />} />
           {/* <Route path="/booking" element={<Booking />} /> */}
-
+          <Route path="/faq" element={<Faq />} />
           <Route path="/retrieve/:id" element={<Retrieve />}></Route>
           <Route path="/retrieve" element={<Retrieve />}></Route>
 
