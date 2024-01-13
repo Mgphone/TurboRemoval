@@ -2,9 +2,7 @@
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
 const lateBook = require("./lateBook");
-// const getUkTime = require("../utils/getuktime");
-// const timeConverter = require("../utils/timeConverter");
-// const getUKTime = require("../utils/getuktime");
+const outOfHour = require("./outOfHour");
 const createQuote = async (receivedData) => {
   // console.log(receivedData);
   const cleanupPostcodes = await Promise.all(
@@ -100,17 +98,20 @@ const createQuote = async (receivedData) => {
   const stairTotalHour = numberOfSecond < 2 ? 2 : numberOfSecond;
   const stairCharge =
     stairTotalHour * (stairChargeWithDriver * totalStairCount);
-  //get hour charge
+  //get late hour charge
   const lastMinutes = receivedData.date ? lateBook(receivedData.date) : false;
   const totalLateMinutes = lastMinutes ? 20 : 0;
-
+  //get out of hour charge
+  const outHour = receivedData.date ? outOfHour(receivedData.date) : false;
+  const totalOutHour = outHour ? 20 : 0;
   let mileCharge = travelResult.distance < 5 ? 0 : travelResult.distance * 1.5;
   let viaCharge = viaStop && viaStop * 20;
   const timeCalculate = numberOfSecond < 2 ? 2 : numberOfSecond;
   const totalPrice =
     timeCalculate * (vanCharge + workerCharge + mileCharge + viaCharge) +
     stairCharge +
-    totalLateMinutes;
+    totalLateMinutes +
+    totalOutHour;
 
   return {
     yourinfo: { receivedData },

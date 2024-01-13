@@ -11,7 +11,7 @@ function MovingDate() {
   const minTime = new Date();
 
   if (minTime.getHours() >= 6 && minTime.getHours() <= 21) {
-    minTime.setHours(new Date().getHours() + 1, 0, 0, 0);
+    minTime.setHours(new Date().getHours() + 2, 0, 0, 0);
   } else {
     minTime.setHours(6, 0, 0, 0);
     minTime.setDate(minTime.getDate() + 1);
@@ -69,7 +69,8 @@ function MovingDate() {
               onChange={handleChange}
               showTimeSelect
               dateFormat="dd-MM-yyyy h:mmaa"
-              minDate={new Date()}
+              // minDate={new Date()}
+              minDate={minTime}
               minTime={minTime}
               maxTime={maxTime}
               customInput={<CustomInput />}
