@@ -1,7 +1,7 @@
 // const { type } = require("@testing-library/user-event/dist/type");
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
-const getUKTime = require("../utils/getuktime");
+// const getUKTime = require("../utils/getuktime");
 const createQuote = async (receivedData) => {
   // console.log(receivedData);
   const cleanupPostcodes = await Promise.all(
