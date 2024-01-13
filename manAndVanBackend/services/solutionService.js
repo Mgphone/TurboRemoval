@@ -1,6 +1,7 @@
 // const { type } = require("@testing-library/user-event/dist/type");
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
+const getUKTime = require("../utils/getuktime");
 const createQuote = async (receivedData) => {
   // console.log(receivedData);
   const cleanupPostcodes = await Promise.all(
@@ -49,39 +50,58 @@ const createQuote = async (receivedData) => {
     Number(totalStairCount) -
     (Number(checkDeliverStair) + Number(checkPickupStair));
   let typeofVan = await receivedData.vanSize;
-  let vanCharge = 25;
+  let vanCharge = 35;
   if (typeofVan === "Small") {
-    vanCharge = 25;
+    vanCharge = 35;
   } else if (typeofVan === "Medium") {
-    vanCharge = 50;
+    vanCharge = 40;
   } else if (typeofVan === "Large") {
-    vanCharge = 75;
+    vanCharge = 45;
   } else if (typeofVan === "Luton") {
-    vanCharge = 100;
+    vanCharge = 50;
   }
   let typeOfWorker = await receivedData.driverHelp;
-  let workerCharge = 10;
+  let workerCharge = 0;
   if (typeOfWorker === "No-Help") {
-    workerCharge = 10;
+    workerCharge = 0;
   } else if (typeOfWorker === "Driver-Help") {
-    workerCharge = 25;
+    workerCharge = 5;
   } else if (typeOfWorker === "Driver-Plus-One") {
-    workerCharge = 50;
+    workerCharge = 25;
   } else if (typeOfWorker === "Driver-Plus-Two") {
-    workerCharge = 75;
+    workerCharge = 65;
   }
   const numberOfSecond = totalSecond / 3600;
   // console.log("Number of Second" + numberOfSecond);
+  // const totalPrice =
+  //   (travelResult.distance < 5
+  //     ? 15
+  //     : travelResult.distance < 20
+  //     ? 15 + travelResult.distance * 2
+  //     : 15 + travelResult.distance * 1) +
+  //   totalStairCount * 10 +
+  //   vanCharge +
+  //   workerCharge * numberOfSecond +
+  //   viaStop * 10;
+  let stairChargeWithDriver = 1;
+  if (typeOfWorker === "No-Help") {
+    stairChargeWithDriver = 0;
+  } else if (typeOfWorker === "Driver-Help") {
+    stairChargeWithDriver = 5;
+  } else if (typeOfWorker === "Driver-Plus-One") {
+    stairChargeWithDriver = 10;
+  } else if (typeOfWorker === "Driver-Plus-Two") {
+    stairChargeWithDriver = 20;
+  }
+  const stairTotalHour = numberOfSecond < 2 ? 2 : numberOfSecond;
+  const stairCharge =
+    stairTotalHour * (stairChargeWithDriver * totalStairCount);
+  let mileCharge = travelResult.distance < 5 ? 0 : travelResult.distance * 1.5;
+  let viaCharge = viaStop && viaStop * 20;
+  const timeCalculate = numberOfSecond < 2 ? 2 : numberOfSecond;
   const totalPrice =
-    (travelResult.distance < 5
-      ? 15
-      : travelResult.distance < 20
-      ? 15 + travelResult.distance * 2
-      : 15 + travelResult.distance * 1) +
-    totalStairCount * 10 +
-    vanCharge +
-    workerCharge * numberOfSecond +
-    viaStop * 10;
+    timeCalculate * (vanCharge + workerCharge + mileCharge + viaCharge) +
+    stairCharge;
 
   return {
     yourinfo: { receivedData },

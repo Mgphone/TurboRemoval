@@ -68,7 +68,7 @@ function FloatingBook({ userData, closeButton }) {
     <>
       <div className="floatingbook">
         <header>
-          <h2>Booking Summary</h2>
+          {/* <h2>Booking Summary</h2> */}
           <h3>
             Moving Date:{" "}
             <span className="floattime">{changeToGBTime(moveDate)}</span>

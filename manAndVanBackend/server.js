@@ -1,9 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-// const createQuote = require("./services/solutionService");
-// const calculateDistanceBetweenTwoLocations = require("./utils/geolocation");
-// const getLocationByCallingGoogleApi = require("./api/google/googleApi");
-// const timeConverter = require("./utils/timeConverter");
+
 const app = express();
 const { accessLogger } = require("./middleware/logger");
 
@@ -16,9 +13,7 @@ connectToDatabase();
 //testing for node sending retreive
 const corsWithWhiteList = cors(corsOptions);
 const corsWildCard = require("./config/corsWildCard");
-// app.use(cors(corsOptions));
-// app.use(cors());
-// app.use(cors({ origin: "*" }));
+
 app.use(accessLogger);
 
 app.use(bodyParser.json());

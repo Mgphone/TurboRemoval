@@ -108,7 +108,7 @@ margin:5vw;
 /* Floating Book */
 
 .floatingbook::before {
-  content: '🎉 Surprise!';
+  content: '🎉 Surprise! Booking Summary';
   display: block;
   text-align: center;
   font-size: 1.2em;
@@ -119,8 +119,8 @@ margin:5vw;
   background-color: rgb(163, 163, 223);
   max-width: 80vw;
   position: fixed;
-  height: 50%;
-  top: 10vh;
+  height: 80%;
+  top: 5vh;
   overflow: auto;
   box-sizing: border-box;
   border: 2px solid #4a4a4a;
