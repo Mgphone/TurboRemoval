@@ -331,3 +331,10 @@ add button on the small screen BOOk NOW
 1.the button is only on the page i want to so it can use by props(noted)
 2.and then i make a inline jsx(noted)
 3.for the display i make media query and visable and non visable display:none (noted)
+
+commit 110
+late booking backend
+firstly i fetch the api of UK currenct time from utils(noted)
+for the latebook i make true or false(noted)
+for service i call the utils fetch as to call i need to use async await(noted)
+to call async and await firstly declare currenttime as initial value, but i have to called it back within the modules(noted)

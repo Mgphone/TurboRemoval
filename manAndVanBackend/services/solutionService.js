@@ -1,6 +1,9 @@
 // const { type } = require("@testing-library/user-event/dist/type");
 const getLocationByCallingGoogleApi = require("../api/google/googleApi");
 const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
+const lateBook = require("./lateBook");
+// const getUkTime = require("../utils/getuktime");
+// const timeConverter = require("../utils/timeConverter");
 // const getUKTime = require("../utils/getuktime");
 const createQuote = async (receivedData) => {
   // console.log(receivedData);
@@ -58,7 +61,7 @@ const createQuote = async (receivedData) => {
   } else if (typeofVan === "Large") {
     vanCharge = 45;
   } else if (typeofVan === "Luton") {
-    vanCharge = 50;
+    vanCharge = 55;
   }
   let typeOfWorker = await receivedData.driverHelp;
   let workerCharge = 0;
@@ -91,17 +94,23 @@ const createQuote = async (receivedData) => {
   } else if (typeOfWorker === "Driver-Plus-One") {
     stairChargeWithDriver = 10;
   } else if (typeOfWorker === "Driver-Plus-Two") {
-    stairChargeWithDriver = 20;
+    stairChargeWithDriver = 15;
   }
+  //stair charge
   const stairTotalHour = numberOfSecond < 2 ? 2 : numberOfSecond;
   const stairCharge =
     stairTotalHour * (stairChargeWithDriver * totalStairCount);
+  //get hour charge
+  const lastMinutes = receivedData.date ? lateBook(receivedData.date) : false;
+  const totalLateMinutes = lastMinutes ? 20 : 0;
+
   let mileCharge = travelResult.distance < 5 ? 0 : travelResult.distance * 1.5;
   let viaCharge = viaStop && viaStop * 20;
   const timeCalculate = numberOfSecond < 2 ? 2 : numberOfSecond;
   const totalPrice =
     timeCalculate * (vanCharge + workerCharge + mileCharge + viaCharge) +
-    stairCharge;
+    stairCharge +
+    totalLateMinutes;
 
   return {
     yourinfo: { receivedData },
