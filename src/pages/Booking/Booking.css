@@ -264,7 +264,11 @@ margin:5vh;
 .booking-vansize,
 .loading-image{
   justify-content: center;
+  gap:5vw;
 }
+/* .booking-vansize{
+  gap:5vw;
+} */
 /* end radio vansize and helper */
 
 .radio-container {

@@ -5,7 +5,7 @@
   margin-top: auto;
   background-color: #ccc;
   display: grid;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-columns: 20% 45% 30%;
   text-align: center;
   justify-content: space-between;
   /* padding-bottom: 15vh; */
@@ -16,8 +16,8 @@
   /* padding-left: 1vw; */
 }
 .copyright{
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   align-items: center;
 }
 .footer a{

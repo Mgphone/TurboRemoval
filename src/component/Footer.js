@@ -25,6 +25,7 @@ function Footer({ isHomePage }) {
         </div>
         <div className="copyright">
           <p> Copyright © {year} Turbo Removals</p>
+          <p>Crafted with ♥️ from MgPhone</p>
         </div>
         <div className="quotetop">
           <p>

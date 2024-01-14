@@ -110,7 +110,7 @@ function WhereMoving() {
                     <input value={checkCollectandDesti[0].location} readOnly />
                   </div>
                   <div>
-                    <label htmlFor="StairFlight">Select Flight</label>
+                    <label htmlFor="StairFlight">Stairs</label>
                     <select
                       id="StairFlight"
                       name="collection"
@@ -118,9 +118,10 @@ function WhereMoving() {
                       onChange={changeLocation}
                     >
                       <option value="">Select Flight of Stair</option>
-                      <option value={0}>No Flight of Stair</option>
-                      <option value={1}>1 Flight of Stair</option>
-                      <option value={2}>2 Flight of Stair</option>
+                      <option value="0">Elevator Available</option>
+                      <option value="0">No Flight of Stair</option>
+                      <option value="1">1 Flight of Stair</option>
+                      <option value="2">2 Flight of Stair</option>
                       <option value="3">3 Flight of Stair</option>
                       <option value="4">4 Flight of Stair</option>
                       <option value="5">5 Flight of Stair</option>
@@ -150,7 +151,7 @@ function WhereMoving() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="StairFlight">Select Flight</label>
+                    <label htmlFor="StairFlight">Stairs</label>
                     <select
                       id="StairFlight"
                       name="destination"
@@ -158,6 +159,7 @@ function WhereMoving() {
                       onChange={changeDestination}
                     >
                       <option value="">Select Flight of Stair</option>
+                      <option value="0">Elevator Available</option>
                       <option value="0">No Flight of Stair</option>
                       <option value="1">1 Flight of Stair</option>
                       <option value="2">2 Flight of Stair</option>

@@ -216,7 +216,7 @@ function BetweenStops({ onFormChange }) {
                 />
               </div>
               <div>
-                <label htmlFor="StairFlight">Select Flight</label>
+                <label htmlFor="StairFlight">Stairs</label>
                 <select
                   id="StairFlight"
                   name={viaStop.selectName}
@@ -226,6 +226,7 @@ function BetweenStops({ onFormChange }) {
                   required
                 >
                   <option value="">Select Flight of Stair</option>
+                  <option value="0">Elevator Available</option>
                   <option value="0">No Flight of Stair</option>
                   <option value="1">1 Flight of Stair</option>
                   <option value="2">2 Flight of Stair</option>

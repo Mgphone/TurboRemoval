@@ -18,6 +18,10 @@ const servicesprovided = [
     Image: "/Photos/singleitem.jpg",
   },
   { No: 7, Title: "Local Deliveries", Image: "/Photos/localdelivery.jpg" },
-  { No: 8, Title: "Storage", Image: "/Photos/storage.jpg" },
+  { No: 8, Title: "Removals and Storage", Image: "/Photos/storage.jpg" },
+  { No: 9, Title: "Man and Van", Image: "/Photos/manandvan.jpg" },
+  { No: 10, Title: "Removals Service", Image: "/Photos/removalservices.jpg" },
+  { No: 11, Title: "Packaging Service", Image: "/Photos/packagingservice.jpg" },
+  { No: 12, Title: "House Clearance", Image: "/Photos/houseclearance.jpeg" },
 ];
 export default servicesprovided;

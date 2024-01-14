@@ -9,12 +9,12 @@ function MovingDate() {
 
   //set Min time for over one hour
   const minTime = new Date();
-
+  // console.log("This is min Time" + minTime);
   if (minTime.getHours() >= 6 && minTime.getHours() <= 21) {
     minTime.setHours(new Date().getHours() + 2, 0, 0, 0);
   } else {
     minTime.setHours(6, 0, 0, 0);
-    minTime.setDate(minTime.getDate() + 1);
+    minTime.setDate(minTime.getDate());
   }
   //that is maximum can choose time over one hour
   const maxTime = new Date();
@@ -28,11 +28,13 @@ function MovingDate() {
     <input
       className="datepicker"
       required
+      showTimeSelect
       id="moving date"
       type="text"
       value={value}
       onClick={onClick}
       readOnly
+      placeholder="Enter your Moving Date and Time"
     />
   );
   const handleChange = (date) => {
@@ -74,6 +76,8 @@ function MovingDate() {
               minTime={minTime}
               maxTime={maxTime}
               customInput={<CustomInput />}
+              withPortal
+              disabledKeyboardNavigation
             />
           </h3>
           <BookingDescription />
