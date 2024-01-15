@@ -1,19 +1,18 @@
 import React from "react";
 import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
-import Faqcontainer from "./Faqcontainer";
-import "./faq.css";
-
+import TermsBody from "./TermsBody";
+import "./terms.css";
 import StickyBookNow from "../../component/StickyBookNow";
-function Faq() {
+function Terms() {
   return (
     <>
       <Nav />
-      <Faqcontainer />
+      <TermsBody />
       <StickyBookNow />
       <Footer />
     </>
   );
 }
 
-export default Faq;
+export default Terms;

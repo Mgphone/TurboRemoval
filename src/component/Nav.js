@@ -1,46 +1,60 @@
 import React, { useState } from "react";
 import "../assets/styles/Nav.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 function Nav() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
+  const locationPath = useLocation().pathname !== "/";
+
   return (
     <>
-    <header className="navbar">
-      <div className="navbar-left">
-      <NavLink to="/">   
-       <img src="/images/logo2.png" alt="logo" />
-      </NavLink>
-  
-    <input
-          type="checkbox"
-          id="navbar-toggle"
-          className="navbar-toggle"
-          checked={isNavbarOpen}
-          onChange={toggleNavbar}
-        />
-
-        <label htmlFor="navbar-toggle" className="toggle-btn">
-          {isNavbarOpen ? <>X</> : <>&#9776;</>}
-        </label>
-        </div>
-          {/* <div className={`navbar-right ${isNavbarOpen ? "open" : " "}`}> */}
-
-<div className={`${isNavbarOpen ?" ":"close"}`}>
-    <nav>
-    <NavLink to="/" className="nav-link">
-            HOME
+      <header className="navbar">
+        <div className="navbar-left">
+          <NavLink to="/">
+            <img src="/images/logo2.png" alt="logo" />
           </NavLink>
-          <NavLink to="/services" className="nav-link">SERVICES</NavLink>
-          <NavLink to="/contact" className="nav-link">CONTACT</NavLink>
-          <NavLink to="/faq" className="nav-link">FAQ</NavLink>
-    </nav>
-          </div>
-    
-    </header>
-    
+
+          <input
+            type="checkbox"
+            id="navbar-toggle"
+            className="navbar-toggle"
+            checked={isNavbarOpen}
+            onChange={toggleNavbar}
+          />
+
+          <label htmlFor="navbar-toggle" className="toggle-btn">
+            {isNavbarOpen ? <>X</> : <>&#9776;</>}
+          </label>
+        </div>
+        {/* <div className={`navbar-right ${isNavbarOpen ? "open" : " "}`}> */}
+
+        <div className={`${isNavbarOpen ? " " : "close"}`}>
+          <nav>
+            <NavLink to="/" className="nav-link">
+              HOME
+            </NavLink>
+            <NavLink to="/services" className="nav-link">
+              SERVICES
+            </NavLink>
+            <NavLink to="/contact" className="nav-link">
+              CONTACT
+            </NavLink>
+            <NavLink to="/faq" className="nav-link">
+              FAQ
+            </NavLink>
+            {locationPath ? (
+              <NavLink to="/" className="nav-link">
+                BOOK
+              </NavLink>
+            ) : (
+              <div></div>
+            )}
+          </nav>
+        </div>
+      </header>
+
       {/* <header className="navbar" id="navbar">
         <div className="navbar-left">
           <a href="/" className="logo">

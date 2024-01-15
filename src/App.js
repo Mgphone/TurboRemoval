@@ -17,6 +17,7 @@ import ServiceNameComponent from "./pages/Services/ServicesComponent/ServiceName
 import CheckHomeId from "./pages/CheckHomeId/CheckHomeId.js";
 //this is import extral modules
 import restrictHomeId from "./component/restrictHomeId.js";
+import Terms from "./pages/TermsAndCondition/Terms.js";
 function App() {
   // const validUserData = servicesprovided.map((item) =>
   //   item.Title.replace(/ /g, "-")
@@ -42,6 +43,7 @@ function App() {
           <Route path="/retrieve" element={<Retrieve />}></Route>
           <Route path="/services/:id" element={<ServiceNameComponent />} />
           <Route path="/location/:id" element={<LocationComponent />}></Route>
+          <Route path="/terms" element={<Terms />} />
         </Routes>
       </div>
     </MyContextProvider>

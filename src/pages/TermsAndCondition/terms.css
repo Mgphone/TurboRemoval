@@ -1,0 +1,34 @@
+.termsbody{
+  margin:20px;
+  padding:10px;
+  background-color: #ddd;
+   border-radius: 0.2%;
+}
+.termsbody header{
+  line-height: 0.8;
+}
+.termsbody header h1,p{
+  text-align: center;
+}
+.termsbody header p{
+  font-weight: 100;
+  font-style: oblique;
+}
+.termsbody-content p{
+  text-align: left;
+}
+
+.termsbody-content-header{
+  text-align: left;
+  font-size: 0.8em;
+  background-color:#aaa;
+  padding:10px 4px;
+}
+.termsbody-content-body h3{
+  color:rgb(22,67,133)
+}
+.termsbody-content-body p{
+  padding-bottom: 2px;
+}
+
+
