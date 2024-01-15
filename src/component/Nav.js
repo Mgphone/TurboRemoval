@@ -10,7 +10,8 @@ function Nav() {
     <>
     <header className="navbar">
       <div className="navbar-left">
-      <NavLink to="/">    <img src="/images/logo2.png" alt="logo" />
+      <NavLink to="/">   
+       <img src="/images/logo2.png" alt="logo" />
       </NavLink>
   
     <input

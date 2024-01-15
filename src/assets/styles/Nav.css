@@ -3,12 +3,14 @@
 /* Default styles for larger screens */
 .navbar {
   background-color:lightgray;
-  padding: 10px;
+  padding: 0 10px ;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
+.navbar-left img{
+height: 15vh;
+}
 .nav-link {
   margin-right: 15px;
   text-decoration: none;
@@ -32,12 +34,12 @@ nav a.active{
 .toggle-btn {
   cursor: pointer;
   font-size: 40px;
-  display: none; /* Initially hide the label on larger screens */
+  display: none; 
 }
 
 /* Styles for the mobile menu */
 .navbar-toggle {
-  display: none; /* Initially hide the checkbox on larger screens */
+  display: none; 
 }
 /* Media query for smaller screens */
 @media (max-width: 768px) {
@@ -46,7 +48,7 @@ nav a.active{
   }
   .navbar {
     flex-direction: column;
-    align-items: stretch; /* Ensure items stretch to full width */
+    align-items: stretch; 
   }
   .navbar-left{
     display: flex;
@@ -55,9 +57,9 @@ nav a.active{
 
   }
   img {
-    width: 100%; /* Make the image take up 100% width */
-    max-width: 200px; /* Set a maximum width for the image */
-    margin-bottom: 10px; /* Add some spacing between the image and links */
+    width: 100%; 
+    max-width: 200px; 
+    /* margin-bottom: 10px; */
   }
 
   .nav-link {
