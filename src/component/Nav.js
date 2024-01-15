@@ -46,7 +46,7 @@ function Nav() {
             </NavLink>
             {locationPath ? (
               <NavLink to="/" className="nav-link">
-                BOOK
+                BOOK NOW
               </NavLink>
             ) : (
               <div></div>
