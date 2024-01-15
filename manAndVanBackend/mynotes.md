@@ -338,3 +338,7 @@ firstly i fetch the api of UK currenct time from utils(noted)
 for the latebook i make true or false(noted)
 for service i call the utils fetch as to call i need to use async await(noted)
 to call async and await firstly declare currenttime as initial value, but i have to called it back within the modules(noted)
+
+commit 116
+in react file naming is important remember .css file make it small letter(noted)
+if you want u can get capital but make it small letter(noted)

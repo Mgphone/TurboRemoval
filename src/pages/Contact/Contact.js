@@ -3,7 +3,7 @@ import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
 import StickyBookNow from "../../component/StickyBookNow";
 import Contactbody from "./Contactbody";
-import "./contact.css";
+import "./Contact.css";
 function ContactPage() {
   return (
     <>
