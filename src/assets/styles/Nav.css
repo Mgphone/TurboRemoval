@@ -1,108 +1,73 @@
+/* styles.css */
+
+/* Default styles for larger screens */
 .navbar {
   background-color:lightgray;
-  color: white;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 100vw;
-  padding:0;
-  margin:0;
-  /* height: 15vh; */
-  height: auto;
-}
-/* Style the logo inside the left part of the navbar */
-.logo img {
-  height: 15vh;
-  width: auto;
 }
 
-
-
-/* Style the right part of the navbar */
-.navbar-right {
-  display: flex;
-  flex-shrink: 0;
-  gap:0;
+.nav-link {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #fff;
 }
 
-.navbar-right a {
-  color: white;
+.nav-link:hover {
+  background-color: #777;
+
+}
+nav a{
   text-decoration: none;
   margin-right: 5vw;
   font-size: 1.3em;
   transition: background-color 0.3s ease;
 }
-.navbar-right a.active{
+nav a.active{
   text-decoration: underline;
   background-color: #111;
 }
-
-.navbar-right a:hover {
-  background-color: #777;
-}
-.toggle-btn{
-  display: none;
-}
-#navbar-toggle {
-  position: absolute;
-  top: -9999em;
-  left: -9999em;
-}
-@media (max-width:900px) {
-  .navbar-right a{
-    font-size: 1em;
-  }
-  /* .logo img{
-    height: 10vh;
-  } */
-}
-@media (max-width:600px) {
- 
-  /* .logo img{
-    height: 7vh;
-  } */
-/* body{
-  padding:0;
-  margin:0;
-} */
-.navbar-right{
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  position:absolute;
-  right:10px;
-  z-index: 1001;
-  gap:1vw;
-  font-size: 1.5em;
-  transform: translateY(0); /* Initial position */
-}
-.toggle-btn{
-  display: flex;
-  font-size: 3em;
+.toggle-btn {
   cursor: pointer;
-  z-index: 1002;
-  /* flex-direction: ; */
+  font-size: 40px;
+  display: none; /* Initially hide the label on larger screens */
 }
-/* .navbar-right .open{
-  display: flex;
-  
-} */
-.navbar-right a{
-  font-size: 0.5em;
-}
-#navbar-toggle:checked + .toggle-btn + .navbar-right  {
-  display: flex;
-  /* flex-direction: column; */
-  transform: translateY(0); /* Move to visible position */
 
+/* Styles for the mobile menu */
+.navbar-toggle {
+  display: none; /* Initially hide the checkbox on larger screens */
 }
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .toggle-btn{
+    display: block;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: stretch; /* Ensure items stretch to full width */
+  }
+  .navbar-left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+  img {
+    width: 100%; /* Make the image take up 100% width */
+    max-width: 200px; /* Set a maximum width for the image */
+    margin-bottom: 10px; /* Add some spacing between the image and links */
+  }
+
+  .nav-link {
+    margin: 5px 0;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+.navbar .close{
+  display: none;
 }
-@media (max-width:444px) {
-  /* .logo img{
-    height: 5vh;
-  } */
-  .navbar-right a{
-    font-size: 0.4em;
-  };
-  
 }
