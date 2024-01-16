@@ -6,7 +6,11 @@ function Nav() {
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
-  const locationPath = useLocation().pathname !== "/";
+  const location = useLocation();
+  // const locationPath = useLocation().pathname !== "/";
+  const locationPath =
+    location.pathname !== "/" && location.pathname !== "/booking";
+  // console.log(locationPath);
 
   return (
     <>

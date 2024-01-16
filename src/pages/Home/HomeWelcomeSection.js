@@ -1,47 +1,50 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { Autocomplete, LoadScript } from "@react-google-maps/api";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Autocomplete } from "@react-google-maps/api";
+import { useNavigate } from "react-router-dom";
 import MyContext from "../../context/MyContext";
 import uuid from "react-uuid";
-
+import calculateDistance from "../../component/calculateDistance";
 const countryOptions = {
-  types: ["(regions)"], // Restrict to regions (countries)
+  types: ["(regions)"],
   componentRestrictions: { country: "UK" }, // Restrict to the United Kingdom (GB)
 };
 function HomeWelcomeSection() {
-  const { addAddress, setData, initialData } = useContext(MyContext);
+  const { addAddress } = useContext(MyContext);
   const navigate = useNavigate();
   const [location, setLocation] = useState("");
   const [destination, setDestination] = useState("");
   const [errLocation, setErrLocation] = useState("err");
   const [errDestination, setErrDestination] = useState("err");
-  //this is to change address to empty
-  // console.log("This is the data from home" + JSON.stringify(data));
-  const resetInitialState = useLocation();
-
-  useEffect(() => {
-    if (resetInitialState.pathname === "/") {
-      setData(initialData);
-    }
-    // console.log("this is for reset" + resetInitialState.pathname);
-  }, [resetInitialState]);
-  // this is for location
+  //user data
+  // const center = { lat: 51.59034573602164, lng: -0.2221804055444608 };
+  const radiusInMiles = 30;
+  //this is for pickup location
   const onLoad = (autocomplete) => {
+    // console.log("Change autocomplete" + autocomplete);
     setLocation(autocomplete);
   };
-  const onPlaceChanged = () => {
+
+  const onPlaceChanged = async () => {
     if (location !== null) {
       try {
-        const place = location.getPlace();
+        const place = await location.getPlace();
 
         if (place && place.formatted_address) {
-          const selectedValue = place.formatted_address;
-          setLocation(selectedValue);
-          setErrLocation("");
-        } else {
-          alert("Please select a valid postcode from dropdown list");
-          setLocation("");
+          const distance = calculateDistance({
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+          });
+          console.log("miles?" + distance);
+          if (distance && distance <= radiusInMiles) {
+            const selectedValue = place.formatted_address;
+            setLocation(selectedValue);
+            setErrLocation("");
+          } else {
+            alert("Select a location within a 30-mile radius of NW2.");
+            navigate(`/checkareacover`);
+            setLocation("");
+          }
         }
       } catch (error) {
         console.log(error);
@@ -71,9 +74,7 @@ function HomeWelcomeSection() {
   };
   const handleQuote = (e) => {
     e.preventDefault();
-    // const generateId = () => {
-    //   return Date.now();
-    // };
+
     if (errLocation === "err" || errDestination === "err") {
       navigate(`/`);
     } else {
@@ -81,27 +82,13 @@ function HomeWelcomeSection() {
       addAddress({ id: locationId, location: location });
       const destinationId = uuid();
       addAddress({ id: destinationId, location: destination });
-      // navigate(
-      //   `/booking/?yourlocation=${encodeURIComponent(
-      //     location
-      //   )}&destination=${encodeURIComponent(destination)}`
-      // );
+
       navigate(`/booking`);
     }
   };
   const handleretrieve = async (e) => {
     // console.log("You Click Retrieve Button");
     navigate("/retrieve");
-    // e.preventDefault();
-    // fetch("/retrieve")
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => console.log(data))
-    //   .catch((error) => console.error("Fetch error:", error));
   };
 
   return (
@@ -124,9 +111,6 @@ function HomeWelcomeSection() {
                   type="text"
                   placeholder="Pickup PostCode"
                   required
-
-                  // value={location}
-                  // onChange={(e) => setLocation(e.target.value)}
                 />
               </Autocomplete>
             </div>
@@ -143,23 +127,16 @@ function HomeWelcomeSection() {
                   type="text"
                   placeholder="Dropoff PostCode"
                   required
-                  // value={destination}
-                  // onChange={(e) => setDestination(e.target.value)}
                 />
               </Autocomplete>
             </div>
             <span className="inputbetween">
               <FaArrowRight />
             </span>
-            {/* <button onClick={handleQuote}>
-              <Link to="/booking">Quote</Link>
-            </button> */}
+
             <button type="submit">Quote</button>
           </form>
-          {/* </LoadScript> */}
 
-          {/* <p className="home-warning">Please choose location from the list</p> */}
-          {/* <p className="secondimageheader"> */}
           <p className="home-warning">
             Exclusive to online reservations, no bookings accepted via phone or
             any other means{" "}

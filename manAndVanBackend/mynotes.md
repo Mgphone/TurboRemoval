@@ -342,3 +342,11 @@ to call async and await firstly declare currenttime as initial value, but i have
 commit 116
 in react file naming is important remember .css file make it small letter(noted)
 if you want u can get capital but make it small letter(noted)
+
+commit 117
+pickup is within my radius of 30miles(noted)
+for calculating i just use radius and miles(noted)
+as soon as there is out of area i just go to another page(noted)
+make sure library of loadscriper is not working at google-react-map/api is not working(noted)
+use useJsApiLoader to load(noted)
+this time i use as props for load (noted)

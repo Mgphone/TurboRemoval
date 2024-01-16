@@ -1,0 +1,18 @@
+.checkareacover-body{
+  width: 100vw;
+  /* height: 100vh; */
+  margin:20px auto;
+  text-align: left;
+  
+}
+.checkareacover-body h1{
+  text-align: center;
+}
+.searchsticky{
+  padding: 10px;
+  display: block;
+text-align: center;
+}
+.searchsticky input{
+padding: 10px;
+}
