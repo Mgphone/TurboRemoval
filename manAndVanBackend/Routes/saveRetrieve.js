@@ -28,6 +28,8 @@ router.post("/", async (req, res) => {
     const savedData = await newRetrieve.save();
     const linkAddress = `${process.env.MY_URL_FRONT}retrieve/${savedData.randomNumber}`;
     const myAddress = process.env.MY_URL_FRONT;
+    // const isViaStop = savedData.quote.totalAddress.length < 2;
+
     //send email...
     const mailOptions = {
       from: process.env.GMAIL_USERNAME,
@@ -38,9 +40,18 @@ router.post("/", async (req, res) => {
     <h1>Thank you very much for saving <a href="${linkAddress}">Your Quote</a> from ${myAddress}</h1>  
   <h2 style="color: #333333;">Dear ${savedData.quote.name},</h2>
     <h2 style="color: #333333;">Dear ${savedData.quote.name},</h2>
-      <p>Your pick-up address: ${savedData.quote.places[0]}</p>
+      <p>Your pick-up address: ${savedData.quote.totalAddress[0].location}</p>
+      <p>Your pick-up Buidling Address: ${
+        savedData.quote.totalAddress[0].physicalAddress
+      }</p>
+      <p>You have via Stop ${savedData.quote.totalAddress.length - 2}</p>
       <p>Your drop-off address: ${
-        savedData.quote.places[savedData.quote.places.length - 1]
+        savedData.quote.totalAddress[savedData.quote.totalAddress.length - 1]
+          .location
+      }</p>
+      <p>Your drop-off Buidling Address: ${
+        savedData.quote.totalAddress[savedData.quote.totalAddress.length - 1]
+          .physicalAddress
       }</p>
       <p style="font-weight: bold; color: #4CAF50;">Your total amount: £${savedData.quote.totalPrice.toFixed(
         2

@@ -72,7 +72,6 @@ function Booking() {
             setCheckForm={setCheckForm}
           />
         )}
-
         <Booking_Header />
         <ChooseVanSize />
         <Booking_Loading />

@@ -109,6 +109,10 @@ function RetrieveUserData({ retrieveData }) {
                 {totalAddress[0].location}
               </p>
               <p>
+                <span className="user-paragraph">Building Address:</span>
+                {totalAddress[0].physicalAddress}
+              </p>
+              <p>
                 <span className="user-paragraph">Stair:</span>
                 {totalAddress[0].stair}
               </p>
@@ -118,6 +122,10 @@ function RetrieveUserData({ retrieveData }) {
               <p>
                 <span className="user-paragraph">Location:</span>
                 {totalAddress[totalAddress.length - 1].location}
+              </p>
+              <p>
+                <span className="user-paragraph">Building Address:</span>
+                {totalAddress[totalAddress.length - 1].physicalAddress}
               </p>
               <p>
                 <span className="user-paragraph">Stair:</span>
@@ -134,6 +142,10 @@ function RetrieveUserData({ retrieveData }) {
                   <p>
                     <span className="user-paragraph">Location:</span>
                     {location.location}
+                  </p>
+                  <p>
+                    <span className="user-paragraph">Building Addres:</span>
+                    {location.physicalAddress}
                   </p>
                   <p>
                     <span className="user-paragraph">Stair:</span>

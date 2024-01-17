@@ -41,7 +41,7 @@ function HomeWelcomeSection() {
             setLocation(selectedValue);
             setErrLocation("");
           } else {
-            alert("Select a location within a 30-mile radius of NW2.");
+            alert("Select a location within a 30-miles radius of NW2.");
             navigate(`/checkareacover`);
             setLocation("");
           }

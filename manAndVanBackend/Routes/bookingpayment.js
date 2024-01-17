@@ -81,6 +81,11 @@ router.post("/success", async (req, res) => {
       transition.quote.places[transition.quote.places.length - 1];
     const isViaStop = transition.quote.places.length > 2;
     const totalAmount = transition.quote.totalPrice.toFixed(2);
+    const pickUpPhysicalAddress =
+      transition.quote.totalAddress[0].physicalAddress;
+    const deliverPhysicalAddress =
+      transition.quote.totalAddress[transition.quote.totalAddress.length - 1]
+        .physicalAddress;
 
     const emailOptions = mailOptions(
       name || transition.quote.name,
@@ -90,7 +95,9 @@ router.post("/success", async (req, res) => {
       pickUpaddress || transition.quote.places[0],
       deliverAddress ||
         transition.quote.places[transition.quote.places.length - 1],
-      isViaStop || transition.quote.places.length > 2
+      isViaStop || transition.quote.places.length > 2,
+      pickUpPhysicalAddress,
+      deliverPhysicalAddress
     );
 
     // console.log("This is email options" + JSON.stringify(emailOptions));

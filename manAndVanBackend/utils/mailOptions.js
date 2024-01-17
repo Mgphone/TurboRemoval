@@ -5,7 +5,9 @@ const mailOptions = (
   quoteNumber,
   pickUpaddress,
   deliverAddress,
-  isViaStop
+  isViaStop,
+  pickUpPhysicalAddress,
+  deliverPhysicalAddress
 ) => {
   const viaStopInfo = isViaStop
     ? `<li><strong>Via Stop:</strong> Yes</li>`
@@ -32,7 +34,9 @@ const mailOptions = (
       <h2>Addresses:</h2>
       <ul>
           <li><strong>Pickup Address:</strong> ${pickUpaddress}</li>
+          <li><strong>Pickup Physical Address:</strong> ${pickUpPhysicalAddress}</li>
           <li><strong>Delivery Address:</strong> ${deliverAddress}</li>
+          <li><strong>Delivery Physical Address:</strong> ${deliverPhysicalAddress}</li>
           ${viaStopInfo}
       </ul>
   

@@ -66,8 +66,14 @@ router.post("/updatepaymentstatus", async (req, res) => {
     const email = result.quote.email;
     const phone = result.quote.phone;
     const quoteNumber = result.randomNumber;
-    const pickUpaddress = result.quote.places[0];
-    const deliverAddress = result.quote.places[result.quote.places.length - 1];
+    const pickUpaddress = result.quote.totalAddress[0].location;
+    const pickUpPhysicalAddress = result.quote.totalAddress[0].physicalAddress;
+    const deliverAddress =
+      result.quote.totalAddress[result.quote.totalAddress.length - 1].location;
+    const deliverPhysicalAddress =
+      result.quote.totalAddress[result.quote.totalAddress.length - 1]
+        .physicalAddress;
+
     const isViaStop = result.quote.places.length > 2;
     const totalAmount = result.quote.totalPrice.toFixed(2);
     const emailOptions = mailOptions(
@@ -77,7 +83,9 @@ router.post("/updatepaymentstatus", async (req, res) => {
       quoteNumber,
       pickUpaddress,
       deliverAddress,
-      isViaStop
+      isViaStop,
+      pickUpPhysicalAddress,
+      deliverPhysicalAddress
     );
 
     // console.log("This is the result before" + JSON.stringify(result));

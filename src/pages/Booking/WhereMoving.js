@@ -7,7 +7,10 @@ function WhereMoving() {
   const { data, setData } = useContext(MyContext);
   const checkCollectandDesti = data.addresses;
   const arrayLength = checkCollectandDesti.length;
-
+  // useEffect(() => {
+  //   console.log("This is log from whereemoving" + JSON.stringify(data));
+  // }, [data]);
+  // this is for pickup address
   const changeLocation = (e) => {
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[0].stair = e.target.value;
@@ -16,7 +19,15 @@ function WhereMoving() {
       addresses: updatedAddresses,
     }));
   };
-
+  const changePhysicalAddressPickup = (e) => {
+    const updatedAddresses = [...checkCollectandDesti];
+    updatedAddresses[0].physicalAddress = e.target.value;
+    setData((prevState) => ({
+      ...prevState,
+      addresses: updatedAddresses,
+    }));
+  };
+  /// this is for delivery address
   const changeDestination = (e) => {
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[updatedAddresses.length - 1].stair = e.target.value;
@@ -27,6 +38,15 @@ function WhereMoving() {
     }));
   };
 
+  const changePhysicalAddressDeliver = (e) => {
+    const updatedAddresses = [...checkCollectandDesti];
+    updatedAddresses[updatedAddresses.length - 1].physicalAddress =
+      e.target.value;
+    setData((prevState) => ({
+      ...prevState,
+      addresses: updatedAddresses,
+    }));
+  };
   //betweenstops form
   const [between, setBetween] = useState("");
   const handleBetweenStops = (updateForm) => {
@@ -106,8 +126,14 @@ function WhereMoving() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="Address_ReadOnly">Address</label>
-                    <input value={checkCollectandDesti[0].location} readOnly />
+                    <label htmlFor="Collection User Enter">
+                      Building Address
+                    </label>
+                    <input
+                      placeholder="Enter Your Physical Address"
+                      required
+                      onChange={changePhysicalAddressPickup}
+                    />
                   </div>
                   <div>
                     <label htmlFor="StairFlight">Stairs</label>
@@ -143,11 +169,19 @@ function WhereMoving() {
                       value={checkCollectandDesti[arrayLength - 1].location}
                     />
                   </div>
-                  <div>
+                  {/* <div>
                     <label htmlFor="Address_ReadOnly">Address</label>
                     <input
                       value={checkCollectandDesti[arrayLength - 1].location}
                       readOnly
+                    />
+                  </div> */}
+                  <div>
+                    <label htmlFor="Delvery User Enter">Building Address</label>
+                    <input
+                      placeholder="Enter Your Physical Address"
+                      required
+                      onChange={changePhysicalAddressDeliver}
                     />
                   </div>
                   <div>
