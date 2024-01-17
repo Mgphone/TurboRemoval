@@ -5,7 +5,7 @@ import {
   Circle,
   Marker,
 } from "@react-google-maps/api";
-function AreacCoverMap({ apiKey, center, radius }) {
+function AreacCoverMap({ apiKey, center, radius, pointer }) {
   const mapStyles = {
     height: "70vh",
     width: "90%",
@@ -30,7 +30,7 @@ function AreacCoverMap({ apiKey, center, radius }) {
           }}
         />
 
-        <Marker position={center} />
+        <Marker position={pointer} />
       </GoogleMap>
     </div>
   );
