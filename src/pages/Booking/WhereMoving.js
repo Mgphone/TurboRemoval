@@ -3,6 +3,7 @@ import MyContext from "../../context/MyContext";
 // import { Autocomplete } from "@react-google-maps/api";
 import BetweenStops from "./BetweenStops";
 import "./Booking.css";
+import BetweenMoving from "./BetweenStop/BetweenMoving";
 function WhereMoving() {
   const { data, setData } = useContext(MyContext);
   const checkCollectandDesti = data.addresses;
@@ -157,7 +158,9 @@ function WhereMoving() {
                     </select>
                   </div>
                 </div>
-                <BetweenStops onFormChange={handleBetweenStops} />
+                {/* add via stops */}
+                {/* <BetweenStops onFormChange={handleBetweenStops} /> */}
+                <BetweenMoving />
                 <div className="wheremoving-form-title">
                   <h2>Delivery address</h2>
                 </div>
@@ -206,12 +209,12 @@ function WhereMoving() {
                     </select>
                   </div>
                 </div>
-                <button
+                {/* <button
                   className="collection-submitbutton"
                   onClick={handleMovingForm}
                 >
                   Submit
-                </button>
+                </button> */}
                 {/* <button type="submit">Submit</button> */}
               </>
             ) : null

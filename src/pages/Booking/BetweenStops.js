@@ -12,6 +12,9 @@ function BetweenStops({ onFormChange }) {
     viaStopsData: [],
   });
   useEffect(() => {
+    console.log("This is between stops " + JSON.stringify(data));
+  });
+  useEffect(() => {
     // when there is no value in formdata i reset zero to viastops
     // console.log("useEffect triggered. formData:", formData);
 

@@ -397,6 +397,11 @@ padding:1em;
   margin-top: 4vh;
   padding:0;
 }
+.remove-via{
+  padding: 1em;
+  background-color: yellow;
+  cursor: pointer;
+}
 /* where moving form end */
 /* start estimate how many hour */
 .estimatediv{
