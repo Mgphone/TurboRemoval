@@ -49,7 +49,12 @@ function BetweenMoving() {
       ...prevValue,
       addresses: [
         ...prevValue.addresses.slice(0, prevValue.addresses.length - 1),
-        { id: uniqueId, location: "", physicalAddress: "", selectedStair: "" },
+        {
+          id: uniqueId,
+          location: "London NW2, UK",
+          physicalAddress: "",
+          selectedStair: "",
+        },
         ...prevValue.addresses.slice(-1),
       ],
     }));
