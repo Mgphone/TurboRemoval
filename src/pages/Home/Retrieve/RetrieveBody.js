@@ -54,7 +54,12 @@ function RetrieveBody() {
         </div>
         {error && <div>{JSON.stringify(error)}</div>}
         {loading && <div className="retrieve-user-data">Loading...</div>}
-        {retrieveData && <RetrieveUserData retrieveData={retrieveData} />}
+        {retrieveData && (
+          <RetrieveUserData
+            retrieveData={retrieveData}
+            setRetrieveData={setRetrieveData}
+          />
+        )}
         {/* {retrieveData && <div>{JSON.stringify(retrieveData)}</div>} */}
       </div>
     </>

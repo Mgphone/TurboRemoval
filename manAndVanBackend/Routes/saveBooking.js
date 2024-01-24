@@ -5,7 +5,22 @@ const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 const { transport } = require("../services/emailService");
 const mailOptions = require("../utils/mailOptions");
 const { emailLogStream } = require("../middleware/emaillogger");
-
+router.post("/testingpaymentstatus", async (req, res) => {
+  try {
+    const query = req.body;
+    const objectId = query[0]._id;
+    const result = await Retrieve.findById(objectId);
+    // console.log("This is result from server" + JSON.stringify(result));
+    // const totalPrice = query[0].quote.totalPrice;
+    const totalPrice = await result.quote.totalPrice;
+    // console.log("Server totalPrice" + totalPrice);
+    const percentage = query[0].percentage;
+    const userPayment = ((percentage / 100) * totalPrice).toFixed(2);
+    console.log("This is userNeedto pay" + userPayment);
+  } catch (error) {
+    console.error("Error when make a payament");
+  }
+});
 router.post("/", async (req, res) => {
   try {
     const query = req.body;
@@ -112,8 +127,15 @@ router.post("/updatepaymentstatus", async (req, res) => {
     res.status(500).json({ error: "Internal server Error" });
   }
 });
-router.get("/updatepaymentstatus", (req, res) => {
-  console.log("Just say hi from server");
+// router.get("/updatepaymentstatus", (req, res) => {
+//   // console.log("Just say hi from server");
+//   const query = req.body;
+//   console.log(JSON.stringify(query));
+// });
+
+router.get("/testingpaymentstatus", (req, res) => {
+  res.json("Hi from server");
+  console.log("Helo from server");
 });
 
 module.exports = router;
