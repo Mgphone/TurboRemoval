@@ -7,10 +7,11 @@ const RetrieveSchema = Schema(
     randomNumber: Number,
     paymentStatus: {
       type: String,
-      enum: ["paid", "unpaid"],
+      enum: ["paid", "unpaid", "30percentage", "50percentage"],
       default: "unpaid",
     },
     paymentIntentId: String,
+    percentage: Number,
   },
   { timestamps: true }
 );

@@ -10,15 +10,27 @@ router.post("/testingpaymentstatus", async (req, res) => {
     const query = req.body;
     const objectId = query[0]._id;
     const result = await Retrieve.findById(objectId);
-    // console.log("This is result from server" + JSON.stringify(result));
-    // const totalPrice = query[0].quote.totalPrice;
-    const totalPrice = await result.quote.totalPrice;
-    // console.log("Server totalPrice" + totalPrice);
+    const totalPrice = result.quote.totalPrice;
     const percentage = query[0].percentage;
     const userPayment = ((percentage / 100) * totalPrice).toFixed(2);
-    console.log("This is userNeedto pay" + userPayment);
+    const totalInCent = Math.round(parseFloat(userPayment) * 100);
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: totalInCent,
+      currency: "gbp",
+    });
+    result.paymentIntentId = paymentIntent.id;
+    result.percentage = percentage;
+    await result.save();
+    res
+      .status(200)
+      .json({
+        success: true,
+        paymentIntentId: paymentIntent.id,
+        percentage: percentage,
+      });
   } catch (error) {
-    console.error("Error when make a payament");
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 });
 router.post("/", async (req, res) => {
