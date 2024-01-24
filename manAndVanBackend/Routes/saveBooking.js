@@ -21,16 +21,50 @@ router.post("/testingpaymentstatus", async (req, res) => {
     result.paymentIntentId = paymentIntent.id;
     result.percentage = percentage;
     await result.save();
-    res
-      .status(200)
-      .json({
-        success: true,
-        paymentIntentId: paymentIntent.id,
-        percentage: percentage,
-      });
+    res.status(200).json({
+      success: true,
+      paymentIntentId: paymentIntent.id,
+      percentage: percentage,
+      clientSecret: paymentIntent.client_secret,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
+  }
+});
+router.post("/testsuccess", async (req, res) => {
+  try {
+    const query = req.body;
+    const objectId = query[0]._id;
+    const result = await Retrieve.findById(objectId);
+    const totalAmount = result.quote.totalPrice;
+    const percentage = result.percentage;
+    const customerPaid = (percentage / 100) * totalAmount;
+
+    if (percentage === 50) {
+      result.paymentStatus = "50percentage";
+      const checkerValue = (totalAmount - customerPaid).toFixed(2);
+      result.OutstandingBalance = checkerValue;
+      await result.save();
+      res.json({ success: true });
+    } else if (percentage === 100) {
+      result.paymentStatus = "paid";
+      const checkerValue = (totalAmount - customerPaid).toFixed(2);
+      result.OutstandingBalance = checkerValue;
+      await result.save();
+      res.json({ success: true });
+    } else if (percentage === 30) {
+      result.paymentStatus = "30percentage";
+      const checkerValue = (totalAmount - customerPaid).toFixed(2);
+      result.OutstandingBalance = checkerValue;
+      await result.save();
+      res.json({ success: true });
+    } else {
+      res.status(404).json({ error: "Document not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server Error" });
   }
 });
 router.post("/", async (req, res) => {

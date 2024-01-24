@@ -12,6 +12,7 @@ const RetrieveSchema = Schema(
     },
     paymentIntentId: String,
     percentage: Number,
+    OutstandingBalance: Number,
   },
   { timestamps: true }
 );

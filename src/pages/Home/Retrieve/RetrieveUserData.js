@@ -54,9 +54,37 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
   //     console.error(error);
   //   }
   // };
+  ///////this is for handlePaymentSuccess(); for testbook
+  const handlePaymentSuccess = async () => {
+    try {
+      const updateResponse = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}savebooking/testsuccess`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(retrieveData),
+        }
+      );
+      const updateResult = await updateResponse.json();
+      if (updateResult.success === true) {
+        alert("Payment Success");
+        navigate("/");
+      } else {
+        console.error("Failed to update payment");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  /////end of handpaymentsuccess
   const testBook = async () => {
     if (!retrieveData[0].percentage) {
       alert("Please Choosea percetage option");
+    }
+    if (!elements && !stripe) {
+      return;
     }
     try {
       const url = process.env.REACT_APP_SERVER_URL;
@@ -68,9 +96,28 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
           body: JSON.stringify(retrieveData),
         }
       );
-      const result = handleResponse.json();
-      console.log("Server log" + JSON.stringify(result));
-    } catch (error) {}
+      // const result = handleResponse.json();
+      // console.log("Server log" + JSON.stringify(result));
+      const { clientSecret } = await handleResponse.json();
+      // console.log("This is client secret " + clientSecret);
+      const { error, paymentIntent } = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+        }
+      );
+      if (error) {
+        setPaymentError(error.message);
+      } else {
+        console.log("Payment succedd", paymentIntent);
+        await handlePaymentSuccess();
+      }
+    } catch (error) {
+      console.error(error);
+      setPaymentError("An Error happen when druing payment process");
+    }
   };
   // const handlebook = async () => {
   //   // console.log("You click");
@@ -281,7 +328,35 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
           // }
         />
         <label htmlFor="Full Payment">Full Payment</label>
-        <button onClick={testBook}>Test Book</button>
+        {!isPaid && (
+          <div className="checkispaid">
+            <div style={{ marginBottom: "20px" }}>
+              <label>
+                Card details
+                <CardElement
+                  options={{
+                    style: {
+                      base: {
+                        fontSize: "16px",
+                        color: "#424770",
+                        "::placeholder": {
+                          color: "#aab7c4",
+                        },
+                      },
+                      invalid: {
+                        color: "#9e2146",
+                      },
+                    },
+                  }}
+                />
+              </label>
+            </div>
+
+            {paymentError && <div style={{ color: "red" }}>{paymentError}</div>}
+            <button onClick={testBook}>Test Book</button>
+          </div>
+        )}
+
         {/* {!isPaid && (
           <div className="checkispaid">
             <div style={{ marginBottom: "20px" }}>
