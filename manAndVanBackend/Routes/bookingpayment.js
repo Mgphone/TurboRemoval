@@ -37,8 +37,8 @@ router.post("/", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `http://192.168.1.216:3000/paymentbooking/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: "http://192.168.1.216:3000/paymentbooking/cancel",
+      success_url: `${process.env.MY_URL_FRONT}paymentbooking/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.MY_URL_FRONT}paymentbooking/fail`,
     });
 
     // Save to the database
@@ -72,6 +72,7 @@ router.post("/success", async (req, res) => {
 
     // If transition is found, update payment status and send email
     transition.paymentStatus = "paid";
+    //this is for email options
     const name = transition.quote.name;
     const phone = transition.quote.phone;
     const email = transition.quote.email;

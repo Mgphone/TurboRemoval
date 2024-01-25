@@ -17,7 +17,7 @@ import MyContext from "../../context/MyContext";
 
 function Booking() {
   const { data } = useContext(MyContext);
-  const [userData, setuserData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [checkForm, setCheckForm] = useState(false);
 
   // console.log("This is checkForm" + checkForm);
@@ -44,7 +44,7 @@ function Booking() {
         // console.log(
         //   "THis is result on the after fetch" + JSON.stringify(result)
         // );
-        setuserData(result);
+        setUserData(result);
       } catch (error) {
         console.error("There is an error when sending to back", error);
       }
@@ -68,6 +68,7 @@ function Booking() {
         {checkForm && (
           <FloatingBook
             userData={userData}
+            // setuserData={setUserData}
             closeButton={closeButton}
             setCheckForm={setCheckForm}
           />

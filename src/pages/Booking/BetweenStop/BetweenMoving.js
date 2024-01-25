@@ -4,9 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import Between from "./Between";
 function BetweenMoving() {
   const { data, setData } = useContext(MyContext);
-  useEffect(() => {
-    console.log("Moving update" + JSON.stringify(data));
-  }, [data]);
+
   const handleInputChange = (value, betweenId) => {
     console.log("Between ID:", betweenId);
 

@@ -30,7 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/booking" element={<PrivateRoute />} />
           <Route path="/paymentbooking/success" element={<Success />} />
-          <Route path="/fail" element={<Fail />} />
+          <Route path="/paymentbooking/fail" element={<Fail />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="*" element={<NotFound />} /> */}

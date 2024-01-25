@@ -8,20 +8,21 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
   const quote = retrieveData[0].quote;
   const totalAddress = quote.totalAddress;
   const isPaid =
-    retrieveData[0].paymentStatus === "paid" &&
+    retrieveData[0].paymentStatus === "unpaid" &&
     retrieveData[0].paymentStatus !== undefined;
-  // const [showPrice, setShowPrice] = useState(null);
+  const paymentStatus = retrieveData[0].paymentStatus;
+  const outStandingBalance = retrieveData[0].OutstandingBalance;
   const [percentage, setPercentage] = useState(null);
   const isViaStop = totalAddress && totalAddress.length > 2;
   const stripe = useStripe();
   const elements = useElements();
   const [paymentError, setPaymentError] = useState(null);
-  useEffect(() => {
-    console.log(
-      "This is reteieveData from RetrieveUserData" +
-        JSON.stringify(retrieveData)
-    );
-  }, []);
+  // useEffect(() => {
+  //   console.log(
+  //     "This is reteieveData from RetrieveUserData" +
+  //       JSON.stringify(retrieveData)
+  //   );
+  // }, []);
 
   const handlePaymentSuccess = async () => {
     try {
@@ -206,64 +207,75 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
             {((percentage / 100) * quote.totalPrice.toFixed(2)).toFixed(2)}
           </p>
         )}
+        {isPaid && (
+          <div>
+            <p className="user-payment-percentage">
+              How many Percentage you want to pay
+            </p>
+            <input
+              type="radio"
+              id="30%"
+              name="Percentage"
+              value="30"
+              onChange={handlePercentageChange}
+            />
+            <label htmlFor="30percentage">30 Percentage</label>
+            <input
+              type="radio"
+              id="50%"
+              name="Percentage"
+              value="50"
+              onChange={handlePercentageChange}
+            />
+            <label htmlFor="50percentage">50 Percentage</label>
+            <input
+              type="radio"
+              id="100%"
+              name="Percentage"
+              value="100"
+              onChange={handlePercentageChange}
+            />
+            <label htmlFor="Full Payment">Full Payment</label>
 
-        <p className="user-payment-percentage">
-          How many Percentage you want to pay
-        </p>
-        <input
-          type="radio"
-          id="30%"
-          name="Percentage"
-          value="30"
-          onChange={handlePercentageChange}
-        />
-        <label htmlFor="30percentage">30 Percentage</label>
-        <input
-          type="radio"
-          id="50%"
-          name="Percentage"
-          value="50"
-          onChange={handlePercentageChange}
-        />
-        <label htmlFor="50percentage">50 Percentage</label>
-        <input
-          type="radio"
-          id="100%"
-          name="Percentage"
-          value="100"
-          onChange={handlePercentageChange}
-        />
-        <label htmlFor="Full Payment">Full Payment</label>
-        {!isPaid && (
-          <div className="checkispaid">
-            <div style={{ marginBottom: "20px" }}>
-              <label>
-                Card details
-                <CardElement
-                  options={{
-                    style: {
-                      base: {
-                        fontSize: "16px",
-                        color: "#424770",
-                        "::placeholder": {
-                          color: "#aab7c4",
+            <div className="checkispaid">
+              <div style={{ marginBottom: "20px" }}>
+                <label>
+                  Card details
+                  <CardElement
+                    options={{
+                      style: {
+                        base: {
+                          fontSize: "16px",
+                          color: "#424770",
+                          "::placeholder": {
+                            color: "#aab7c4",
+                          },
+                        },
+                        invalid: {
+                          color: "#9e2146",
                         },
                       },
-                      invalid: {
-                        color: "#9e2146",
-                      },
-                    },
-                  }}
-                />
-              </label>
-            </div>
+                    }}
+                  />
+                </label>
+              </div>
 
-            {paymentError && <div style={{ color: "red" }}>{paymentError}</div>}
-            <button onClick={handlebook}>Test Book</button>
+              {paymentError && (
+                <div style={{ color: "red" }}>{paymentError}</div>
+              )}
+              <button onClick={handlebook}>Make Payment</button>
+            </div>
           </div>
         )}
-
-        {isPaid && <h5>You have Already paid</h5>}
+        {!isPaid && (
+          <div>
+            <h5>You have Already paid for {paymentStatus}</h5>
+            <p>
+              When you finish the booking you have to pay the driver for
+              outstading balanace of {outStandingBalance}
+            </p>
+          </div>
+        )}
       </div>
     </>
   );
