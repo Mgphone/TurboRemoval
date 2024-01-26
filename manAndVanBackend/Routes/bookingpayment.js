@@ -5,6 +5,7 @@ const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 const mailOptions = require("../utils/mailOptions");
 const { transport } = require("../services/emailService");
 const { emailLogStream } = require("../middleware/emaillogger");
+// const { connect } = require("mongoose");
 router.post("/", async (req, res) => {
   try {
     // const receivedData = req.body;
@@ -20,7 +21,8 @@ router.post("/", async (req, res) => {
     const description = `Pickup Address ${pickupAddress} and Drop Address ${dropAddress}`;
     const totalAmount = receivedData.totalPrice.toFixed(2);
     const randomNumber = Math.floor(Math.random() * 10000000 + 1);
-
+    const percentage = receivedData.percentage;
+    const customerStripePay = (percentage / 100) * totalAmount;
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -31,7 +33,7 @@ router.post("/", async (req, res) => {
               name: `Your Moving at ${date}`,
               description: `${description}`,
             },
-            unit_amount: Math.round(totalAmount * 100),
+            unit_amount: Math.round(customerStripePay * 100),
           },
           quantity: 1,
         },
@@ -64,14 +66,36 @@ router.post("/success", async (req, res) => {
   try {
     const sessionId = req.body.session_id;
     const transition = await Retrieve.findOne({ paymentIntentId: sessionId });
-    // console.log("This is my trranstion" + JSON.stringify(transition));
+    const totalAmount = transition.quote.totalPrice.toFixed(2);
+    const percentage = transition.quote.percentage;
+    // console.log(
+    //   "This is my transition from bookingpayment" + JSON.stringify(transition)
+    // );
     if (!transition) {
       // console.error("Transition not found");
       return res.status(404).json({ error: "Transition not Found" });
     }
 
     // If transition is found, update payment status and send email
-    transition.paymentStatus = "paid";
+    else if (transition.quote.percentage === 30) {
+      transition.paymentStatus = "30percentage";
+      transition.percentage = 30;
+      transition.OutstandingBalance =
+        totalAmount - (percentage / 100) * totalAmount;
+      // transition.percentage
+    } else if (transition.quote.percentage === 50) {
+      transition.paymentStatus = "50percentage";
+      transition.percentage = 50;
+      transition.OutstandingBalance =
+        totalAmount - (percentage / 100) * totalAmount;
+    } else if (transition.quote.percentage === 100) {
+      transition.paymentStatus = "paid";
+      transition.percentage = 100;
+      transition.OutstandingBalance = 0;
+    }
+
+    // transition.paymentStatus = "paid";
+
     //this is for email options
     const name = transition.quote.name;
     const phone = transition.quote.phone;
@@ -81,7 +105,7 @@ router.post("/success", async (req, res) => {
     const deliverAddress =
       transition.quote.places[transition.quote.places.length - 1];
     const isViaStop = transition.quote.places.length > 2;
-    const totalAmount = transition.quote.totalPrice.toFixed(2);
+    // const totalAmount = transition.quote.totalPrice.toFixed(2);
     const pickUpPhysicalAddress =
       transition.quote.totalAddress[0].physicalAddress;
     const deliverPhysicalAddress =
@@ -100,25 +124,26 @@ router.post("/success", async (req, res) => {
       pickUpPhysicalAddress,
       deliverPhysicalAddress
     );
+    //send email and save
+    try {
+      const info = await transport.sendMail(emailOptions);
+      console.log("Email sent for directBook Payment", info.response);
 
-    // console.log("This is email options" + JSON.stringify(emailOptions));
-    await transition.save();
-    // console.log("Payment status updated successfully.");
-    const logEmailInfo = (info) => {
+      // Log email information
       const timeStamp = new Date().toISOString();
       emailLogStream.write(
-        `[${timeStamp}]Reason:customerPaid email:${email} amount:£${totalAmount} ${info.response}`
+        `[${timeStamp}] Reason: customerPaid email: ${email} amount: £${totalAmount} ${info.response}`
       );
-    };
-    //sending email
 
-    const info = await transport.sendMail(emailOptions);
-    logEmailInfo(info);
-    console.log("Email sent for directBook Payment", info.response);
-
-    res
-      .status(200)
-      .json({ message: "Payment updated successfully and email sent." });
+      // Save transition to the database
+      await transition.save();
+      res
+        .status(200)
+        .json({ message: "Payment updated successfully and email sent." });
+    } catch (emailError) {
+      console.error("Error sending email", emailError);
+      res.status(500).json({ error: "Error sending email" });
+    }
   } catch (error) {
     console.error("Error updating the payment or sending email", error);
     res

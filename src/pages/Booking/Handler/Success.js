@@ -31,7 +31,7 @@ function Success() {
       );
       console.log(response.status);
       if (response.ok) {
-        console.log("I send it to you, baby");
+        console.log("I send it to you,Money Transfer done");
       } else {
         console.error("Backend server error");
       }

@@ -204,7 +204,7 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
               {" "}
               Value {percentage} Percentage of {quote.totalPrice.toFixed(2)}:
             </span>{" "}
-            {((percentage / 100) * quote.totalPrice.toFixed(2)).toFixed(2)}
+            £{((percentage / 100) * quote.totalPrice.toFixed(2)).toFixed(2)}
           </p>
         )}
         {isPaid && (
@@ -212,30 +212,36 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
             <p className="user-payment-percentage">
               How many Percentage you want to pay
             </p>
-            <input
-              type="radio"
-              id="30%"
-              name="Percentage"
-              value="30"
-              onChange={handlePercentageChange}
-            />
-            <label htmlFor="30percentage">30 Percentage</label>
-            <input
-              type="radio"
-              id="50%"
-              name="Percentage"
-              value="50"
-              onChange={handlePercentageChange}
-            />
-            <label htmlFor="50percentage">50 Percentage</label>
-            <input
-              type="radio"
-              id="100%"
-              name="Percentage"
-              value="100"
-              onChange={handlePercentageChange}
-            />
-            <label htmlFor="Full Payment">Full Payment</label>
+            <label>
+              <input
+                type="radio"
+                id="30%"
+                name="Percentage"
+                value="30"
+                onChange={handlePercentageChange}
+              />
+              30 Percentage
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="50%"
+                name="Percentage"
+                value="50"
+                onChange={handlePercentageChange}
+              />
+              50 Percentage
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="100%"
+                name="Percentage"
+                value="100"
+                onChange={handlePercentageChange}
+              />
+              Full Payment
+            </label>
 
             <div className="checkispaid">
               <div style={{ marginBottom: "20px" }}>
@@ -272,7 +278,7 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
             <h5>You have Already paid for {paymentStatus}</h5>
             <p>
               When you finish the booking you have to pay the driver for
-              outstading balanace of {outStandingBalance}
+              outstading balanace of £{outStandingBalance}
             </p>
           </div>
         )}

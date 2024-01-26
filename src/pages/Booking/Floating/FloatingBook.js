@@ -11,11 +11,11 @@ function FloatingBook({ userData, closeButton, setUserData }) {
   const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
   const [percentage, setPercentage] = useState(0);
   const serverQuote = userData && userData.quote;
-  useEffect(() => {
-    console.log(
-      "Welcome from floating Book userData" + JSON.stringify(userData)
-    );
-  }, [userData]);
+  // useEffect(() => {
+  //   console.log(
+  //     "Welcome from floating Book userData" + JSON.stringify(userData)
+  //   );
+  // }, [userData]);
   // Extract information with null or "Choose" defaults
   const pickupAddress =
     serverQuote && serverQuote.places ? serverQuote.places[0] : "Choose Pickup";
@@ -223,7 +223,7 @@ function FloatingBook({ userData, closeButton, setUserData }) {
               {" "}
               Pay Amout{" "}
               <span className="total-price">
-                £{(percentage / 100) * totalPrice}
+                £{((percentage / 100) * totalPrice).toFixed(2)}
               </span>
             </p>
           )}
