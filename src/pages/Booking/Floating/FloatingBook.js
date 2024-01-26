@@ -4,14 +4,18 @@ import changeToGBTime from "../../../component/changeToGBTime";
 import { useNavigate } from "react-router-dom";
 import BookNow from "../BookNow/BookNow";
 import SaveForLater from "../SaveForLater/SaveForLater";
-function FloatingBook({ userData, closeButton }) {
+function FloatingBook({ userData, closeButton, setUserData }) {
   const navigate = useNavigate();
   const [isHidden, setIsHidden] = useState(false);
   const [isButtonBookNow, setIsButtonBookNow] = useState(false);
   const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
-
+  const [percentage, setPercentage] = useState(0);
   const serverQuote = userData && userData.quote;
-
+  useEffect(() => {
+    console.log(
+      "Welcome from floating Book userData" + JSON.stringify(userData)
+    );
+  }, [userData]);
   // Extract information with null or "Choose" defaults
   const pickupAddress =
     serverQuote && serverQuote.places ? serverQuote.places[0] : "Choose Pickup";
@@ -64,6 +68,22 @@ function FloatingBook({ userData, closeButton }) {
       window.removeEventListener("keydown", keyPress);
     };
   }, [closeButton]);
+
+  // const handlePercentageChange = (e) => {
+  //   console.log("This is the value" + e.target.value);
+  // };
+
+  const handlePercentageChange = (e) => {
+    // Update the state directly without parsing and stringifying
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      quote: {
+        ...prevUserData.quote,
+        percentage: parseInt(e.target.value, 10),
+      },
+    }));
+    setPercentage(parseInt(e.target.value, 10));
+  };
   return (
     <>
       <div className="floatingbook">
@@ -159,8 +179,52 @@ function FloatingBook({ userData, closeButton }) {
         {isHidden && <FloatingShowMore serverQuote={serverQuote} />}
         <div className="floatingtotal">
           {totalPrice && (
+            <>
+              <p>
+                TOTAL PRICE: <span className="total-price">£{totalPrice}</span>
+              </p>
+              <p className="user-payment-percentage">
+                How many Percentage you want to pay
+              </p>
+              <label>
+                <input
+                  type="radio"
+                  id="30%"
+                  name="Percentage"
+                  value="30"
+                  onChange={handlePercentageChange}
+                />
+                30 Percentage
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  id="50%"
+                  name="Percentage"
+                  value="50"
+                  onChange={handlePercentageChange}
+                />
+                50 Percentage
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  id="100%"
+                  name="Percentage"
+                  value="100"
+                  onChange={handlePercentageChange}
+                />
+                Full Payment
+              </label>
+            </>
+          )}
+          {percentage > 0 && (
             <p>
-              TOTAL PRICE: <span className="total-price">£{totalPrice}</span>
+              {" "}
+              Pay Amout{" "}
+              <span className="total-price">
+                £{(percentage / 100) * totalPrice}
+              </span>
             </p>
           )}
         </div>
