@@ -108,10 +108,12 @@ const createQuote = async (receivedData) => {
   let viaCharge = viaStop && viaStop * 20;
   const timeCalculate = numberOfSecond < 2 ? 2 : numberOfSecond;
   const totalPrice =
-    timeCalculate * (vanCharge + workerCharge + mileCharge + viaCharge) +
+    timeCalculate * (vanCharge + workerCharge) +
     stairCharge +
     totalLateMinutes +
-    totalOutHour;
+    totalOutHour +
+    viaCharge +
+    mileCharge;
 
   return {
     yourinfo: { receivedData },

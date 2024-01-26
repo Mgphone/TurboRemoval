@@ -135,119 +135,7 @@ margin:5vw;
   transform: rotate(180deg);
 }
 /* end of popup vansizeguide */
-/* Floating Book */
 
-.floatingbook::before {
-  content: '🎉 Surprise! Booking Summary';
-  display: block;
-  text-align: center;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  color: #fff;
-}
-.floatingbook {
-  background-color: rgba(163, 163, 223, 0.9);
-  position: fixed;
-  height: 90%;
-  top: 2vh;
-  overflow: scroll;
-  box-sizing: border-box;
-  border: 2px solid #4a4a4a;
-  border-radius: 10px;
-  padding: 20px;
-  transition: background-color 0.3s;
-  z-index: 2;
-}
-
-
-.floatingbook:hover {
-  background-color: rgb(133, 133, 193);
-}
-
-.floatingbook header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1vh;
-}
-.floatingbook>header>button{
-  display: relative;
-  top:0;
-}
-
-.floattime {
-  text-decoration: underline;
-  font-size: 1.2em;
-}
-
-.floatingcontent {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin-left: 10vw;
-}
-
-.floatingpickup,
-.floatingviastop,
-.floatingdelivery {
-  display: flex;
-  flex-direction: column;
-}
-
-.floatingpickup p,
-.floatingviastop p,
-.floatingdelivery p {
-  margin-bottom: 0.5em;
-}
-
-.info-label,
-.info-value {
-  display: block;
-}
-
-.info-label {
-  font-weight: bold;
-}
-
-.floatingshowmore {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 5vh;
-  cursor: pointer;
-}
-
-.floatingshowmore:hover {
-  font-weight: bold;
-}
-
-/* .floatingmorecontainer {
-  margin-left: 10vw;
-} */
-
-.floatingviastopmore,
-.floatingdescription {
-  margin-bottom: 2vh;
-  
-}
-
-
-
-.floatingtotal {
-  font-size: 1.6em;
-  text-align: center;
-}
-
-.floatingtotal .total-price {
-  font-weight: bold;
-}
-
-.floatbutton {
-  text-align: center;
-}
-
-.floatbutton button {
-  margin-left: 1vw;
-}
-/* this is end of floating */
 
 /* start General mix all  */
 .booking-header,
@@ -553,19 +441,7 @@ padding:1em;
   .readiodisplay{
    display: none;
   }
-  /* floating booking */
-  .floatingbook{
-    height: 90%;
-    top:5vh;
-  }
-  .floatingcontent{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    border:1px solid black;
-    gap:0;
-    /* margin:2vw; */
-  
-  }
+ 
   .floatingpickup,
   .floatingviastop,
   .floatingdropof,

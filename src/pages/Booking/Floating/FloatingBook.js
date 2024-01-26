@@ -2,8 +2,16 @@ import React, { useEffect, useState } from "react";
 import FloatingShowMore from "./FloatingShowMore";
 import changeToGBTime from "../../../component/changeToGBTime";
 import { useNavigate } from "react-router-dom";
+import {
+  FaPaypal,
+  FaCcAmex,
+  FaApplePay,
+  FaGooglePay,
+  FaCcMastercard,
+} from "react-icons/fa";
 import BookNow from "../BookNow/BookNow";
 import SaveForLater from "../SaveForLater/SaveForLater";
+import "./floatingbook.css";
 function FloatingBook({ userData, closeButton, setUserData }) {
   const navigate = useNavigate();
   const [isHidden, setIsHidden] = useState(false);
@@ -48,7 +56,8 @@ function FloatingBook({ userData, closeButton, setUserData }) {
   const totalPrice = serverQuote && serverQuote.totalPrice.toFixed(2);
   const moveDate = serverQuote && serverQuote.date;
   const vehicleHour = serverQuote && serverQuote.totalHour;
-
+  const totalSecond = serverQuote && serverQuote.totalSecond;
+  const halfanHour = ((totalPrice * 1800) / totalSecond).toFixed(2);
   const handleCloseButton = (e) => {
     e.stopPropagation();
     closeButton();
@@ -102,164 +111,185 @@ function FloatingBook({ userData, closeButton, setUserData }) {
           <b>{serverQuote.email}</b>. We are pleased to provide you with a
           quotation for your upcoming move."
         </div>
-        <div className="floatingcontent">
-          <div className="floatingpickup">
-            {pickupAddress && (
-              <p>
-                <span className="info-label">Pickup address:</span>
-                <span className="info-value">{pickupAddress}</span>
-              </p>
-            )}
-            {pickupAddressStair && (
-              <p>
-                <span className="info-label">PickUp stair: </span>
-                <span className="info-value">{pickupAddressStair}</span>
-              </p>
-            )}
-          </div>
-          <div className="floatingviastop">
-            {viaStop && (
-              <p>
-                <span className="info-label">Via Stop:</span>
-                <span className="info-value">{viaStop}</span>
-              </p>
-            )}
+        <div className="floating-middle-book">
+          <div className="floatingcontent">
+            <h2>Your Quotation Details</h2>
+            <div className="floatingpickup">
+              {pickupAddress && (
+                <p>
+                  <span className="info-label">Pickup address:</span>
+                  <span className="info-value">{pickupAddress}</span>
+                </p>
+              )}
+              {pickupAddressStair && (
+                <p>
+                  <span className="info-label">PickUp stair: </span>
+                  <span className="info-value">{pickupAddressStair}</span>
+                </p>
+              )}
+            </div>
+            <div className="floatingviastop">
+              {viaStop && (
+                <p>
+                  <span className="info-label">Via Stop:</span>
+                  <span className="info-value">{viaStop}</span>
+                </p>
+              )}
 
-            {viaStopStair && (
-              <p>
-                <span className="info-label">Via Stop Stair:</span>
-                <span className="info-value">{viaStopStair}</span>
-              </p>
-            )}
+              {viaStopStair && (
+                <p>
+                  <span className="info-label">Via Stop Stair:</span>
+                  <span className="info-value">{viaStopStair}</span>
+                </p>
+              )}
+            </div>
+            <div className="floatingdropof">
+              {dropOfAddress && (
+                <p>
+                  <span className="info-label">Deliver address:</span>
+                  <span className="info-value">{dropOfAddress}</span>
+                </p>
+              )}
+              {dropOfAddressStair && (
+                <p>
+                  <span className="info-label">Delivery stair: </span>
+                  <span className="info-value">{dropOfAddressStair}</span>
+                </p>
+              )}
+            </div>
+            <div className="floatingworker">
+              {worker && (
+                <>
+                  <p>
+                    <span className="info-label">Type of Worker:</span>
+                  </p>
+                  <p>
+                    <span className="info-value">{worker}</span>{" "}
+                  </p>
+                </>
+              )}
+            </div>
+            <div className="floatingvansize">
+              {vanSize && (
+                <>
+                  <p>
+                    <span className="info-label">Van Size:</span>
+                  </p>
+                  <p>
+                    <span className="info-value">{vanSize} Van</span>
+                  </p>
+                </>
+              )}
+            </div>
+            <div className="floatinghourNeed">
+              {vehicleHour && (
+                <>
+                  <p>
+                    {" "}
+                    <span className="info-label">Vehicle Need:</span>
+                  </p>
+                  <p>
+                    <span className="info-value">{vehicleHour}</span>
+                  </p>
+                </>
+              )}
+            </div>
+            <div className="floatingshowmore" onClick={handleShowMore}>
+              {isHidden ? "Show Less⬆️" : "Show More⬇️"}
+            </div>
+            {isHidden && <FloatingShowMore serverQuote={serverQuote} />}
+            {/* {vanSize && <p>Van Size: {vanSize}</p>} */}
           </div>
+          <div className="floatingtotal">
+            {totalPrice && (
+              <>
+                <h2>Payment</h2>
 
-          <div className="floatingdropof">
-            {dropOfAddress && (
+                <div className="payment-icons">
+                  <FaPaypal className="paypal-icon" />
+                  <FaCcAmex className="amex-icon" />
+                  <FaApplePay className="apple-pay-icon" />
+                  <FaGooglePay className="google-pay-icon" />
+                  <FaCcMastercard className="mastercard-icon" />
+                </div>
+
+                <label>
+                  <input
+                    type="radio"
+                    id="30%"
+                    name="Percentage"
+                    value="30"
+                    onChange={handlePercentageChange}
+                  />
+                  Deposit: 30%
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    id="50%"
+                    name="Percentage"
+                    value="50"
+                    onChange={handlePercentageChange}
+                  />
+                  Deposit: 50%
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    id="100%"
+                    name="Percentage"
+                    value="100"
+                    onChange={handlePercentageChange}
+                  />
+                  Full Amount
+                </label>
+              </>
+            )}
+            {percentage > 0 && (
               <p>
-                <span className="info-label">Deliver address:</span>
-                <span className="info-value">{dropOfAddress}</span>
+                Pay Amout{" "}
+                <span className="total-price">
+                  £{((percentage / 100) * totalPrice).toFixed(2)}
+                </span>
               </p>
             )}
-            {dropOfAddressStair && (
+            <div className="floatbutton">
+              {/* <button onClick={handleBookNow}>Book Now</button> */}
+              <BookNow
+                serverQuote={serverQuote}
+                setIsButtonBookNow={setIsButtonBookNow}
+                isButtonBookNow={isButtonBookNow}
+              />
+              <SaveForLater
+                serverQuote={serverQuote}
+                setIsButtonBookNow={setIsButtonBookNow}
+                isButtonBookNow={isButtonBookNow}
+              />
+              {/* <button onClick={handleSaveLater}>Save For Later</button> */}
+            </div>
+            <div className="float-after-term">
+              <h2>Hourly Charges Policy</h2>
               <p>
-                <span className="info-label">Delivery stair: </span>
-                <span className="info-value">{dropOfAddressStair}</span>
+                For each booking, the hourly charges policy applies. Any time
+                exceeding the initial {vehicleHour}is subject to an additional
+                fee of<span className="total-price"> £{halfanHour}</span> per
+                half-hour.
               </p>
-            )}
-          </div>
-          <div className="floatingworker">
-            {worker && (
+              <h2> Congestion Charge Policy</h2>
               <p>
-                <span className="info-label">Type of Worker:</span>
-                <span className="info-value">{worker}</span>{" "}
+                Our congestion charge policy dictates that an extra £15 will be
+                added to your quote if your journey commences or concludes
+                within the congestion zone.
               </p>
-            )}
-          </div>
-          <div className="floatingvansize">
-            {vanSize && (
+              <h2>Toll Charge Policy</h2>
               <p>
-                <span className="info-label">Van Size:</span>
-                <span className="info-value">{vanSize} Van</span>{" "}
+                Under our toll charge policy, the cost of tolls is an extra
+                charge beyond your initial online quote. Our drivers, equipped
+                with the latest navigation systems, strive to minimize toll road
+                usage whenever feasible.
               </p>
-            )}
-          </div>
-          <div className="floatinghourNeed">
-            {vehicleHour && (
-              <p>
-                <span className="info-label">Vehicle Need:</span>
-                <span className="info-value">{vehicleHour}</span>{" "}
-              </p>
-            )}
-          </div>
-          {/* {vanSize && <p>Van Size: {vanSize}</p>} */}
-        </div>
-        <div className="floatingshowmore" onClick={handleShowMore}>
-          {isHidden ? "Show Less⬆️" : "Show More⬇️"}
-        </div>
-        {isHidden && <FloatingShowMore serverQuote={serverQuote} />}
-        <div className="floatingtotal">
-          {totalPrice && (
-            <>
-              <p>
-                TOTAL PRICE: <span className="total-price">£{totalPrice}</span>
-              </p>
-              <p className="user-payment-percentage">
-                How many Percentage you want to pay
-              </p>
-              <label>
-                <input
-                  type="radio"
-                  id="30%"
-                  name="Percentage"
-                  value="30"
-                  onChange={handlePercentageChange}
-                />
-                30 Percentage
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  id="50%"
-                  name="Percentage"
-                  value="50"
-                  onChange={handlePercentageChange}
-                />
-                50 Percentage
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  id="100%"
-                  name="Percentage"
-                  value="100"
-                  onChange={handlePercentageChange}
-                />
-                Full Payment
-              </label>
-            </>
-          )}
-          {percentage > 0 && (
-            <p>
-              {" "}
-              Pay Amout{" "}
-              <span className="total-price">
-                £{((percentage / 100) * totalPrice).toFixed(2)}
-              </span>
-            </p>
-          )}
-        </div>
-        {isButtonBookNow && <div>I love moving</div>}
-        {/* {isButtonBookNow && (
-          <div className="divbooknow">
-            <div>
-              <p>Dear {serverQuote.name} </p>, Your email address is{" "}
-              {serverQuote.email} and your Phone Number is {serverQuote.phone}.
-              Enter your bank Details:
             </div>
           </div>
-        )} */}
-        {/* {isButtonSaveLater && (
-          <div className="divsavelater">
-            <div>
-              <p>Dear {serverQuote.name} </p>, Your email address is{" "}
-              {serverQuote.email} and your Phone Number is {serverQuote.phone}.
-              Enter your bank Details:
-            </div>
-          </div>
-        )} */}
-        <div className="floatbutton">
-          {/* <button onClick={handleBookNow}>Book Now</button> */}
-          <BookNow
-            serverQuote={serverQuote}
-            setIsButtonBookNow={setIsButtonBookNow}
-            isButtonBookNow={isButtonBookNow}
-          />
-          <SaveForLater
-            serverQuote={serverQuote}
-            setIsButtonBookNow={setIsButtonBookNow}
-            isButtonBookNow={isButtonBookNow}
-          />
-          {/* <button onClick={handleSaveLater}>Save For Later</button> */}
         </div>
       </div>
     </>

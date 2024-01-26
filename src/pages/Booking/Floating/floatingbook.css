@@ -1,0 +1,158 @@
+/* Floating Book */
+
+.floatingbook::before {
+  content: '🎉 Surprise! Booking Summary';
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.floatingbook {
+  background-color: rgba(163, 163, 223, 0.9);
+  position: fixed;
+  height: 90%;
+  top: 2vh;
+  overflow: scroll;
+  box-sizing: border-box;
+  border: 2px solid #4a4a4a;
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s;
+  z-index: 2;
+}
+
+
+.floatingbook:hover {
+  background-color: rgb(133, 133, 193);
+}
+
+.floatingbook header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1vh;
+}
+.floatingbook>header>button{
+  display: relative;
+  top:0;
+}
+
+.floattime {
+  text-decoration: underline;
+  font-size: 1.2em;
+}
+.floating-middle-book{
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+}
+.floatingcontent,
+.floatingtotal
+{
+border:1px solid #111;
+width: 45%;
+padding:10px;
+}
+.floatingpickup,
+.floatingviastop,
+.floatingdropof,
+.floatingworker,
+.floatingvansize,
+.floatinghourNeed,
+.floatingviastopmore,
+.floatingdescription
+{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  border:1px solid #111;
+
+}
+
+
+
+
+.info-label,
+.info-value {
+  display: block;
+}
+
+.info-label {
+  font-weight: bold;
+}
+
+.floatingshowmore {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5vh;
+  cursor: pointer;
+}
+
+.floatingshowmore:hover {
+  font-weight: bold;
+}
+
+/* .floatingmorecontainer {
+  margin-left: 10vw;
+} */
+
+.floatingviastopmore,
+.floatingdescription {
+  margin-bottom: 2vh;
+  
+}
+
+
+
+.floatingtotal {
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.floatingtotal .total-price {
+  font-weight: bold;
+}
+
+.floatbutton {
+  text-align: center;
+}
+
+.floatbutton button {
+  margin-left: 1vw;
+}
+.float-after-term{
+  margin:10px 0;
+}
+@media (max-width:700px){
+  .floating-middle-book{
+    flex-direction: column;
+  }
+  .floatingcontent,.floatingtotal{
+    width: 100%;
+  }
+
+
+}
+/* this is end of floating */
+/* @media (max-width:1000px){
+  .floatingbook{
+    font-size: 0.7em;
+  }
+  .floatingcontent{
+    margin-left: 0;
+  }
+
+@media (max-width:600px) {
+  .floatingbook{
+    height: 90%;
+    top:5vh;
+  }
+  .floatingcontent{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border:1px solid black;
+    gap:0;
+    
+  
+  }
+}} */
