@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FloatingShowMore from "./FloatingShowMore";
 import changeToGBTime from "../../../component/changeToGBTime";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {
   FaPaypal,
   FaCcAmex,
@@ -105,8 +105,8 @@ function FloatingBook({ userData, closeButton, setUserData }) {
           <button onClick={handleCloseButton}>X</button>
         </header>
         <div className="sub-floatingabout">
-          "Dear <b>{serverQuote.name}</b>, thank you for choosing our moving
-          service. We appreciate your trust. Your contact number is{" "}
+          "Dear <b>{serverQuote.name.toUpperCase()}</b>, thank you for choosing
+          our moving service. We appreciate your trust. Your contact number is{" "}
           <b> {serverQuote.phone}</b>, and your email address is{" "}
           <b>{serverQuote.email}</b>. We are pleased to provide you with a
           quotation for your upcoming move."
@@ -204,7 +204,7 @@ function FloatingBook({ userData, closeButton, setUserData }) {
             {totalPrice && (
               <>
                 <h2>Payment</h2>
-
+                <h3>Total Price:£{totalPrice}</h3>
                 <div className="payment-icons">
                   <FaPaypal className="paypal-icon" />
                   <FaCcAmex className="amex-icon" />
@@ -212,37 +212,41 @@ function FloatingBook({ userData, closeButton, setUserData }) {
                   <FaGooglePay className="google-pay-icon" />
                   <FaCcMastercard className="mastercard-icon" />
                 </div>
-
-                <label>
-                  <input
-                    type="radio"
-                    id="30%"
-                    name="Percentage"
-                    value="30"
-                    onChange={handlePercentageChange}
-                  />
-                  Deposit: 30%
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    id="50%"
-                    name="Percentage"
-                    value="50"
-                    onChange={handlePercentageChange}
-                  />
-                  Deposit: 50%
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    id="100%"
-                    name="Percentage"
-                    value="100"
-                    onChange={handlePercentageChange}
-                  />
-                  Full Amount
-                </label>
+                <div className="floatingbook-radio-button">
+                  <label>
+                    <input
+                      className="radiobutton-input"
+                      type="radio"
+                      id="30%"
+                      name="Percentage"
+                      value="30"
+                      onChange={handlePercentageChange}
+                    />
+                    Deposit: 30%
+                  </label>
+                  <label>
+                    <input
+                      className="radiobutton-input"
+                      type="radio"
+                      id="50%"
+                      name="Percentage"
+                      value="50"
+                      onChange={handlePercentageChange}
+                    />
+                    Deposit: 50%
+                  </label>
+                  <label>
+                    <input
+                      className="radiobutton-input"
+                      type="radio"
+                      id="100%"
+                      name="Percentage"
+                      value="100"
+                      onChange={handlePercentageChange}
+                    />
+                    Full Amount
+                  </label>
+                </div>
               </>
             )}
             {percentage > 0 && (
