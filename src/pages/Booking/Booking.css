@@ -307,18 +307,24 @@ padding:1em;
   border-radius: 5%;
 }
 
-.button-group {
+/* .button-group {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 5vw;
   margin-top: 4vh;
   padding:0;
-}
+} */
 .remove-via{
+margin: 0 auto;
   padding: 1em;
-  background-color: yellow;
+  background-color:rgb(141, 108, 108);
   cursor: pointer;
+  width: 40%;
+}
+.viacontainer {
+  display: flex;
+  flex-direction: column;
 }
 /* where moving form end */
 /* start estimate how many hour */

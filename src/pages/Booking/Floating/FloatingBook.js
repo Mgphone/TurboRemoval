@@ -13,10 +13,10 @@ import BookNow from "../BookNow/BookNow";
 import SaveForLater from "../SaveForLater/SaveForLater";
 import "./floatingbook.css";
 function FloatingBook({ userData, closeButton, setUserData }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isHidden, setIsHidden] = useState(false);
   const [isButtonBookNow, setIsButtonBookNow] = useState(false);
-  const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
+  // const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
   const [percentage, setPercentage] = useState(0);
   const serverQuote = userData && userData.quote;
   // useEffect(() => {

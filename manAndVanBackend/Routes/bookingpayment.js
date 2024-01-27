@@ -111,6 +111,12 @@ router.post("/success", async (req, res) => {
     const deliverPhysicalAddress =
       transition.quote.totalAddress[transition.quote.totalAddress.length - 1]
         .physicalAddress;
+    const typeofVan = transition.quote.typeofVan;
+    const totalHour = transition.quote.totalHour;
+    const date = transition.quote.date;
+    const outstandingBalance = totalAmount - (percentage / 100) * totalAmount;
+    const totalSecond = transition.quote.totalSecond;
+    const halfanHour = ((totalAmount * 1800) / totalSecond).toFixed(2);
 
     const emailOptions = mailOptions(
       name || transition.quote.name,
@@ -122,7 +128,12 @@ router.post("/success", async (req, res) => {
         transition.quote.places[transition.quote.places.length - 1],
       isViaStop || transition.quote.places.length > 2,
       pickUpPhysicalAddress,
-      deliverPhysicalAddress
+      deliverPhysicalAddress,
+      typeofVan,
+      totalHour,
+      date,
+      outstandingBalance,
+      halfanHour
     );
     //send email and save
     try {

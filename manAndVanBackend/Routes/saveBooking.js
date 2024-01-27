@@ -53,7 +53,12 @@ router.post("/updatepaymentstatus", async (req, res) => {
     const deliverPhysicalAddress =
       result.quote.totalAddress[result.quote.totalAddress.length - 1]
         .physicalAddress;
-
+    const typeofVan = result.quote.typeofVan;
+    const totalHour = result.quote.totalHour;
+    const date = result.quote.date;
+    const outstandingBalance = totalAmount - (percentage / 100) * totalAmount;
+    const totalSecond = result.quote.totalSecond;
+    const halfanHour = ((totalAmount * 1800) / totalSecond).toFixed(2);
     const isViaStop = result.quote.places.length > 2;
     const emailOptions = mailOptions(
       name,
@@ -64,7 +69,12 @@ router.post("/updatepaymentstatus", async (req, res) => {
       deliverAddress,
       isViaStop,
       pickUpPhysicalAddress,
-      deliverPhysicalAddress
+      deliverPhysicalAddress,
+      typeofVan,
+      totalHour,
+      date,
+      outstandingBalance,
+      halfanHour
     );
     const logEmailInfo = (info) => {
       const timeStamp = new Date().toISOString();
