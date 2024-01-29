@@ -350,3 +350,15 @@ as soon as there is out of area i just go to another page(noted)
 make sure library of loadscriper is not working at google-react-map/api is not working(noted)
 use useJsApiLoader to load(noted)
 this time i use as props for load (noted)
+commit 132
+i use the npm formik and yup. formik can check anything user will input
+1.useformik
+a.validationSchema for checking my input, like input,text,readio name
+b.formik with useformkk .. i.initial empty values,ii.validaction schema.iii.submit value with handlesubmit
+c.{...formik.getFieldProps("location")} using spread operator
+this include value,onblur and onchange
+d.display error message{formik.touched.location && formik.errors.location ? (<div className="error">{formik.errors.location}</div
+e. when chaning the state value
+formik.setFieldValue("location", selectedValue);
+formik.setFieldError("location", ""); // Clear any previous errors
+that is the state that change the value and clear the error important part

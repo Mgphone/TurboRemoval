@@ -50,6 +50,16 @@ form {
 /* background-color: red; */
 font-size: 1.2em;
 }
+.home-input-error {
+  color: darkred;
+  font-weight: bold;
+  width: 70%;
+  background-color: #fff3cd; 
+  margin: 0 auto;
+  padding: 8px; 
+  border: 1px solid #ffeeba; 
+  border-radius: 4px;
+}
 
 .inputbetween {
   font-size: 1em;

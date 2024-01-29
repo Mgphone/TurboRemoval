@@ -5,7 +5,7 @@ const calculateDistance = (point1) => {
   const lon1 = point1.lng;
   const lat2 = center.lat;
   const lon2 = center.lng;
-  console.log(point1);
+  // console.log(point1);
   const dLat = toRadians(lat2 - lat1);
   const dLon = toRadians(lon2 - lon1);
 
@@ -19,7 +19,7 @@ const calculateDistance = (point1) => {
 
   const distance = R * c;
 
-  console.log("caluclate distance" + distance);
+  // console.log("caluclate distance" + distance);
   return distance;
 };
 const toRadians = (angle) => {
