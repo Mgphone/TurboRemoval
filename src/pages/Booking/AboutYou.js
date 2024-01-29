@@ -1,13 +1,20 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
-function AboutYou() {
+function AboutYou({ formik }) {
   const { data, setData } = useContext(MyContext);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log("Input Change:", name, value);
+
+    // if (value.trim() === "") {
+    //   alert(`${name} cannot be empty`);
+    //   return;
+    // }
     setData((prevVal) => ({
       ...prevVal,
       [name]: value,
     }));
+    formik.setFieldValue(name, value);
   };
   return (
     <>
@@ -25,42 +32,58 @@ function AboutYou() {
           <div className="aboutyousubdiv">
             <label htmlFor="name">Name</label>
             <input
-              id="name"
+              // id="name"
               type="text"
               placeholder="name"
               name="name"
-              value={data.name}
+              // value={data.name}
+              value={formik.values.name}
               onChange={handleInputChange}
-              required
+              // required
               autoComplete="off"
+              // {...formik.getFieldProps("name")}
             />
+            {formik.touched.name && formik.errors.name ? (
+              <div className="error-input-boooking">{formik.errors.name}</div>
+            ) : null}
           </div>
           <div className="aboutyousubdiv">
             <label htmlFor="email">Email</label>
             <input
-              id="email"
+              // id="email"
               type="email"
               placeholder="email"
               name="email"
-              value={data.email}
+              // value={data.email}
+              value={formik.values.email}
               onChange={handleInputChange}
-              required
+              // required
               autoComplete="off"
+              // {...formik.getFieldProps("email")}
             />
+            {formik.touched.email && formik.errors.email ? (
+              <div className="error-input-boooking">{formik.errors.email}</div>
+            ) : null}
           </div>
+
           <div className="aboutyousubdiv">
             <label htmlFor="phonenumber">Phone</label>
             <input
-              id="tel"
+              // id="tel"
               type="tel"
               pattern="[0-9]*"
               placeholder="phone"
               name="phone"
-              value={data.value}
+              // value={data.phone}
+              value={formik.values.phone}
               onChange={handleInputChange}
-              required
+              // required
               autoComplete="off"
+              // {...formik.getFieldProps("phone")}
             />
+            {formik.touched.phone && formik.errors.phone ? (
+              <div className="error-input-boooking">{formik.errors.phone}</div>
+            ) : null}
           </div>
         </div>
       </div>

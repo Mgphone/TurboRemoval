@@ -14,6 +14,8 @@ import Footer from "../../component/Footer";
 import "./Booking.css";
 // this is the context callling
 import MyContext from "../../context/MyContext";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 function Booking() {
   const { data } = useContext(MyContext);
@@ -52,8 +54,29 @@ function Booking() {
     sendDataToBack();
   }, [data]);
 
+  //formik setup
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .min(4, "Name must be at least 4 characters")
+      .max(20, "Name must be at most 20 characters")
+      .required("Name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    phone: Yup.string()
+      .matches(/^[0-9]+$/, "Phone number must contain only digits")
+      .required("Phone is required"),
+  });
+  const formik = useFormik({
+    initialValues: { name: "", email: "", phone: "" },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      handleFormCLick(values);
+    },
+  });
+  //end formik setup
   const handleFormCLick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     setCheckForm(true);
   };
@@ -64,7 +87,7 @@ function Booking() {
   return (
     <>
       <Nav />
-      <form className="booking-container" onSubmit={handleFormCLick}>
+      <form className="booking-container" onSubmit={formik.handleSubmit}>
         {checkForm && (
           <FloatingBook
             userData={userData}
@@ -80,7 +103,7 @@ function Booking() {
         <WhereMoving />
         <MileAndHour userData={userData} />
         <MovingDate />
-        <AboutYou />
+        <AboutYou formik={formik} />
         <button type="submit">Get Free Quote</button>
       </form>
       <Footer />

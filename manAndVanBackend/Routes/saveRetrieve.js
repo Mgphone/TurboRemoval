@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
       to: savedData.quote.email,
       subject: "Thanks for using our service",
       html: `  <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-      <h1>Thank you very much for saving <a href="${linkAddress}">Your Quote</a> from ${myAddress}</h1>  
+      <h1>Thank you very much for saving Quotation with us <a href="${linkAddress}">Your Quote</a> from ${myAddress}</h1>  
 
       <h2 style="color: #333333;">Dear ${savedData.quote.name},</h2>
       <p>Your pick-up address: ${savedData.quote.totalAddress[0].location}</p>
@@ -73,6 +73,8 @@ router.post("/", async (req, res) => {
       <p style="font-size: 18px; font-weight: bold; color: #4285F4;">Your unique code is: ${
         savedData.randomNumber
       }</p>
+      <p>Your Link for Quotation:<a href="${linkAddress}"> Quotation</a></p>
+
   </div>`,
     };
     const logEmailInfo = (info) => {

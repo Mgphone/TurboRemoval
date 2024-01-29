@@ -398,8 +398,12 @@ margin: 0 auto;
   align-items: center;
 }
 /* about you end */
-
-
+/* start booking error */
+.error-input-boooking{
+color:red;
+font-weight: bold;
+}
+/* end booking error */
 @media (max-width:1000px){
   .floatingbook{
     font-size: 0.7em;

@@ -26,9 +26,9 @@ background-size: 100% 100%;
   
 }
 .home-warning {
-  color: red;
+  color:yellow;
   margin-top: 10px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 form {
   display: flex;
