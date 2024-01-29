@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import BookingDescription from "./BookingDescription";
 
-function MovingDate() {
+function MovingDate({ formik }) {
   const { data, setData } = useContext(MyContext);
 
   //set Min time for over one hour
@@ -38,11 +38,15 @@ function MovingDate() {
     />
   );
   const handleChange = (date) => {
+    formik.setFieldValue("moving_date", date);
+
     setData((prevState) => ({
       ...prevState,
       date: date,
     }));
+    console.log("This is formikmoving date" + formik.values.moving_date);
   };
+
   return (
     <>
       <div className="movingdate">
@@ -63,11 +67,14 @@ function MovingDate() {
             <br />
             {/* <input type="text" /> */}
             <DatePicker
+              id="moving_date"
+              name="moving_date"
+              selected={formik.values.moving_date}
               showIcon
               isClearable
               closeOnScroll={true}
               timeIntervals={15}
-              selected={data.date}
+              // selected={data.date}
               onChange={handleChange}
               showTimeSelect
               dateFormat="dd-MM-yyyy h:mmaa"
@@ -79,8 +86,13 @@ function MovingDate() {
               withPortal
               disabledKeyboardNavigation
             />
+            {formik.touched.moving_date && formik.errors.moving_date ? (
+              <div className="error-input-booking">
+                {formik.errors.moving_date}
+              </div>
+            ) : null}
           </h3>
-          <BookingDescription />
+          <BookingDescription formik={formik} />
         </div>
       </div>
     </>

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
 
-function BookingDescription() {
+function BookingDescription({ formik }) {
   const { data, setData } = useContext(MyContext);
   const handleChange = (e) => {
+    formik.handleChange(e);
     const newValue = e.target.value;
-
     setData((prevVal) => ({
       ...prevVal,
       description: newValue,
@@ -20,13 +20,17 @@ function BookingDescription() {
         <textarea
           name="descriContent"
           id="description"
-          value={data.description}
+          // value={data.description}
+          value={formik.values.descriContent}
           onChange={handleChange}
           rows={5}
           cols={90}
-          required
+          // required
         />
       </label>
+      {formik.touched.descriContent && formik.errors.descriContent ? (
+        <div className="error-input-booking">{formik.errors.descriContent}</div>
+      ) : null}
     </>
   );
 }

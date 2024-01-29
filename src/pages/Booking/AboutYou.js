@@ -4,7 +4,7 @@ function AboutYou({ formik }) {
   const { data, setData } = useContext(MyContext);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log("Input Change:", name, value);
+    // console.log("Input Change:", name, value);
 
     // if (value.trim() === "") {
     //   alert(`${name} cannot be empty`);
@@ -44,7 +44,7 @@ function AboutYou({ formik }) {
               // {...formik.getFieldProps("name")}
             />
             {formik.touched.name && formik.errors.name ? (
-              <div className="error-input-boooking">{formik.errors.name}</div>
+              <div className="error-input-booking">{formik.errors.name}</div>
             ) : null}
           </div>
           <div className="aboutyousubdiv">
@@ -62,7 +62,7 @@ function AboutYou({ formik }) {
               // {...formik.getFieldProps("email")}
             />
             {formik.touched.email && formik.errors.email ? (
-              <div className="error-input-boooking">{formik.errors.email}</div>
+              <div className="error-input-booking">{formik.errors.email}</div>
             ) : null}
           </div>
 
@@ -82,7 +82,7 @@ function AboutYou({ formik }) {
               // {...formik.getFieldProps("phone")}
             />
             {formik.touched.phone && formik.errors.phone ? (
-              <div className="error-input-boooking">{formik.errors.phone}</div>
+              <div className="error-input-booking">{formik.errors.phone}</div>
             ) : null}
           </div>
         </div>

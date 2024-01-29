@@ -4,7 +4,7 @@ import MyContext from "../../context/MyContext";
 import BetweenStops from "./BetweenStops";
 import "./Booking.css";
 import BetweenMoving from "./BetweenStop/BetweenMoving";
-function WhereMoving() {
+function WhereMoving({ formik }) {
   const { data, setData } = useContext(MyContext);
   const checkCollectandDesti = data.addresses;
   const arrayLength = checkCollectandDesti.length;
@@ -12,7 +12,8 @@ function WhereMoving() {
   //   console.log("This is log from whereemoving" + JSON.stringify(data));
   // }, [data]);
   // this is for pickup address
-  const changeLocation = (e) => {
+  const changeLocationStair = (e) => {
+    formik.handleChange(e);
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[0].stair = e.target.value;
     setData((prevState) => ({
@@ -21,6 +22,7 @@ function WhereMoving() {
     }));
   };
   const changePhysicalAddressPickup = (e) => {
+    formik.handleChange(e);
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[0].physicalAddress = e.target.value;
     setData((prevState) => ({
@@ -29,7 +31,8 @@ function WhereMoving() {
     }));
   };
   /// this is for delivery address
-  const changeDestination = (e) => {
+  const changeDestinationStair = (e) => {
+    formik.handleChange(e);
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[updatedAddresses.length - 1].stair = e.target.value;
     // setData({ ...data, addresses: updatedAddresses });
@@ -40,6 +43,7 @@ function WhereMoving() {
   };
 
   const changePhysicalAddressDeliver = (e) => {
+    formik.handleChange(e);
     const updatedAddresses = [...checkCollectandDesti];
     updatedAddresses[updatedAddresses.length - 1].physicalAddress =
       e.target.value;
@@ -131,18 +135,30 @@ function WhereMoving() {
                       Building Address
                     </label>
                     <input
+                      name="collection_address"
+                      id="collection_address"
                       placeholder="Enter Your Physical Address"
-                      required
+                      // required
                       onChange={changePhysicalAddressPickup}
+                      value={formik.values.collection_address}
                     />
+                    {formik.touched.collection_address &&
+                    formik.errors.collection_address ? (
+                      <div className="error-input-booking">
+                        {formik.errors.collection_address}
+                      </div>
+                    ) : null}
                   </div>
                   <div>
                     <label htmlFor="StairFlight">Stairs</label>
                     <select
-                      id="StairFlight"
-                      name="collection"
-                      required
-                      onChange={changeLocation}
+                      // id="StairFlight"
+                      // name="collection"
+                      name="collection_stair"
+                      id="collection_stair"
+                      // required
+                      onChange={changeLocationStair}
+                      value={formik.values.collection_stair}
                     >
                       <option value="">Select Flight of Stair</option>
                       <option value="0">Elevator Available</option>
@@ -156,6 +172,12 @@ function WhereMoving() {
                       <option value="7">7 Flight of Stair</option>
                       <option value="8">8 Flight of Stair</option>
                     </select>
+                    {formik.touched.collection_stair &&
+                    formik.errors.collection_stair ? (
+                      <div className="error-input-booking">
+                        {formik.errors.collection_stair}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 {/* add via stops */}
@@ -182,18 +204,30 @@ function WhereMoving() {
                   <div>
                     <label htmlFor="Delvery User Enter">Building Address</label>
                     <input
+                      name="delivery_address"
+                      id="delivery_address"
                       placeholder="Enter Your Physical Address"
-                      required
+                      // required
                       onChange={changePhysicalAddressDeliver}
+                      value={formik.values.delivery_address}
                     />
+                    {formik.touched.delivery_address &&
+                    formik.errors.delivery_address ? (
+                      <div className="error-input-booking">
+                        {formik.errors.delivery_address}
+                      </div>
+                    ) : null}
                   </div>
                   <div>
                     <label htmlFor="StairFlight">Stairs</label>
                     <select
-                      id="StairFlight"
-                      name="destination"
-                      required
-                      onChange={changeDestination}
+                      // id="StairFlight"
+                      // name="destination"
+                      name="delivery_stair"
+                      id="delivery_stair"
+                      // required
+                      onChange={changeDestinationStair}
+                      value={formik.values.delivery_stair}
                     >
                       <option value="">Select Flight of Stair</option>
                       <option value="0">Elevator Available</option>
@@ -207,6 +241,12 @@ function WhereMoving() {
                       <option value="7">7 Flight of Stair</option>
                       <option value="8">8 Flight of Stair</option>
                     </select>
+                    {formik.touched.delivery_stair &&
+                    formik.errors.delivery_stair ? (
+                      <div className="error-input-booking">
+                        {formik.errors.delivery_stair}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 {/* <button

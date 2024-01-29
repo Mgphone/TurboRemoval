@@ -399,9 +399,11 @@ margin: 0 auto;
 }
 /* about you end */
 /* start booking error */
-.error-input-boooking{
+.error-input-booking{
 color:red;
 font-weight: bold;
+margin:0 auto;
+text-align: center;
 }
 /* end booking error */
 @media (max-width:1000px){

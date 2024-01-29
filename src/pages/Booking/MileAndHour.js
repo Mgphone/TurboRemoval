@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
 import { FaRoad } from "react-icons/fa";
-function MileAndHour({ userData }) {
+function MileAndHour({ userData, formik }) {
   const { data, setData } = useContext(MyContext);
 
   const timeConverter = (time) => {
@@ -58,6 +58,7 @@ function MileAndHour({ userData }) {
   const totalTime = yourtime + loadingTime;
 
   const handleHourChange = (e) => {
+    formik.handleChange(e);
     const selectHour = e.target.value;
     setData((prevState) => ({
       ...prevState,
@@ -92,10 +93,21 @@ function MileAndHour({ userData }) {
           go rate.
         </p>
         <div className="choosetime">
-          <label htmlFor="choosehour">I need this Vehicle For</label>
-          <select id="choosehour" onChange={handleHourChange} required>
+          <label htmlFor="choosehour">I need The Service for</label>
+          <select
+            id="choosehour"
+            name="how_many_hour"
+            onChange={handleHourChange}
+            // required
+            value={formik.values.how_many_hour}
+          >
             {generateTimeOptions()}
           </select>
+          {formik.touched.how_many_hour && formik.errors.how_many_hour ? (
+            <div className="error-input-booking">
+              {formik.errors.how_many_hour}
+            </div>
+          ) : null}
         </div>
       </div>
     </>
