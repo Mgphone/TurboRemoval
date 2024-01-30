@@ -13,21 +13,21 @@ function BookingDescription({ formik }) {
   };
   return (
     <>
-      <label className="Description_Header">
+      <p className="Description_Header">
         Please enter a brief description of the items you will be moving and any
         additional contact numbers.
-        <br />
-        <textarea
-          name="descriContent"
-          id="description"
-          // value={data.description}
-          value={formik.values.descriContent}
-          onChange={handleChange}
-          rows={5}
-          cols={90}
-          // required
-        />
-      </label>
+      </p>
+      <textarea
+        name="descriContent"
+        id="description"
+        // value={data.description}
+        value={formik.values.descriContent}
+        onChange={handleChange}
+        rows={5}
+        cols={90}
+        // required
+      />
+
       {formik.touched.descriContent && formik.errors.descriContent ? (
         <div className="error-input-booking">{formik.errors.descriContent}</div>
       ) : null}

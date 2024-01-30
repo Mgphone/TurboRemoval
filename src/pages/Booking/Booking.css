@@ -1,8 +1,13 @@
 /* Global for booking  */
+:root {
+  --main-background-color: #eee;
+  --highlight-color: blue;
+  --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 .booking-container{
   /* background-color: white; */
   /* background-color:#d5c0bf; */
-  background-color: white;
+  background-color: var(--main-background-color);
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,11 +16,11 @@
 .booking-container h1{
   font-size: 1.4em;
   text-align: center;
-  color:blue;
+  color: var(--highlight-color);
 }
 .booking-container h2{
   font-size: 1.2em;
-  color:blue;
+  color: var(--highlight-color);
   /* margin-bottom: 1vh; */
 text-align: center;
   
@@ -40,12 +45,8 @@ text-align: center;
   outline: none;
   text-overflow: ellipsis;
 }
-.choosetime select{
-  /* background-color: pink; */
- /* height: 5em;
- font-size: large; */
- 
-}
+
+
 
 .movingdate input{
   box-sizing: border-box;
@@ -148,20 +149,17 @@ margin:5vw;
 .wheremoving-form,
 .canitravel,
 .mileandhour,
-.choosetime,
-.movingdate,
-.aboutyou ,
-.aboutyou-info
+/* .choosetime, */
+.movingdate
+/* .aboutyou  */
+/* .aboutyou-info */
  {
 margin:5vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  /* align-content: left; */
   gap: 1vw;
-  /* background-color:#d5c0bf; */
-  /* background-color: gray; */
   background-color: #eee;
   width: 80vw;
   padding:1em;
@@ -350,19 +348,24 @@ margin: 0 auto;
 /* choose time start */
 
 .choosetime {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:2vh;
   background-color: azure;
-  padding: 1em;
-  margin: 1em;
+padding-bottom: 1em;
   max-width: 90%;
 }
-
-.choosetime label  {
-  margin-right: 3vw;
-}
+.choosetime h3{
+text-align: center;}
 .choosetime select{
-  max-width: 50%;
+  width: 50%;
+  /* padding:100%; */
 }
-/* date picker */
+
+
 
 
 
@@ -377,26 +380,80 @@ margin: 0 auto;
   position: relative; */
   margin-left: 5vw;
 }
+.movidedate-header .note{
+  font-weight: bold;
+  padding:0 10px;
+}
+.movingdate-description{
+  text-align: center;
+}
 
 .datepicker{
-  box-sizing: border-box;
-  width: 50vw;
+  width: 50%;
+  /* padding-bottom: 2vh; */
 }
 .movingdate-description  textarea {
-  width: 50vw;
-  box-sizing: border-box;
-  margin: 0 auto;
+ width: 90%;
+  margin:2vh 0;
+ 
+}
+/* aboutyou :start */
+.aboutyou {
+  margin-top: 20px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #eee;
+  width: 80vw;
+  /* padding:1em; */
   border-radius: 10%;
 }
 
+.aboutyou-header {
+  margin-bottom: 15px;
+}
+
+.aboutyou-info {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
+}
+
+.aboutyousubdiv {
+  /* flex: 1; */
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+
+
+/* about you end */
 /* end moving date */
 /* aboutyou start*/
-.aboutyousubdiv{
+/* .aboutyousubdiv{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-}
+} */
 /* about you end */
 /* start booking error */
 .error-input-booking{
@@ -404,6 +461,19 @@ color:red;
 font-weight: bold;
 margin:0 auto;
 text-align: center;
+}
+
+.booking-container button{
+  margin:2vh 0;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+
+}
+.booking-container button:hover{
+  background-color: var(--highlight-color);
+  color:#111;
+  font-weight: bold;
+  transform: scale(1.1);
+
 }
 /* end booking error */
 @media (max-width:1000px){
@@ -430,12 +500,7 @@ text-align: center;
   /* justify-content: center; */
   
 }
-.aboutyou-info{
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 50%;
-  justify-content: center;
-}
+
 .radio-container {
   flex: 0 0 35%; /*This is to get 2 vs 2 */
   max-width: 35%;
@@ -464,5 +529,11 @@ text-align: center;
     border: 1px solid rgb(58, 38, 211);
 
   }
-
+  .aboutyou-info{
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 }

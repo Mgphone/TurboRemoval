@@ -56,42 +56,40 @@ function MovingDate({ formik }) {
             Tell us when you're moving so we can check and guarantee the drivers
             availability.
           </p>
-          <h5>
+          <p className="note">
             Please note, any specialist items (such as pianos) will require an
             expert team. Please contact us via Instant Support to discuss these.
-          </h5>
+          </p>
         </div>
         <div className="movingdate-description">
-          <h3>
-            I am planning to move on
-            <br />
-            {/* <input type="text" /> */}
-            <DatePicker
-              id="moving_date"
-              name="moving_date"
-              selected={formik.values.moving_date}
-              showIcon
-              isClearable
-              closeOnScroll={true}
-              timeIntervals={15}
-              // selected={data.date}
-              onChange={handleChange}
-              showTimeSelect
-              dateFormat="dd-MM-yyyy h:mmaa"
-              // minDate={new Date()}
-              minDate={minTime}
-              minTime={minTime}
-              maxTime={maxTime}
-              customInput={<CustomInput />}
-              withPortal
-              disabledKeyboardNavigation
-            />
-            {formik.touched.moving_date && formik.errors.moving_date ? (
-              <div className="error-input-booking">
-                {formik.errors.moving_date}
-              </div>
-            ) : null}
-          </h3>
+          <h3>I am planning to move on</h3>
+          {/* <input type="text" /> */}
+          <DatePicker
+            id="moving_date"
+            name="moving_date"
+            selected={formik.values.moving_date}
+            showIcon
+            isClearable
+            closeOnScroll={true}
+            timeIntervals={15}
+            // selected={data.date}
+            onChange={handleChange}
+            showTimeSelect
+            dateFormat="dd-MM-yyyy h:mmaa"
+            // minDate={new Date()}
+            minDate={minTime}
+            minTime={minTime}
+            maxTime={maxTime}
+            customInput={<CustomInput />}
+            withPortal
+            disabledKeyboardNavigation
+          />
+          {formik.touched.moving_date && formik.errors.moving_date ? (
+            <div className="error-input-booking">
+              {formik.errors.moving_date}
+            </div>
+          ) : null}
+
           <BookingDescription formik={formik} />
         </div>
       </div>

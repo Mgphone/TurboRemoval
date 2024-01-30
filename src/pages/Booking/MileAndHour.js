@@ -60,6 +60,7 @@ function MileAndHour({ userData, formik }) {
   const handleHourChange = (e) => {
     formik.handleChange(e);
     const selectHour = e.target.value;
+    // formik.setFieldValue("how_many_hour", selectHour);
     setData((prevState) => ({
       ...prevState,
       hour: selectHour,
@@ -93,7 +94,7 @@ function MileAndHour({ userData, formik }) {
           go rate.
         </p>
         <div className="choosetime">
-          <label htmlFor="choosehour">I need The Service for</label>
+          <h3>I need The Service for</h3>
           <select
             id="choosehour"
             name="how_many_hour"

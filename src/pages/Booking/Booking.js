@@ -23,14 +23,14 @@ function Booking() {
   const [checkForm, setCheckForm] = useState(false);
 
   // console.log("This is checkForm" + checkForm);
-  useEffect(() => {
-    console.log(
-      "This is from Booking main to send to the back" +
-        // JSON.stringify(data.yourinfo.quote)
-        JSON.stringify(userData) +
-        checkForm
-    );
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(
+  //     "This is from Booking main to send to the back" +
+  //       // JSON.stringify(data.yourinfo.quote)
+  //       JSON.stringify(userData) +
+  //       checkForm
+  //   );
+  // }, [data]);
   useEffect(() => {
     const sendDataToBack = async () => {
       try {
@@ -90,6 +90,8 @@ function Booking() {
       delivery_address: "",
       delivery_stair: "",
       moving_date: "",
+      how_many_hour: "",
+      descriContent: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
