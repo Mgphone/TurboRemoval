@@ -362,3 +362,6 @@ e. when chaning the state value
 formik.setFieldValue("location", selectedValue);
 formik.setFieldError("location", ""); // Clear any previous errors
 that is the state that change the value and clear the error important part
+commit 138
+bugs fixed for daynight..
+using singleton that mean use global state value and change this state

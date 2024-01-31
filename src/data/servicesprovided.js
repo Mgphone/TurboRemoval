@@ -2,7 +2,7 @@ const servicesprovided = [
   {
     No: 1,
     Title: "House or Apartment Moves",
-    Image: "/Photos/businessmove.jpg",
+    Image: "/Photos/houseoraparment.jpg",
   },
   { No: 2, Title: "Furniture Delivery", Image: "/Photos/furnituremove.jpg" },
   {

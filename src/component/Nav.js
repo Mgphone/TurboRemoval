@@ -14,7 +14,7 @@ function Nav() {
 
   return (
     <>
-      <header className="navbar">
+      <header className="navbar" id="navbar">
         <div className="navbar-left">
           <NavLink to="/">
             <img src="/images/logo2.png" alt="logo" />

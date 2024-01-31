@@ -19,6 +19,7 @@ import CheckHomeId from "./pages/CheckHomeId/CheckHomeId.js";
 import restrictHomeId from "./component/restrictHomeId.js";
 import Terms from "./pages/TermsAndCondition/Terms.js";
 import CheckAreaCover from "./pages/CheckAreaCover/CheckAreaCover.js";
+import Login from "./pages/Admin/Login/Login.js";
 function App() {
   // const validUserData = servicesprovided.map((item) =>
   //   item.Title.replace(/ /g, "-")
@@ -46,6 +47,7 @@ function App() {
           <Route path="/location/:id" element={<LocationComponent />}></Route>
           <Route path="/terms" element={<Terms />} />
           <Route path="/checkareacover" element={<CheckAreaCover />} />
+          <Route path="/admin" element={<Login />} />
         </Routes>
       </div>
     </MyContextProvider>

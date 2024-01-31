@@ -31,7 +31,8 @@ function Footer({ isHomePage }) {
           <p>Company Number 13386529</p>
           <p> Copyright © {year} Turbo Removals</p>
           <p>
-            Crafted with <span className="love">♥️</span> from MgPhone
+            Crafted with <span className="love">♥️</span> from{" "}
+            <Link to="/admin">MgPhone</Link>
           </p>
         </div>
         <div className="quotetop">

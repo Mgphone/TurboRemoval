@@ -23,6 +23,12 @@
 }
 .footer a{
   text-decoration:none;
+  color:#111;
+}
+.footer a:hover{
+  color: var(--highlight-color);
+  
+  
 }
 .footer p{
   color: #111;
@@ -36,5 +42,5 @@
 
   }
 @media (max-width:390px) {
- .footer{ font-size: 0.4em;}
+ .footer{ font-size: 0.3em;}
 }
