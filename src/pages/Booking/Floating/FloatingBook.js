@@ -51,6 +51,7 @@ function FloatingBook({ userData, closeButton, setUserData }) {
       ? serverQuote.places.length - 2
       : "No Via Stop";
 
+  const isviaStop = serverQuote && serverQuote.places.length > 2;
   const vanSize = serverQuote && serverQuote.typeofVan;
   const worker = serverQuote && serverQuote.typeOfWorker;
   const totalPrice = serverQuote && serverQuote.totalPrice.toFixed(2);
@@ -128,21 +129,23 @@ function FloatingBook({ userData, closeButton, setUserData }) {
                 </p>
               )}
             </div>
-            <div className="floatingviastop">
-              {viaStop && (
-                <p>
-                  <span className="info-label">Via Stop:</span>
-                  <span className="info-value">{viaStop}</span>
-                </p>
-              )}
+            {isviaStop && (
+              <div className="floatingviastop">
+                {viaStop && (
+                  <p>
+                    <span className="info-label">Via Stop:</span>
+                    <span className="info-value">{viaStop}</span>
+                  </p>
+                )}
 
-              {viaStopStair && (
-                <p>
-                  <span className="info-label">Via Stop Stair:</span>
-                  <span className="info-value">{viaStopStair}</span>
-                </p>
-              )}
-            </div>
+                {viaStopStair && (
+                  <p>
+                    <span className="info-label">Via Stop Stair:</span>
+                    <span className="info-value">{viaStopStair}</span>
+                  </p>
+                )}
+              </div>
+            )}
             <div className="floatingdropof">
               {dropOfAddress && (
                 <p>
@@ -275,8 +278,10 @@ function FloatingBook({ userData, closeButton, setUserData }) {
               <h2>Hourly Charges Policy</h2>
               <p>
                 For each booking, the hourly charges policy applies. Any time
-                exceeding the initial {vehicleHour}is subject to an additional
-                fee of<span className="total-price"> £{halfanHour}</span> per
+                exceeding the initial
+                <span className="total-price"> {vehicleHour} </span> is subject
+                to an additional fee of
+                <span className="total-price"> £{halfanHour}</span> per
                 half-hour.
               </p>
               <h2> Congestion Charge Policy</h2>

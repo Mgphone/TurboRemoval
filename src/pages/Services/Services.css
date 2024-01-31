@@ -24,6 +24,7 @@
   transition: transform 0.3s;
   cursor: pointer;
   text-decoration: none;
+  
 }
 
 .service-card:hover {
@@ -73,7 +74,7 @@ margin: 0 auto;
 
 @media screen and (max-width: 600px) {
   .services-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2,1fr);
     padding: 0 2vw; /* Adjust padding for better spacing */
     
   }
@@ -81,7 +82,7 @@ margin: 0 auto;
   .service-card {
     /* width: 60%;  */
     height: auto;
-    margin: 0 auto 5vh; /* Add some spacing between cards */
+    margin: 0 auto ; /* Add some spacing between cards */
     
   }
   .service-card img{
@@ -89,11 +90,18 @@ margin: 0 auto;
     height: 150px;
   }
   .service-card h4{
-   width: 100vw;
+   width: 100%;
   }
   .serive-name-content{
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+}
+@media screen and (max-width:400px){
+  .services-cards {
+    grid-template-columns: 1fr;
+    padding: 0 2vw; /* Adjust padding for better spacing */
+    
   }
 }

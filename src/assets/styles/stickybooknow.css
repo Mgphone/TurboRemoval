@@ -9,12 +9,14 @@
   padding: 15px;
   display: none;
   cursor: pointer;
+  padding-top: 10px;
 }
 @media (max-width:600px) {
 
   .sticky-booknow{
     display: block;
     /* position:fixed; */
+    /* width: 100%; */
   
    
   }

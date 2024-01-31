@@ -20,7 +20,7 @@
   border-radius: 10px;
   padding: 20px;
   transition: background-color 0.3s;
-  z-index: 2;
+  z-index: 20;
 }
 
 
@@ -114,8 +114,11 @@ padding:10px;
   margin: 2vh 0;
 }
 
-.floatbutton button {
-  margin-left: 1vw;
+.floatbutton  {
+display: flex;
+justify-content: center;
+gap:20px;
+  
 }
 .floatbutton button:hover{
   background-color: #fff;
@@ -124,10 +127,18 @@ padding:10px;
 }
 .float-after-term {
   margin:10px 0;
+  border-top: 1px solid #111;
  }
  .float-after-term p{
   text-align: left;
  }
+ .floatingbook-radio-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:3px;
+  margin:2vh 0;
+}
 @media (max-width:700px){
   .floatingbook header{
     margin: 0;
@@ -143,18 +154,23 @@ padding:10px;
 }
 @media (max-width:339px) {
   .floatbutton {
-display: flex;
+/* display: flex; */
 flex-direction: column;
-gap:20px;
+align-items: center;
+/* gap:20px; */
   }  
+  .floatbutton button{
+    width: 60%;
+   border-radius: 15%;
+  }
 }
 @media (max-width:300px) {
-  .floatingbook-radio-button{
+  /* .floatingbook-radio-button{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     gap:3px;
-  }
+  } */
 }
 /* this is end of floating */
 /* @media (max-width:1000px){

@@ -40,7 +40,7 @@ export default function About() {
             through reliability and great communication, all of our drivers are
             thoroughly vetted and fully insured Man with van service providers,
             all of our vans come well maintained and readily equipped for any
-            Removal related task in Cricklewood.
+            Removal related task in London.
           </p>
           <p>
             With regards to Logistics insurance all Turbo Removals drivers come
