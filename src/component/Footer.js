@@ -2,6 +2,7 @@ import React from "react";
 import "../assets/styles/Footer.css";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import DayNight from "./DayNight";
 function Footer({ isHomePage }) {
   const year = new Date().getFullYear();
   const footerStyle = {
@@ -29,7 +30,9 @@ function Footer({ isHomePage }) {
         <div className="copyright">
           <p>Company Number 13386529</p>
           <p> Copyright © {year} Turbo Removals</p>
-          <p>Crafted with ♥️ from MgPhone</p>
+          <p>
+            Crafted with <span className="love">♥️</span> from MgPhone
+          </p>
         </div>
         <div className="quotetop">
           <p>
@@ -38,6 +41,7 @@ function Footer({ isHomePage }) {
           <p>
             <a href="#navbar">Up to Top</a>
           </p>
+          <DayNight />
         </div>
       </div>
     </>

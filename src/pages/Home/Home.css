@@ -17,7 +17,7 @@ background-size: cover;
 background-position: center;
 text-align: center;
   overflow: auto;
-  background-color: #ddd;
+  background-color:var(--main-background-color);
 }
 
 
@@ -73,7 +73,7 @@ font-size: 1.2em;
 .mapcontainer button{
   padding: 10px 20px;
   background-color: #007bff;
-  color: #fff;
+  color: var(--main-background-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -86,13 +86,13 @@ font-size: 1.2em;
 max-width: 90vw;
   /* font-size:1em; */
   width: 80%;
-color:blue;
+color:var(--highlight-color);
 font-weight: bold;
 padding:2vh 0;
 
 }
 .secondimageheader {
-  color: blue;
+  color:var(----highlight-color);
   font-weight: bold;
   font-size: 1.1em;
 }
@@ -148,7 +148,7 @@ padding:2vh 0;
 /* end card payment acceptt icon */
 .review-container{
   text-align: center;
-  background-color:white;
+  background-color:var(--main-background-color);
   height: auto;
   cursor: pointer;
   margin-bottom: 2vh;
@@ -203,7 +203,7 @@ padding:2vh 0;
   
   /* Style the title */
   .howitwork h1 {
-    color: #333;
+    color: var(--main-color);
   }
   
   /* Style the cards container */

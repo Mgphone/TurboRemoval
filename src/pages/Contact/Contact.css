@@ -1,6 +1,7 @@
 .contact-us{
-margin:0 20px;
-}
-.contact-us p{
-  text-align: left;
+margin:20px auto;
+width: 80%;
+border: 1px solid #ccc;
+text-align: center;
+
 }

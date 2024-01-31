@@ -7,6 +7,7 @@ import Review from "./Review";
 import Howitwork from "./Howitwork";
 import AccepedPayment from "./AccepedPayment";
 import About from "./About";
+import DayNight from "../../component/DayNight";
 function Home() {
   // const { sharedData, setShareData } = useContext(MyContext);
   // const changeData = () => {
@@ -25,6 +26,7 @@ function Home() {
       <Howitwork />
       <About />
       <Review />
+      {/* <DayNight /> */}
       <Footer isHomePage={true} />
     </>
   );
