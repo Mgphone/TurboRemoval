@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { BiCurrentLocation } from "react-icons/bi";
-function checkYourCoverInput() {
+function CheckYourCoverInput() {
   const [userLocation, setUserLocation] = useState(null);
   return (
     <div className="checkyourcover-input">
@@ -31,4 +31,4 @@ function checkYourCoverInput() {
   );
 }
 
-export default checkYourCoverInput;
+export default CheckYourCoverInput;

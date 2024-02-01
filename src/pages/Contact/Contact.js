@@ -4,11 +4,15 @@ import Footer from "../../component/Footer";
 import StickyBookNow from "../../component/StickyBookNow";
 import Contactbody from "./Contactbody";
 import "./Contact.css";
+import ContactForm from "./ContactForm";
 function ContactPage() {
   return (
     <>
       <Nav />
-      <Contactbody />
+      <div className="contact-us">
+        <Contactbody />
+        <ContactForm />
+      </div>
       <StickyBookNow />
       <Footer />
     </>
