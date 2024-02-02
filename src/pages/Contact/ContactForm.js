@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 function ContactForm() {
   const [formData, setFormData] = useState(null);
+  const navigate = useNavigate();
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is Required"),
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
     title: Yup.string().required("Title is required"),
+    phone: Yup.string()
+      .matches(/^[0-9]+$/, "Phone number must contain only digits")
+      .required("Phone number is required"),
     message: Yup.string().required("Message is required"),
     agree: Yup.boolean().oneOf(
       [true],
@@ -30,8 +35,32 @@ function ContactForm() {
       setFormData(values);
     },
   });
-  const handleSubmit = (values) => {
-    console.log("Form Submitted", formData);
+  const handleSubmit = async (formData) => {
+    // console.log("Form Submitted", formData);
+
+    try {
+      const url = `${process.env.REACT_APP_SERVER_URL}contact/sendemail`;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.message) {
+          alert(data.message);
+        }
+        navigate("/");
+      } else {
+        throw new Error(`Response error:${response.status}`);
+      }
+    } catch (error) {
+      console.error("Cannot Connect to Server", error);
+      alert("An unexpected error occurred. Please try again later.");
+    }
   };
 
   return (
@@ -61,7 +90,7 @@ function ContactForm() {
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
-            placeholder="Your Email"
+            placeholder="Your Email*"
             // required
           />
           {formik.touched.email && formik.errors.email ? (
@@ -79,6 +108,9 @@ function ContactForm() {
             placeholder="Your Phone*"
             // required
           />
+          {formik.touched.phone && formik.errors.phone ? (
+            <div className="contact-form-error">{formik.errors.phone}</div>
+          ) : null}
         </label>
 
         <label>
@@ -89,7 +121,7 @@ function ContactForm() {
             value={formik.values.title}
             onChange={formik.handleChange}
             // required
-            placeholder="Title"
+            placeholder="Title*"
           />
           {formik.touched.title && formik.errors.title ? (
             <div className="contact-form-error">{formik.errors.title}</div>
@@ -103,7 +135,7 @@ function ContactForm() {
             value={formik.values.message}
             onChange={formik.handleChange}
             // required
-            placeholder="Message*"
+            placeholder="Your request*"
           />
           {formik.touched.message && formik.errors.message ? (
             <div className="contact-form-error">{formik.errors.message}</div>
@@ -116,6 +148,7 @@ function ContactForm() {
             name="agree"
             checked={formik.values.agree}
             onChange={formik.handleChange}
+
             // required
           />
           {formik.touched.agree && formik.errors.agree ? (
