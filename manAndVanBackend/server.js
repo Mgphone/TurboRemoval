@@ -30,7 +30,7 @@ app.use(
 ); //button payment
 app.use("/dashboard", corsWithWhiteList, require("./Routes/dashBoard")); //checking one
 app.use("/google", corsWildCard, require("./Routes/google"));
-
+app.use("/contact", corsWithWhiteList, require("./Routes/contact"));
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
