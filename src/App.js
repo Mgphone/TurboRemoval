@@ -20,10 +20,11 @@ import restrictHomeId from "./component/restrictHomeId.js";
 import Terms from "./pages/TermsAndCondition/Terms.js";
 import CheckAreaCover from "./pages/CheckAreaCover/CheckAreaCover.js";
 import Login from "./pages/Admin/Login/Login.js";
+//import nav and footer
+
+import Register from "./pages/Admin/Register/Register.js";
+
 function App() {
-  // const validUserData = servicesprovided.map((item) =>
-  //   item.Title.replace(/ /g, "-")
-  // );
   return (
     <MyContextProvider>
       <div className="app-container">
@@ -47,7 +48,11 @@ function App() {
           <Route path="/location/:id" element={<LocationComponent />}></Route>
           <Route path="/terms" element={<Terms />} />
           <Route path="/checkareacover" element={<CheckAreaCover />} />
-          <Route path="/admin" element={<Login />} />
+
+          {/* this is for admin */}
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </MyContextProvider>

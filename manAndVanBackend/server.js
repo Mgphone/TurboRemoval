@@ -27,10 +27,13 @@ app.use(
   "/paymentbooking",
   corsWithWhiteList,
   require("./Routes/bookingpayment")
-); //button payment
+);
+//button payment
 app.use("/dashboard", corsWithWhiteList, require("./Routes/dashBoard")); //checking one
 app.use("/google", corsWildCard, require("./Routes/google"));
+//contact
 app.use("/contact", corsWithWhiteList, require("./Routes/contact"));
+//login
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

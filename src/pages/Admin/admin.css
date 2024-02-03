@@ -1,4 +1,4 @@
-.login-container{
+.login-container,.register-container{
   width: 50vw;
   height: auto;
   margin:20px auto;
@@ -6,10 +6,13 @@
   /* border: 1px solid gold; */
   padding:20px;
 }
-.login-container input, .login-button{
-
+.login-container input, .login-button,.register-button{
   margin: 10px auto;
 }
-.login-button{
- 
+.account-button{
+  display: flex;
+}
+.register-form-error{
+  font-size: 1em;
+  color: red;
 }
