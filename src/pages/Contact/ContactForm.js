@@ -6,7 +6,9 @@ function ContactForm() {
   const [formData, setFormData] = useState(null);
   const navigate = useNavigate();
   const validationSchema = Yup.object({
-    name: Yup.string().required("Name is Required"),
+    name: Yup.string()
+      .min(3, "Need at least 3 characters")
+      .required("Name is Required"),
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),

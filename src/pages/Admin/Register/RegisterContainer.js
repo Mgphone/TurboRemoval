@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 function RegisterContainer() {
-  // const { formData, setFormData } = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
   const validationSchema = Yup.object({
-    name: Yup.string().required("Name is required"),
+    name: Yup.string()
+      .min(3, "Need at least 3 characters")
+      .required("Name is required"),
     uniquecode: Yup.string().required("Your uniqued code is Required"),
     password1: Yup.string().required("Password is Required"),
     password2: Yup.string()
-      .oneOf([Yup.ref("password1"), null], "Password must matach")
+      .oneOf([Yup.ref("password1"), null], "Password must match")
       .required("Password confirmation is required"),
   });
   const formik = useFormik({
@@ -22,10 +26,34 @@ function RegisterContainer() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       handleSubmit(values);
+      // setFormData(values);
     },
   });
   const handleSubmit = async (values) => {
-    console.log(values);
+    try {
+      const url = `${process.env.REACT_APP_SERVER_URL}admin/register`;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        if (data.message) {
+          alert(data.message);
+          navigate("/login");
+        } else if (data.errormessage) {
+          // alert(data.errormessage);
+          setErrorMessage(data.errormessage);
+        }
+      } else {
+        throw new Error(`Response error: ${response.satus}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -85,6 +113,9 @@ function RegisterContainer() {
               {formik.errors.uniquecode}
             </div>
           ) : null}
+          {errorMessage && (
+            <div className="register-form-error">{errorMessage}</div>
+          )}
         </div>
         <button className="register-button" type="submit">
           Register

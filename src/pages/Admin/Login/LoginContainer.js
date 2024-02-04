@@ -10,7 +10,7 @@ function LoginContainer() {
     <div className="login-container">
       <h1>Admin Login</h1>
       <div>
-        <label htmlFor="Name" Name />
+        <label htmlFor="Name" />
         <input type="text" placeholder="username" />
       </div>
       <div>
@@ -26,7 +26,7 @@ function LoginContainer() {
           type="submit"
           onClick={handlesignup}
         >
-          Singup
+          Sign Up
         </button>
       </div>
     </div>
