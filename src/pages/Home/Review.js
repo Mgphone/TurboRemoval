@@ -6,6 +6,9 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 function Review() {
   const [reviews, setReviews] = useState(false);
+  useEffect(() => {
+    console.log(JSON.stringify(reviews));
+  }, [reviews]);
   const fetchReview = async () => {
     try {
       // const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${process.env.REACT_APP_PLACE_ID}&fields=reviews&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
@@ -17,7 +20,9 @@ function Review() {
       }
       const data = await response.json();
       if (data.result && data.result.reviews) {
-        setReviews(data.result.reviews);
+        const sortedArray = data.result.reviews.sort((a, b) => b.time - a.time);
+        // setReviews(data.result.reviews);
+        setReviews(sortedArray);
       }
     } catch (error) {
       console.error("Error fetching reviews", error);

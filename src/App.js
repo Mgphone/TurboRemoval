@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import "./assets/styles/App.css";
 import Home from "./pages/Home/Home.js";
 import Services from "./pages/Services/Services";
@@ -21,10 +21,21 @@ import Terms from "./pages/TermsAndCondition/Terms.js";
 import CheckAreaCover from "./pages/CheckAreaCover/CheckAreaCover.js";
 import Login from "./pages/Admin/Login/Login.js";
 //import nav and footer
-
 import Register from "./pages/Admin/Register/Register.js";
+import Nav from "./component/Nav.js";
+import Footer from "./component/Footer.js";
+import NotFound from "./pages/NotFound/NotFound.js";
 
 function App() {
+  const Layout = () => {
+    return (
+      <>
+        <Nav />
+        <Outlet />
+        <Footer />
+      </>
+    );
+  };
   return (
     <MyContextProvider>
       <div className="app-container">
@@ -50,9 +61,11 @@ function App() {
           <Route path="/checkareacover" element={<CheckAreaCover />} />
 
           {/* this is for admin */}
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/admin" element={<Layout />}>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
       </div>
     </MyContextProvider>

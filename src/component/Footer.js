@@ -32,7 +32,7 @@ function Footer({ isHomePage }) {
           <p> Copyright © {year} Turbo Removals</p>
           <p>
             Crafted with <span className="love">♥️</span> from{" "}
-            <Link to="/login">MgPhone</Link>
+            <Link to="/admin/login">MgPhone</Link>
           </p>
         </div>
         <div className="quotetop">
