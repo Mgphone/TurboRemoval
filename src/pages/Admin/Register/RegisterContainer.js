@@ -9,18 +9,23 @@ function RegisterContainer() {
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(3, "Need at least 3 characters")
-      .required("Name is required"),
+      .required("Name is required")
+      .test(
+        "no-spaces",
+        "Name cannot contain spaces",
+        (value) => !/\s/.test(value)
+      ),
     uniquecode: Yup.string().required("Your uniqued code is Required"),
-    password1: Yup.string().required("Password is Required"),
-    password2: Yup.string()
-      .oneOf([Yup.ref("password1"), null], "Password must match")
+    password: Yup.string().required("Password is Required"),
+    password1: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password must match")
       .required("Password confirmation is required"),
   });
   const formik = useFormik({
     initialValues: {
       name: "",
+      password: "",
       password1: "",
-      password2: "",
       uniquecode: "",
     },
     validationSchema: validationSchema,
@@ -31,7 +36,7 @@ function RegisterContainer() {
   });
   const handleSubmit = async (values) => {
     try {
-      const url = `${process.env.REACT_APP_SERVER_URL}admin/register`;
+      const url = `${process.env.REACT_APP_SERVER_URL}account/register`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -76,27 +81,27 @@ function RegisterContainer() {
           <label htmlFor="password" />
           <input
             type="password"
-            name="password1"
-            value={formik.values.password1}
+            name="password"
+            value={formik.values.password}
             onChange={formik.handleChange}
             placeholder="password"
           />{" "}
-          {formik.touched.password1 && formik.errors.password1 ? (
-            <div className="register-form-error">{formik.errors.password1}</div>
+          {formik.touched.password && formik.errors.password ? (
+            <div className="register-form-error">{formik.errors.password}</div>
           ) : null}
         </div>
 
         <div>
           <label htmlFor="repeat-password" />
           <input
-            name="password2"
-            value={formik.values.password2}
+            name="password1"
+            value={formik.values.password1}
             onChange={formik.handleChange}
             type="password"
             placeholder="repeat-password"
           />
-          {formik.touched.password2 && formik.errors.password2 ? (
-            <div className="register-form-error">{formik.errors.password2}</div>
+          {formik.touched.password1 && formik.errors.password1 ? (
+            <div className="register-form-error">{formik.errors.password1}</div>
           ) : null}
         </div>
         <div>

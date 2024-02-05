@@ -365,3 +365,7 @@ that is the state that change the value and clear the error important part
 commit 138
 bugs fixed for daynight..
 using singleton that mean use global state value and change this state
+commit 144
+when i submit there is kindda error in req.body for password..
+finally i choose only one password :)
+in this git register, and sign in

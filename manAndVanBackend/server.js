@@ -5,6 +5,7 @@ const app = express();
 const { accessLogger } = require("./middleware/logger");
 
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const port = process.env.PORT;
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
@@ -17,6 +18,7 @@ const corsWildCard = require("./config/corsWildCard");
 app.use(accessLogger);
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 //add the stripe payament method
 
 //Router
@@ -34,7 +36,7 @@ app.use("/google", corsWildCard, require("./Routes/google"));
 //contact
 app.use("/contact", corsWithWhiteList, require("./Routes/contact"));
 //login
-app.use("/admin", corsWithWhiteList, require("./Routes/account"));
+app.use("/account", corsWithWhiteList, require("./Routes/account"));
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
