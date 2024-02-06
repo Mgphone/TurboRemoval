@@ -19,13 +19,16 @@ import CheckHomeId from "./pages/CheckHomeId/CheckHomeId.js";
 import restrictHomeId from "./component/restrictHomeId.js";
 import Terms from "./pages/TermsAndCondition/Terms.js";
 import CheckAreaCover from "./pages/CheckAreaCover/CheckAreaCover.js";
-import Login from "./pages/Admin/Login/Login.js";
+
 //import nav and footer
-import Register from "./pages/Admin/Register/Register.js";
+
 import Nav from "./component/Nav.js";
 import Footer from "./component/Footer.js";
 import NotFound from "./pages/NotFound/NotFound.js";
-
+//this is admin
+import Login from "./pages/Admin/Login/Login.js";
+import Register from "./pages/Admin/Register/Register.js";
+import AdminDashBoard from "./pages/Admin/AdminDashBoard.js";
 function App() {
   const Layout = () => {
     return (
@@ -64,6 +67,7 @@ function App() {
           <Route path="/admin" element={<Layout />}>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="dashboard" element={<AdminDashBoard />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

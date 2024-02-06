@@ -16,3 +16,14 @@
   font-size: 1em;
   color: red;
 }
+/* admindashboard */
+.admin-dashboard{
+width: 80vw;
+margin:2vh auto;
+border: 1px solid black;
+}
+.admin-dashboard-topbar{
+  display: flex;
+justify-content: flex-end;
+gap:20px;
+}

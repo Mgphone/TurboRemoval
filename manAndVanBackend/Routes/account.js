@@ -5,7 +5,21 @@ const bcrypt = require("bcrypt");
 const secret = "mgphonechitsoneaf";
 const back_uniquecode = process.env.uniquecode;
 const jwt = require("jsonwebtoken");
+//middleware
+const authenticateToken = require("../middleware/authenticateToken");
+// const authenticateToken = (req, res, next) => {
+//   const token = req.cookies.token;
 
+//   if (!token) {
+//     return res.status(401).json({ success: false, message: "Unauthorised" });
+//   }
+//   jwt.verify(token, secret, (err, user) => {
+//     if (err)
+//       return res.status(403).json({ success: false, message: "Forbidden" });
+//     req.user = user;
+//     next();
+//   });
+// };
 router.post("/register", async (req, res) => {
   const { name, password, uniquecode } = req.body;
   if (uniquecode !== back_uniquecode) {
@@ -43,7 +57,13 @@ router.post("/login", async (req, res) => {
       const userEnter = userDoc.password;
       const passwordValid = bcrypt.compareSync(password, userEnter);
       if (passwordValid) {
-        res.json({ message: "User Login Successful" });
+        // res.json({ message: "User Login Successful" });
+        const token = jwt.sign({ username: username }, secret, {
+          expiresIn: "1h",
+        });
+        res.cookie("token", token, { httpOnly: true, maxAge: 3600000 });
+
+        res.json({ success: true, message: "Login successful" });
         //userlogin
       } else {
         res.json({ errormessage: "Password is invalid" });
@@ -53,5 +73,15 @@ router.post("/login", async (req, res) => {
     console.error(error);
     res.status(500).json({ errormessage: "Internal Server Error" });
   }
+});
+router.get("/admindashboard", authenticateToken, async (req, res) => {
+  res.json({
+    success: true,
+    message: "Protected Route",
+    username: req.user,
+  });
+});
+router.post("/logout", async (req, res) => {
+  res.clearCookie("token").json({ message: "Logout Successful" });
 });
 module.exports = router;

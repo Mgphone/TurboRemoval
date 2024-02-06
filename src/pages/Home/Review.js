@@ -6,9 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 function Review() {
   const [reviews, setReviews] = useState(false);
-  useEffect(() => {
-    console.log(JSON.stringify(reviews));
-  }, [reviews]);
+
   const fetchReview = async () => {
     try {
       // const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${process.env.REACT_APP_PLACE_ID}&fields=reviews&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;

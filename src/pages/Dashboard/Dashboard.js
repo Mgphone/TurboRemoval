@@ -45,7 +45,7 @@ function Dashboard() {
   };
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="dashboard-container">
         <h1>Welcome from the admin DashBoard</h1>
         <div className="dashboard-checker">
@@ -73,7 +73,7 @@ function Dashboard() {
           <button onClick={() => setServerIP(null)}>Reset</button>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

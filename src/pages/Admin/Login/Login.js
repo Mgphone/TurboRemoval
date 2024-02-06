@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import "../admin.css";
 function Login() {
   const [errormessage, setErrorMessage] = useState("");
+  const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
   const handlesignup = () => {
     // console.log("You click register");
@@ -33,17 +34,23 @@ function Login() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
+        credentials: "include",
       });
       if (response.ok) {
         const data = await response.json();
-        if (data.message) {
-          alert(data.message);
-        }
-        if (data.errormessage) {
+        if (data.success) {
+          setRedirect(true);
+        } else if (data.errormessage) {
           setErrorMessage(data.errormessage);
         }
       }
-    } catch (error) {}
+
+      if (redirect) {
+        return navigate("/admin/dashboard");
+      }
+    } catch (error) {
+      console.error(error.status);
+    }
   };
   return (
     <form onSubmit={formik.handleSubmit}>
