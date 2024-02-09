@@ -37,6 +37,7 @@ app.use("/google", corsWildCard, require("./Routes/google"));
 app.use("/contact", corsWithWhiteList, require("./Routes/contact"));
 //login
 app.use("/account", corsWithWhiteList, require("./Routes/account"));
+app.use("/backdata", corsWithWhiteList, require("./Routes/backmoondata"));
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

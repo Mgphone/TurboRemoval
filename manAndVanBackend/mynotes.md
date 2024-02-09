@@ -369,3 +369,8 @@ commit 144
 when i submit there is kindda error in req.body for password..
 finally i choose only one password :)
 in this git register, and sign in
+commit 147
+i stuck for very long time while i am sending router.post and router.get (noted)
+i use router get and mongodb to find and display in server (noted)
+i use the layout for admin page.. and all page got nav and footer (noted)
+i. When i use in the reat-router dom .. use Nested inside <Route>.....</Route>(noted)

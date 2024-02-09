@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import "../admin.css";
+import "./admin.css";
 function Register() {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();

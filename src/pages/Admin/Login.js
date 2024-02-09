@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import "../admin.css";
+import "./admin.css";
 function Login() {
   const [errormessage, setErrorMessage] = useState("");
   const [redirect, setRedirect] = useState(false);

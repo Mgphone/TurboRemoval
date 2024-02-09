@@ -26,8 +26,8 @@ import Nav from "./component/Nav.js";
 import Footer from "./component/Footer.js";
 import NotFound from "./pages/NotFound/NotFound.js";
 //this is admin
-import Login from "./pages/Admin/Login/Login.js";
-import Register from "./pages/Admin/Register/Register.js";
+import Login from "./pages/Admin/Login.js";
+import Register from "./pages/Admin/Register.js";
 import AdminDashBoard from "./pages/Admin/AdminDashBoard.js";
 function App() {
   const Layout = () => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Dashboard from "../Dashboard/Dashboard";
+import AdminAllBooking from "./AdminAllBooking";
+
 function AdminDashBoard() {
   const [userData, setUserData] = useState(null);
   useEffect(() => {
@@ -29,14 +30,15 @@ function AdminDashBoard() {
     <div className="admin-dashboard">
       {userData ? (
         <>
-          {" "}
           <div className="admin-dashboard-topbar">
             <p>Welcome,{userData.username}</p>
             <Link to="/admin/login" onClick={logout}>
               <p>Logout</p>
             </Link>
           </div>
-          <Dashboard />
+          <div className="admin-dashboarrd-contect">
+            <AdminAllBooking />
+          </div>
         </>
       ) : (
         <div className="admin-dashboard-topbar">

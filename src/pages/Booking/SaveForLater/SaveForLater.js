@@ -41,9 +41,7 @@ function SaveForLater({ serverQuote, setIsButtonBookNow, isButtonBookNow }) {
         // }
         // console.log("after sending back to server" + JSON.stringify(savedData));
         if (savedData.data) {
-          alert(
-            `Thanks you Chit Sone To using our service ${savedData.data.quote.name}`
-          );
+          alert(`Thanks For Using Our Service ${savedData.data.quote.name}`);
           navigate("/");
         }
       } catch (error) {
