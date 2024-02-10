@@ -2,18 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 
+import Quotation from "./Quotation/Quotation";
 function AdminAllBooking() {
   const [backData, setBackData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userClickData, setUserClickData] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const url = `${process.env.REACT_APP_SERVER_URL}backdata/all`;
         const response = await fetch(url);
-        // console.log("THIS IS URL " + url);
-        // console.log("This is response" + JSON.stringify(response));
-        // console.log("This is response backeend" + JSON.stringify(response));
+
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -30,17 +30,26 @@ function AdminAllBooking() {
     fetchData();
   }, []);
 
+  // function handleClick(item){
+
+  // }
   return (
     <div className="alldata">
-      <h1>This is coming from All Data</h1>
+      {/* <h1>This is User Free Quotation for future Date</h1> */}
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <ul>
-          {backData.map((item) => (
-            <li key={item._id}>{item.date}</li>
-          ))}
-        </ul>
+        <>
+          <Quotation backData={backData} setUserClickData={setUserClickData} />
+
+          {/* {userClickData && (
+            <div className="userdatashow">
+              {userClickData.map((item) => (
+                <p>{item.date}</p>
+              ))}
+            </div>
+          )} */}
+        </>
       )}
     </div>
   );
