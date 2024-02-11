@@ -3,9 +3,9 @@ import changeToGBTime from "../../../component/changeToGBTime";
 function Quotation({ backData, setUserClickData }) {
   const [futureQuote, setFutureQuote] = useState(false);
   const [previousQuote, setPreviousQuote] = useState(false);
-  const handleClick = (item) => {
-    console.log("you click and this is ur id" + item);
-    const data = backData.filter((item) => item._id === item);
+
+  const handleClick = (itemId) => {
+    const data = backData.filter((item) => item._id === itemId);
     setUserClickData(data);
   };
   const future = () => {

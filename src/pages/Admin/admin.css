@@ -27,6 +27,26 @@ border: 1px solid black;
 justify-content: flex-end;
 gap:20px;
 }
+/* main page css */
+.card-container-admin-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card-main {
+  background-color:var(--main-background-color);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--main-color);
+}
+.card-main:hover{
+  background-color: antiquewhite;
+}
+/* main page css finish */
 /* quotation */
 .card-container-quotation {
   display: grid;
@@ -34,10 +54,16 @@ gap:20px;
   gap: 20px;
 }
 .card-quotation {
-  background-color: #ffffff;
+  background-color: var(--main-background-color);
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 20px;
+  color: var(--main-color);
+  cursor: pointer;
+}
+.card-quotation:hover{
+  background-color: antiquewhite;
+  color: #333;
 }
 .alldata h2{
   text-align: center;
@@ -47,4 +73,25 @@ gap:20px;
   flex-direction: row;
   justify-content: center;
   gap:20px;
+  margin:20px;
+}
+.alldata-quotation-button button:hover{
+  background-color: antiquewhite;
+  color:#111
+}
+/* userdata */
+.userdatashow{
+  background-color: #ccc;
+  position: fixed;
+  width: 90vw;
+  height: 90%;
+  top: 2vh;
+  left:0;
+  overflow: scroll;
+  box-sizing: border-box;
+  border: 2px solid #4a4a4a;
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s;
+  z-index: 20;
 }
