@@ -47,6 +47,7 @@ function Quotation({ backData, setUserClickData }) {
                       ].location
                     }
                   </p>
+                  <p>Your Unique Quote: {item.randomNumber}</p>
                   <p>Total Price: £{item.quote.totalPrice.toFixed(2)}</p>
                 </div>
               ))}
