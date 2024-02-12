@@ -2,6 +2,7 @@ import React from "react";
 
 function FloatingShowMore({ serverQuote }) {
   const locations = serverQuote.totalAddress;
+
   const description = serverQuote.description
     ? serverQuote.description
     : "No Description";
@@ -22,7 +23,7 @@ function FloatingShowMore({ serverQuote }) {
                 <p>
                   <span className="info-label"> Stair:</span>
                   <span className="info-value">
-                    {location.stair ? `Stair: ${location.stair}` : "No Stair"}
+                    {location.stair ? `${location.stair} Stair` : "No Stair"}
                   </span>
                 </p>
               </div>

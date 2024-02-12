@@ -84,9 +84,8 @@ gap:20px;
   background-color: #ccc;
   position: fixed;
   width: 90vw;
-  height: 90%;
-  top: 2vh;
-  left:0;
+  height: 95%;
+top:10px;
   overflow: scroll;
   box-sizing: border-box;
   border: 2px solid #4a4a4a;
@@ -94,4 +93,21 @@ gap:20px;
   padding: 20px;
   transition: background-color 0.3s;
   z-index: 20;
+}
+.userdatashow p{
+  border-bottom: 1px solid #111;
+}
+.customer-details,.price-details,.trip-details{
+  
+  margin:10px;
+  border: 1px solid black;
+  
+}
+.customer-details h3,.price-details h3,.trip-details h3{
+  text-align: center;
+}
+.customer-details p,.price-details p,.trip-details p{
+  display: flex;
+  justify-content: space-between;
+  margin:10px;
 }

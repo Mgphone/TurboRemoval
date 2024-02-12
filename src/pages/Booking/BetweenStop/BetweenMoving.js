@@ -33,7 +33,7 @@ function BetweenMoving() {
 
   const handleStairChange = (value, betweenId) => {
     const updatedAddresses = data.addresses.map((address) =>
-      address.id === betweenId ? { ...address, selectedStair: value } : address
+      address.id === betweenId ? { ...address, stair: value } : address
     );
     setData((prevValue) => ({
       ...prevValue,
@@ -51,7 +51,7 @@ function BetweenMoving() {
           id: uniqueId,
           location: "London NW2, UK",
           physicalAddress: "",
-          selectedStair: "",
+          stair: "",
         },
         ...prevValue.addresses.slice(-1),
       ],
@@ -78,7 +78,7 @@ function BetweenMoving() {
     <>
       {data.addresses
         .slice(1, -1)
-        .map(({ id, inputValue, inputAddress, selectedStair }, index) => (
+        .map(({ id, inputValue, inputAddress, stair }, index) => (
           <div key={id} className={`viastop${index} viacontainer viastopinput`}>
             <Between
               inputValue={inputValue}
@@ -87,7 +87,7 @@ function BetweenMoving() {
               handleInputAddressChange={(value) =>
                 handleInputAddressChange(value, id)
               }
-              selectedStair={selectedStair}
+              stair={stair}
               handleStairChange={(value) => handleStairChange(value, id)}
             />
             <p className="remove-via" onClick={() => removeBetween(id)}>

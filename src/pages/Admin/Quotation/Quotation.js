@@ -28,8 +28,8 @@ function Quotation({ backData, setUserClickData }) {
           <div className="card-container-quotation">
             {backData
               .filter((item) => item.paymentStatus === "unpaid")
-              .sort((a, b) => new Date(a.date) - new Date(b.date))
-              .filter((item) => new Date(item.date) > Date.now())
+              .sort((a, b) => new Date(a.quote.date) - new Date(b.quote.date))
+              .filter((item) => new Date(item.quote.date) >= Date.now())
               .map((item, index) => (
                 <div
                   key={item._id}
@@ -37,7 +37,7 @@ function Quotation({ backData, setUserClickData }) {
                   onClick={() => handleClick(item._id)}
                 >
                   <p>{index + 1}</p>
-                  <p>Date: {changeToGBTime(item.date)}</p>
+                  <p>Date: {changeToGBTime(item.quote.date)}</p>
                   <p>Start Location: {item.quote.totalAddress[0].location}</p>
                   <p>
                     End Location:{" "}
@@ -59,8 +59,8 @@ function Quotation({ backData, setUserClickData }) {
           <div className="card-container-quotation">
             {backData
               .filter((item) => item.paymentStatus === "unpaid")
-              .sort((a, b) => new Date(a.date) - new Date(b.date))
-              .filter((item) => new Date(item.date) < Date.now())
+              .sort((a, b) => new Date(a.quote.date) - new Date(b.quote.date))
+              .filter((item) => new Date(item.quote.date) < Date.now())
               .map((item, index) => (
                 <div
                   key={item._id}
@@ -68,7 +68,7 @@ function Quotation({ backData, setUserClickData }) {
                   onClick={() => handleClick(item._id)}
                 >
                   <p>{index + 1}</p>
-                  <p>Date: {changeToGBTime(item.date)}</p>
+                  <p>Date: {changeToGBTime(item.quote.date)}</p>
                   <p>Start Location: {item.quote.totalAddress[0].location}</p>
                   <p>
                     End Location:{" "}

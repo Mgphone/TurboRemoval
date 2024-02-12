@@ -68,6 +68,7 @@ function Between({
           onChange={(e) => handleStairChange(e.target.value)}
         >
           <option value={-1}>Please Choose From the List</option>
+          <option value={0}>Elevator Available</option>
           <option value={0}>0 Flight of Stair</option>
           <option value={1}>1 Flight of Stair</option>
           <option value={2}>2 Flight of Stair</option>
