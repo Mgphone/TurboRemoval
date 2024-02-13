@@ -30,8 +30,9 @@ gap:20px;
 /* main page css */
 .card-container-admin-main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  margin:20px;
 }
 
 .card-main {
@@ -50,8 +51,9 @@ gap:20px;
 /* quotation */
 .card-container-quotation {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  margin:10px;
 }
 .card-quotation {
   background-color: var(--main-background-color);
@@ -110,4 +112,7 @@ top:10px;
   display: flex;
   justify-content: space-between;
   margin:10px;
+}
+.viastop-details{
+  border:1px solid red;
 }

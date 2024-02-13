@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
+import timeConverter from "../../component/timeConverter";
 import { FaRoad } from "react-icons/fa";
 function MileAndHour({ userData, formik }) {
   const { data, setData } = useContext(MyContext);
 
-  const timeConverter = (time) => {
-    const distanceInHour = Math.floor(time / 3600).toFixed(2);
-    const distanceInMinute = Math.floor((time % 3600) / 60).toFixed(2);
-    return `${distanceInHour}hr : ${distanceInMinute}Min`;
-  };
+  // const timeConverter = (time) => {
+  //   const distanceInHour = Math.floor(time / 3600).toFixed(2);
+  //   const distanceInMinute = Math.floor((time % 3600) / 60).toFixed(2);
+  //   return `${distanceInHour}hr : ${distanceInMinute}Min`;
+  // };
 
   const generateTimeOptions = () => {
     const options = [];

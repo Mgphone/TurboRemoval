@@ -374,3 +374,9 @@ i stuck for very long time while i am sending router.post and router.get (noted)
 i use router get and mongodb to find and display in server (noted)
 i use the layout for admin page.. and all page got nav and footer (noted)
 i. When i use in the reat-router dom .. use Nested inside <Route>.....</Route>(noted)
+commit 151
+i have stuck so many error in git revert(noted)
+i.first i checkout my main git checkout main
+ii.git rest --hard with my hash
+iii.git push origin main --force
+i did change to my login coz i did redirect without needing(noted)

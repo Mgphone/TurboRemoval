@@ -62,7 +62,6 @@ router.post("/login", async (req, res) => {
           expiresIn: "1h",
         });
         res.cookie("token", token, { httpOnly: true, maxAge: 3600000 });
-
         res.json({ success: true, message: "Login successful" });
         //userlogin
       } else {

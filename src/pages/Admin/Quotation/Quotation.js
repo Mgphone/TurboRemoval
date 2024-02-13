@@ -24,7 +24,7 @@ function Quotation({ backData, setUserClickData }) {
       </div>
       {futureQuote && (
         <>
-          <h2>This is your future quote</h2>
+          <h2>Provided future quotations estimate</h2>
           <div className="card-container-quotation">
             {backData
               .filter((item) => item.paymentStatus === "unpaid")
@@ -48,6 +48,7 @@ function Quotation({ backData, setUserClickData }) {
                     }
                   </p>
                   <p>Total Price: £{item.quote.totalPrice.toFixed(2)}</p>
+                  <p>Unique Code:{item.randomNumber}</p>
                 </div>
               ))}
           </div>
@@ -55,7 +56,7 @@ function Quotation({ backData, setUserClickData }) {
       )}
       {previousQuote && (
         <>
-          <h2>This is your Previous quote</h2>
+          <h2>Provided Past quotations estimate</h2>
           <div className="card-container-quotation">
             {backData
               .filter((item) => item.paymentStatus === "unpaid")

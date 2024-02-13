@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import "./admin.css";
 function Login() {
   const [errormessage, setErrorMessage] = useState("");
-  const [redirect, setRedirect] = useState(false);
+
   const navigate = useNavigate();
   const handlesignup = () => {
     // console.log("You click register");
@@ -36,20 +36,18 @@ function Login() {
         body: JSON.stringify(values),
         credentials: "include",
       });
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          setRedirect(true);
-        } else if (data.errormessage) {
-          setErrorMessage(data.errormessage);
-        }
-      }
 
-      if (redirect) {
-        return navigate("/admin/dashboard");
+      if (!response.ok) {
+        throw new Error("Failed to Log in");
       }
+      const data = await response.json();
+      if (!data.success) {
+        throw new Error(data.message || "Login unsuccessful");
+      }
+      navigate("/admin/dashboard");
     } catch (error) {
-      console.error(error.status);
+      console.error("Login Error:", error.status);
+      setErrorMessage(error.message || "Error Happen During login");
     }
   };
   return (

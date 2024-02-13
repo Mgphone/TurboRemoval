@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import changeToGBTime from "../../../component/changeToGBTime";
+import timeConverter from "../../../component/timeConverter";
+import { type } from "@testing-library/user-event/dist/type";
 function QuotationResult({ userClickData, setUserClickData }) {
   console.log("This is from quotationResult" + JSON.stringify(userClickData));
   const [{ date: createDate, quote, paymentStatus }] = userClickData;
@@ -16,6 +18,7 @@ function QuotationResult({ userClickData, setUserClickData }) {
     totalPrice,
     totalSecond,
     date: movingDate,
+    description,
   } = quote;
 
   const pickupPhysicalAddress = totalAddress[0].physicalAddress;
@@ -104,7 +107,16 @@ function QuotationResult({ userClickData, setUserClickData }) {
                   </div>
                 ))}
             <p>
-              <span className="info-label"></span>
+              <span className="info-label">Travel Time</span>
+              {travelMiles.toFixed(2)} Miles
+            </p>
+            <p>
+              <span className="info-label">Travel Hour</span>
+              {timeConverter(travelHour)}
+            </p>
+            <p>
+              <span className="info-label">Description</span>
+              {description}
             </p>
           </div>
           <div className="customer-details">
@@ -132,8 +144,24 @@ function QuotationResult({ userClickData, setUserClickData }) {
               <span className="info-label">Half An Hour</span>£{halfAnHourPrice}
             </p>
             <p>
-              <span className="info-label"></span>
+              <span className="info-label">Customer Book</span>
+              {totalHour}
             </p>
+            <p>
+              <span className="info-label">Type Of Van</span>
+              {typeofVan}
+            </p>
+            <p>
+              <span className="info-label">Type Of Worker</span>
+              {typeOfWorker}
+            </p>
+            <p>
+              <span className="info-label">Total Price</span>
+              <span className="info-label">£{totalPrice.toFixed(2)}</span>
+            </p>
+            {/* <p>
+              <span className="info-label"></span>
+            </p> */}
           </div>
         </div>
       )}
