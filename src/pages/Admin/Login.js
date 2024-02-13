@@ -41,6 +41,9 @@ function Login() {
         throw new Error("Failed to Log in");
       }
       const data = await response.json();
+      const { token } = data;
+      localStorage.setItem("token", token);
+
       if (!data.success) {
         throw new Error(data.message || "Login unsuccessful");
       }

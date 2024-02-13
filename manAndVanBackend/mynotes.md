@@ -380,3 +380,23 @@ i.first i checkout my main git checkout main
 ii.git rest --hard with my hash
 iii.git push origin main --force
 i did change to my login coz i did redirect without needing(noted)
+commit 154
+User Authentication:
+When a user logs in with valid credentials, the server generates a JWT token using jwt.sign().
+This token is signed using a secret key known only to the server.
+i.Token Issuance:
+The server sends the JWT token back to the client as part of the response body (res.json) after a successful login.
+The client receives the token and stores it securely. Common storage options include local storage, session storage, or in-memory variables. In your case, you're using localStorage.setItem().
+ii.Protected Route Access:
+When the client navigates to a protected route, it includes the JWT token in the headers of the request.
+This is typically done by adding the token to the Authorization header as Bearer <token>.
+iii.Token Verification:
+The server receives the request and verifies the JWT token sent in the Authorization header using jwt.verify().
+If the token is valid and has not expired, the server extracts the user information from the token payload and grants access to the protected resource.
+iv.Middleware Usage:
+Middleware functions, like authenticateToken in your case, are used to enforce authentication and authorization rules.
+These middleware functions intercept incoming requests to protected routes, verify the JWT token, and either allow or deny access based on the token's validity.
+v.Error Handling:
+Proper error handling is essential throughout the authentication flow to handle cases such as token expiration, invalid tokens, or unauthorized access attempts.
+Errors should be handled gracefully with appropriate HTTP status codes and error messages to provide a good user experience.
+vi.this is using the localstorage

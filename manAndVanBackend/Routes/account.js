@@ -61,13 +61,14 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign({ username: username }, secret, {
           expiresIn: "1h",
         });
-        res.cookie("token", token, {
-          httpOnly: true,
-          maxAge: 3600000,
-          sameSite: "none",
-          secure: true,
-        });
-        res.json({ success: true, message: "Login successful" });
+        // res.cookie("token", token, {
+        //   httpOnly: true,
+        //   maxAge: 3600000,
+        //   sameSite: "none",
+        //   secure: true,
+        // });
+        res.json({ success: true, message: "Login successful", token });
+        console.log("This is token" + token);
         //userlogin
       } else {
         res.json({ errormessage: "Password is invalid" });
