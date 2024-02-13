@@ -25,7 +25,7 @@ function Display({ quotationData, setUserClickData }) {
     setPreviousQuote(false);
   };
   return (
-    <>
+    <div className="quotation">
       <DisplayQuote future={future} previous={previous} now={now} />
       <MixDisplay
         futureQuote={futureQuote}
@@ -35,7 +35,7 @@ function Display({ quotationData, setUserClickData }) {
         quotationData={quotationData}
         setUserClickData={setUserClickData}
       />
-    </>
+    </div>
   );
 }
 

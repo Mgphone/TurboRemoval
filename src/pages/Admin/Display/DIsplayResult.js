@@ -56,7 +56,13 @@ function DisplayResult({ userClickData, setUserClickData }) {
   return (
     <>
       {userClickData && (
-        <div className="userdatashow ">
+        <div
+          className={
+            paymentStatus === "unpaid"
+              ? "userdatashow"
+              : "userdatashow userdatashowyourjobs"
+          }
+        >
           <button onClick={handleCloseButton}>X</button>
           <div className="trip-details">
             <h3>Trip Details</h3>

@@ -26,15 +26,17 @@ function YourJobs({ quotationData, setUserClickData }) {
   };
   return (
     <>
-      <DisplayYourJobs future={future} previous={previous} now={now} />
-      <MixDisplay
-        futureQuote={futureQuote}
-        previousQuote={previousQuote}
-        todayQuote={todayQuote}
-        handleClick={handleClick}
-        quotationData={quotationData}
-        setUserClickData={setUserClickData}
-      />
+      <div className="yourjobs">
+        <DisplayYourJobs future={future} previous={previous} now={now} />
+        <MixDisplay
+          futureQuote={futureQuote}
+          previousQuote={previousQuote}
+          todayQuote={todayQuote}
+          handleClick={handleClick}
+          quotationData={quotationData}
+          setUserClickData={setUserClickData}
+        />
+      </div>
     </>
   );
 }
