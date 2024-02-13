@@ -8,5 +8,6 @@ const whiteList = [
   `${process.env.MY_URL_FRONT}`,
   "https://liftinglondon.netlify.app",
   "https://turboremovals.netlify.app",
+  "https://turboremovalfront.onrender.com/",
 ];
 module.exports = whiteList;
