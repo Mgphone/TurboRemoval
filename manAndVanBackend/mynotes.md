@@ -400,3 +400,6 @@ v.Error Handling:
 Proper error handling is essential throughout the authentication flow to handle cases such as token expiration, invalid tokens, or unauthorized access attempts.
 Errors should be handled gracefully with appropriate HTTP status codes and error messages to provide a good user experience.
 vi.this is using the localstorage
+notted for commit 154
+serverside good for automatic handling,secure,widely supported.. cons cross-origin-restriction, size limit browser support not good
+clientside good for no cross-origin,can get big cookie file size, cons i need to set cookie to send, xss attacks, browser support good

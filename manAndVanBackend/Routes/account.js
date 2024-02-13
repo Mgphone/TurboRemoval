@@ -68,7 +68,7 @@ router.post("/login", async (req, res) => {
         //   secure: true,
         // });
         res.json({ success: true, message: "Login successful", token });
-        console.log("This is token" + token);
+        // console.log("This is token" + token);
         //userlogin
       } else {
         res.json({ errormessage: "Password is invalid" });

@@ -43,9 +43,21 @@ gap:20px;
   text-align: center;
   cursor: pointer;
   color: var(--main-color);
+  color:#222;
+
 }
 .card-main:hover{
   background-color: antiquewhite;
+}
+.card-main-quotation{
+  background-color:var(--background-quotation);
+}
+.card-main-dashboard{
+  background-color:var(--background-dashboard);
+}
+.card-main-yourjobs{
+  background-color:var(--background-yourjobs);
+  
 }
 /* main page css finish */
 /* quotation */
@@ -81,6 +93,9 @@ gap:20px;
   background-color: antiquewhite;
   color:#111
 }
+.quotatoin button{
+  background-color: var(--background-quotation);
+}
 /* userdata */
 .userdatashow{
   background-color: #ccc;
@@ -115,4 +130,10 @@ top:10px;
 }
 .viastop-details{
   border:1px solid red;
+}
+@media (max-width:430px) {
+
+  .login-container{
+    width: 80%;
+  }
 }

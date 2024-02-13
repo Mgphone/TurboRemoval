@@ -7,6 +7,9 @@ html {
   --main-color:#333;
   --booking-box-color:#ccc;
   --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --background-quotation:#0072bb;
+  --background-dashboard:#FFFFFF;
+  --background-yourjobs:#ED2939;
 }
 
 *, *:before, *:after {

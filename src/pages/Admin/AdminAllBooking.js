@@ -2,13 +2,15 @@
 
 import React, { useEffect, useState } from "react";
 
-import Quotation from "./Quotation/Quotation";
-import QuotationResult from "./QuotationResult/QuotationResult";
+import Display from "./Display/Display";
+import DisplayResult from "./Display/DIsplayResult";
+import YourJobs from "./Display/YourJobs";
 function AdminAllBooking() {
   const [backData, setBackData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userClickData, setUserClickData] = useState(null);
   const [quotation, setQuotation] = useState(false);
+  const [quotationData, setQuotationData] = useState("");
   const [dashboard, setDashBoard] = useState(false);
   const [yourJobs, setYourJobs] = useState(false);
   console.log("This is userClickData" + JSON.stringify(userClickData));
@@ -33,18 +35,35 @@ function AdminAllBooking() {
 
     fetchData();
   }, []);
-
+  const changeQuoteBackData = () => {
+    const quotationResult = backData.filter(
+      (item) => item.paymentStatus === "unpaid"
+    );
+    setQuotationData(quotationResult);
+  };
+  const changeYourJobsBackData = () => {
+    const yourJobsResult = backData.filter((item) => {
+      return (
+        item.paymentStatus === "paid" ||
+        item.paymentStatus === "30percentage" ||
+        item.paymentStatus === "50percentage"
+      );
+    });
+    setYourJobs(yourJobsResult);
+  };
   const handleQuotation = () => {
     setQuotation(true);
     setYourJobs(false);
     setDashBoard(false);
     setUserClickData(false);
+    changeQuoteBackData();
   };
   const handleYourJobs = () => {
     setQuotation(false);
     setYourJobs(true);
     setDashBoard(false);
     setUserClickData(false);
+    changeYourJobsBackData();
   };
   const handleDashboard = () => {
     setDashBoard(true);
@@ -52,6 +71,7 @@ function AdminAllBooking() {
     setYourJobs(false);
     setUserClickData(false);
   };
+
   return (
     <div className="alldata">
       {/* <h1>This is User Free Quotation for future Date</h1> */}
@@ -60,19 +80,28 @@ function AdminAllBooking() {
       ) : (
         <>
           <div className="card-container-admin-main">
-            <div className="card-main" onClick={handleQuotation}>
+            <div
+              className="card-main card-main-quotation"
+              onClick={handleQuotation}
+            >
               Quotation
             </div>
-            <div className="card-main" onClick={handleDashboard}>
+            <div
+              className="card-main card-main-dashboard"
+              onClick={handleDashboard}
+            >
               Dashboard
             </div>
-            <div className="card-main" onClick={handleYourJobs}>
+            <div
+              className="card-main card-main-yourjobs"
+              onClick={handleYourJobs}
+            >
               Your Jobs
             </div>
           </div>
           {quotation && (
-            <Quotation
-              backData={backData}
+            <Display
+              quotationData={quotationData}
               setUserClickData={setUserClickData}
             />
           )}
@@ -83,13 +112,13 @@ function AdminAllBooking() {
             </h1>
           )}
           {yourJobs && (
-            <h1>
-              This feature is under maintenance. We apologize for any
-              inconvenience.
-            </h1>
+            <YourJobs
+              quotationData={yourJobs}
+              setUserClickData={setUserClickData}
+            />
           )}
           {userClickData && (
-            <QuotationResult
+            <DisplayResult
               userClickData={userClickData}
               setUserClickData={setUserClickData}
             />

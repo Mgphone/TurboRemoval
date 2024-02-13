@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import changeToGBTime from "../../../component/changeToGBTime";
 import timeConverter from "../../../component/timeConverter";
-import { type } from "@testing-library/user-event/dist/type";
-function QuotationResult({ userClickData, setUserClickData }) {
+function DisplayResult({ userClickData, setUserClickData }) {
   console.log("This is from quotationResult" + JSON.stringify(userClickData));
-  const [{ date: createDate, quote, paymentStatus }] = userClickData;
+  const [{ date: createDate, quote, paymentStatus, OutstandingBalance }] =
+    userClickData;
   const {
     totalAddress,
     travelMiles,
@@ -56,7 +56,7 @@ function QuotationResult({ userClickData, setUserClickData }) {
   return (
     <>
       {userClickData && (
-        <div className="userdatashow">
+        <div className="userdatashow ">
           <button onClick={handleCloseButton}>X</button>
           <div className="trip-details">
             <h3>Trip Details</h3>
@@ -159,6 +159,12 @@ function QuotationResult({ userClickData, setUserClickData }) {
               <span className="info-label">Total Price</span>
               <span className="info-label">£{totalPrice.toFixed(2)}</span>
             </p>
+            {OutstandingBalance && (
+              <p>
+                <span className="info-label">OutStanding Balance</span>£
+                {OutstandingBalance}
+              </p>
+            )}
             {/* <p>
               <span className="info-label"></span>
             </p> */}
@@ -169,4 +175,4 @@ function QuotationResult({ userClickData, setUserClickData }) {
   );
 }
 
-export default QuotationResult;
+export default DisplayResult;

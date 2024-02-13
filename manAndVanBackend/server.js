@@ -5,7 +5,7 @@ const app = express();
 const { accessLogger } = require("./middleware/logger");
 
 const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const port = process.env.PORT;
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
@@ -18,7 +18,7 @@ const corsWildCard = require("./config/corsWildCard");
 app.use(accessLogger);
 
 app.use(bodyParser.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 //add the stripe payament method
 
 //Router

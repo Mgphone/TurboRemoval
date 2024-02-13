@@ -1,41 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import changeToGBTime from "../../../component/changeToGBTime";
-function Quotation({ backData, setUserClickData }) {
-  const [futureQuote, setFutureQuote] = useState(false);
-  const [previousQuote, setPreviousQuote] = useState(false);
-  const [todayQuote, setTodayQuote] = useState(false);
-  const handleClick = (itemId) => {
-    const data = backData.filter((item) => item._id === itemId);
-    setUserClickData(data);
-  };
-  const future = () => {
-    setFutureQuote(true);
-    setPreviousQuote(false);
-    setTodayQuote(false);
-  };
-  const previous = () => {
-    setPreviousQuote(true);
-    setFutureQuote(false);
-    setTodayQuote(false);
-  };
-  const now = () => {
-    setTodayQuote(true);
-    setFutureQuote(false);
-    setPreviousQuote(false);
-  };
+function MixDisplay({
+  futureQuote,
+  previousQuote,
+  todayQuote,
+  quotationData,
+  handleClick,
+}) {
   return (
     <>
-      <div className="alldata-quotation-button">
-        <button onClick={future}>Future Quotation</button>
-        <button onClick={now}>Today Quotation</button>
-        <button onClick={previous}>Previous Quotation</button>
-      </div>
       {futureQuote && (
         <>
-          <h2>Provided future quotations estimate</h2>
           <div className="card-container-quotation">
-            {backData
-              .filter((item) => item.paymentStatus === "unpaid")
+            {quotationData
+
               .sort((a, b) => new Date(a.quote.date) - new Date(b.quote.date))
               .filter((item) => new Date(item.quote.date) >= Date.now())
               .map((item, index) => (
@@ -64,10 +42,8 @@ function Quotation({ backData, setUserClickData }) {
       )}
       {previousQuote && (
         <>
-          <h2>Provided Past quotations estimate</h2>
           <div className="card-container-quotation">
-            {backData
-              .filter((item) => item.paymentStatus === "unpaid")
+            {quotationData
               .sort((a, b) => new Date(a.quote.date) - new Date(b.quote.date))
               .filter((item) => new Date(item.quote.date) < Date.now())
               .map((item, index) => (
@@ -96,10 +72,8 @@ function Quotation({ backData, setUserClickData }) {
       )}
       {todayQuote && (
         <>
-          <h2>Provided Today quotations estimate</h2>
           <div className="card-container-quotation">
-            {backData
-              .filter((item) => item.paymentStatus === "unpaid")
+            {quotationData
               .sort((a, b) => new Date(a.quote.date) - new Date(b.quote.date))
               .filter((item) => {
                 const currentDate = new Date();
@@ -138,4 +112,4 @@ function Quotation({ backData, setUserClickData }) {
   );
 }
 
-export default Quotation;
+export default MixDisplay;

@@ -78,7 +78,7 @@ function AdminDashBoard() {
         </>
       ) : (
         <div className="admin-dashboard-topbar">
-          <p>Loading...</p>
+          <p>Try to In?..</p>
           <Link to="/admin/login">
             <p>Login</p>
           </Link>
