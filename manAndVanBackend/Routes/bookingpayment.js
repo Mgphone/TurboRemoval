@@ -39,8 +39,8 @@ router.post("/", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.MY_URL_FRONT}paymentbooking/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.MY_URL_FRONT}paymentbooking/fail`,
+      success_url: `${process.env.MY_URL_FRONT}/paymentbooking/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.MY_URL_FRONT}/paymentbooking/fail`,
     });
 
     // Save to the database
