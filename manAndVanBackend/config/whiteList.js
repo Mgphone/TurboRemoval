@@ -9,5 +9,6 @@ const whiteList = [
   "https://liftinglondon.netlify.app",
   "https://turboremovals.netlify.app",
   "https://turboremovalfront.onrender.com/",
+  "https://turboremovals.co.uk/",
 ];
 module.exports = whiteList;
