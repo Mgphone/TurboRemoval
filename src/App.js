@@ -50,16 +50,16 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="*" element={<NotFound />} /> */}
-          <Route
+          {/* <Route
             path="/:id"
             element={<CheckHomeId restrictHomeId={restrictHomeId} />}
-          />
+          /> */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/retrieve/:id" element={<Retrieve />}></Route>
           <Route path="/retrieve" element={<Retrieve />}></Route>
           <Route path="/services/:id" element={<ServiceNameComponent />} />
-          <Route path="/location/:id" element={<LocationComponent />}></Route>
+          <Route path="/:id" element={<LocationComponent />}></Route>
           <Route path="/terms" element={<Terms />} />
           <Route path="/checkareacover" element={<CheckAreaCover />} />
 

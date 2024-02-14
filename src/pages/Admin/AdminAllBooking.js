@@ -13,7 +13,7 @@ function AdminAllBooking() {
   const [quotationData, setQuotationData] = useState("");
   const [dashboard, setDashBoard] = useState(false);
   const [yourJobs, setYourJobs] = useState(false);
-  console.log("This is userClickData" + JSON.stringify(userClickData));
+  // console.log("This is userClickData" + JSON.stringify(userClickData));
   useEffect(() => {
     async function fetchData() {
       try {
