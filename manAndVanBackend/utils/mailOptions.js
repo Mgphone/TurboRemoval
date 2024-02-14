@@ -18,7 +18,7 @@ const mailOptions = (
     ? `<li><strong>Via Stop:</strong> Yes</li>`
     : `<li><strong>Via Stop:</strong> No</li>`;
   const myAddress = process.env.MY_URL_FRONT;
-  const myQuote = `${myAddress}retrieve/${quoteNumber}`;
+  const myQuote = `${myAddress}/retrieve/${quoteNumber}`;
 
   return {
     from: process.env.GMAIL_USERNAME,

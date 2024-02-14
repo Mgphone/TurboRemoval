@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
       "This is aftersaving data on the database at saveRetrieve" +
         JSON.stringify(savedData)
     );
-    const linkAddress = `${process.env.MY_URL_FRONT}retrieve/${savedData.randomNumber}`;
+    const linkAddress = `${process.env.MY_URL_FRONT}/retrieve/${savedData.randomNumber}`;
     const myAddress = process.env.MY_URL_FRONT;
     // const isViaStop = savedData.quote.totalAddress.length < 2;
     const vanSize = savedData && savedData.quote.typeofVan;
