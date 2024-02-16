@@ -4,7 +4,7 @@ function CaniTravel() {
   return (
     <>
       <div className="canitravel">
-        <h2>Can I travel in the van?</h2>
+        <h2>Is it possible for me to ride in the van?</h2>
         <p>
           We cannot guarantee the driver will have space to allow you to travel
           in the van with them. Please contact the driver in advance to confirm

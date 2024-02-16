@@ -51,7 +51,7 @@ function MovingDate({ formik }) {
     <>
       <div className="movingdate">
         <div className="movidedate-header">
-          <h2>When you're moving</h2>
+          <h2>When is your moving date?</h2>
           <p>
             Tell us when you're moving so we can check and guarantee the drivers
             availability.

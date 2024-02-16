@@ -71,7 +71,7 @@ function MileAndHour({ userData, formik }) {
   return (
     <>
       <div className="mileandhour">
-        <h2>How many hours do you want the vehicle for?</h2>
+        <h2>For how long do you require our moving assistance?</h2>
         <p>
           <div className="estimatediv">
             Estimate Time
@@ -95,7 +95,7 @@ function MileAndHour({ userData, formik }) {
           go rate.
         </p>
         <div className="choosetime">
-          <h3>I need The Service for</h3>
+          <h3>I require the service for</h3>
           <select
             id="choosehour"
             name="how_many_hour"

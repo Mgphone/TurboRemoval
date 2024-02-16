@@ -10,9 +10,9 @@ function Booking_Header() {
   };
   return (
     <>
-      <h1>"Unlock Your Moving Magic: Spellbinding Quotes Await!"</h1>
+      <h1>"Unlock Your Moving Magic: Discover Spellbinding Quotes Here!"</h1>
       <div className="booking-header">
-        <h2>Which vehicle do you need?</h2>
+        <h2>What type of vehicle are you looking for?</h2>
         <p>
           It is important that you select the correct vehicle for the amount
           that you wish to move. Please be sure to consult our Size Guide for

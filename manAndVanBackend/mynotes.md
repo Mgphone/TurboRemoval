@@ -403,3 +403,10 @@ vi.this is using the localstorage
 notted for commit 154
 serverside good for automatic handling,secure,widely supported.. cons cross-origin-restriction, size limit browser support not good
 clientside good for no cross-origin,can get big cookie file size, cons i need to set cookie to send, xss attacks, browser support good
+commit 163
+changing for seo /
+url/service+location (noted)
+i use nested and make a full list of array(noted)
+then .flat() and check include()(noted)
+instead of useparams() i seperate the value(noted)
+with startwith and find (noted)

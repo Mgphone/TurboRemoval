@@ -19,7 +19,7 @@ function Booking_Loading() {
     <>
       <div className="booking-loading">
         <div className="loading-header">
-          <h2>Will you need help with loading and unloading?</h2>
+          <h2>Do you require assistance with loading and unloading?</h2>
           <p>
             Our drivers will be happy to help you with your move, and we can
             also provide extra people if you'd like to make your move a bit

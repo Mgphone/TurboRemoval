@@ -97,7 +97,7 @@ function WhereMoving({ formik }) {
     <>
       <div className="wheremoving">
         <div className="wheremoving-header">
-          <h2>Where you're moving</h2>
+          <h2>Where is your destination?</h2>
           <p>
             Your Man and Van quotes depend on the total mileage of the move and
             how much work needs to be carried out at each end of the move.
@@ -118,7 +118,7 @@ function WhereMoving({ formik }) {
             checkCollectandDesti.length >= 2 ? (
               <>
                 <div className="wheremoving-form-title">
-                  <h2>Collection address</h2>
+                  <h2>Collection Address</h2>
                 </div>
                 <div className="collection">
                   <div>
@@ -184,7 +184,7 @@ function WhereMoving({ formik }) {
                 {/* <BetweenStops onFormChange={handleBetweenStops} /> */}
                 <BetweenMoving />
                 <div className="wheremoving-form-title">
-                  <h2>Delivery address</h2>
+                  <h2>Delivery Address</h2>
                 </div>
                 <div className="destination">
                   <div>

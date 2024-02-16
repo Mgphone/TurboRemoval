@@ -205,7 +205,7 @@ function HomeWelcomeSection() {
             any other means{" "}
           </p>
           <button className="recallquote" onClick={handleretrieve}>
-            Retrieve Quote
+            Got Quote With Us?
           </button>
         </div>
       </div>

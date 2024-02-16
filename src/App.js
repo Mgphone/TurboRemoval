@@ -50,16 +50,16 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="*" element={<NotFound />} /> */}
-          {/* <Route
+          <Route
             path="/:id"
             element={<CheckHomeId restrictHomeId={restrictHomeId} />}
-          /> */}
+          />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/retrieve/:id" element={<Retrieve />}></Route>
           <Route path="/retrieve" element={<Retrieve />}></Route>
           <Route path="/services/:id" element={<ServiceNameComponent />} />
-          <Route path="/:id" element={<LocationComponent />}></Route>
+          {/* <Route path="/:id" element={<LocationComponent />}></Route> */}
           <Route path="/terms" element={<Terms />} />
           <Route path="/checkareacover" element={<CheckAreaCover />} />
 
@@ -77,38 +77,3 @@ function App() {
 }
 
 export default App;
-
-// import {
-//   useJsApiLoader,
-//   GoogleMap,
-//   Marker,
-//   Autocomplete,
-// } from "@react-google-maps/api";
-// const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-
-// function App() {
-// const [userLocation, setUserLocation] = useState("");
-// const [userDestination, setUserDestination] = useState("");
-
-// const { isLoaded } = useJsApiLoader({
-//   googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-//   libraries: ["places"],
-// });
-// if (loadError) {
-//   return <div>That is an Error to load</div>;
-// }
-// googlemap
-/*<GoogleMap
-center={{ lat: 51.588745961637194, lng: -0.2205496225132663 }}
-mapContainerStyle={{ width: "100%", height: "100%" }}
-zoom={15}
-></GoogleMap>*/
-
-//   return (
-//     <>
-//       <Nav />
-//     </>
-//   );
-// }
-
-// export default App;

@@ -4,14 +4,23 @@ import Nav from "../../../component/Nav";
 import Footer from "../../../component/Footer";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import StickyBookNow from "../../../component/StickyBookNow";
+import servicesprovided from "../../../data/servicesprovided";
 import "./locationcomponet.css";
 const containerStyle = {
   width: "100%",
   height: "400px",
 };
-
-function LocationComponent() {
-  const { id } = useParams();
+function LocationComponent({ postalAndServices }) {
+  const servicTitle = servicesprovided.map((item) => item.Title);
+  // console.log("This is id from LocationComponent" + postalAndServices);
+  // console.log("Service title" + servicTitle);
+  const checker = postalAndServices.replace(/-/g, " ");
+  // const returnResult = "";
+  const id = servicTitle.map((item) =>
+    checker.startsWith(item) ? checker.replace(item, "").trim() : null
+  );
+  const service = servicTitle.find((item) => checker.startsWith(item));
+  // console.log(service);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -52,23 +61,27 @@ function LocationComponent() {
         <NavLink to="/">
           <button>Book Now</button>
         </NavLink>
-        <h1>Welcome to [Turbo Removals]{id}</h1>
+        <h1>
+          Welcome to [Turbo Removals] {service} {id}
+        </h1>
 
         <p>
-          Are you planning a move within or around the vibrant [{id}]? Look no
-          further! Our man and van services are meticulously designed to cater
-          to the unique demands of our community, providing an unparalleled
-          moving experience. Here's a detailed look at why our services are the
-          ideal choice for your relocation needs:
+          Are you planning a move within or around the vibrant [{service} {id}]?
+          Look no further! Our man and van services are meticulously designed to
+          cater to the unique demands of our community, providing an
+          unparalleled moving experience. Here's a detailed look at why our
+          services are the ideal choice for your relocation needs:
         </p>
 
-        <h2>1. Local Expertise: Navigating [{id}] with Precision</h2>
+        <h2>
+          1. Local Expertise: Navigating [{service} {id}] with Precision
+        </h2>
         <p>
           Our team is deeply ingrained in the local landscape, possessing an
           intimate understanding of the streets, neighborhoods, and traffic
-          patterns specific to [{id}]. This local expertise allows us to plan
-          your move strategically, ensuring the most efficient routes and
-          minimizing any potential logistical challenges.
+          patterns specific to [{service} {id}]. This local expertise allows us
+          to plan your move strategically, ensuring the most efficient routes
+          and minimizing any potential logistical challenges.
         </p>
 
         <h2>2. Timely and Reliable: Punctuality You Can Trust</h2>
@@ -130,9 +143,9 @@ function LocationComponent() {
 
         <p>
           For a moving experience that transcends the ordinary, entrust your
-          relocation to our man and van services in [{id}]. Contact us today to
-          experience meticulous attention to detail, personalized care, and an
-          unwavering commitment to excellence.
+          relocation to our man and van services in [{service} {id}]. Contact us
+          today to experience meticulous attention to detail, personalized care,
+          and an unwavering commitment to excellence.
         </p>
 
         <p>
