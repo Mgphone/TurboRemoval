@@ -21,7 +21,11 @@ function ServiceNameComponent() {
         <div className="serive-name-content">
           {manandvanlocation.map((location, index) => (
             <div key={index} className="location_click">
-              <NavLink to={`/${id}-${replacespace(location)}`}>
+              <NavLink
+                to={`/${id.toLocaleLowerCase()}-${replacespace(
+                  location.toLowerCase()
+                )}`}
+              >
                 <FaLocationPin />
                 {/* {id} {location} */}
                 {replacedash(id)} {location}

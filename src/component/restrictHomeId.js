@@ -4,9 +4,11 @@ import manandvanlocation from "../data/manvandatatest";
 //   item.Title.replace(/ /g, "-")
 // );
 const titleReplace = servicesprovided.map((item) =>
-  item.Title.replace(/ /g, "-")
+  item.Title.replace(/ /g, "-").toLowerCase()
 );
-const postals = manandvanlocation.map((item) => item.replace(/ /g, "-"));
+const postals = manandvanlocation.map((item) =>
+  item.replace(/ /g, "-").toLowerCase()
+);
 
 const restrictHomeId = titleReplace.map((title) => {
   return postals.map((postal) => `${title}-${postal}`);

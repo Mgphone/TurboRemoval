@@ -11,15 +11,22 @@ const containerStyle = {
   height: "400px",
 };
 function LocationComponent({ postalAndServices }) {
-  const servicTitle = servicesprovided.map((item) => item.Title);
+  const servicTitle = servicesprovided.map((item) => item.Title.toLowerCase());
   // console.log("This is id from LocationComponent" + postalAndServices);
   // console.log("Service title" + servicTitle);
   const checker = postalAndServices.replace(/-/g, " ");
   // const returnResult = "";
   const id = servicTitle.map((item) =>
-    checker.startsWith(item) ? checker.replace(item, "").trim() : null
+    checker.startsWith(item)
+      ? checker
+          .replace(item, "")
+          .trim()
+          .replace(/\b\w/g, (match) => match.toUpperCase())
+      : null
   );
-  const service = servicTitle.find((item) => checker.startsWith(item));
+  const service = servicTitle
+    .find((item) => checker.startsWith(item))
+    .replace(/\b\w/g, (match) => match.toUpperCase());
   // console.log(service);
 
   const { isLoaded } = useJsApiLoader({
