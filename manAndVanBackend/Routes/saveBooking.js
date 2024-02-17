@@ -5,6 +5,7 @@ const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 const { transport } = require("../services/emailService");
 const mailOptions = require("../utils/mailOptions");
 const { emailLogStream } = require("../middleware/emaillogger");
+const getISOtoGBtime = require("../utils/getISOtoGBtime");
 router.post("/", async (req, res) => {
   try {
     const query = req.body;
@@ -40,7 +41,7 @@ router.post("/updatepaymentstatus", async (req, res) => {
     const totalAmount = result.quote.totalPrice.toFixed(2);
     const percentage = result.percentage;
     const customerPaid = (percentage / 100) * totalAmount;
-
+    // console.log("This is result from savebooking" + JSON.stringify(result));
     //this is for email details
     const name = result.quote.name.toUpperCase();
     const email = result.quote.email;
@@ -53,28 +54,42 @@ router.post("/updatepaymentstatus", async (req, res) => {
     const deliverPhysicalAddress =
       result.quote.totalAddress[result.quote.totalAddress.length - 1]
         .physicalAddress;
+    const pickUpaddressStair = result.quote.totalAddress[0].stair;
+    const deliverAddressStair =
+      result.quote.totalAddress[result.quote.totalAddress.length - 1].stair;
     const typeofVan = result.quote.typeofVan;
     const totalHour = result.quote.totalHour;
-    const date = result.quote.date;
+    const date = getISOtoGBtime(result.quote.date);
     const outstandingBalance = totalAmount - (percentage / 100) * totalAmount;
     const totalSecond = result.quote.totalSecond;
     const halfanHour = ((totalAmount * 1800) / totalSecond).toFixed(2);
-    const isViaStop = result.quote.places.length > 2;
+    // const isViaStop = result.quote.totalAddress.length > 2;
+    const description = result.quote.description;
+    const totalAddress = result.quote.totalAddress;
+    // console.log(
+    //   "This is totalAddress from savebooking" + JSON.stringify(totalAddress)
+    // );
     const emailOptions = mailOptions(
+      // result,
       name,
       phone,
       email,
       quoteNumber,
       pickUpaddress,
       deliverAddress,
-      isViaStop,
+      // isViaStop,
       pickUpPhysicalAddress,
       deliverPhysicalAddress,
       typeofVan,
       totalHour,
       date,
       outstandingBalance,
-      halfanHour
+      halfanHour,
+      totalAmount,
+      pickUpaddressStair,
+      deliverAddressStair,
+      description,
+      totalAddress
     );
     const logEmailInfo = (info) => {
       const timeStamp = new Date().toISOString();

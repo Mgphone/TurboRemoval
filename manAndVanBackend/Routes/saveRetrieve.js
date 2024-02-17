@@ -3,7 +3,7 @@ const router = express.Router();
 const Retrieve = require("../models/Retrieve");
 const { transport } = require("../services/emailService");
 const { emailLogStream } = require("../middleware/emaillogger");
-
+const getISOtoGBtime = require("../utils/getISOtoGBtime");
 // const nodemailer = require("nodemailer");
 // // const connectToDatabase = require("../config/dbConn");
 // // const closeDatabase = require("../config/closeDatabase");
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
     const vanSize = savedData && savedData.quote.typeofVan;
     const worker = savedData && savedData.quote.typeOfWorker;
     const totalPrice = savedData && savedData.quote.totalPrice.toFixed(2);
-    const moveDate = savedData && savedData.quote.date;
+    const moveDate = savedData && getISOtoGBtime(savedData.quote.date);
     const vehicleHour = savedData && savedData.quote.totalHour;
     const totalSecond = savedData && savedData.quote.totalSecond;
     const halfanHour = ((totalPrice * 1800) / totalSecond).toFixed(2);

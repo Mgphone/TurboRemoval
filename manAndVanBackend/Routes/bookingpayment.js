@@ -5,6 +5,7 @@ const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 const mailOptions = require("../utils/mailOptions");
 const { transport } = require("../services/emailService");
 const { emailLogStream } = require("../middleware/emaillogger");
+const getISOtoGBtime = require("../utils/getISOtoGBtime");
 // const { connect } = require("mongoose");
 router.post("/", async (req, res) => {
   try {
@@ -105,7 +106,6 @@ router.post("/success", async (req, res) => {
     const deliverAddress =
       transition.quote.places[transition.quote.places.length - 1];
     const isViaStop = transition.quote.places.length > 2;
-    // const totalAmount = transition.quote.totalPrice.toFixed(2);
     const pickUpPhysicalAddress =
       transition.quote.totalAddress[0].physicalAddress;
     const deliverPhysicalAddress =
@@ -113,12 +113,18 @@ router.post("/success", async (req, res) => {
         .physicalAddress;
     const typeofVan = transition.quote.typeofVan;
     const totalHour = transition.quote.totalHour;
-    const date = transition.quote.date;
+    const date = getISOtoGBtime(transition.quote.date);
     const outstandingBalance = totalAmount - (percentage / 100) * totalAmount;
     const totalSecond = transition.quote.totalSecond;
     const halfanHour = ((totalAmount * 1800) / totalSecond).toFixed(2);
-
+    const pickupAddressStair = transition.quote.totalAddress[0].stair;
+    const deliverAddressStair =
+      transition.quote.totalAddress[transition.quote.totalAddress.length - 1]
+        .stair;
+    const description = transition.quote.description;
+    const totalAddress = transition.quote.totalAddress;
     const emailOptions = mailOptions(
+      // transition,
       name || transition.quote.name,
       phone || transition.quote.phone,
       email || transition.quote.email,
@@ -126,17 +132,24 @@ router.post("/success", async (req, res) => {
       pickUpaddress || transition.quote.places[0],
       deliverAddress ||
         transition.quote.places[transition.quote.places.length - 1],
-      isViaStop || transition.quote.places.length > 2,
+      // isViaStop || transition.quote.places.length > 2,
       pickUpPhysicalAddress,
       deliverPhysicalAddress,
       typeofVan,
       totalHour,
       date,
       outstandingBalance,
-      halfanHour
+      halfanHour,
+      totalAmount,
+      pickupAddressStair,
+      deliverAddressStair,
+      description,
+      totalAddress
     );
+    // console.log("This is date" + date);
     //send email and save
     try {
+      // console.log("This is result" + JSON.stringify(transition));
       const info = await transport.sendMail(emailOptions);
       console.log("Email sent for directBook Payment", info.response);
 
