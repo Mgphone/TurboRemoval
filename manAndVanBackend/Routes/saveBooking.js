@@ -102,6 +102,8 @@ router.post("/updatepaymentstatus", async (req, res) => {
       result.paymentStatus = "50percentage";
       const checkerValue = (totalAmount - customerPaid).toFixed(2);
       result.OutstandingBalance = checkerValue;
+      result.reviewRequest = false;
+
       await result.save();
       logEmailInfo(info);
       console.log("Email Sent" + info.response);
@@ -111,6 +113,7 @@ router.post("/updatepaymentstatus", async (req, res) => {
       result.paymentStatus = "paid";
       const checkerValue = (totalAmount - customerPaid).toFixed(2);
       result.OutstandingBalance = checkerValue;
+      result.reviewRequest = false;
       await result.save();
       logEmailInfo(info);
       console.log("Email Sent" + info.response);
@@ -120,6 +123,7 @@ router.post("/updatepaymentstatus", async (req, res) => {
       result.paymentStatus = "30percentage";
       const checkerValue = (totalAmount - customerPaid).toFixed(2);
       result.OutstandingBalance = checkerValue;
+      result.reviewRequest = false;
       await result.save();
       logEmailInfo(info);
       console.log("Email Sent" + info.response);

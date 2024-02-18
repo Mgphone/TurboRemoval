@@ -14,25 +14,24 @@ function AdminAllBooking() {
   const [dashboard, setDashBoard] = useState(false);
   const [yourJobs, setYourJobs] = useState(false);
   // console.log("This is userClickData" + JSON.stringify(userClickData));
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const url = `${process.env.REACT_APP_SERVER_URL}backdata/all`;
-        const response = await fetch(url);
+  async function fetchData() {
+    try {
+      const url = `${process.env.REACT_APP_SERVER_URL}backdata/all`;
+      const response = await fetch(url);
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const jsonData = await response.json();
-        setBackData(jsonData);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error Fetching Data", error);
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
       }
-    }
 
+      const jsonData = await response.json();
+      setBackData(jsonData);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error Fetching Data", error);
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
     fetchData();
   }, []);
   const changeQuoteBackData = () => {

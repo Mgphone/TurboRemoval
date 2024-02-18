@@ -51,6 +51,7 @@ router.post("/", async (req, res) => {
       randomNumber,
       paymentStatus: "unpaid", // Assuming it's initially unpaid
       paymentIntentId: session.id,
+      reviewRequest: false,
     });
 
     await newTransitions.save();

@@ -1,10 +1,21 @@
 import React, { useEffect } from "react";
 import changeToGBTime from "../../../component/changeToGBTime";
 import timeConverter from "../../../component/timeConverter";
+// import { Data } from "@react-google-maps/api";
+// import { useNavigate } from "react-router-dom";
 function DisplayResult({ userClickData, setUserClickData }) {
-  console.log("This is from quotationResult" + JSON.stringify(userClickData));
-  const [{ date: createDate, quote, paymentStatus, OutstandingBalance }] =
-    userClickData;
+  // console.log("This is from quotationResult" + JSON.stringify(userClickData));
+
+  const [
+    {
+      _id,
+      date: createDate,
+      quote,
+      paymentStatus,
+      OutstandingBalance,
+      reviewRequest,
+    },
+  ] = userClickData;
   const {
     totalAddress,
     travelMiles,
@@ -20,7 +31,7 @@ function DisplayResult({ userClickData, setUserClickData }) {
     date: movingDate,
     description,
   } = quote;
-
+  // console.log("this is reviewRequest" + reviewRequest);
   const pickupPhysicalAddress = totalAddress[0].physicalAddress;
   const pickupAddress = pickupPhysicalAddress
     ? pickupPhysicalAddress + " " + totalAddress[0].location
@@ -52,7 +63,55 @@ function DisplayResult({ userClickData, setUserClickData }) {
       window.removeEventListener("keydown", keyPress);
     };
   }, []);
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+  const handleRequestReview = (itemId) => {
+    // console.log("you click me!" + JSON.stringify(_id));
+    const url = `${process.env.REACT_APP_SERVER_URL}backdata/review/${itemId}`;
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not okay");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        alert("Sending Email" + data.message);
+        handleRefresh();
+      });
+  };
 
+  const handleDeleteRecord = (itemId) => {
+    const confirmation = window.confirm(
+      "Are you sure you want to delete this record?"
+    );
+    if (confirmation) {
+      // console.log("This is itemid" + itemId);
+      const url = `${process.env.REACT_APP_SERVER_URL}backdata/delete/${itemId}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not okay");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // console.log("Record Deleted Successfully", data.success);
+          alert("Message " + data.message);
+          handleRefresh();
+        })
+        .catch((error) =>
+          console.error("There was an error when you fetch with server", error)
+        );
+    }
+  };
   return (
     <>
       {userClickData && (
@@ -171,6 +230,18 @@ function DisplayResult({ userClickData, setUserClickData }) {
                 {OutstandingBalance}
               </p>
             )}
+            {reviewRequest === false && (
+              <p>
+                <span className="info-label">ReviewRequest</span>
+                <button onClick={() => handleRequestReview(_id)}>
+                  Request Review
+                </button>
+              </p>
+            )}
+            <p>
+              <span className="info-label">Delete This Record</span>
+              <button onClick={() => handleDeleteRecord(_id)}>Delete</button>
+            </p>
             {/* <p>
               <span className="info-label"></span>
             </p> */}
