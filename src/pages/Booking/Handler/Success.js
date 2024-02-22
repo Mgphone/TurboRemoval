@@ -10,7 +10,7 @@ function Success() {
   const session_id = searchParams.get("session_id");
 
   useEffect(() => {
-    console.log(`Success! session ID: ${session_id}`);
+    // console.log(`Success! session ID: ${session_id}`);
 
     // Only send to the backend if session_id exists
     if (session_id) {

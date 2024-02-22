@@ -18,18 +18,18 @@ router.post("/", async (req, res) => {
     const newData = req.body;
     // newData.number = parseInt(newData.number, 10);
 
-    console.log(
-      "that is going to the server to save to database from saveRetrieve" +
-        JSON.stringify(newData)
-    );
+    // console.log(
+    //   "that is going to the server to save to database from saveRetrieve" +
+    //     JSON.stringify(newData)
+    // );
 
     //save to database
     const newRetrieve = new Retrieve(newData);
     const savedData = await newRetrieve.save();
-    console.log(
-      "This is aftersaving data on the database at saveRetrieve" +
-        JSON.stringify(savedData)
-    );
+    // console.log(
+    //   "This is aftersaving data on the database at saveRetrieve" +
+    //     JSON.stringify(savedData)
+    // );
     const linkAddress = `${process.env.MY_URL_FRONT}/retrieve/${savedData.randomNumber}`;
     const myAddress = process.env.MY_URL_FRONT;
     // const isViaStop = savedData.quote.totalAddress.length < 2;
@@ -89,7 +89,7 @@ router.post("/", async (req, res) => {
     console.log("Email Sent" + info.response);
     //respond to the client with success
     res.status(200).json({ message: "Data received", data: savedData });
-    logEmailInfo(info);
+    logEmailInfo(info, savedData);
     // closeDatabase();
   } catch (error) {
     console.error("Error saving data", error);

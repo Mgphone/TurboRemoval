@@ -152,7 +152,7 @@ router.post("/success", async (req, res) => {
     try {
       // console.log("This is result" + JSON.stringify(transition));
       const info = await transport.sendMail(emailOptions);
-      console.log("Email sent for directBook Payment", info.response);
+      // console.log("Email sent for directBook Payment", info.response);
 
       // Log email information
       const timeStamp = new Date().toISOString();
