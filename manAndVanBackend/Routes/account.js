@@ -86,7 +86,7 @@ router.get("/admindashboard", authenticateToken, async (req, res) => {
     username: req.user,
   });
 });
-router.post("/logout", async (req, res) => {
-  res.clearCookie("token").json({ message: "Logout Successful" });
-});
+// router.post("/logout", async (req, res) => {
+//   res.clearCookie("token").json({ message: "Logout Successful" });
+// });
 module.exports = router;

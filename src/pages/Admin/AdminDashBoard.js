@@ -45,21 +45,23 @@ function AdminDashBoard() {
   }, [navigate]);
 
   const logout = async () => {
-    try {
-      const url = `${process.env.REACT_APP_SERVER_URL}account/logout`;
-      const response = await fetch(url, { credentials: "POST" });
-      if (response.ok) {
-        const data = await response.json();
-        alert(data.message);
-        // Clear token from local storage upon successful logout
-        localStorage.removeItem("token");
-        navigate("/admin/login");
-      } else {
-        alert("Logout Failed");
-      }
-    } catch (error) {
-      console.error("Error During Logout", error);
-    }
+    localStorage.removeItem("token");
+    navigate("/admin/login");
+    // try {
+    //   const url = `${process.env.REACT_APP_SERVER_URL}account/logout`;
+    //   const response = await fetch(url, { credentials: "POST" });
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //     alert(data.message);
+    //     // Clear token from local storage upon successful logout
+    //     localStorage.removeItem("token");
+    //     navigate("/admin/login");
+    //   } else {
+    //     alert("Logout Failed");
+    //   }
+    // } catch (error) {
+    //   console.error("Error During Logout", error);
+    // }
   };
 
   return (
