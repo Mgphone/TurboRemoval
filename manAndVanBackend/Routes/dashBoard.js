@@ -8,5 +8,3 @@ router.get("/health", async (req, res) => {
   res.json({ health: "ok" });
 });
 module.exports = router;
-
-// module.exports = router;

@@ -17,12 +17,6 @@ function RetrieveUserData({ retrieveData, setRetrieveData }) {
   const stripe = useStripe();
   const elements = useElements();
   const [paymentError, setPaymentError] = useState(null);
-  // useEffect(() => {
-  //   console.log(
-  //     "This is reteieveData from RetrieveUserData" +
-  //       JSON.stringify(retrieveData)
-  //   );
-  // }, []);
 
   const handlePaymentSuccess = async () => {
     try {

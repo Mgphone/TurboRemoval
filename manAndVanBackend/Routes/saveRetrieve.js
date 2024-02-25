@@ -4,32 +4,16 @@ const Retrieve = require("../models/Retrieve");
 const { transport } = require("../services/emailService");
 const { emailLogStream } = require("../middleware/emaillogger");
 const getISOtoGBtime = require("../utils/getISOtoGBtime");
-// const nodemailer = require("nodemailer");
-// // const connectToDatabase = require("../config/dbConn");
-// // const closeDatabase = require("../config/closeDatabase");
-// const transport = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: { user: process.env.GMAIL_USERNAME, pass: process.env.GMAIL_PASSWORD },
-// });
 
 // connectToDatabase();
 router.post("/", async (req, res) => {
   try {
     const newData = req.body;
-    // newData.number = parseInt(newData.number, 10);
-
-    // console.log(
-    //   "that is going to the server to save to database from saveRetrieve" +
-    //     JSON.stringify(newData)
-    // );
 
     //save to database
     const newRetrieve = new Retrieve(newData);
     const savedData = await newRetrieve.save();
-    // console.log(
-    //   "This is aftersaving data on the database at saveRetrieve" +
-    //     JSON.stringify(savedData)
-    // );
+
     const linkAddress = `${process.env.MY_URL_FRONT}/retrieve/${savedData.randomNumber}`;
     const myAddress = process.env.MY_URL_FRONT;
     // const isViaStop = savedData.quote.totalAddress.length < 2;

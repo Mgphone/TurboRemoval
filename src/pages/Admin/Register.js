@@ -31,7 +31,6 @@ function Register() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       handleSubmit(values);
-      // setFormData(values);
     },
   });
   const handleSubmit = async (values) => {
@@ -50,7 +49,6 @@ function Register() {
           alert(data.message);
           navigate("/login");
         } else if (data.errormessage) {
-          // alert(data.errormessage);
           setErrorMessage(data.errormessage);
         }
       } else {

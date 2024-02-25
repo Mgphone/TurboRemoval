@@ -58,34 +58,6 @@ function Nav() {
           </nav>
         </div>
       </header>
-
-      {/* <header className="navbar" id="navbar">
-        <div className="navbar-left">
-          <a href="/" className="logo">
-            <img src="/images/logo2.png" alt="logo" />
-          </a>
-        </div>
-        <input
-          type="checkbox"
-          id="navbar-toggle"
-          className="navbar-toggle"
-          checked={isNavbarOpen}
-          onChange={toggleNavbar}
-        />
-
-        <label htmlFor="navbar-toggle" className="toggle-btn">
-          {isNavbarOpen ? <>|||</> : <>&#9776;</>}
-        </label>
-
-        <div className={`navbar-right ${isNavbarOpen ? "open" : " "}`}>
-          <NavLink to="/" className="nav-link">
-            HOME
-          </NavLink>
-          <NavLink to="/services">SERVICES</NavLink>
-          <NavLink to="/contact">CONTACT</NavLink>
-          <NavLink to="/faq">FAQ</NavLink>
-        </div>
-      </header> */}
     </>
   );
 }

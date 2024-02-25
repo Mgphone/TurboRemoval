@@ -8,15 +8,12 @@ function RetrieveBody() {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
 
-  // console.log("This is idValue " + id);
   useEffect(() => {
     setRetrieveCode(id);
   }, [id]);
   const handleRetrieveCLick = async () => {
     try {
       setLoading(true);
-      // http://192.168.1.216:4000/saveRetrieve?randomNumber=8775667
-      // const url = `http://192.168.1.216:4000/saveRetrieve?randomNumber=${retrieveCode}`;
       const url = `${process.env.REACT_APP_SERVER_URL}saveRetrieve?randomNumber=${retrieveCode}`;
       const response = await fetch(url);
       if (response.ok) {
@@ -60,7 +57,6 @@ function RetrieveBody() {
             setRetrieveData={setRetrieveData}
           />
         )}
-        {/* {retrieveData && <div>{JSON.stringify(retrieveData)}</div>} */}
       </div>
     </>
   );

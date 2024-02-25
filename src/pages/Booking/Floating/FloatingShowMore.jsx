@@ -7,8 +7,7 @@ function FloatingShowMore({ serverQuote }) {
     ? serverQuote.description
     : "No Description";
   const isViaStop = locations && locations.length > 2;
-  // console.log(isViaStop);
-  // console.log("This is locations" + JSON.stringify(locations));
+
   return (
     <>
       <div className="floatingmorecontainer">
@@ -38,7 +37,6 @@ function FloatingShowMore({ serverQuote }) {
             </p>
           )}
         </div>
-        {/* <p>Description:{description}</p> */}
       </div>
     </>
   );

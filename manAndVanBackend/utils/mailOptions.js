@@ -20,9 +20,6 @@ const mailOptions = (
   description,
   totalAddress
 ) => {
-  // console.log("this is date from mailoption result" + JSON.stringify(result));
-  // console.log("This is date from mailoption" + date);
-  // console.log("This is totalHour mailoption" + totalHour);
   const isViaStop = totalAddress.length > 2;
   const viaStopInfo = isViaStop
     ? `<li><strong>Via Stop:</strong> Yes</li>`

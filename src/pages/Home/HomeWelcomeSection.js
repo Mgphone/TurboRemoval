@@ -25,7 +25,6 @@ function HomeWelcomeSection() {
   const radiusInMiles = 30;
   //this is for pickup location
   const onLoad = (autocomplete) => {
-    // console.log("Change autocomplete" + autocomplete);
     setLocation(autocomplete);
   };
 
@@ -45,8 +44,6 @@ function HomeWelcomeSection() {
             lng: place.geometry.location.lng(),
           });
 
-          // console.log("miles?" + distance);
-
           if (distance && distance <= radiusInMiles) {
             setLocation(selectedValue);
             setErrLocation("");
@@ -58,10 +55,6 @@ function HomeWelcomeSection() {
         }
       } catch (error) {
         console.error(error);
-        // formik.setFieldError(
-        //   "location",
-        //   "An error occurred while fetching location details."
-        // );
       }
     } else {
       console.log("Autocomplete is not loaded yet");
@@ -84,8 +77,6 @@ function HomeWelcomeSection() {
 
           setDestination(selectedValue);
           setErrDestination("");
-
-          // console.log("formated destination " + place.formatted_address);
         } else {
           alert("Please select a valid postcode from the dropdown list");
           setDestination("");
@@ -96,17 +87,12 @@ function HomeWelcomeSection() {
         }
       } catch (error) {
         console.error(error);
-        // formik.setFieldError(
-        //   "destination",
-        //   "An error occurred while fetching destination details."
-        // );
       }
     }
   };
 
   const handleQuote = (e) => {
     try {
-      // console.log("You Clicked");
       if (e && e.preventDefault) {
         e.preventDefault();
       }
@@ -126,7 +112,6 @@ function HomeWelcomeSection() {
     }
   };
   const handleretrieve = async (e) => {
-    // console.log("You Click Retrieve Button");
     navigate("/retrieve");
   };
   // add the Form validation in herer

@@ -13,7 +13,6 @@ function AdminAllBooking() {
   const [quotationData, setQuotationData] = useState("");
   const [dashboard, setDashBoard] = useState(false);
   const [yourJobs, setYourJobs] = useState(false);
-  // console.log("This is userClickData" + JSON.stringify(userClickData));
   async function fetchData() {
     try {
       const url = `${process.env.REACT_APP_SERVER_URL}backdata/all`;
@@ -73,7 +72,6 @@ function AdminAllBooking() {
 
   return (
     <div className="alldata">
-      {/* <h1>This is User Free Quotation for future Date</h1> */}
       {loading ? (
         <div>Loading...</div>
       ) : (

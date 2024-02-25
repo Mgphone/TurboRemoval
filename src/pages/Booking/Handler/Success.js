@@ -10,8 +10,6 @@ function Success() {
   const session_id = searchParams.get("session_id");
 
   useEffect(() => {
-    // console.log(`Success! session ID: ${session_id}`);
-
     // Only send to the backend if session_id exists
     if (session_id) {
       sendToBack(session_id);
@@ -22,7 +20,6 @@ function Success() {
     try {
       const response = await fetch(
         `${process.env.REACT_APP_SERVER_URL}paymentbooking/success`,
-        // "http://192.168.1.216:4000/paymentbooking/success",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

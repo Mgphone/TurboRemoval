@@ -9,12 +9,6 @@ const getISOtoGBtime = require("../utils/getISOtoGBtime");
 // const { connect } = require("mongoose");
 router.post("/", async (req, res) => {
   try {
-    // const receivedData = req.body;
-    // console.log(
-    //   "This is the received data from the server" + JSON.stringify(receivedData)
-    // );
-    // // res.json({ message: "I did receive your data from server Thanks" });
-    // res.json({ message: receivedData });
     const receivedData = req.body;
     const date = receivedData.date;
     const dropAddress = receivedData.places[receivedData.places.length - 1];
@@ -70,9 +64,7 @@ router.post("/success", async (req, res) => {
     const transition = await Retrieve.findOne({ paymentIntentId: sessionId });
     const totalAmount = transition.quote.totalPrice.toFixed(2);
     const percentage = transition.quote.percentage;
-    // console.log(
-    //   "This is my transition from bookingpayment" + JSON.stringify(transition)
-    // );
+
     if (!transition) {
       // console.error("Transition not found");
       return res.status(404).json({ error: "Transition not Found" });

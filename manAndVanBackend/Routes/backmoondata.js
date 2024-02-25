@@ -3,12 +3,9 @@ const router = express.Router();
 const Retrieve = require("../models/Retrieve");
 const { transport } = require("../services/emailService");
 const reviewMailOptions = require("../utils/reviewMailOptions");
-// const User = require("../models/User");
 router.get("/all", async (req, res) => {
   try {
-    // console.log("Route /backdata/all accessed");
     const data = await Retrieve.find({});
-    // const data = await User.find({});
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -56,7 +53,6 @@ router.post("/review/:id", async (req, res) => {
           .status(500)
           .json({ success: false, message: "Error while sending email" });
       }
-      // res.json({ success: true, data: findItem });
     } else {
       res.status(404).json({ success: false, message: "The List Not Found" });
     }
@@ -68,7 +64,4 @@ router.post("/review/:id", async (req, res) => {
   }
 });
 
-// router.get("/all", async (req, res) => {
-//   res.json({ message: "Hello From server" });
-// });
 module.exports = router;

@@ -5,12 +5,6 @@ import { FaRoad } from "react-icons/fa";
 function MileAndHour({ userData, formik }) {
   const { data, setData } = useContext(MyContext);
 
-  // const timeConverter = (time) => {
-  //   const distanceInHour = Math.floor(time / 3600).toFixed(2);
-  //   const distanceInMinute = Math.floor((time % 3600) / 60).toFixed(2);
-  //   return `${distanceInHour}hr : ${distanceInMinute}Min`;
-  // };
-
   const generateTimeOptions = () => {
     const options = [];
     options.push(
@@ -46,9 +40,7 @@ function MileAndHour({ userData, formik }) {
       return 7200;
     }
   };
-  // const loadingTime = userData
-  //   ? checkLoadingHour(userData.yourinfo.receivedData.vanSize)
-  //   : "unknown";
+
   const yourtime = userData ? userData.quote.travelHour : "unknown";
   const yourDistance = userData
     ? userData.quote.travelMiles.toFixed(2)

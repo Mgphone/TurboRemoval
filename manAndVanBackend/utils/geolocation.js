@@ -1,4 +1,3 @@
-// const fetch = require("node-fetch");
 const calculateDistanceBetweenTwoLocations = async (
   firstLocation,
   secondLocation
@@ -6,7 +5,6 @@ const calculateDistanceBetweenTwoLocations = async (
   if ((firstLocation, secondLocation)) {
     const { longitude: firstLong, latitude: firstLat } = firstLocation;
     const { longitude: secondLong, latitude: secondLat } = secondLocation;
-    // console.log("distancebetweenlocationLongitude" + firstLong);
     if (firstLong && firstLat && secondLong && secondLat) {
       const apiKey = process.env.GOOGLE_API_KEY;
       const apiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${firstLat},${firstLong}&destination=${secondLat},${secondLong}&key=${apiKey}`;

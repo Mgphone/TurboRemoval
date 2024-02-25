@@ -4,7 +4,6 @@ const calculateDistanceBetweenTwoLocations = require("../utils/geolocation");
 const lateBook = require("./lateBook");
 const outOfHour = require("./outOfHour");
 const createQuote = async (receivedData) => {
-  // console.log(receivedData);
   const cleanupPostcodes = await Promise.all(
     receivedData.addresses.map((address) => address.location)
   );
@@ -73,17 +72,7 @@ const createQuote = async (receivedData) => {
     workerCharge = 65;
   }
   const numberOfSecond = totalSecond / 3600;
-  // console.log("Number of Second" + numberOfSecond);
-  // const totalPrice =
-  //   (travelResult.distance < 5
-  //     ? 15
-  //     : travelResult.distance < 20
-  //     ? 15 + travelResult.distance * 2
-  //     : 15 + travelResult.distance * 1) +
-  //   totalStairCount * 10 +
-  //   vanCharge +
-  //   workerCharge * numberOfSecond +
-  //   viaStop * 10;
+
   let stairChargeWithDriver = 1;
   if (typeOfWorker === "No-Help") {
     stairChargeWithDriver = 0;

@@ -10,20 +10,12 @@ function CheckYourCoverInput() {
           type="text"
           placeholder="Plese Enter Your Place"
           id="autocomplete-input"
-          // value={userLocation}
-          // onChange={(e) => setUserLocation(e.target.value)}
-          // onKeyDown={handleKeyDown}
         />
-        <button
-          className="buttonsearch"
-          // onClick={() => handleUserLocationInput(userLocation)}
-        >
+        <button className="buttonsearch">
           <BsSearch />
         </button>
 
-        <button
-        // onClick={getUserLocation}
-        >
+        <button>
           <BiCurrentLocation />
         </button>
       </div>

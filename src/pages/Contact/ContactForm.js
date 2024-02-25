@@ -38,8 +38,6 @@ function ContactForm() {
     },
   });
   const handleSubmit = async (formData) => {
-    // console.log("Form Submitted", formData);
-
     try {
       const url = `${process.env.REACT_APP_SERVER_URL}contact/sendemail`;
       const response = await fetch(url, {

@@ -11,12 +11,9 @@ function BetweenStops({ onFormChange }) {
   const [formData, setFormData] = useState({
     viaStopsData: [],
   });
-  useEffect(() => {
-    console.log("This is between stops " + JSON.stringify(data));
-  });
+
   useEffect(() => {
     // when there is no value in formdata i reset zero to viastops
-    // console.log("useEffect triggered. formData:", formData);
 
     if (formData && formData.viaStopsData.length === 0) {
       // console.log("viaStopsData is empty. Updating addresses...");
@@ -85,8 +82,7 @@ function BetweenStops({ onFormChange }) {
     // Handle the confirmation logic here
 
     onFormChange(formData);
-    // console.log("Form Data:", formData.viaStopsData);
-    // console.log("Length of form data" + FormData.length);
+
     // You can trigger form submission here if needed
     // API to respoond
     // console.log("This is from confirm" + JSON.stringify(formData));

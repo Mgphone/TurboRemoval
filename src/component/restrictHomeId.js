@@ -13,6 +13,14 @@ const postals = manandvanlocation.map((item) =>
 const restrictHomeId = titleReplace.map((title) => {
   return postals.map((postal) => `${title}-${postal}`);
 });
+// this is for future thinking
+// const restrictHomeId = titleReplace.map((title) => {
+//   let checkerArray = [];
+//   // return postals.map((postal) => `${title}-${postal}`);
+//   checkerArray.push(...postals.map((postal) => `${title}-${postal}`));
+//   checkerArray.push(...postals.map((postal) => `${postal}-${title}`));
+//   return checkerArray;
+// });
 
 // const restrictHomeId = manandvanlocation.map((item) => item.replace(/ /g, "-"));
 export default restrictHomeId;

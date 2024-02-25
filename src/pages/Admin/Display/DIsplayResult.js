@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import changeToGBTime from "../../../component/changeToGBTime";
 import timeConverter from "../../../component/timeConverter";
-// import { Data } from "@react-google-maps/api";
-// import { useNavigate } from "react-router-dom";
-function DisplayResult({ userClickData, setUserClickData }) {
-  // console.log("This is from quotationResult" + JSON.stringify(userClickData));
 
+function DisplayResult({ userClickData, setUserClickData }) {
   const [
     {
       _id,
@@ -31,7 +28,6 @@ function DisplayResult({ userClickData, setUserClickData }) {
     date: movingDate,
     description,
   } = quote;
-  // console.log("this is reviewRequest" + reviewRequest);
   const pickupPhysicalAddress = totalAddress[0].physicalAddress;
   const pickupAddress = pickupPhysicalAddress
     ? pickupPhysicalAddress + " " + totalAddress[0].location
@@ -67,7 +63,6 @@ function DisplayResult({ userClickData, setUserClickData }) {
     window.location.reload();
   };
   const handleRequestReview = (itemId) => {
-    // console.log("you click me!" + JSON.stringify(_id));
     const url = `${process.env.REACT_APP_SERVER_URL}backdata/review/${itemId}`;
     fetch(url, {
       method: "POST",
@@ -90,7 +85,6 @@ function DisplayResult({ userClickData, setUserClickData }) {
       "Are you sure you want to delete this record?"
     );
     if (confirmation) {
-      // console.log("This is itemid" + itemId);
       const url = `${process.env.REACT_APP_SERVER_URL}backdata/delete/${itemId}`;
       fetch(url, {
         method: "DELETE",
@@ -103,7 +97,6 @@ function DisplayResult({ userClickData, setUserClickData }) {
           return response.json();
         })
         .then((data) => {
-          // console.log("Record Deleted Successfully", data.success);
           alert("Message " + data.message);
           handleRefresh();
         })

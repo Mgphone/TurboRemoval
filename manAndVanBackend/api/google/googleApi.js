@@ -6,8 +6,7 @@ const getGoogleApi = (apiKey, address) => {
 };
 const getLocationByCallingGoogleApi = async (postcode) => {
   const apiKey = process.env.GOOGLE_API_KEY;
-  // const param1 = "param1=test1";
-  // const param2 = "param2=test2";
+
   const googleUrl = getGoogleApi(apiKey, postcode);
 
   const response = await fetch(googleUrl);

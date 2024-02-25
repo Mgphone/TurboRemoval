@@ -29,8 +29,6 @@ const lateBook = (date) => {
       console.error("Error: Current time not initialized");
       return false;
     }
-    // console.log("This is currentTime" + currentTime);
-    // console.log("This is dateTime of Booking" + date);
     const timeDifference = new Date(date) - new Date(currentTime);
     if (timeDifference < 7200000) {
       //that is milli second and within 2 hours

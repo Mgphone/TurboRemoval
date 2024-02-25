@@ -8,7 +8,6 @@ function Login() {
 
   const navigate = useNavigate();
   const handlesignup = () => {
-    // console.log("You click register");
     navigate("/admin/register");
   };
   const validationSchema = Yup.object({

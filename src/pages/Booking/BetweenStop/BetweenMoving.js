@@ -11,18 +11,14 @@ function BetweenMoving() {
     const updatedAddresses = data.addresses.map((address) =>
       address.id === betweenId ? { ...address, location: value } : address
     );
-    // console.log("Updated Addresses:", updatedAddresses);
 
     setData((prevValue) => ({
       ...prevValue,
       addresses: [...updatedAddresses],
     }));
   };
-  // const handleInputChange = (value, betweenId) => {
-  //   console.log(betweenId);
-  // };
+
   const handleInputAddressChange = (value, betweenId) => {
-    // console.log("Between ID:", betweenId);
     const updatedAddresses = data.addresses.map((address) =>
       address.id === betweenId
         ? { ...address, physicalAddress: value }

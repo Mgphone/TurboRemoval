@@ -337,6 +337,7 @@ let manandvanlocation = [
   "London Bridge",
   "London City",
   "London Fields",
+  "London",
   "Loughborough Junction",
   "Loughton",
   "Lower Edmonton",

@@ -17,5 +17,4 @@ const RetrieveSchema = Schema(
   },
   { timestamps: true }
 );
-// const Retreive = (module.exports = mongoose.model("Retrieve", RetrieveSchema));
 module.exports = mongoose.model("Retrieve", RetrieveSchema);

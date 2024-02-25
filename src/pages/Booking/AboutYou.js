@@ -4,12 +4,7 @@ function AboutYou({ formik }) {
   const { data, setData } = useContext(MyContext);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    // console.log("Input Change:", name, value);
 
-    // if (value.trim() === "") {
-    //   alert(`${name} cannot be empty`);
-    //   return;
-    // }
     setData((prevVal) => ({
       ...prevVal,
       [name]: value,

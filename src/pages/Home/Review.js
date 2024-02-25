@@ -10,7 +10,6 @@ function Review() {
   const fetchReview = async () => {
     try {
       // const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${process.env.REACT_APP_PLACE_ID}&fields=reviews&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
-      // const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${process.env.REACT_APP_PLACE_ID}&fields=reviews&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
       const url = `${process.env.REACT_APP_SERVER_URL}google/review`;
       const response = await fetch(url);
       if (!response.ok) {

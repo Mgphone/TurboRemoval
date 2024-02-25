@@ -8,7 +8,7 @@ import Retrieve from "./pages/Home/Retrieve/Retrieve.js";
 import MyContextProvider from "./context/MyContextProvider.js";
 import Success from "./pages/Booking/Handler/Success.js";
 import Fail from "./pages/Booking/Handler/Fail.js";
-import LocationComponent from "./pages/Locations/LocationComponent/LocationComponent.js";
+// import LocationComponent from "./pages/Locations/LocationComponent/LocationComponent.js";
 import PrivateRoute from "./pages/Private/PrivateRoute.js";
 import Dashboard from "./pages/Dashboard/Dashboard.js";
 import Faq from "./pages/Faq/Faq.js";

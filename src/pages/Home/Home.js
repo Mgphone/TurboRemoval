@@ -9,24 +9,14 @@ import AccepedPayment from "./AccepedPayment";
 import About from "./About";
 import DayNight from "../../component/DayNight";
 function Home() {
-  // const { sharedData, setShareData } = useContext(MyContext);
-  // const changeData = () => {
-  //   setShareData("This is new Change Data");
-  // };
   return (
     <>
-      {/* <div>
-        <p>{sharedData} </p>
-        <button onClick={changeData}>Change Data</button>
-      </div> */}
       <Nav />
       <HomeWelcomeSection />
       <AccepedPayment />
-      {/* <ProvideServices /> */}
       <Howitwork />
       <About />
       <Review />
-      {/* <DayNight /> */}
       <Footer isHomePage={true} />
     </>
   );

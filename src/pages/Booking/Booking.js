@@ -22,15 +22,6 @@ function Booking() {
   const [userData, setUserData] = useState(null);
   const [checkForm, setCheckForm] = useState(false);
 
-  // console.log("This is checkForm" + checkForm);
-  // useEffect(() => {
-  //   console.log(
-  //     "This is from Booking main to send to the back" +
-  //       // JSON.stringify(data.yourinfo.quote)
-  //       JSON.stringify(userData) +
-  //       checkForm
-  //   );
-  // }, [data]);
   useEffect(() => {
     const sendDataToBack = async () => {
       try {
@@ -44,9 +35,7 @@ function Booking() {
             body: JSON.stringify(data),
           });
         const result = await response.json();
-        // console.log(
-        //   "THis is result on the after fetch" + JSON.stringify(result)
-        // );
+
         setUserData(result);
       } catch (error) {
         console.error("There is an error when sending to back", error);
