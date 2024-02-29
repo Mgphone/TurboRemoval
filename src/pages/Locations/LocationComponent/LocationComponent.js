@@ -24,7 +24,7 @@ function LocationComponent({ postalAndServices }) {
         : null
     )
     .find((item) => item && item.length > 0);
-  console.log("This is id from LocationCOmponent " + id);
+  // console.log("This is id from LocationCOmponent " + id);
   const service = servicTitle
     .find((item) => checker.startsWith(item))
     .replace(/\b\w/g, (match) => match.toUpperCase());
@@ -42,7 +42,6 @@ function LocationComponent({ postalAndServices }) {
     setMap(null);
   };
   useEffect(() => {
-    console.log("fetching");
     const fetchCoordinates = async () => {
       try {
         const response = await fetch(
@@ -59,7 +58,15 @@ function LocationComponent({ postalAndServices }) {
       }
     };
 
-    fetchCoordinates();
+    const timeout = setTimeout(() => {
+      // console.log("fetching " + id);
+
+      fetchCoordinates();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [id]);
   return (
     <>
