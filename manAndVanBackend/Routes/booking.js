@@ -5,10 +5,7 @@ const createQuote = require("../services/solutionService");
 router.post("/", async (req, res) => {
   try {
     const receivedData = req.body;
-    // console.log(
-    //   "This is receivedData from  bookingbaackend" +
-    //     JSON.stringify(receivedData)
-    // );
+
     const quote = await createQuote(receivedData);
 
     res.json(quote);

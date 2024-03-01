@@ -25,14 +25,12 @@ router.post("/sendemail", async (req, res) => {
     <p style="font-size: 16px; color: #333;">Thank you!</p>
   </div>
   `;
-    // console.log(query);
     const mailOptions = {
       from: process.env.GMAIL_USERNAME,
       to: process.env.GMAIL_USERNAME,
       subject: title,
       html: htmlTemplate,
     };
-    // console.log("Your mailoptions" + JSON.stringify(mailOptions));
     const info = await transport.sendMail(mailOptions);
     if (info.accepted && info.accepted.length > 0) {
       res.status(200).json({

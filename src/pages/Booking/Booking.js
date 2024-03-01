@@ -34,7 +34,6 @@ function Booking() {
           body: JSON.stringify(data),
         });
       const result = await response.json();
-      console.log("This is testin between useeffect" + result);
       setUserData(result);
     } catch (error) {
       console.error("There is an error when sending to back", error);
@@ -43,9 +42,6 @@ function Booking() {
   useEffect(() => {
     sendDataToBack();
   }, [data.addresses.length]);
-  // useEffect(() => {
-  //   console.log("This is data how changing" + JSON.stringify(data));
-  // }, [data]);
 
   //formik setup
   const validationSchema = Yup.object({

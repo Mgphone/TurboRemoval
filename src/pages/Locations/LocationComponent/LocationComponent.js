@@ -24,7 +24,6 @@ function LocationComponent({ postalAndServices }) {
         : null
     )
     .find((item) => item && item.length > 0); // if the matching is null or undefined check
-  // console.log("This is id from LocationCOmponent " + id);
   const service = servicTitle
     .find((item) => checker.startsWith(item))
     .replace(/\b\w/g, (match) => match.toUpperCase());
@@ -59,8 +58,6 @@ function LocationComponent({ postalAndServices }) {
     };
 
     const timeout = setTimeout(() => {
-      // console.log("fetching " + id);
-
       fetchCoordinates();
     }, 1000);
 

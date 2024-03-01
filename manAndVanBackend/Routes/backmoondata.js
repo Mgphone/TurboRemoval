@@ -33,7 +33,6 @@ router.post("/review/:id", async (req, res) => {
     const findItem = await Retrieve.findOne({ _id: itemId });
 
     if (findItem) {
-      // console.log("This is findItem", findItem);
       const name = findItem.quote.name;
       const email = findItem.quote.email;
       if (!name || !email) {
