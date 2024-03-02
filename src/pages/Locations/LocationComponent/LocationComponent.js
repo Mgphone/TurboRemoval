@@ -14,14 +14,16 @@ function LocationComponent({ postalAndServices }) {
   const servicTitle = servicesprovided.map((item) => item.Title.toLowerCase());
   const checker = postalAndServices.replace(/-/g, " ");
   // const returnResult = "";
-  const id = servicTitle.map((item) =>
-    checker.startsWith(item)
-      ? checker
-          .replace(item, "")
-          .trim()
-          .replace(/\b\w/g, (match) => match.toUpperCase())
-      : null
-  );
+  const id = servicTitle
+    .map((item) =>
+      checker.startsWith(item)
+        ? checker
+            .replace(item, "")
+            .trim()
+            .replace(/\b\w/g, (match) => match.toUpperCase())
+        : null
+    )
+    .find((item) => item && item.length > 0); // if the matching is null or undefined check
   const service = servicTitle
     .find((item) => checker.startsWith(item))
     .replace(/\b\w/g, (match) => match.toUpperCase());
@@ -55,7 +57,13 @@ function LocationComponent({ postalAndServices }) {
       }
     };
 
-    fetchCoordinates();
+    const timeout = setTimeout(() => {
+      fetchCoordinates();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [id]);
   return (
     <>

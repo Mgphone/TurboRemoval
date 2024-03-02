@@ -19,11 +19,7 @@ function FloatingBook({ userData, closeButton, setUserData }) {
   // const [isButtonSaveLater, setIsButtonSaveLater] = useState(false);
   const [percentage, setPercentage] = useState(0);
   const serverQuote = userData && userData.quote;
-  // useEffect(() => {
-  //   console.log(
-  //     "Welcome from floating Book userData" + JSON.stringify(userData)
-  //   );
-  // }, [userData]);
+
   // Extract information with null or "Choose" defaults
   const pickupAddress =
     serverQuote && serverQuote.places ? serverQuote.places[0] : "Choose Pickup";
@@ -78,10 +74,6 @@ function FloatingBook({ userData, closeButton, setUserData }) {
       window.removeEventListener("keydown", keyPress);
     };
   }, [closeButton]);
-
-  // const handlePercentageChange = (e) => {
-  //   console.log("This is the value" + e.target.value);
-  // };
 
   const handlePercentageChange = (e) => {
     // Update the state directly without parsing and stringifying

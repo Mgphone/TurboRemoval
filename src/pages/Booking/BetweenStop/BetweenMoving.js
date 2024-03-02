@@ -6,8 +6,6 @@ function BetweenMoving() {
   const { data, setData } = useContext(MyContext);
 
   const handleInputChange = (value, betweenId) => {
-    console.log("Between ID:", betweenId);
-
     const updatedAddresses = data.addresses.map((address) =>
       address.id === betweenId ? { ...address, location: value } : address
     );

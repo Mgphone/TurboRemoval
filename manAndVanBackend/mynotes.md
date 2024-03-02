@@ -410,3 +410,16 @@ i use nested and make a full list of array(noted)
 then .flat() and check include()(noted)
 instead of useparams() i seperate the value(noted)
 with startwith and find (noted)
+for pull request(main and tempfix)
+1.Bugs is my UseEffect calling api.. coz of dependcies array ... [id] noted
+using useeffect for mounting waiting time for 1min with setTimeout
+2.for the array of services and location still not finish yet need to find
+specific use it .find(item=>item&&item.length>0) (noted)
+3.I need to think for my backend API key..(noted)
+i. can make a cap restrict how many for a day
+ii. can make api usage for the Key
+iii.can make alert usage is excecced for daily to monthly 4. in the future for the api usage i should monitor from console cloud.
+
+tempfix(booking quotation and rendering api call )
+1.I limit the usage of my API, when i ask for the quotation, my code keep calling
+api (noted for useeffect) 2. I send usecontext and send all data change to backend start of problem(noted) 3. I make a useeffect and send array.lenght\* for only i make it rerender as soon as this array . lenght keep chaging(noted) 4. for other form data have already use with usecontext so when form submit i rerender again (noted)

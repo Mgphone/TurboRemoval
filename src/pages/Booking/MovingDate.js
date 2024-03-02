@@ -9,7 +9,6 @@ function MovingDate({ formik }) {
 
   //set Min time for over one hour
   const minTime = new Date();
-  // console.log("This is min Time" + minTime);
   if (minTime.getHours() >= 6 && minTime.getHours() <= 21) {
     minTime.setHours(new Date().getHours() + 2, 0, 0, 0);
   } else {
@@ -44,7 +43,6 @@ function MovingDate({ formik }) {
       ...prevState,
       date: date,
     }));
-    console.log("This is formikmoving date" + formik.values.moving_date);
   };
 
   return (

@@ -22,27 +22,26 @@ function Booking() {
   const [userData, setUserData] = useState(null);
   const [checkForm, setCheckForm] = useState(false);
 
+  const sendDataToBack = async () => {
+    try {
+      const response =
+        // await fetch("http://192.168.1.216:4000/booking",
+        await fetch(`${process.env.REACT_APP_SERVER_URL}booking`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+      const result = await response.json();
+      setUserData(result);
+    } catch (error) {
+      console.error("There is an error when sending to back", error);
+    }
+  };
   useEffect(() => {
-    const sendDataToBack = async () => {
-      try {
-        const response =
-          // await fetch("http://192.168.1.216:4000/booking",
-          await fetch(`${process.env.REACT_APP_SERVER_URL}booking`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-        const result = await response.json();
-
-        setUserData(result);
-      } catch (error) {
-        console.error("There is an error when sending to back", error);
-      }
-    };
     sendDataToBack();
-  }, [data]);
+  }, [data.addresses.length]);
 
   //formik setup
   const validationSchema = Yup.object({
@@ -90,7 +89,7 @@ function Booking() {
   //end formik setup
   const handleFormCLick = (e) => {
     // e.preventDefault();
-
+    sendDataToBack();
     setCheckForm(true);
   };
   const closeButton = () => {

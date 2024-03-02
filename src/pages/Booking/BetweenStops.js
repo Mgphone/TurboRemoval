@@ -14,10 +14,7 @@ function BetweenStops({ onFormChange }) {
 
   useEffect(() => {
     // when there is no value in formdata i reset zero to viastops
-
     if (formData && formData.viaStopsData.length === 0) {
-      // console.log("viaStopsData is empty. Updating addresses...");
-
       setData((prevState) => ({
         ...prevState,
         addresses: prevState.addresses
@@ -85,9 +82,7 @@ function BetweenStops({ onFormChange }) {
 
     // You can trigger form submission here if needed
     // API to respoond
-    // console.log("This is from confirm" + JSON.stringify(formData));
   };
-  // console.log("Form Data:", formData.viaStopsData);
   const addVia = () => {
     const newViaStop = {
       id: `viaStop_${viaStops.length}`,
@@ -109,8 +104,6 @@ function BetweenStops({ onFormChange }) {
         { id: newViaStop.id, location: "" },
       ],
     }));
-
-    // console.log("This is viastop " + (viaStops.length + 1));
   };
 
   const removeVia = () => {
@@ -133,7 +126,6 @@ function BetweenStops({ onFormChange }) {
   };
   const handlestair = (e, name) => {
     const { value } = e.target;
-    // console.log("this is stair value" + value);
     setViaStops((prevViaStops) =>
       prevViaStops.map((viaStop) =>
         viaStop.id === name ? { ...viaStop, stair: value } : viaStop

@@ -10,7 +10,6 @@ function Nav() {
   // const locationPath = useLocation().pathname !== "/";
   const locationPath =
     location.pathname !== "/" && location.pathname !== "/booking";
-  // console.log(locationPath);
 
   return (
     <>

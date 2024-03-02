@@ -41,7 +41,6 @@ router.post("/updatepaymentstatus", async (req, res) => {
     const totalAmount = result.quote.totalPrice.toFixed(2);
     const percentage = result.percentage;
     const customerPaid = (percentage / 100) * totalAmount;
-    // console.log("This is result from savebooking" + JSON.stringify(result));
     //this is for email details
     const name = result.quote.name.toUpperCase();
     const email = result.quote.email;
