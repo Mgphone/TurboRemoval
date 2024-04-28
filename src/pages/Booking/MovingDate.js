@@ -3,10 +3,10 @@ import MyContext from "../../context/MyContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import BookingDescription from "./BookingDescription";
-
+import { DateTime } from "luxon";
 function MovingDate({ formik }) {
   const { data, setData } = useContext(MyContext);
-
+  // data.date && console.log("THis is data.date" + data.date);
   //set Min time for over one hour
   const minTime = new Date();
   if (minTime.getHours() >= 6 && minTime.getHours() <= 21) {
@@ -19,9 +19,14 @@ function MovingDate({ formik }) {
   const maxTime = new Date();
   maxTime.setHours(21, 0, 0, 0);
   //choose current day
-  if (data.date && data.date.getDate() !== new Date().getDate()) {
+  const toCheckMinTimeofDay = new Date(data.date);
+  // console.log("getTime" + toCheckMinTimeofDay.getDate());
+  if (data.date && toCheckMinTimeofDay.getDate() !== new Date().getDate()) {
     minTime.setHours(6, 0, 0, 0);
   }
+  // if (data.date && data.date.getDate() !== new Date().getDate()) {
+  //   minTime.setHours(6, 0, 0, 0);
+  // }
 
   const CustomInput = ({ value, onClick }) => (
     <input
@@ -38,13 +43,15 @@ function MovingDate({ formik }) {
   );
   const handleChange = (date) => {
     formik.setFieldValue("moving_date", date);
-
+    // console.log("this is inside the handlechange" + date);
+    const formattedDate = DateTime.fromJSDate(date);
     setData((prevState) => ({
       ...prevState,
-      date: date,
+      date: formattedDate,
+      // date: date,
     }));
   };
-
+  // console.log("this is formik value" + formik.values.moving_date);
   return (
     <>
       <div className="movingdate">
