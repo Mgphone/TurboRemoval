@@ -47,7 +47,7 @@ function Register() {
         const data = await response.json();
         if (data.message) {
           alert(data.message);
-          navigate("/login");
+          navigate("/admin/login");
         } else if (data.errormessage) {
           setErrorMessage(data.errormessage);
         }
