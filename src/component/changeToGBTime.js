@@ -1,6 +1,7 @@
 export default function changeToGBTime(time) {
   const dateObj = new Date(time);
   const formattedDateandTime = dateObj.toLocaleString("en-GB", {
+    timeZone: "Europe/London",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",

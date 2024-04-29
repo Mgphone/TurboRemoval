@@ -4,7 +4,7 @@ import changeToGBTime from "../../../component/changeToGBTime";
 import { useNavigate } from "react-router-dom";
 function RetrieveUserData({ retrieveData, setRetrieveData }) {
   const navigate = useNavigate();
-  const date = retrieveData[0].date;
+  const date = retrieveData[0].quote.date;
   const quote = retrieveData[0].quote;
   const totalAddress = quote.totalAddress;
   const isPaid =

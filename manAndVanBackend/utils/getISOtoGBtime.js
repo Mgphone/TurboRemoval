@@ -1,5 +1,6 @@
 const getISOtoGBtime = (time) => {
   const formattedDateandTime = new Date(time).toLocaleString("en-GB", {
+    timeZone: "Europe/London",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -9,6 +10,7 @@ const getISOtoGBtime = (time) => {
     weekday: "long",
   });
   return formattedDateandTime;
+  // return time;
 };
 
 module.exports = getISOtoGBtime;

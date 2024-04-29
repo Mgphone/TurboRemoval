@@ -92,7 +92,9 @@ const mailOptions = (
         <li><strong>Total Hours:</strong> ${totalHour}</li>
         <li><strong>Moving Date:</strong> ${date}</li>
         <li><strong>Total Quotation Price:</strong>£${totalAmount}</li>
-        <li><strong>Outstanding Balance:</strong> £${outstandingBalance}</li>
+        <li><strong>Outstanding Balance:</strong> £${outstandingBalance.toFixed(
+          2
+        )}</li>
         <li><strong>Additional Charges (if any, per half-hour):</strong> £${halfanHour}</li>
         <li><strong>Description:</strong>${description}</li>
         An additional £15 charge will apply if any of the stops during this booking pass through the Congestion Charge Zone.</li>
