@@ -16,3 +16,11 @@ services:
       - DATABASEURI=mongodb://mongodb:27017/turbodatabase
     depends_on:
       - mongodb
+  front:
+    build: 
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/front
+    ports:
+      - 3000:3000
+    command: ["npm","start"]
