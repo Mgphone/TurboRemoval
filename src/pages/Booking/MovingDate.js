@@ -6,7 +6,6 @@ import BookingDescription from "./BookingDescription";
 import { DateTime } from "luxon";
 function MovingDate({ formik }) {
   const { data, setData } = useContext(MyContext);
-  // data.date && console.log("THis is data.date" + data.date);
   //set Min time for over one hour
   const minTime = new Date();
   if (minTime.getHours() >= 6 && minTime.getHours() <= 21) {
@@ -24,9 +23,6 @@ function MovingDate({ formik }) {
   if (data.date && toCheckMinTimeofDay.getDate() !== new Date().getDate()) {
     minTime.setHours(6, 0, 0, 0);
   }
-  // if (data.date && data.date.getDate() !== new Date().getDate()) {
-  //   minTime.setHours(6, 0, 0, 0);
-  // }
 
   const CustomInput = ({ value, onClick }) => (
     <input
@@ -43,7 +39,6 @@ function MovingDate({ formik }) {
   );
   const handleChange = (date) => {
     formik.setFieldValue("moving_date", date);
-    // console.log("this is inside the handlechange" + date);
     const formattedDate = DateTime.fromJSDate(date);
     setData((prevState) => ({
       ...prevState,
@@ -51,7 +46,6 @@ function MovingDate({ formik }) {
       // date: date,
     }));
   };
-  // console.log("this is formik value" + formik.values.moving_date);
   return (
     <>
       <div className="movingdate">
@@ -68,7 +62,6 @@ function MovingDate({ formik }) {
         </div>
         <div className="movingdate-description">
           <h3>I am planning to move on</h3>
-          {/* <input type="text" /> */}
           <DatePicker
             id="moving_date"
             name="moving_date"
@@ -77,11 +70,9 @@ function MovingDate({ formik }) {
             isClearable
             closeOnScroll={true}
             timeIntervals={15}
-            // selected={data.date}
             onChange={handleChange}
             showTimeSelect
             dateFormat="dd-MM-yyyy h:mmaa"
-            // minDate={new Date()}
             minDate={minTime}
             minTime={minTime}
             maxTime={maxTime}
