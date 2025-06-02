@@ -17,7 +17,7 @@ function SaveForLater({ serverQuote, setIsButtonBookNow, isButtonBookNow }) {
       try {
         const response =
           // await fetch("http://192.168.1.216:4000/saveRetrieve",
-          await fetch(`${process.env.REACT_APP_SERVER_URL}saveRetrieve`, {
+          await fetch(`${process.env.REACT_APP_SERVER_URL}/saveRetrieve`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
