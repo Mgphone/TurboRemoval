@@ -1,17 +1,18 @@
-// http://worldtimeapi.org/api/timezone/Europe/London
-
 const getUkTime = async () => {
   try {
-    const url = "https://worldtimeapi.org/api/timezone/Europe/London";
-    const response = await fetch(url);
+    const url = 'https://timeapi.io/api/Time/current/zone?timeZone=Europe/London';
+    const response = await fetch(url); // Native fetch (Node 18+)
+
     if (!response.ok) {
-      throw new Error(`Request Error${response.status}`);
+      throw new Error(`Request failed with status ${response.status}`);
     }
+
     const result = await response.json();
-    const ukTime = result.utc_datetime;
+    const ukTime = result.dateTime; // e.g., "2025-06-02T21:55:00"
+
     return ukTime;
   } catch (error) {
-    console.error("Error fetching getUKTime", error.message);
+    console.error('Error fetching getUKTime:', error.message);
     throw error;
   }
 };
