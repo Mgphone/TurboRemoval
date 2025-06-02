@@ -2,7 +2,7 @@
 
 const getUkTime = async () => {
   try {
-    const url = "http://worldtimeapi.org/api/timezone/Europe/London";
+    const url = "https://worldtimeapi.org/api/timezone/Europe/London";
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Request Error${response.status}`);
