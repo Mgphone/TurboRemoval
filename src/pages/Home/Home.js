@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Home.css";
 import Nav from "../../component/Nav";
 import Footer from "../../component/Footer";
@@ -8,7 +8,19 @@ import Howitwork from "./Howitwork";
 import AccepedPayment from "./AccepedPayment";
 import About from "./About";
 import DayNight from "../../component/DayNight";
+import ContactPopup from "../Contact/ContactPopup";
+
 function Home() {
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
+
+  useEffect(() => {
+    setIsContactPopupOpen(true);
+  }, []);
+
+  const handleCloseContactPopup = () => {
+    setIsContactPopupOpen(false);
+  };
+
   return (
     <>
       <Nav />
@@ -18,6 +30,10 @@ function Home() {
       <About />
       <Review />
       <Footer isHomePage={true} />
+      <ContactPopup 
+        isOpen={isContactPopupOpen} 
+        onClose={handleCloseContactPopup} 
+      />
     </>
   );
 }
